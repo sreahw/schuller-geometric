@@ -182,6 +182,13 @@ Indeed, by definition, we have:
 \ese
 independently of $a$, hence $(\{x,y\} \se \{y,x\}) \land (\{y,x\} \se \{x,y\})$ and thus $\{x,y\} = \{y,x\}$.
 \er
+
+The pair set $\{x,y\}$ is thus an unordered pair. However, using the axiom on pair sets, it is also possible to define an \emph{ordered pair} $(x,y)$ such that $(x,y)\neq(y,x)$. The defining property of an ordered pair is the following:
+\bse
+(x,y) = (a,b) \eqv x=a\land y=b.
+\ese
+One candidate which satisfies this property is $(x,y):=\{x,\{x,y\}\}$, which is a set by the axiom on pair sets.
+
 \br
 The pair set axiom also guarantees the existence of one-element sets. 
 If $x$ is a set, then we define $\{x\}:=\{x,x\}$. Informally, we can say that $\{x\}$ and $\{x,x\}$ express the same amount of information, namely that they contain $x$. 
@@ -219,7 +226,7 @@ Let $a_1,a_2,\ldots,a_N$ be sets. We define recursively for all $N\geq 2$:
 The fact that the $x$ that appears in $\bigcup x$ has to be a set is a crucial restriction. Informally, we can say that it is only possible to take unions of as many sets as would fit into a set. The ``collection'' of all the sets that do not contain themselves is not a set or, we could say, does not fit into a set. Therefore it is not possible to take the union of all the sets that do not contain themselves. This is very subtle, but also very precise.
 \er
 
-\textbf{Axiom of replacement.} \emph{Let $R$ be a functional relation and let $m$ be a set. Then the image of $m$ under $R$, denoted by $\img_R (m)$ is again a set.}
+\textbf{Axiom of replacement.} \emph{Let $R$ be a functional relation and let $m$ be a set. Then the image of $m$ under $R$, denoted by $\img_R (m)$, is again a set.}
 
 Of course, we now need to define the new terms that appear in this axiom. Recall that a relation is simply a predicate of two variables.
 \bd
@@ -231,7 +238,7 @@ A relation $R$ is said to be \emph{functional} if:
 \bd
 Let $m$ be a set and let $R$ be a functional relation. The \emph{image of $m$ under $R$} consists of all those $y$ for which there is an $x\in m$ such that $R(x,y)$. 
 \ed
-None of the previous axiom imply that the image of a set under a functional relation is again a set. The assumption that it always is, is made explicit by the axiom of replacement.
+None of the previous axioms imply that the image of a set under a functional relation is again a set. The assumption that it always is, is made explicit by the axiom of replacement.
 
 Is is very likely that the reader has come across a weaker form of the axiom of replacement, called the \emph{principle of restricted comprehension}, which says the following.
 \bp
@@ -307,6 +314,14 @@ To define power sets in this fashion, we would need to know, a priori, from whic
 \be
 Let $m = \{a,b\}$. Then $\cP(m)=\{\vn,\{a\},\{b\},\{a,b\}\}$.
 \ee
+
+\br
+If one defines $(a,b) := \{a,\{a,b\}\}$, then the \emph{cartesian product} $x \times y$ of two sets $x$ and $y$, which informally is the set of all ordered pairs of elements of $x$ and $y$, satisfies:
+\bse
+x\times y \se \cP(\cP(\bigcup\,\{x, y\})).
+\ese
+Hence, the existence of $x\times y$ as a set follows from the axioms on unions, pair sets, power sets and the principle of restricted comprehension.
+\er
 
 \textbf{Axiom of infinity.} \emph{There exists a set that contains the empty set and,  together with every other element $y$, it also contains the set $\{y\}$ as an element. In symbols:}
 \bse
