@@ -1,0 +1,130 @@
+\subsection{Classification of sets}
+
+A recurrent theme in mathematics is the classification of \emph{spaces} by means of structure-preserving \emph{maps} between them. 
+
+A space is usually meant to be some set equipped with some structure, which is usually some other set. We will define each instance of space precisely when we will need them. In the case of sets considered themselves as spaces, there is no extra structure beyond the set and hence, the structure may be taken to be the empty set.
+
+\bd
+Let $A,B$ be sets. A \emph{map} $\phi \cl A \to B$ is a relation such that for each $a \in A$ there exists exactly one $b \in B$ such that $\phi(a,b)$.
+\ed
+The standard notation for a map is:
+\bi{rrCl}
+\phi \cl & A & \to & B\\
+& a & \mapsto & \phi(a)
+\ei
+which is technically an abuse of notation since $\phi$, being a relation of two variables, should have two arguments and produce a truth value. However, once we agree that for each $a\in A$ there exists exactly one $b\in B$ such that $\phi(a,b)$ is true, then for each $a$ we can define $\phi(a)$ to be precisely that unique $b$. It is sometimes useful to keep in mind that $\phi$ is actually a relation.
+
+\be
+Let $M$ be a set. The simplest example of a map is the \emph{identity map} on $M$:
+\bi{rrCl}
+\id_M \cl & M & \to & M\\
+& m & \mapsto & m.
+\ei
+\ee
+
+The following is standard terminology for a map $\phi \cl A \to B$:
+\bit
+\item the set $A$ is called the \emph{domain} of $\phi$;
+\item the set $B$ is called the \emph{target} of $\phi$;
+\item the set $\phi(a) \equiv \img_\phi(A) := \{\phi(a) \mid a \in A\}$ is called the \emph{image} of $A$ under $\phi$;
+\eit
+\bd
+A \emph{map} $\phi \cl A \to B$ is said to be:
+\bit
+\item \emph{injective} if $\ \forall \, a_1,a_2 \in A : \phi(a_1)=\phi(a_2) \imp a_1 = a_2$;
+\item \emph{surjective} if $\img_\phi(A) = B$;
+\item \emph{bijective} if it is both injective and surjective.
+\eit
+\ed
+
+\bd
+Two sets $A$ and $B$ are called \emph{(set-theoretic) isomorphic} if there exists a bijection $\phi \cl A \to B$. In this case, we write $A \iset B$.
+\ed
+
+\br
+If there is any bijection $A \to B$ then generally there are many.
+\er
+
+Bijections are the ``structure-preserving'' maps for sets. Intuitively, they pair up the elements of $A$ and $B$ and a bijection between $A$ and $B$ exists only if $A$ and $B$ have the same ``size''. This is clear for finite sets, but it can also be extended to infinite sets.\\
+
+\textbf{Classification of sets.} A set $A$ is:
+\bit
+\item \emph{infinite} if there exists a proper subset $B\ss A$ such that $B \iset A$. In particular, if $A$ is infinite, we further define $A$ to be:
+\bit
+\item[$*$] \emph{countably} infinite if $A \iset \N$;
+\item[$*$] \emph{uncountably} infinite otherwise.
+\eit
+\item \emph{finite} if it is not infinite. In this case, we have $A \iset \{1,2,\ldots,N\}$ for some $N \in \N$ and we say that the \emph{cardinality} of $A$, denoted by $|A|$, is $N$.
+\eit
+Given two maps $\phi \cl A \to B$ and $\psi \cl B \to C$, we can construct a third map, called the \emph{composition} of $\phi$ and $\psi$, denoted by $\psi \circ \phi$ (read ``psi after phi''), defined by:
+\bi{rcCl}
+\psi \circ \phi \cl & A & \to & C\\
+& a & \mapsto & \psi(\phi(a)).
+\ei
+This is often represented by drawing the following diagram
+\bse
+\begin{tikzcd}
+ &B \ar[dr,"\psi"]& \\
+A \ar[ur,"\phi"] \ar[rr, "\psi\circ\phi"'] & & C
+\end{tikzcd}
+\ese
+and by saying that ``the diagram commutes'' (although sometimes this is assumed even if it is not explicitly stated). What this means is that every path in the diagram gives the same result. This might seem notational overkill at this point, but later we will encounter situations where we will have many maps, going from many places to many other places and these diagrams greatly simplify the exposition. 
+
+\bp
+Composition of maps is associative.
+\ep
+
+\bq
+Indeed, let $\phi \cl A \to B$, $\psi \cl B \to C$ and $\xi \cl C \to D$ be maps. Then we have:
+\bi{rcCl}
+\xi \circ (\psi\circ\phi) \cl & A & \to & D\\
+& a & \mapsto & \xi(\psi(\phi(a)))
+\ei
+and:
+\bi{rcCl}
+(\xi \circ\psi)\circ\phi \cl & A & \to & D\\
+& a & \mapsto & \xi(\psi(\phi(a))).
+\ei
+Thus $\xi \circ (\psi\circ\phi) = (\xi \circ\psi)\circ\phi $.
+\eq
+
+The operation of composition is necessary in order to defined inverses of maps.
+
+\bd
+Let $\phi \cl A \to B$ be a bijection. Then the \emph{inverse} of $\phi$, denoted $\phi^{-1}$, is defined (uniquely) by:
+\bse
+\phi^{-1}\circ\phi = \id_A
+\ese
+\bse
+\phi\circ\phi^{-1} = \id_B.
+\ese
+\ed
+Equivalently, we require the following diagram to commute:
+\bse
+\begin{tikzcd}
+A \ar[loop left, "\id_A"] \ar[rr, bend left,"\phi"] & & B \ar[loop right, "\id_B"] \ar[ll, bend left,"\phi^{-1}"]
+\end{tikzcd}
+\ese
+The inverse map is only defined for bijections. However, the following notion, which we will often meet in topology, is defined for any map.
+
+\bd
+Let $\phi \cl A \to B$ be a map and let $V\se B$. Then we define the set:
+\bse
+\mathrm{preim}_\phi(V) := \{a \in A \mid \phi(a) \in V\}
+\ese
+called the \emph{pre-image} of $V$ under $\phi$.
+\ed
+
+
+\subsection{Equivalence relations}
+
+
+
+
+
+
+
+
+
+
+
