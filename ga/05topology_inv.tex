@@ -1,32 +1,174 @@
 \subsection{Topological properties I: separation properties}
 
+\bd
+A topological space $(M,\cO)$ is said to be \emph{T1} if for any two distinct points $p,q\in M$, $p\neq q$:
+\bse
+\exists \, U \in \cO : p\in U \land q \notin U.
+\ese
+\ed
 
+\bd
+A topological space $(M,\cO)$ is said to be \emph{T2} or \emph{Hausdorff} if for any two distinct points $p,q\in M$, $p\neq q$:
+\bse
+\exists \, U,V\in \cO : p\in U\ \land\ q \in V\ \land\ U\cap V = \vn.
+\ese
+\ed
 
+\be
+The topological space $(\R^d,\cO_\mathrm{std})$ is T2 and hence also T1.
+\ee
 
+\be
+The Zariski topology on an algebraic variety is T1 but not T2.
+\ee
 
+\be
+The topological space $(M,\{\vn,M\})$ does not have the T1 property since for any $p \in M$, the only open neighbourhood of $p$ is $M$ and for any other $q\neq p$ we have $q\in M$. Moreover, since this space is not T1, it cannot be T2 either.
+\ee
 
+\br
+There are many other ``T'' properties, including a \emph{T2\sfrac{1}{2}} property which differs from T2 in that the neighbourhoods are closed.
+\er
 
+\subsection{Topological properties II: compactness ad paracompactness}
 
+\bd
+Let $(M,\cO)$ be a topological space. A set $C \se \cP(M)$ is called a \emph{cover} (of $M$) if:
+\bse
+\bigcup C = M.
+\ese
+Additionally, it is said to an \emph{open} cover if $C \se \cO$.
+\ed
 
+\bd
+Let $C$ be a cover. Then any subset $\widetilde{C}\se C$ such that $\widetilde{C}$ is still a cover, is called a \emph{subcover}. Additionally, it is said to be a \emph{finite} subcover if it is finite as a set.
+\ed
 
+\bd
+A topological space $(M,\cO)$ is said to be \emph{compact} if every open cover has a finite subcover.
+\ed
 
+\bd
+Let $(M,\cO)$ be a topological space. A subset $N\se M$ is called \emph{compact} if the topological space $(N,\cO|_N)$ is compact.
+\ed
 
+Determining whether a set is compact or not is not an easy task. Fortunately though, for $\R^d$ equipped with the standard topology $\cO_\mathrm{std}$, the following theorem greatly simplifies matters.
 
+\bt[Heine-Borel]
+Let $\R^d$ be equipped with the standard topology $\cO_\mathrm{std}$. Then, a subset of $\R^d$ is compact if, and only if, it is closed and bounded.
+\et
 
+A subset $S$ of $\R^d$ is said to be \emph{bounded} if:
+\bse
+\exists \, r \in R^+ : S \se B_r(0). 
+\ese
 
+\br
+It is also possible to generalize this result to arbitrary metric spaces. A \emph{metric space} is a pair $(M,d)$ where $M$ is a set and $d\cl M\times M \to \R$ is a map such that for any $x,y,z \in M$ the following conditions hold:
+\ben
+\item[i)] $d(x,y) \geq 0$;
+\item[ii)] $d(x,y) = 0 \eqv x = y$;
+\item[iii)] $d(x,y) = d(y,x) $;
+\item[iv)] $d(x,y)\leq d(x,z)+d(y,z)$.
+\een
+A metric structure on a set $M$ induces a topology $\cO_d$ on $M$ by:
+\bse
+U \in \cO_d :\eqv \forall \, p \in U : \exists \, r \in R^+ : B_r(p) \se U,
+\ese
+where the open ball in a metric space is defined as:
+\bse
+B_r(p) := \{x \in M \mid d(p,x) < r\}.
+\ese
+In this setting, one can prove that a subset $S\se M$ of a metric space $(M,d)$ is compact if, and only if, it is complete and totally bounded.
+\er
 
+\be
+The interval $[0,1]$ is compact in $(\R,\cO_\mathrm{std})$. The one-element set containing $(-1,2)$ is a cover of $[0,1]$, but it is also a finite subcover and hence $[0,1]$ is compact from the definition. Alternatively, $[0,1]$ is clearly closed and bounded, and hence it is compact by the Heine-Borel theorem.
+\ee
 
+\be
+The set $\R$ is not compact in $(\R,\cO_\mathrm{std})$. To prove this, it suffices to show that there exists a cover of $\R$ that does not have a finite subcover. To this end, let:
+\bse
+C := \{(n,n+1)\mid n \in \Z\} \cup \{(n+\tfrac{1}{2},n+\tfrac{3}{2})\mid n \in \Z\} .
+\ese
 
+This corresponds to the following picture.
 
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\node (v2) at (4,0.5) {};
+\node (v1) at (-4.75,0.5) {};
+\draw  (v1) edge (v2);
+\draw [-triangle 60] (v1) edge (v2);
+\node (v3) at (-4.5,1) {};
+\node (v4) at (3.5,1) {};
+\draw  (v3) edge (v4);
+\node (v5) at (-4.5,1.5) {};
+\node (v6) at (3.5,1.5) {};
+\draw  (v5) edge (v6);
+\draw[fill=white]  (-0.5,1) circle (0.15);
+\draw[fill=white]  (-3.5,1) node (v7) {} circle (0.15);
+\draw[fill=white]  (2.5,1) circle (0.15);
+\draw[fill=white]  (-2,1.5) circle (0.15);
+\draw[fill=white]  (1,1.5) circle (0.15);
+\draw  (-3.5,0.62) edge (-3.5,0.38);
+\draw  (-2,0.62) edge (-2,0.38);
+\draw  (-0.5,0.62) edge (-0.5,0.38);
+\draw  (2.5,0.62) edge (2.5,0.38);
+\draw  (1,0.62) edge (1,0.38);
+\node at (-3.5,0) {$-1$};
+\node at (-2,0) {$-\sfrac{1}{2}$};
+\node at (-0.5,0) {$0$};
+\node at (1,0) {$\sfrac{1}{2}$};
+\node at (2.5,0) {$1$};
+\node at (3.7,0) {$\R$};
+\node at (-4.8,1.22) {$C\ \Bigl\{$};
+\end{tikzpicture}
+\end{figure}
 
+It is clear that removing even one element from $C$ will cause $C$ to fail to be an open cover of $\R$. Therefore, there is no finite subcover of $C$ and hence, $\R$ is not compact.
+\ee
 
+\bt
+Let $(M,\cO_M)$ and $(N,\cO_N)$ be compact topological spaces. Then $(M\times N,\cO_{M\times N})$ is a compact topological space.
+\et
 
+The above theorem easily extends to finite cartesian products. 
 
+\bd
+Let $(M,\cO)$ be a topological space and let $C$ be a cover. A \emph{refinement} of $C$ is a cover $R$ such that:
+\bse
+\forall \, U \in R : \exists \, V \in C : U \se V .
+\ese
+\ed
+Any subcover of a cover is a refinement of that cover, but the converse is not true in general. A refinement $R$ is said to be:
+\bit
+\item \emph{open} if $R\se \cO$;
+\item \emph{locally finite} if for any $p\in M$ there exists a neighbourhood $U(p)$ such that the set:
+\bse
+\{U \in R \mid U \cap U(p) \neq \vn\}
+\ese
+is finite as a set.
+\eit
 
+Compactness is a very strong property. Hence often times it does not hold, but a weaker and still useful property, called paracompactness, may still hold.
 
+\bd
+A topological space $(M,\cO)$ is said to be \emph{paracompact} if every open cover has an open refinement that is locally finite.
+\ed
 
+\bc
+If a topological space is compact, then it is also paracompact.
+\ec
 
+\bd
+A topological space $(M,\cO)$ is said to be \emph{metrisable} if there exists a metric $d$ such that the topology induced by $d$ is precisely $\cO$, i.e.\ $\cO_d=\cO$. 
+\ed
 
+\bt[Stone]
+Every metrisable space is paracompact.
+\et
 
 
 
