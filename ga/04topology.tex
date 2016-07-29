@@ -214,6 +214,38 @@ Then $(N,\cO_\mathrm{std}|_N)$ is a topological space. The set $(0,1]$ is clearl
 where $(0,2) \in \cO_\mathrm{std}$ and hence $(0,1]\in\cO_\mathrm{std}|_N$, i.e.\ the set $(0,1]$ is open in $(N,\cO_\mathrm{std}|_N)$.
 \ee
 
+\bd
+Let $(M,\cO)$ be a topological space and let $\sim$ be an equivalence relation on $M$. Then, the quotient set:
+\bse
+M/\!\sim \ = \{[m]\in \cP(M) \mid m \in M\}
+\ese
+can be equipped with the \emph{quotient topology} $\cO_{M/\!\sim}$ defined by:
+\bse
+\cO_{M/\!\sim} := \{U \in M/\!\sim \ \mid \bigcup U = \bigcup_{[a]\in U}[a] \in \cO \}.
+\ese
+\ed
+
+An equivalent definition of the quotient topology is as follows. Let $q\cl M \to M/\!\sim$ be the map:
+\bi{rrCl}
+q \cl & M & \to & M/\!\sim \\
+& m & \mapsto & [m]
+\ei
+Then we have:
+\bse
+\cO_{M/\!\sim} := \{U \in M/\!\sim \ \mid \mathrm{preim}_q(U) \in \cO \}.
+\ese
+
+\be
+The \emph{circle} (or 1-sphere) is defined as the set $S^1:= \{(x,y)\in \R^2\mid x^2+y^2=1\}$ equipped with the subset topology inherited from $\R^2$. The open sets of the circle are (unions of) open arcs, i.e.\ arcs without the endpoints. Individual points on the circle are clearly not open since there is no open set of $\R^2$ whose intersection with the circle is a single point. However, an individual point on the circle is a closed set since its complement is an open arc.
+
+An alternative definition of the circle is the following. Let $\sim$ be the equivalence relation on $\R$ defined by:
+\bse
+x\sim y :\eqv \exists \, n \in \Z : x = y + 2\pi n. 
+\ese
+Then the circle can be defined as the set $S^1:=\R/\!\sim$ equipped with the quotient topology.
+\ee
+
+
 
 \bd
 Let $(A,\cO_A)$ and $(B,\cO_B)$ be topological spaces. Then the set $\cO_{A\times B}$ defined implicitly by:
@@ -347,11 +379,6 @@ If there exists a homeomorphism between two topological spaces $(M,\cO_M)$ and $
 \ed
 
 Clearly, if $(M,\cO_M) \cong_\mathrm{top} (N,\cO_N)$, then $M \iset N$.
-
-\br
-Unlike for sets, there isn't yet a classification of topological spaces. That is, nobody has been able to determine a set of properties such that if two topological spaces agree on this set of properties, then they are homeomorphic.
-\er
-
 
 
 
