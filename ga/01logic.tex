@@ -1,7 +1,7 @@
 \subsection{Propositional logic}
 
 \bd
-A \emph{proposition} $p$ is a variable\footnote{By this we mean a formal expression, with no extra structure assumed.} that can take the values \emph{true} ($T$) or \emph{false} ($F$), and no others.
+A \emph{proposition}\index{proposition} $p$ is a variable\footnote{By this we mean a formal expression, with no extra structure assumed.} that can take the values \emph{true} ($T$) or \emph{false} ($F$), and no others.
 \ed
 
 This is what a proposition is from the point of view of propositional logic.
@@ -11,7 +11,7 @@ It is also not the task of propositional logic to decide whether a statement of 
 In this particular case, the statement looks rather meaningless.
 
 \bd
-A proposition which is always true is called a \emph{tautology}, while one which is always false is called a \emph{contradiction}.
+A proposition which is always true is called a \emph{tautology}\index{tautology}, while one which is always false is called a \emph{contradiction}\index{contradiction}.
 \ed
 
 It is possible to build new propositions from given ones using \emph{logical operators}.
@@ -28,7 +28,6 @@ $p$ & $\neg p$ & $\mathrm{id}(p)$ & $\top p$ & $\bot p$ \\
 T & F & T & T & F
 \etb
 \etab
-
 where $\neg$ is the \emph{negation} operator, $\mathrm{id}$ is the \emph{identity} operator, $\top$ is the \emph{tautology} operator and $\bot$ is the \emph{contradiction} operator.
 These clearly exhaust all possibilities for unary operators.
 
@@ -48,7 +47,7 @@ T & T & T & T & F
 \etb
 \etab
 
-There is one binary operator, the \emph{implication} operator $\imp$, which is sometimes a little ill understood, unless you are already very knowledgeable about these things. Its usefulness comes in conjunction with the \emph{equivalence} operator $\eqv$. We have:
+There is one binary operator, the \emph{implication}\index{implication} operator $\imp$, which is sometimes a little ill understood, unless you are already very knowledgeable about these things. Its usefulness comes in conjunction with the \emph{equivalence} operator $\eqv$. We have:
 
 \btab[h!]
 \centering
@@ -118,7 +117,7 @@ This is called the \emph{nand} operator and, in fact, we have $(p \uparrow q) \e
 \subsection{Predicate logic}
 
 \bd
-A \emph{predicate} is (informally) a proposition-valued function of some variable or variables.
+A \emph{predicate}\index{predicate} is (informally) a proposition-valued function of some variable or variables.
 \ed
 
 For example, $P(x)$ is a proposition for each choice of the variable $x$, and its truth value depends on $x$.
@@ -142,7 +141,7 @@ Let $P(x)$ be a predicate. Then:
 \bse
 \forall \, x : P(x) ,
 \ese
-is a proposition, which we read as ``for all $x$, $P$ of $x$ (is true)'', and it is defined to be true if $P(x)$ is true independently of $x$, false otherwise. The symbol $\forall$ is called \emph{universal quantifier}.
+is a proposition, which we read as ``for all $x$, $P$ of $x$ (is true)'', and it is defined to be true if $P(x)$ is true independently of $x$, false otherwise. The symbol $\forall$\index{$\forall$} is called \emph{universal quantifier}\index{universal quantifier}.
 \ed
 \bd
 Let $P(x)$ be a predicate.
@@ -150,7 +149,7 @@ Then we define:
 \bse
 \exists \, x : P(x) : \eqv \neg (\forall \, x : \neg P(x)).
 \ese
-The proposition $\exists \, x : P(x)$ is read as ``there exists (at least one) $x$ such that $P$ of $x$ (is true)'' and the symbol $\exists$ is called \emph{existential quantifier}.
+The proposition $\exists \, x : P(x)$ is read as ``there exists (at least one) $x$ such that $P$ of $x$ (is true)'' and the symbol $\exists$\index{$\exists$} is called \emph{existential quantifier}\index{existential quantifier}.
 \ed
 The following result is an immediate consequence of these definitions.
 \bc
@@ -179,7 +178,7 @@ Other combinations of quantifiers are defined analogously.
 The order of quantification matters (if the quantifiers are not all the same).
 For a given predicate $P(x,y)$, the propositions:
 \bse
-\exists \, y : \forall \, x : P(x,y)  \quad \t{and} \quad \forall \, x : \exists \, y : P(x,y) 
+\exists \, y : \forall \, x : P(x,y)  \quad \text{and} \quad \forall \, x : \exists \, y : P(x,y) 
 \ese
 are not necessarily equivalent.
 \er
@@ -191,8 +190,9 @@ Consider the proposition expressing the existence of additive inverses in the re
 i.e. for each $x$ there exists an inverse $y$ such that $x+y=0$. For $1$ this is $-1$, for $2$ it is $-2$ etc.
 Consider now the proposition obtained by swapping the quantifiers in the previous proposition:
 \bse
-\exists \, y : \forall \, x : \ x+y=0,
+\exists \, y : \forall \, x : \ x+y=0.
 \ese
+
 What this proposition is saying is that there exists a real number $y$ such that, no matter what $x$ is, we have $x+y=0$.
 This is clearly false, since if $x+y=0$ for some $x$ then $(x+1)+y\neq 0$, so the same $y$ cannot work for both $x$ and $x+1$, let alone every $x$.
 \ee
@@ -212,11 +212,11 @@ This definition clearly separates the existence condition from the uniqueness co
 \subsection{Axiomatic systems and theory of proofs}
 
 \bd
-An \emph{axiomatic system} is a finite sequence of propositions $a_1,a_2,\ldots,a_N$, which are called the \emph{axioms} of the system.
+An \emph{axiomatic system}\index{axiomatic system} is a finite sequence of propositions $a_1,a_2,\ldots,a_N$, which are called the \emph{axioms} of the system.
 \ed
 
 \bd
-A \emph{proof} of a proposition $p$ within an axiomatic system $a_1,a_2,\ldots,a_N$ is a finite sequence of propositions $q_1,q_2,\ldots,q_M$ such that $q_M=p$ and for any $1\leq j \leq M$ one of the following is satisfied:
+A \emph{proof}\index{proof} of a proposition $p$ within an axiomatic system $a_1,a_2,\ldots,a_N$ is a finite sequence of propositions $q_1,q_2,\ldots,q_M$ such that $q_M=p$ and for any $1\leq j \leq M$ one of the following is satisfied:
 \ben
 \item[(A)] $q_j$ is a proposition from the list of axioms;
 \item[(T)] $q_j$ is a tautology;
@@ -244,7 +244,7 @@ The axiomatic system for propositional logic is the empty sequence.
 This means that all we can prove in propositional logic are tautologies.
 
 \bd
-An axiomatic system $a_1,a_2,\ldots,a_N$ is said to be \emph{consistent} if there exists a proposition $q$ which cannot be proven from the axioms.
+An axiomatic system $a_1,a_2,\ldots,a_N$ is said to be \emph{consistent}\index{consistency} if there exists a proposition $q$ which cannot be proven from the axioms.
 In symbols:
 \bse
 \exists \, q : \neg (a_1,a_2,\ldots,a_N \vdash q).
@@ -290,10 +290,10 @@ While it is perfectly fine and clear how to define consistency, it is perfectly 
 \er
 
 \bt
-Any axiomatic system powerful enough to encode elementary arithmetic is either inconsistent or contains an \emph{undecidable} proposition, i.e.\ a proposition that can be neither proven nor disproven within the system.
+Any axiomatic system powerful enough to encode elementary arithmetic is either inconsistent or contains an \emph{undecidable}\index{undecidable} proposition, i.e.\ a proposition that can be neither proven nor disproven within the system.
 \et
 
-
+An example of an undecidable proposition is the Continuum hypothesis within the Zermelo-Fraenkel axiomatic system.  
 
 
 

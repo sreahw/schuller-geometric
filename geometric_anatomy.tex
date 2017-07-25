@@ -22,7 +22,7 @@
 \documentclass[
 11pt, % Main document font size
 a4paper, % Paper type, use 'letterpaper' for US Letter paper
-oneside, % One page layout (no page indentation)
+twoside, % One page layout (no page indentation)
 %twoside, % Two page layout (page indentation for binding and different headers)
 headinclude,footinclude, % Extra spacing for the header and footer
 %BCOR5mm, % Binding correction
@@ -65,7 +65,7 @@ headinclude,footinclude, % Extra spacing for the header and footer
 %----------------------------------------------------------------------------------------
 
 \renewcommand{\sectionmark}[1]{\markright{\spacedlowsmallcaps{#1}}} % The header for all pages (oneside) or for even pages (twoside)
-%\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}} % Uncomment when using the twoside option - this modifies the header on odd pages
+\renewcommand{\subsectionmark}[1]{\markright{\thesubsection~#1}} % Uncomment when using the twoside option - this modifies the header on odd pages
 \lehead{\mbox{\llap{\small\thepage\kern1em\color{halfgray} \vline}\color{halfgray}\hspace{0.5em}\rightmark\hfil}} % The header style
 
 \pagestyle{scrheadings} % Enable the headers specified in this block
@@ -74,11 +74,18 @@ headinclude,footinclude, % Extra spacing for the header and footer
 %	TABLE OF CONTENTS & LISTS OF FIGURES AND TABLES
 %----------------------------------------------------------------------------------------
 
+\pagenumbering{gobble}% Remove page numbers (and reset to 1)
+\clearpage
+\thispagestyle{empty}
+
 \maketitle % Print the title/author/date block
 
 \newpage
 
 \setcounter{tocdepth}{2} % Set the depth of the table of contents to show sections and subsections only
+
+\clearpage
+\pagenumbering{arabic}
 
 \tableofcontents % Print the table of contents
 
@@ -134,11 +141,11 @@ headinclude,footinclude, % Extra spacing for the header and footer
 
 \section{Topological manifolds and bundles}
 \input{ga/06manifolds}
-%\newpage
+\newpage
 
-\section{Differentiable structures definition and classification}
-
-
+\section{Differentiable structures: definition and classification}
+\input{ga/07differentiable}
+\newpage
 
 \section{Tensor space theory I: over a field}
 
@@ -156,7 +163,7 @@ headinclude,footinclude, % Extra spacing for the header and footer
 
 
 
-\section{Grassmann algebra and deRham cohomology}
+\section{Grassmann algebra and de Rham cohomology}
 
 
 
@@ -168,7 +175,7 @@ headinclude,footinclude, % Extra spacing for the header and footer
 
 
 
-\section{The Lie group $SL(2,\C)$ and its Lie algebra $sl(2,\C)$}
+\section{The Lie group $SL(2,\C)$ and its Lie algebra $\mathfrak{sl}(2,\C)$}
 
 
 

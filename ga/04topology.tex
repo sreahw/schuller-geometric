@@ -9,7 +9,7 @@ Let $M$ be a set. A \emph{topology} on $M$ is a set $\cO \se \cP(M)$ such that:
 \item[ii)] $\{U,V\}\se \cO \imp \bigcap\, \{U,V\} \in \cO$;
 \item[iii)] $C \se \cO \imp \bigcup C \in \cO$.
 \een
-The pair $(M,\cO)$ is called a \emph{topological space}.
+The pair $(M,\cO)$ is called a \emph{topological space}. If we write ``let $M$ be a topological space'' then some topology $\cO$ on $M$ is assumed.
 \ed
 
 \br
@@ -95,7 +95,7 @@ Let $M = \{a,b,c\}$ and let $\cO=\{\vn,\{a\},\{a,b\},\{a,b,c\}\}$. Then $\{a\}$ 
 
 We will now define what is called the standard topology on $\R^d$, where:
 \bse
-\R^d:=\underbrace{\R\times\R\times\ldots\times\R}_\text{$d$ times}.
+\R^d:=\underbrace{\R\times\R\times\cdots\times\R}_\text{$d$ times}.
 \ese
 We will need the following auxiliary definition.
 
@@ -258,14 +258,14 @@ is a topology on $A\times B$ called the \emph{product topology}.
 \br
 This definition can easily be extended to $n$-fold cartesian products:
 \bse
-U \in \cO_{A_1\times \ldots \times A_n} :\eqv \forall \, p \in U : \exists \, (S_1,\ldots,S_n) \in \cO_{A_1}\times \ldots \times \cO_{A_n} : S_1\times \ldots\times S_n \se U.
+U \in \cO_{A_1\times \cdots \times A_n} :\eqv \forall \, p \in U : \exists \, (S_1,\ldots,S_n) \in \cO_{A_1}\times \cdots \times \cO_{A_n} : S_1\times \cdots\times S_n \se U.
 \ese
 \er
 
 \br
 Using the previous definition, one can check that the standard topology on $\R^d$ satisfies:
 \bse
-\cO_\mathrm{std} = \cO_{\underbrace{\scriptstyle \R\times\R\times\ldots\times\R}_\text{ $d$ times}}.
+\cO_\mathrm{std} = \cO_{\underbrace{\scriptstyle \R\times\R\times\cdots\times\R}_\text{ $d$ times}}.
 \ese
 Therefore, a more minimalistic definition of the standard topology on $\R^d$ would consist in defining $\cO_\mathrm{std}$ only for $\R$ (i.e.\ $d=1$) and then extending it to $\R^d$ by the product topology.
 \er

@@ -116,13 +116,44 @@ called the \emph{pre-image} of $V$ under $\phi$.
 \ed
 
 \bp
-Let $\phi \cl A \to B$ be a map. Then:
+Let $\phi \cl A \to B$ be a map, let $U,V \se B$ and $C=\{C_j \mid j \in J\} \se \cP(B)$. Then:
 \ben
 \item[i)] $\mathrm{preim}_\phi(\vn)=\vn$ and $\mathrm{preim}_\phi(B)=A$;
-\item[ii)] 
-\item[i)]
-\een
+\item[ii)] $\mathrm{preim}_\phi(U\sm V)=\mathrm{preim}_\phi(U)\sm \mathrm{preim}_\phi(V)$;
+\item[iii)] $\mathrm{preim}_\phi(\bigcup C)=\bigcup_{j \in J} \mathrm{preim}_\phi(C_j)$
+ and $\mathrm{preim}_\phi(\bigcap C)=\bigcap_{j \in J} \mathrm{preim}_\phi(C_j)$.
+ \een
 \ep
+
+
+\bq
+\ben
+\item[i)] By definition, we have:
+\bse
+\mathrm{preim}_\phi(B) = \{a\in A : \phi(a) \in B\} = A
+\ese
+and:
+\bse
+\mathrm{preim}_\phi(\vn) = \{a\in A : \phi(a) \in \vn\} = \vn.
+\ese
+\item[ii)] We have:
+\bi{rCl}
+a \in \mathrm{preim}_\phi(U\sm V ) & \eqv & \phi(a) \in U \sm V \\
+& \eqv & \phi(a) \in U  \land \, \phi(a) \, \notin V \\
+& \eqv & a \in \mathrm{preim}_\phi(U) \, \land \, a \notin \mathrm{preim}_\phi(V) \\
+& \eqv & a \in \mathrm{preim}_\phi(U ) \sm \mathrm{preim}_\phi(V )
+\ei
+\item[iii)] We have:
+\bi{rCl}
+a \in \mathrm{preim}_\phi(\textstyle \bigcup C ) & \eqv & \phi(a) \in \textstyle \bigcup C \\
+& \eqv & \textstyle \bigvee_{j\in J} (\phi(a) \in C_j) \\
+& \eqv & \textstyle \bigvee_{j\in J} (a \in \mathrm{preim}_\phi(C_j)) \\
+& \eqv & a \in \textstyle \bigcup_{j\in J}\mathrm{preim}_\phi(C_j)
+\ei
+Similarly, we get $\mathrm{preim}_\phi( \bigcap C ) = \bigcap_{j\in J}\mathrm{preim}_\phi(C_j)$. \qedhere
+\een
+\eq
+
 
 \subsection{Equivalence relations}
 
@@ -188,11 +219,11 @@ m\sim n :\eqv n-m \in 2\Z .
 \ese
 It is easy to check that $\sim$ is indeed an equivalence relation. Moreover, we have:
 \bse
-[0] = [2] = [4] = \ldots = [-2] = [-4] = \ldots 
+[0] = [2] = [4] = \cdots = [-2] = [-4] = \cdots 
 \ese
 and:
 \bse
-[1] = [3] = [5] = \ldots = [-1] = [-3] = \ldots 
+[1] = [3] = [5] = \cdots = [-1] = [-3] = \cdots 
 \ese
 Thus we have: $\Z/\!\sim\ = \{[0],[1]\}$. We wish to define an addition $\oplus$ on $\Z/\!\sim$ by inheriting the usual addition on $\Z$. As a tentative definition we could have:
 \bse
@@ -304,7 +335,7 @@ m+0=S^0(m)=\id_\N(m)=m
 \ese
 and:
 \bse
-0+m=S^m(0)=S^{P(m)}(1)=S^{P(P(m))}(2) = \ldots = S^0(m) = m.
+0+m=S^m(0)=S^{P(m)}(1)=S^{P(P(m))}(2) = \cdots = S^0(m) = m.
 \ese
 Clearly, there exist no inverses for $+$ in $\N$, i.e.\ given $m \in \N$ (non-zero), there exist no $n \in \N$ such that $m+n=0$. This motivates the extension of the natural numbers to the integers. In order to rigorously define $\Z$, we need to define the following relation on $\N\times \N$.
 
