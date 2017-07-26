@@ -38,8 +38,23 @@
 \usepackage[retainorgcmds]{IEEEtrantools}
 %\usepackage{mathtools}
 \usepackage{tikz}
+\usetikzlibrary{matrix,calc,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
 \usetikzlibrary{arrows,cd}
 \usepackage{bbding}
+\usetikzlibrary{positioning}
+%\tikzset{every picture/.style={remember picture}}
+\tikzset{>=stealth}
+
+%\usepackage[upright]{fourier}
+%\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+
+%\usepackage[cmintegrals,cmbraces]{newtxmath}
+%\usepackage{ebgaramond-maths}
+%\newcommand{\tikzmark}[1]{\tikz[baseline,remember picture] \coordinate (#1) {};}
+
+%\usepackage{mathptmx}
+\usepackage{calc}
 
 %----------------------------------------------------------------------------------------
 %	THEOREM STYLES
@@ -153,39 +168,39 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 
 
 
-\section*{Introduction}
-\addcontentsline{toc}{section}{Introduction}
-\markright{Introduction}
-\input{ga/00intro}
-\newpage
+% \section*{Introduction}
+% \addcontentsline{toc}{section}{Introduction}
+% \markright{Introduction}
+% \input{ga/00intro}
+% \newpage
 
-\section{Logic of propositions and predicates}
-\input{ga/01logic}
-\newpage
+% \section{Logic of propositions and predicates}
+% \input{ga/01logic}
+% \newpage
 
-\section{Axioms of set theory}
-\input{ga/02axioms}
-\newpage
+% \section{Axioms of set theory}
+% \input{ga/02axioms}
+% \newpage
 
-\section{Classification of sets}
-\input{ga/03classification}
-\newpage
+% \section{Classification of sets}
+% \input{ga/03classification}
+% \newpage
 
-\section{Topological spaces: construction and purpose}
-\input{ga/04topology}
-\newpage
+% \section{Topological spaces: construction and purpose}
+% \input{ga/04topology}
+% \newpage
 
-\section{Topological spaces: some heavily used invariants}
-\input{ga/05topology_inv}
-\newpage
+% \section{Topological spaces: some heavily used invariants}
+% \input{ga/05topology_inv}
+% \newpage
 
-\section{Topological manifolds and bundles}
-\input{ga/06manifolds}
-\newpage
+% \section{Topological manifolds and bundles}
+% \input{ga/06manifolds}
+% \newpage
 
-\section{Differentiable structures: definition and classification}
-\input{ga/07differentiable}
-\newpage
+% \section{Differentiable structures: definition and classification}
+% \input{ga/07differentiable}
+% \newpage
 
 \section{Tensor space theory I: over a field}
 \input{ga/08tensor_i}

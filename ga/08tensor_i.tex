@@ -65,7 +65,7 @@ are maps satisfying the following axioms:
 \end{itemize}
 \ed
 
-The elements of $K$ are often called \emph{scalars}, and the map $\odot$ \emph{scalar multiplication}. You should already be familiar with the various vector space constructions from your linear algebra course. For example, recall:
+Vector spaces are also called \emph{linear spaces}. Their elements are called \emph{vectors}, while the elements of $K$ are often called \emph{scalars}, and the map $\odot$ is called \emph{scalar multiplication}. You should already be familiar with the various vector space constructions from your linear algebra course. For example, recall:
 
 \bd
 Let $(V,\oplus,\odot)$ be a vector space over $K$ and let $U\se V$ be non-empty. Then we say that $(U,\oplus|_{U\times U},\odot|_{K\times U})$ is a \emph{vector subspace} of $(V,\oplus,\odot)$ if:
@@ -199,6 +199,10 @@ We write
 T^p_q V := \underbrace{V\otimes\cdots \otimes V}_{p \text{ copies}} \otimes \underbrace{V^* \otimes \cdots \otimes V^*}_{q \text{ copies}} := \{T\mid T \text{ is a $(p,q)$-tensor on }V\}. 
 \ese
 \ed
+
+\br
+By convention, a $(0,0)$ on $V$ is just an element of $K$, and hence $T^0_0V=K$.
+\er
 
 \br
 Note that to define $T^p_q V$ as a set, we should be careful and invoke the principle of restricted comprehension, i.e.\ we should say where the $T$s are coming from. In general, say we want to build a set of maps $f\cl A\to B$ satisfying some property $p$. Recall that the notation $f\cl A \to B$ is hiding the fact that is a relation (indeed, a functional relation), and a relation between $A$ and $B$ is a subset of $A\times B$. Therefore, we ought to write:
@@ -343,6 +347,8 @@ e_i = \sum_{j=1}^d B^j_{\phantom{j} i}\, \widetilde e_j \qquad \text{for }1\leq 
 \ese
 for some $B^j_{\phantom{j}i}\in K$. It is a standard linear algebra result that the matrices $A$ and $B$, with entries $A^j_{\phantom{j}i}$ and $B^j_{\phantom{j}i}$ respectively, are invertible and, in fact, $A^{-1}=B$.
 
+\subsection{Notational conventions}
+
 \subsubsection*{Einstein's summation convention}
 From now on, we will employ the Einstein's summation convention, which consists in suppressing the summation sign when the indices to be summed over each appear once as a subscript and once as a superscript in the same term. For example, we write
 \bse
@@ -355,15 +361,203 @@ T^{ij}_{\phantom{ij}k}e_i\otimes e_j \otimes f^k.
 \ese
 The ranges over which the indices run are usually understood and not written out. The convention on which indices go upstairs and which downstairs (which we have already been using) is that:
 \begin{itemize}
-\item The basis vectors of $V$ carry downstairs indices;
-\item The basis vectors of $V^*$ carry upstairs indices;
-\item All other placements are enforced by the Einstein's summation convention.
+\item the basis vectors of $V$ carry downstairs indices;
+\item the basis vectors of $V^*$ carry upstairs indices;
+\item all other placements are enforced by the Einstein's summation convention.
 \end{itemize}
 For example, since the components of a vector must multiply the basis vectors and be summed over, the Einstein's summation convention requires that they carry upstair indices.
 
-\br
+\be
+Using the summation convention, we have:
+\ben[label=\alph*)]
+\item $f^a(v) = f^a(v^be_b)=v^bf^a(e_b)=v^b\delta^a_b=v^a$;
+\item $\omega(e_b)=(\omega_af^a)(e_b)=\omega_af^a(e_b)=\omega_b$;
+\item $\omega(v)=\omega_af^a(v^be_b)=\omega_av^a$;
+\een
+where $v\in V$, $\omega \in V^*$, $\{e_i\}$ is a basis of $V$ and $\{f^j\}$ is the dual basis.
+\ee
 
+\br
+The Einstein's summation convention should only be used when dealing with linear spaces and multilinear maps. The reason for this is the following. Consider a map $\phi\cl V\times W \to Z$, and let $v=v^ie_i\in V$ and $w=w^i\widetilde e_i\in W$. Then we have:
+\bse
+\phi(v,w) = \phi\,\bigg({\color{gray}\sum_{i=1}^d}v^ie_i,{\color{gray}\sum_{j=1}^{\widetilde{d}}} w^j\widetilde e_j\bigg) = {\color{gray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}\phi(v^ie_i,w^j\widetilde e_j)= {\color{gray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}v^iw^j\phi(e_i,\widetilde e_j).
+\ese
+Note that by suppressing the greyed out summation signs, the second and third term above are indistinguishable. But this is only true if $\phi$ is bilinear! Hence the summation convention should not be used (at least, not without extra care) in other areas of mathematics.
 \er
+
+\br
+Having chosen a basis for $V$ and the dual basis for $V^*$, it is very tempting to think of $v=v^ie_i\in V$ and $\omega=\omega_if^i\in V^*$ as $d$-tuples of numbers. In order to distinguish them, one may choose to write vectors as \emph{columns} of numbers and covectors as \emph{rows} of numbers:
+\bse
+v =v^ie_i \quad \leftrightsquigarrow\quad v\ \hat{=} \left(
+\ba{c}
+v^1\\
+\vdots\\
+v^d
+\ea
+\right)
+\ese
+and
+\bse
+\omega =\omega_if^i \quad \leftrightsquigarrow\quad \omega \ \hat{=} \ (\omega_1,\ldots,\omega_d).
+\ese
+Given $\phi\in\mathrm{End}(V)\cong_\mathrm{vec}T^1_1V$, recall that we can write $\phi = \phi^i_{\phantom{i}j}\, e_i\otimes f^j$, where $\phi^i_{\phantom{i}j}:=\phi(f^i,e_j)$ are the components of $\phi$ with respect to the chosen basis. It is then also very tempting to think of $\phi$ as a square array of numbers:
+\bse
+\phi = \phi^i_{\phantom{i}j}\, e_i\otimes f^j \quad \leftrightsquigarrow\quad \phi \ \hat{=} \left(
+\ba{cccc}
+\phi^1_{\phantom{1}1} & \phi^1_{\phantom{1}2} & \cdots & \phi^1_{\phantom{1}d}\\
+\phi^2_{\phantom{2}1} & \phi^2_{\phantom{2}2} & \cdots & \phi^2_{\phantom{2}d}\\
+\vdots & \vdots & \ddots & \vdots\\
+\phi^d_{\phantom{d}1} & \phi^d_{\phantom{d}2} & \cdots & \phi^d_{\phantom{d}d} 
+\ea
+\right)
+\ese
+The convention here is to think of the $i$ index on $\phi^i_{\phantom{i}j}$ as a \emph{row index}, and of $j$ as a \emph{column index}.
+\er
+
+We cannot stress enough that this is pure convention. Its usefulness stems from the following example.
+
+\be
+If $\dim V<\infty$, then we have $\mathrm{End}(V)\cong_\mathrm{vec}T^1_1V$. Explicitly, if $\phi \in \mathrm{End}(V)$, we can think of $\phi \in T^1_1V$, using the same symbol, as
+\bse
+\phi(\omega,v):=\omega(\phi(v)).
+\ese
+Hence the components of $\phi\in\mathrm{End}(V)$ are $\phi^a_{\phantom{a}b}:=f^a(\phi(e_b))$. 
+
+Now consider $\phi,\psi\in\mathrm{End}(V)$. Let us determine the components of $\phi\circ \psi$. We have:
+\bi{rCl}
+(\phi\circ \psi)^a_{\phantom{a}b} &:=& (\phi\circ \psi)(f^a,e_b)\\
+&:=&f^a( (\phi\circ \psi)(e_b))\\
+&=& f^a( (\phi(\psi(e_b)))\\
+&=& f^a(\phi(\psi^m_{\phantom{m}b}\,e_m))\\
+&=& \psi^m_{\phantom{m}b} f^a( \phi(e_m))\\
+&:=& \psi^m_{\phantom{m}b}\, \phi^a_{\phantom{a}m} .
+\ei
+The multiplication in the last line is the multiplication in the field $K$, and since that's commutative, we have $\psi^m_{\phantom{m}b}\, \phi^a_{\phantom{a}m}  = \phi^a_{\phantom{a}m} \, \psi^m_{\phantom{m}b}$. However, in light of the convention introduced in the previous remark, the latter is preferable. Indeed, if we think of the superscripts as row indices and of the subscripts as column indices, then $\phi^a_{\phantom{a}m} \, \psi^m_{\phantom{m}b}$ is the entry in row $a$, column $b$, of the matrix product $\phi\psi$.
+
+Similarly, $\omega(v)=\omega_mv^m$ can be thought of as the \emph{dot product} $\omega \cdot v\equiv\omega^Tv$, and
+\bse
+\phi(v,w)=w_a\,\phi^a_{\phantom{a}b}\,v^b \quad   \leftrightsquigarrow\quad \omega^T\phi v.
+\ese
+The last expression is could mislead you into thinking that the transpose is a ``good'' notion, but in fact it is not. It is very bad notation. It almost pretends to be basis independent, but it is not at all.
+
+The moral of the story is that you should try your best \emph{not} to think of vectors, covectors and tensors as arrays of numbers. Instead, always try to understand them from the abstract, intrinsic, component-free point of view.
+\ee
+
+\subsubsection*{Change of components under a change of basis}
+
+Recall that if $\{e_a\}$ and $\{\widetilde e_a\}$ are basis of $V$, we have
+\bse
+\widetilde e_a=A^b_{\phantom{b}a}e_b \qquad \text{and}  \qquad e_a=B^m_{\phantom{m}a}\widetilde e_m,
+\ese
+with $A^{-1}=B$. Note that in index notation, the equation $AB=I$ reads $A^a_{\phantom{a}m}B^m_{\phantom{m}b}=\delta^a_b$.
+
+We now investigate how the components of vectors and covectors change under a change of basis. 
+\ben[label=\alph*)]
+\item Let $v=v^ae_a=\widetilde v^a\widetilde e_a\in V$. Then:
+\bse
+v^a = f^a(v) = f^a(\widetilde v^b\widetilde e_b) = \widetilde v^b
+f^a(\widetilde e_b) = \widetilde v^b f^a(A^m_{\phantom{m}b}e_m) = A^m_{\phantom{m}b} \widetilde v^bf^a(e_m)=A^a_{\phantom{a}b} \widetilde v^b.
+\ese
+\item Let $\omega = \omega_af^a = \widetilde \omega_a\widetilde f^a  \in V^*$. Then:
+\bse
+\omega_a := \omega(e_a) = \omega(B^m_{\phantom{m}a}\widetilde e_m) = B^m_{\phantom{m}a}\omega(\widetilde e_m) = B^m_{\phantom{m}a}\widetilde \omega_m .
+\ese
+\een
+Summarising, for $v\in V$, $\omega \in V^*$ and $\widetilde e_a=A^b_{\phantom{b}a}e_b$, we have:
+\bi{rClcrCl}
+v^a & = & A^a_{\phantom{a}b} \widetilde v^b &\qquad & \omega_a &= & B^b_{\phantom{b}a}\widetilde \omega_b \\
+\widetilde v^a & = & B^a_{\phantom{a}b}  v^b & & \widetilde \omega_a &= & A^b_{\phantom{b}a}\omega_b 
+\ei
+The result for tensors is a combination of the above, depending on the type of tensor.
+\ben
+\item[c)] Let $T\in T^p_qV$. Then:
+\bse
+T^{a_1\ldots a_p}_{\phantom{a_1\ldots a_p}b_1\ldots b_q} = A^{a_1}_{\phantom{a_1}m_1}\cdots A^{a_p}_{\phantom{a_p}m_p} B^{n_1}_{\phantom{n_1}b_1} \cdots B^{n_q}_{\phantom{n_q}b_q} \widetilde T^{m_1\ldots m_p}_{\phantom{m_1\ldots m_p}n_1\ldots n_q},
+\ese
+i.e.\ the upstair indices transform like vector indices, and the downstair indices transform like covector indices. 
+\een
+
+\subsection{Determinants}
+
+In your previous course on linear algebra, you may have met the determinant of a square matrix as a number calculated by applying a mysterious rule. Using the mysterious rule, you may have shown, with a lot of work, that for example, if we exchange two rows or two columns, the determinant changes sign. But, as we have seen, matrices are the result of pure convention. Hence, one more polemic remark is in order.
+
+\br
+Recall that, if $\phi \in T^1_1V$, then we can arrange the components $\phi^a_{\phantom{a}b}$ in matrix form:
+\bse
+\phi = \phi^a_{\phantom{a}b}\, e_a\otimes f^b \quad \leftrightsquigarrow\quad \phi \ \hat{=} \left(
+\ba{cccc}
+\phi^1_{\phantom{1}1} & \phi^1_{\phantom{1}2} & \cdots & \phi^1_{\phantom{1}d}\\
+\phi^2_{\phantom{2}1} & \phi^2_{\phantom{2}2} & \cdots & \phi^2_{\phantom{2}d}\\
+\vdots & \vdots & \ddots & \vdots\\
+\phi^d_{\phantom{d}1} & \phi^d_{\phantom{d}2} & \cdots & \phi^d_{\phantom{d}d} 
+\ea
+\right)
+\ese
+Similarly, if we have $g\in T^0_2V$, its components are $g_{ab}:=g(e_a,e_b)$ and we can write
+\bse
+g = g_{ab}\, f^a\otimes f^b \quad \leftrightsquigarrow\quad g \ \hat{=} \left(
+\ba{cccc}
+g_{11} & g_{12} & \cdots & g_{1d}\\
+g_{21} & g_{22} & \cdots & g_{2d}\\
+\vdots & \vdots & \ddots & \vdots\\
+g_{d1} & g_{d2} & \cdots & g_{dd} 
+\ea
+\right)
+\ese
+Needless to say that these two objects could not be more different if they tried. Indeed
+\begin{itemize}
+\item $\phi$ is an endomorphism of $V$; the first index in $\phi^a_{\phantom{a}b}$ transforms like a vector index, while the second index transforms like a covector index;
+\item $g$ is a \emph{bilinear form} $V$; both indices in $g_{ab}$ transform like covector indices.
+\end{itemize}
+In linear algebra, you may have seen the two different transformation laws for these objects:
+\bse
+\phi \to A^{-1}\phi A \qquad \text{and} \qquad g \to A^TgA,
+\ese
+where $A$ is the change of basis matrix. However, once we fix a basis, the matrix representations of these two objects are indistinguishable. It is then very tempting to think that what we can do with a matrix, we can just as easily do with another matrix. For instance, if we have a rule to calculate the determinant of a square matrix, we should be able to apply it to both of the above matrices.
+
+However, the notion of determinant is \emph{only} defined for endomorphisms. The only way to see this is to give a basis-independent definition, i.e.\ a definition that does not involve the ``components of a matrix''.  
+\er
+
+We will need some preliminary definitions.
+
+\bd
+Let $M$ be a set. A \emph{permutation} of $M$ is a bijection $M\to M$.
+\ed
+
+\bd
+The \emph{symmetric group} of order $n$, denoted $S_n$, is the set of permutations of $\{1,\ldots,n\}$ under the operation of functional composition.
+\ed
+
+\bd
+A \emph{transposition} is a permutation which exchanges two elements, keeping all other elements fixed.  
+\ed
+
+\bp
+Every permutation $\pi\in S_n$ can be written as a product (composition) of transpositions in $S_n$.
+\ep
+While this decomposition is not unique, for each given $\pi \in S_n$, the number of transpositions in its decomposition is always either even or odd. Hence, we can define the \emph{sign} of $\pi \in S_n$ as:
+\bse
+\mathrm{sgn}(\pi) := \begin{cases}+1 \qquad &\text{if $\pi$ is the product of an even number of transpositions}\\-1 \qquad &\text{if $\pi$ is the product of an odd number of transpositions.}\end{cases}
+\ese
+
+\bd
+Let $V$ be a $d$-dimensional vector space. An $n$-\emph{form} on $V$, with $0\leq n \leq d$, is a $(0,n)$-tensor $\omega$ that is \emph{totally antisymmetric}, i.e.\
+\bse
+\forall \, \pi \in S_n : \ \omega(v_1,v_2,\ldots,v_n) = \mathrm{sgn}(\pi)\, \omega(v_{\pi(1)},v_{\pi(2)},\ldots,v_{\pi(n)}). 
+\ese
+\ed
+Note that a $0$-form is scalar, and a $1$-form is a covector.
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{amsmath} % loaded automatically by beamer
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\tikzset{>=stealth}
+
+\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+\begin{document}
+
+\begin{equation*}
+    \phi^{\tikzmark{a}{$\ \ \scriptstyle a$}}_{\phantom{a}\tikzmark{mph}{$\ \ \scriptstyle m$}}\ \ \, \psi^{\tikzmark{mps}{$\scriptstyle\ \ \ m$}}_{\phantom{m}\tikzmark{b}{$\scriptstyle\, \ \ b$}}
+\end{equation*}
+\begin{tikzpicture}[overlay, remember picture,node distance =1cm]
+    \node (nmph) [below left=of mph ]{col};
+    \draw[->] (nmph) to [in=-90,out=90] (mph);
+    \node (nb) [below right=of b]{col};
+    \draw[->] (nb) to [in=-90,out=90] (b);
+    \node (nmps) [above right =of mps]{row};
+    \draw[->] (nmps) to [in=45,out=-90] (mps.east);
+    \node (na) [above left=of a]{row};
+    \draw[->] (na) to [in=135,out=-90] (a.north);
+\end{tikzpicture}
+
+
+
+
+\bse
+\begin{tikzpicture}
+\matrix (A) [matrix of math nodes,left delimiter=(,right delimiter=)] at (0,0)
+{\rule{1.5cm}{0cm} &\rule{0cm}{1.5cm}\\
+};
+\matrix (B) [matrix of math nodes,left delimiter=(,right delimiter=)] at (3.5,2.75)
+{\rule{1.5cm}{0cm} &\rule{0cm}{1.5cm}\\
+};
+\matrix (C) [matrix of math nodes,left delimiter=(,right delimiter=)] at (3.5,0)
+{\rule{1.5cm}{0cm} &\rule{0cm}{1.5cm}\\
+};
+\draw[gray,dashed] (-1.1,0.6) -- (4.5,0.6);
+\draw[gray,dashed] (2.7,3.6) -- (2.7,-0.9);
+\draw[fill=black] (2.7,0.6) circle [radius=0.08];
+\node at (3,2.7) {$\left.\rule{0cm}{0.8cm}\right\}$};
+\end{tikzpicture}
+\ese
+
+
+\end{document}
