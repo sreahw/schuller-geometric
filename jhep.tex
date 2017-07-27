@@ -37,13 +37,16 @@
 \usepackage{array,tabularx}
 \usepackage[retainorgcmds]{IEEEtrantools}
 %\usepackage{mathtools}
-\usepackage{tikz}
+\usepackage{xcolor,tikz}
 \usetikzlibrary{matrix,calc,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
 \usetikzlibrary{arrows,cd}
 \usepackage{bbding}
 \usetikzlibrary{positioning}
 %\tikzset{every picture/.style={remember picture}}
 \tikzset{>=stealth}
+
+\usepackage{cancel}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
 
 %\usepackage[upright]{fourier}
 %\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
@@ -157,54 +160,138 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 \includegraphics[width=12cm]{logo2}
 
 \maketitle
-\flushbottom
+%\flushbottom
 
-
+%\newpage
 %\acknowledgments
 
 %This is the most common positions for acknowledgments. A macro is
 %available to maintain the same layout and spelling of the heading.
+\newpage
 
 
 
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+\markright{Introduction}
+\input{ga/00intro}
+\newpage
 
-% \section*{Introduction}
-% \addcontentsline{toc}{section}{Introduction}
-% \markright{Introduction}
-% \input{ga/00intro}
-% \newpage
+\section{Logic of propositions and predicates}
+\input{ga/01logic}
+\newpage
 
-% \section{Logic of propositions and predicates}
-% \input{ga/01logic}
-% \newpage
+\section{Axioms of set theory}
+\input{ga/02axioms}
+\newpage
 
-% \section{Axioms of set theory}
-% \input{ga/02axioms}
-% \newpage
+\section{Classification of sets}
+\input{ga/03classification}
+\newpage
 
-% \section{Classification of sets}
-% \input{ga/03classification}
-% \newpage
+\section{Topological spaces: construction and purpose}
+\input{ga/04topology}
+\newpage
 
-% \section{Topological spaces: construction and purpose}
-% \input{ga/04topology}
-% \newpage
+\section{Topological spaces: some heavily used invariants}
+\input{ga/05topology_inv}
+\newpage
 
-% \section{Topological spaces: some heavily used invariants}
-% \input{ga/05topology_inv}
-% \newpage
+\section{Topological manifolds and bundles}
+\input{ga/06manifolds}
+\newpage
 
-% \section{Topological manifolds and bundles}
-% \input{ga/06manifolds}
-% \newpage
-
-% \section{Differentiable structures: definition and classification}
-% \input{ga/07differentiable}
-% \newpage
+\section{Differentiable structures: definition and classification}
+\input{ga/07differentiable}
+\newpage
 
 \section{Tensor space theory I: over a field}
 \input{ga/08tensor_i}
 \newpage
+
+
+\section{Differential structures: the pivotal concept of tangent vector spaces}
+\input{ga/09tangent}
+
+
+% \section{Construction of the tangent bundle}
+
+
+
+% \section{Tensor space theory II: over a ring}
+
+
+
+% \section{Grassmann algebra and de Rham cohomology}
+
+
+
+% \section{Lie groups and their Lie algebras}
+
+
+
+% \section{Classification of Lie algebras and Dynkin diagrams}
+
+
+
+% \section{The Lie group $SL(2,\C)$ and its Lie algebra $\mathfrak{sl}(2,\C)$}
+
+
+
+% \section{Dynkin diagrams from Lie algebras, and vice versa}
+
+
+
+% \section{Representation theory of Lie groups and Lie algebras}
+
+
+
+% \section{Reconstruction of a Lie group from its algebra}
+
+
+
+% \section{Principal fibre bundles}
+
+
+
+% \section{Associated fibre bundles}
+
+
+
+% \section{Connections and connection 1-forms}
+
+
+
+% \section{Local representations of a connection on the base manifold: Yang-Mills fields}
+
+
+
+% \section{Parallel transport}
+
+
+
+% \section{Curvature and torsion on principal bundles}
+
+
+
+% \section{Covariant derivatives}
+
+
+
+% \section{Application: Quantum mechanics on curved spaces}
+
+
+
+% \section{Application: Spin structures}
+
+
+
+% \section{Application: Kinematical and dynamical symmetries}
+
+
+
+
+
 
 \printindex
 

@@ -234,10 +234,10 @@ We now define an important way of obtaining a new tensor from two given ones.
 \bd
 Let $T\in T^p_q V$ and $S\in T^r_s V$. We define the \emph{tensor product} of $T$ and $S$ to be $T\otimes S\in T^{p+r}_{q+s}V$ where:
 \bi{rl}
-(T\otimes S)(v_1,\ldots,v_p,v_{p+1},\ldots,v_{p+s},\omega_1,&\ldots,\omega_q,\omega_{q+1},\ldots,\omega_{q+s})\\
-:=T(v_1,\ldots,v_p,\omega_1,&\ldots,\omega_q)S(v_{p+1},\ldots,v_{p+s},\omega_{q+1},\ldots,\omega_{q+s}),
+(T\otimes S)(\omega_1,\ldots,\omega_p,\omega_{p+1},\ldots,\omega_{p+s},v_1,&\ldots,v_q,v_{q+1},\ldots,v_{q+s})\\
+:=T(\omega_1,\ldots,\omega_p,v_1,&\ldots,v_q)S(\omega_{p+1},\ldots,\omega_{p+s},v_{q+1},\ldots,v_{q+s}),
 \ei
-with $v_i\in V$ and $\omega_i\in V^*$.
+with $\omega_i\in V^*$ and $v_i\in V$.
 \ed
 
 Some examples are in order.
@@ -296,7 +296,7 @@ Note that we have been using superscripts for the elements of $K$, and these sho
 \bd
 Let $V$ be a vector space. The \emph{dimension} of $V$ is $\dim V := |\mathcal{B}|$, where $\mathcal{B}$ is a Hamel basis for $V$.
 \ed
-Even though we will not prove it, it is the case that every Hamel basis for a given vector space has the same cardinality, and hence the notion of dimension is well defined.
+Even though we will not prove it, it is the case that every Hamel basis for a given vector space has the same cardinality, and hence the notion of dimension is well-defined.
 
 \begin{theorem}
 If $\dim V < \infty$, then $(V^*)^*\cong_\mathrm{vec}V$.
@@ -307,7 +307,7 @@ It is not hard to show that $(V^*)^*\cong_\mathrm{vec}V$ implies $T^0_1 V \cong_
 \er
 
 \br
-While a choice of basis often simplifies things, when defining new objects it is important to do so without making reference to a basis. If we do define something in terms of a basis (e.g.\ the dimension of a vector space), then we have to check that the thing is well defined, i.e.\ it does not depend on which basis we choose. Some people say: \textit{``A gentleman only chooses a basis if he must.''}
+While a choice of basis often simplifies things, when defining new objects it is important to do so without making reference to a basis. If we do define something in terms of a basis (e.g.\ the dimension of a vector space), then we have to check that the thing is well-defined, i.e.\ it does not depend on which basis we choose. Some people say: \textit{``A gentleman only chooses a basis if he must.''}
 \er
 
 If $V$ is finite dimensional, then $V^*$ is also finite dimensional and $V\cong_\mathrm{vec}V^*$. Moreover, given a basis $\mathcal{B}$ of $V$, there is a spacial basis of $V^*$ associated to $\mathcal{B}$.
@@ -507,7 +507,7 @@ g_{d1} & g_{d2} & \cdots & g_{dd}
 Needless to say that these two objects could not be more different if they tried. Indeed
 \begin{itemize}
 \item $\phi$ is an endomorphism of $V$; the first index in $\phi^a_{\phantom{a}b}$ transforms like a vector index, while the second index transforms like a covector index;
-\item $g$ is a \emph{bilinear form} $V$; both indices in $g_{ab}$ transform like covector indices.
+\item $g$ is a \emph{bilinear form} on $V$; both indices in $g_{ab}$ transform like covector indices.
 \end{itemize}
 In linear algebra, you may have seen the two different transformation laws for these objects:
 \bse
@@ -541,12 +541,96 @@ While this decomposition is not unique, for each given $\pi \in S_n$, the number
 \ese
 
 \bd
-Let $V$ be a $d$-dimensional vector space. An $n$-\emph{form} on $V$, with $0\leq n \leq d$, is a $(0,n)$-tensor $\omega$ that is \emph{totally antisymmetric}, i.e.\
+Let $V$ be a $d$-dimensional vector space. An $n$-\emph{form} on $V$ is a $(0,n)$-tensor $\omega$ that is \emph{totally antisymmetric}, i.e.\
 \bse
 \forall \, \pi \in S_n : \ \omega(v_1,v_2,\ldots,v_n) = \mathrm{sgn}(\pi)\, \omega(v_{\pi(1)},v_{\pi(2)},\ldots,v_{\pi(n)}). 
 \ese
 \ed
-Note that a $0$-form is scalar, and a $1$-form is a covector.
+Note that a $0$-form is scalar, and a $1$-form is a covector. A $d$-form is also called a \emph{top form}. There are several equivalent definitions of $n$-form. For instance, we have the following.
+\bp
+A $(0,n)$-tensor $\omega$ is an $n$-form if, and only if, $\omega(v_1,\ldots,v_n)=0$ whenever $\{v_1,\ldots,v_n\}$ is linearly dependent.
+\ep
+While $T^0_nV$ is certainly non-empty when $n>d$, the proposition immediately implies that any $n$-form with $n>d$ must be identically zero. This is because a collection of more than $d$ vectors from a $d$-dimensional vector space is necessarily linearly dependent.
+\bp
+Denote by $\Lambda^nV$ the vector space of $n$-forms on $V$. Then we have
+\bse
+\dim \Lambda^nV = \begin{cases} \binom{d}{n} \qquad  &\text{if }\ 1\leq n \leq d\\ 0 &\text{if }\ n > d,\end{cases}
+\ese
+where $\binom{d}{n} = \frac{d!}{n!(d-n)!}$ is the binomial coefficient, read as ``$d$ choose $n$''.
+\ep
+
+In particular, $\dim \Lambda^dV=1$. This means that
+\bse
+\forall \, \omega,\omega' \in \Lambda^dV : \exists \, c \in K : \ \omega = c\, \omega',
+\ese
+i.e.\ there is essentially only one top form on $V$, up to a scalar factor.
+
+\bd
+A choice of top form on $V$ is called a choice of \emph{volume form} on $V$. A vector space with a chosen volume form is then called a \emph{vector space with volume}.
+\ed
+This terminology is due to the next definition.
+\bd
+Let $\dim V = d$ and let $\omega \in \Lambda^dV$ be a volume form on $V$. Given $v_1,\ldots,v_d\in V$, the \emph{volume} spanned by $v_1,\ldots,v_d$ is
+\bse
+\vol(v_1,\ldots,v_d) := \omega(v_1,\ldots,v_d).
+\ese
+\ed
+Intuitively, the antisymmetry condition on $\omega$ makes sure that $\vol(v_1,\ldots,v_d)$ is zero whenever the set $\{v_1,\ldots,v_d\}$ is not linearly independent. Indeed, in that case $v_1,\ldots,v_d$ could only span a $(d-1)$-dimensional hypersurface in $V$ at most, which should have $0$ volume. 
+\br
+You may have rightfully thought that the notion of volume would require some extra structure on $V$, such as a notion of length or angles, and hence an inner product. But instead, we only need a top form.
+\er
+We are finally ready to define the determinant.
+\bd
+Let $V$ be a $d$-dimensional vector space and let $\phi \in \End (V) \cong_\mathrm{vec}T^1_1V$. The \emph{determinant} of $\phi$ is
+\bse
+\det \phi := \frac{\omega(\phi(e_1),\ldots,\phi(e_d))}{\omega(e_1,\ldots,e_d)}
+\ese
+for some volume form $\omega \in \Lambda^dV$ and some basis $\{e_1,\ldots,e_d\}$ of $V$.
+\ed
+The first thing we need to do is to check that this is well-defined. That $\det \phi$ is independent of the choice of $\omega$ is clear, since if $\omega,\omega' \in \Lambda^dV$, then there is a $c \in K$ such that $\omega = c\, \omega'$, and hence 
+\bse
+ \frac{\omega(\phi(e_1),\ldots,\phi(e_d))}{\omega(e_1,\ldots,e_d)} =  \frac{\Ccancel[gray]{c}\,\omega'(\phi(e_1),\ldots,\phi(e_d))}{\Ccancel[gray]{c}\,\omega'(e_1,\ldots,e_d)}.
+\ese
+The independence from the choice of basis is more cumbersome to show, but it does hold, and thus $\det \phi$ is well-defined.
+
+Note that $\phi$ needs to be an endomorphism because we need to apply $\omega$ to $\phi(e_1),\ldots,\phi(e_d)$, and thus $\phi$ needs to output a vector.
+
+Of course, under the identification of $\phi$ as a matrix, this definition coincides with the usual definition of determinant, and all your favourite results about determinants can be derived from it. 
+
+\br
+In your linear algebra course, you may have shown the the determinant is basis-independent as follows: if $A$ denotes the change of basis matrix, then
+\bse
+\det(A^{-1}\phi A)=\det(A^{-1})\det(\phi)\det(A)=\det(A^{-1}A)\det(\phi) = \det(\phi)
+\ese
+since scalars commute, and $\det(A^{-1}A)=\det(I)=1$.
+
+Recall that the transformation rule for a bilinear form $g$ under a change of basis is $g \to A^TgA$. The determinant of $g$ then transforms as
+\bse
+\det(A^TgA)=\det(A^T)\det(g)\det(A) = (\det A)^2\det(g)
+\ese
+i.e.\ it not invariant under a change of basis. It is not a well-defined object, and thus we should not use it. 
+
+We will later meet quantities $X$ that transform as
+\bse
+X \to \frac{1}{(\det A)^2} \, X
+\ese
+under a change of basis, and hence they are also not well-defined. However, we obviously have
+\bse
+\det(g) X \to \frac{\Ccancel[gray]{(\det A)^2}}{\Ccancel[gray]{(\det A)^2}} \, \det(g)X = \det(g)X
+\ese
+so that the product $\det(g)X$ is a well-defined object. It seems that two wrongs make a right!
+
+In order to make this mathematically precise, we will have to introduce \emph{principal fibre bundles}. Using them, we will be able to give a bundle definition of tensor and of \emph{tensor densities} which are, loosely speaking, quantities that transform with powers of $\det A$ under a change of basis.
+\er
+
+
+
+
+
+
+
+
+
 
 
 
