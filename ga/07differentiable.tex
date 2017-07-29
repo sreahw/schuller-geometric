@@ -38,7 +38,7 @@ If $u$ and $v$ are real differentiable at $(x_0,y_0)$, then $f=u+\mathrm{i}v$ is
 \bse
 \frac{\partial u}{\partial x}(x_0,y_0)= \frac{\partial v}{\partial y}(x_0,y_0) \quad \land \quad \frac{\partial u}{\partial y}(x_0,y_0)= - \frac{\partial v}{\partial x}(x_0,y_0),
 \ese
-which are known as the Cauchy-Riemann equations\index{Cauchy-Riemann eqns}. Note that differentiability in the complex plane is a much stronger condition than differentiability over the real numbers. If you want to know more, you should take a course in complex analysis or function theory.
+which are known as the Cauchy-Riemann equations\index{Cauchy-Riemann equations}. Note that differentiability in the complex plane is a much stronger condition than differentiability over the real numbers. If you want to know more, you should take a course in complex analysis or function theory.
 
 We now go back to manifolds.
 
@@ -52,7 +52,7 @@ Hence, for the purposes of this course, we will not distinguish between $C^k$ ($
 We now give the explicit definition of a $C^k$-manifold.
 
 \bd
-A $C^k$\emph{-manifold} is a triple $(M,\cO,\mathscr{A})$, where $(M,\cO)$ is a topological manifold and $\mathscr{A}$ is a maximal $C^k$-atlas.
+A $C^k$\emph{-manifold}\index{manifold} is a triple $(M,\cO,\mathscr{A})$, where $(M,\cO)$ is a topological manifold and $\mathscr{A}$ is a maximal $C^k$-atlas.
 \ed
 
 \br 
@@ -62,7 +62,7 @@ A given topological manifold can carry different incompatible atlases.
 Note that while we only defined compatibility of charts, it should be clear what it means for two atlases of the same type to be compatible.
 
 \bd
-Two {\scalebox{0.75}\FiveFlowerOpen}-atlases $\mathscr{A}$, $\mathscr{B}$ are \emph{compatible} if their union $\mathscr{A}\cup\mathscr{B}$ is again a {\scalebox{0.75}\FiveFlowerOpen}-atlas, and are incompatible otherwise.
+Two {\scalebox{0.75}\FiveFlowerOpen}-atlases $\mathscr{A}$, $\mathscr{B}$ are \emph{compatible}\index{atlas!compatible} if their union $\mathscr{A}\cup\mathscr{B}$ is again a {\scalebox{0.75}\FiveFlowerOpen}-atlas, and are incompatible otherwise.
 \ed
 
 Alternatively, we can define the compatibility of two atlases in terms of the compatibility of any pair of charts, one from each atlas.
@@ -76,7 +76,7 @@ Consider now $\mathscr{A}\cup\mathscr{B}$. The transition map $\id_\R\circ x^{-1
 The previous example shows that we can equip the real line with (at least) two different incompatible $C^\infty$-structures. This looks like a disaster as it implies that there is an arbitrary choice to be made about which differentiable structure to use. Fortunately, the situation is not as bad as it looks, as we will see in the next sections.
 
 \subsection{Differentiable manifolds}
-
+\index{manifold!differentiable}
 \bd
 Let $\phi\cl M\to N$ be a map, where $(M,\cO_M,\mathscr{A}_M)$ and $(N,\cO_N,\mathscr{A}_N)$ are $C^k$-manifolds. Then $\phi$ is said to be ($C^k$-)\emph{differentiable at} $p\in M$ if for some charts $(U,x)\in\mathscr{A}_M$ with $p\in U$ and $(V,y)\in\mathscr{A}_N$ with $\phi(p)\in V$, the map $y\circ\phi\circ x^{-1}$ is $k$-times continuously differentiable at $x(p)\in x(U)\se\R^{\dim M}$ in the usual sense.
 \bse
@@ -89,10 +89,10 @@ x(U)\se\R^{\dim M}\ar[rr,"y\circ\phi\circ x^{-1}"] && y(V)\se\R^{\dim N}
 \ed
 The above diagram shows a typical theme with manifolds. We have a map $\phi\cl M\to N$ and we want to define some property of $\phi$ at $p\in M$ analogous to some property of maps between subsets of $\R^d$. What we typically do is consider some charts $(U,x)$ and $(V,y)$ as above and define the desired property of $\phi$ at $p\in U$ in terms of the corresponding property of the downstairs map $y\circ\phi\circ x^{-1}$ at the point $x(p)\in\R^d$.
 
-Notice that in the previous definition we only require that \emph{some} charts from the two atlases satisfy the stated property. So we should worry about whether this definition depends on which charts we pick. In fact, this ``lifting'' of the notion of differentiability from the chart representation of $\phi$ to the manifold level is well defined.
+Notice that in the previous definition we only require that \emph{some} charts from the two atlases satisfy the stated property. So we should worry about whether this definition depends on which charts we pick. In fact, this ``lifting'' of the notion of differentiability from the chart representation of $\phi$ to the manifold level is well-defined.
 
 \bp
-The definition of differentiability is well defined.
+The definition of differentiability is well-defined.
 \ep
 
 \bq
@@ -112,14 +112,52 @@ Consider the map $\widetilde x\circ x^{-1}$ in the diagram above. Since the char
 \ese
 and since the composition of $C^k$ maps is still $C^k$, we are done.
 \eq
-This proof shows the significance of restricting to $C^k$-atlases. Such atlases only contain charts for which the transition maps are $C^k$, which is what makes our definition of differentiability of maps between manifolds well defined.
+This proof shows the significance of restricting to $C^k$-atlases. Such atlases only contain charts for which the transition maps are $C^k$, which is what makes our definition of differentiability of maps between manifolds well-defined.
 
 The same definition and proof work for smooth ($C^\infty$) manifolds, in which case we talk about \emph{smooth maps}. As we said before, this is the case we will be most interested in.
+
+\be
+Consider the smooth manifolds $(\R^d,\cO_\mathrm{std},\mathscr{A}_d)$ and $(\R^{d'},\cO_\mathrm{std},\mathscr{A}_{_d'})$, where $\mathscr{A}_d)$ and $\mathscr{A}_{_d'})$ are the maximal atlases containing the charts $(\R^d,\id_{\R^d})$ and $(\R^{d'},\id_{\R^{d'}})$ respectively, and let $f\cl \R^{d}\to \R^{d'}$ be a map. The diagram defining the differentiability of $f$ with respect to these charts is
+\bse
+\begin{tikzcd}
+\R^{d} \ar[rrr,"f"] \ar[dd,"\id_{\R^d}"] &&& \R^{d'} \ar[dd,"\id_{\R^{d'}}"]\\
+&&\\
+\R^{d} \ar[rrr,"\id_{\R^{d'}}\circ f\circ (\id_{\R^d})^{-1}"]&&& \R^{d'}
+\end{tikzcd}
+\ese
+and, by definition, the map $f$ is smooth as a map between manifolds if, and only if, the map $\id_{\R^{d'}}\circ f\circ (\id_{\R^d})^{-1}=f$ is smooth in the usual sense.
+\ee
+
+\be
+Let $(M,\cO,\mathscr{A})$ be a $d$-dimensional smooth manifold and let $(U,x)\in\mathscr{A}$. Then $x\cl U \to x(U)\se \R^d$ is smooth. Indeed, we have
+\bse
+\begin{tikzcd}
+U \ar[rr,"x"] \ar[dd,"x"] && x(U) \ar[dd,"\id_{x(U)}"]\\
+&&\\
+x(U)\se\R^{d} \ar[rr,"\id_{x(U)}\circ x\circ x^{-1}"]&& x(U)\se\R^{d} 
+\end{tikzcd}
+\ese
+Hence $x\cl U \to x(U)$ is smooth if, and only if, the map $\id_{x(U)}\circ x\circ x^{-1}=\id_{x(U)}$ is smooth in the usual sense, which it certainly is.
+
+The coordinate maps $x^i:={\proj_i}\circ x\cl U \to \R$ are also smooth. Indeed, consider the diagram
+\bse
+\begin{tikzcd}
+U \ar[rr,"x^i"] \ar[dd,"x"] && \R \ar[dd,"\id_\R"]\\
+&&\\
+x(U)\se\R^{d} \ar[rr,"{\id_\R}\circ x^i\circ x^{-1}"]&& \R 
+\end{tikzcd}
+\ese
+Then, $x^i$ is smooth if, and only if, the map
+\bse
+{\id_\R}\circ x^i\circ x^{-1} =  x^i\circ x^{-1} = \proj_i
+\ese
+is smooth in the usual sense, which it certainly is.
+\ee
 
 \subsection{Classification of differentiable structures}
 
 \bd
-Let $\phi\cl M \to N$ be a bijective map between smooth manifolds. If both $\phi$ and $\phi^{-1}$ are smooth, then $\phi$ is said to be a \emph{diffeomorphism}\index{diffeomorphism}.
+Let $\phi\cl M \to N$ be a bijective map between smooth manifolds. If both $\phi$ and $\phi^{-1}$ are smooth, then $\phi$ is said to be a \emph{diffeomorphism}\index{diffeomorphism}\index{isomorphism!of smooth manifolds}.
 \ed
 
 Diffeomorphisms are the structure preserving maps between smooth manifolds. 

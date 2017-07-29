@@ -3,7 +3,7 @@
 We begin with a quick review of vector spaces.
 
 \bd
-An \emph{(algebraic) field} is a triple $(K,+,\cdot)$, where $K$ is a set and $+,\cdot$ are maps $K\times K \to K$ satisfying the following axioms:
+An \emph{(algebraic) field}\index{field (algebraic)} is a triple $(K,+,\cdot)$, where $K$ is a set and $+,\cdot$ are maps $K\times K \to K$ satisfying the following axioms:
 \begin{itemize}
 \item $(K,+)$ is an abelian group, i.e.
 \ben
@@ -68,7 +68,7 @@ are maps satisfying the following axioms:
 Vector spaces are also called \emph{linear spaces}. Their elements are called \emph{vectors}, while the elements of $K$ are often called \emph{scalars}, and the map $\odot$ is called \emph{scalar multiplication}. You should already be familiar with the various vector space constructions from your linear algebra course. For example, recall:
 
 \bd
-Let $(V,\oplus,\odot)$ be a vector space over $K$ and let $U\se V$ be non-empty. Then we say that $(U,\oplus|_{U\times U},\odot|_{K\times U})$ is a \emph{vector subspace} of $(V,\oplus,\odot)$ if:
+Let $(V,\oplus,\odot)$ be a vector space over $K$ and let $U\se V$ be non-empty. Then we say that $(U,\oplus|_{U\times U},\odot|_{K\times U})$ is a \emph{vector subspace}\index{vector space!subspace} of $(V,\oplus,\odot)$ if:
 \ben
 \item[i)] $\forall \, u_1,u_2\in U : u_1\oplus u_2 \in U$;
 \item[ii)] $\forall \, u\in U : \forall \, \lambda \in K: \lambda\odot u \in U$.
@@ -81,7 +81,7 @@ Also recall that if we have $n$ vector spaces over $K$, we can form the $n$-fold
 As usual by now, we will look at the structure preserving maps between vector spaces.
 
 \bd
-Let $(V,\oplus,\odot)$, $(W,\boxplus,\boxdot)$ be vector spaces over the same field $K$ and let $f\cl V\to W$ be a map. We say that $f$ is a \emph{linear map}\index{linear map} if for all $u_1,u_2\in V$ and all $\lambda \in K$
+Let $(V,\oplus,\odot)$, $(W,\boxplus,\boxdot)$ be vector spaces over the same field $K$ and let $f\cl V\to W$ be a map. We say that $f$ is a \emph{linear map}\index{linear map}\index{map!linear} if for all $u_1,u_2\in V$ and all $\lambda \in K$
 \bse
 f((\lambda\odot u_1)\oplus u_2) = (\lambda\boxdot f( u_1))\boxplus f(u_2).
 \ese
@@ -90,7 +90,7 @@ f((\lambda\odot u_1)\oplus u_2) = (\lambda\boxdot f( u_1))\boxplus f(u_2).
 From now on, we will drop the special notation for the vector space operations and suppress the dot for scalar multiplication. For instance, we will write the equation above as $f(\lambda u_1+u_2)=\lambda f(u_1)+f(u_2)$, hoping that this will not cause any confusion.
 
 \bd
-A bijective linear map is called a \emph{linear isomorphism} of vector spaces. Two vector spaces are said to be \emph{isomorphic} is there exists a linear isomorphism between them. We write $V\cong_\mathrm{vec}W$.
+A bijective linear map is called a \emph{linear isomorphism}\index{isomorphism!of vector spaces} of vector spaces. Two vector spaces are said to be \emph{isomorphic} is there exists a linear isomorphism between them. We write $V\cong_\mathrm{vec}W$.
 \ed
 
 \br
@@ -100,7 +100,7 @@ Note that, unlike what happens with topological spaces, the inverse of a bijecti
 \bd
 Let $V$ and $W$ be vector spaces over the same field $K$. Define the set
 \bse
-\mathrm{Hom}(V,W)\index{$\mathrm{Hom}(V,W)$} := \{f \mid f\cl V\xrightarrow{\sim}W \},
+\mathrm{Hom}(V,W) := \{f \mid f\cl V\xrightarrow{\sim}W \},
 \ese
 where the notation $ f\cl V\xrightarrow{\sim}W$ stands for ``$f$ is a linear map from $V$ to $W$''.
 \ed
@@ -143,11 +143,11 @@ For the moment, it is worth pointing out that everything we have done so far app
 The following are commonly used terminology.
 
 \bd
-Let $V$ be a vector space. An \emph{endomorphism} of $V$ is a linear map $V\to V$. We write $\mathrm{End}(V):=\mathrm{Hom}(V,V)$.
+Let $V$ be a vector space. An \emph{endomorphism}\index{endomorphism} of $V$ is a linear map $V\to V$. We write $\mathrm{End}(V):=\mathrm{Hom}(V,V)$.
 \ed
 
 \bd
-Let $V$ be a vector space. An \emph{automorphism} of $V$ is a linear isomorphism $V\to V$. We write $\mathrm{Aut}(V):=\{f \in \mathrm{End}(V) \mid f \text{ is an isomorphism}\}$.
+Let $V$ be a vector space. An \emph{automorphism}\index{automorphism} of $V$ is a linear isomorphism $V\to V$. We write $\mathrm{Aut}(V):=\{f \in \mathrm{End}(V) \mid f \text{ is an isomorphism}\}$.
 \ed
 
 \br
@@ -155,15 +155,15 @@ Note that, unlike $\mathrm{End}(V)$, $\mathrm{Aut}(V)$ is \emph{not} a vector sp
 \er
 
 \bd
-Let $V$ be a vector space over $K$. The \emph{dual} vector space to $V$ is $V^*:=\mathrm{Hom}(V,K)$, where $K$ is considered as a vector space over itself.
+Let $V$ be a vector space over $K$. The \emph{dual}\index{vector space!dual}\index{dual space} vector space to $V$ is $V^*:=\mathrm{Hom}(V,K)$, where $K$ is considered as a vector space over itself.
 \ed
 
-The dual vector space to $V$ is the vector space of linear maps from $V$ to the underlying field $K$, which are variously called \emph{linear functionals}, \emph{covectors}, or \emph{one-forms} on $V$. The dual plays a very important role, in that from a vector space and its dual, we will construct the tensor products.
+The dual vector space to $V$ is the vector space of linear maps from $V$ to the underlying field $K$, which are variously called \emph{linear functionals}, \emph{covectors}\index{covector}, or \emph{one-forms} on $V$. The dual plays a very important role, in that from a vector space and its dual, we will construct the tensor products.
 
 \subsection{Tensors and tensor spaces}
 
 \bd
-Let $V$, $W$, $Z$ be vector spaces over $K$. A map $f\cl V\times W \to Z$ is said to be \emph{bilinear} if
+Let $V$, $W$, $Z$ be vector spaces over $K$. A map $f\cl V\times W \to Z$ is said to be \emph{bilinear}\index{bilinear map}\index{map!bilinear} if
 \begin{itemize}
 \item $\forall \, w\in W:\forall \, v_1,v_2\in V: \forall \,\lambda \in K : f(\lambda v_1+v_2,w)=\lambda f(v_1,w)+f(v_2,w)$;
 \item $\forall \, v\in V:\forall \, w_1,w_2\in W: \forall \,\lambda \in K : f(v,\lambda w_1+w_2)=\lambda f(v,w_1)+f(v,w_2)$;
@@ -190,13 +190,13 @@ The map $f\cl \R^2\to \R$ given by $(x,y)\mapsto x+y$ is linear but not bilinear
 We can immediately generalize the above to define \emph{multilinear} maps out of a Cartesian product of vector spaces.
 
 \bd
-Let $V$ be a vector space over $K$. A \emph{$(p,q)$-tensor} $T$ on $V$ is a multilinear map
+Let $V$ be a vector space over $K$. A \emph{$(p,q)$-tensor}\index{tensor} $T$ on $V$ is a multilinear map
 \bse
 T\cl \underbrace{V^*\times\cdots \times V^*}_{p \text{ copies}} \times \underbrace{V \times \cdots \times V}_{q \text{ copies}} \to K.
 \ese
 We write
 \bse
-T^p_q V := \underbrace{V\otimes\cdots \otimes V}_{p \text{ copies}} \otimes \underbrace{V^* \otimes \cdots \otimes V^*}_{q \text{ copies}} := \{T\mid T \text{ is a $(p,q)$-tensor on }V\}. 
+T^p_q V\index{$T^p_qV$} := \underbrace{V\otimes\cdots \otimes V}_{p \text{ copies}} \otimes \underbrace{V^* \otimes \cdots \otimes V^*}_{q \text{ copies}} := \{T\mid T \text{ is a $(p,q)$-tensor on }V\}. 
 \ese
 \ed
 
@@ -211,7 +211,7 @@ Note that to define $T^p_q V$ as a set, we should be careful and invoke the prin
 \ese
 In the case of $T^p_q V$ we have:
 \bse
-T^p_q V := \big\{T \in \cP\big(\underbrace{V^*\times\cdots \times V^*}_{p \text{ copies}} \times \underbrace{V \times \cdots \times V}_{q \text{ copies}} \times K\big) \mid  T \text{ is a $(p,q)$-tensor on }V\big\},
+T^p_q V := \big\{T \in \cP\bigl(\underbrace{V^*\times\cdots \times V^*}_{p \text{ copies}} \times \underbrace{V \times \cdots \times V}_{q \text{ copies}} \times K\bigr) \mid  T \text{ is a $(p,q)$-tensor on }V\big\},
 \ese
 although we will not write this down every time.
 \er
@@ -232,10 +232,10 @@ where $T \oplus S$ and $\lambda \odot T$ are defined pointwise, as we did with $
 We now define an important way of obtaining a new tensor from two given ones.
 
 \bd
-Let $T\in T^p_q V$ and $S\in T^r_s V$. We define the \emph{tensor product} of $T$ and $S$ to be $T\otimes S\in T^{p+r}_{q+s}V$ where:
+Let $T\in T^p_q V$ and $S\in T^r_s V$. We define the \emph{tensor product}\index{tensor!product} of $T$ and $S$ to be $T\otimes S\in T^{p+r}_{q+s}V$ where:
 \bi{rl}
-(T\otimes S)(\omega_1,\ldots,\omega_p,\omega_{p+1},\ldots,\omega_{p+s},v_1,&\ldots,v_q,v_{q+1},\ldots,v_{q+s})\\
-:=T(\omega_1,\ldots,\omega_p,v_1,&\ldots,v_q)S(\omega_{p+1},\ldots,\omega_{p+s},v_{q+1},\ldots,v_{q+s}),
+(T\otimes S)(\omega_1,\ldots,\omega_p,\omega_{p+1},\ldots,\omega_{p+r},v_1,&\ldots,v_q,v_{q+1},\ldots,v_{q+s})\\
+:=T(\omega_1,\ldots,\omega_p,v_1,&\ldots,v_q)S(\omega_{p+1},\ldots,\omega_{p+r},v_{q+1},\ldots,v_{q+s}),
 \ei
 with $\omega_i\in V^*$ and $v_i\in V$.
 \ed
@@ -266,15 +266,15 @@ T^1_1V\cong_\mathrm{vec}\mathrm{End}(V^*).
 \een
 Other examples we would like to consider are
 \ben[label=\alph*),start=3]
-\item $T^0_1 V \stackrel{?}{\cong}_\mathrm{vec} V$. While you will find this stated as true in physics textbook, but in fact it not true in general.
-\item $T^1_1 V \stackrel{?}{\cong}_\mathrm{vec} \mathrm{End}(V)$. This is also not true in general.
-\item $(V^*)^* \stackrel{?}{\cong}_\mathrm{vec} V$. This only holds if $V$ is finite dimensional.
+\item $T^0_1 V \stackrel{?}{\cong}_\mathrm{vec} V$: while you will find this stated as true in some physics textbooks, it is in fact \emph{not true} in general;
+\item $T^1_1 V \stackrel{?}{\cong}_\mathrm{vec} \mathrm{End}(V)$: This is also not true in general;
+\item $(V^*)^* \stackrel{?}{\cong}_\mathrm{vec} V$: This only holds if $V$ is finite dimensional.
 \een
 \ee
 The definition of dimension hinges on the notion of a basis. Given a vector space Without any additional structure, the only notion of basis that we can define is a so-called Hamel basis.
 
 \bd
-Let $(V,+,\cdot)$ be a vector space over $K$. A subset $\mathcal{B}\se V$ is called a \emph{Hamel basis}\index{Hamel basis} for $V$ if 
+Let $(V,+,\cdot)$ be a vector space over $K$. A subset $\mathcal{B}\se V$ is called a \emph{Hamel basis}\index{Hamel basis}\index{vector space!basis} for $V$ if 
 \begin{itemize}
 \item every finite subset $\{b_1,\ldots,b_N\}$ of $\mathcal{B}$ is linearly independent, i.e.\
 \bse
@@ -294,7 +294,7 @@ and thus writing $\forall \, v \in V : v \in \mathrm{span}(\mathcal{B})$.
 Note that we have been using superscripts for the elements of $K$, and these should not be confused with exponents.
 \er
 \bd
-Let $V$ be a vector space. The \emph{dimension} of $V$ is $\dim V := |\mathcal{B}|$, where $\mathcal{B}$ is a Hamel basis for $V$.
+Let $V$ be a vector space. The \emph{dimension}\index{dimension!vector space}\index{vector space!dimension} of $V$ is $\dim V := |\mathcal{B}|$, where $\mathcal{B}$ is a Hamel basis for $V$.
 \ed
 Even though we will not prove it, it is the case that every Hamel basis for a given vector space has the same cardinality, and hence the notion of dimension is well-defined.
 
@@ -319,10 +319,10 @@ Let $V$ be a finite dimensional vector space with basis $\mathcal{B}=\{e_1,\ldot
 \ese
 \ed
 
-Once we have a basis $\mathcal{B}$, the expansion of $v\in V$ in terms of elements of $\mathcal{B}$ is, in fact, unique. Hence we can meaningfully speak of the \emph{components} of $v$ in the basis $\mathcal{B}$. The notion of coordinates can also be generalised to the case of tensors.
+Once we have a basis $\mathcal{B}$, the expansion of $v\in V$ in terms of elements of $\mathcal{B}$ is, in fact, unique. Hence we can meaningfully speak of the \emph{components}\index{components} of $v$ in the basis $\mathcal{B}$. The notion of coordinates can also be generalised to the case of tensors.
 
 \bd
-Let $V$ be a finite dimensional vector space over $K$ with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$ and let $T\in T^p_qV$. We define the \emph{components} of $T$ in the basis $\mathcal{B}$ to be the numbers
+Let $V$ be a finite dimensional vector space over $K$ with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$ and let $T\in T^p_qV$. We define the \emph{components}\index{tensor!components} of $T$ in the basis $\mathcal{B}$ to be the numbers
 \bse
 T^{a_1\ldots a_p}_{\phantom{a_1\ldots a_p}b_1\ldots b_q} := T(f^{a_1},\ldots,f^{a_p},e_{b_1},\ldots,e_{b_q})\in K,
 \ese
@@ -351,15 +351,21 @@ for some $B^j_{\phantom{j}i}\in K$. It is a standard linear algebra result that 
 
 \subsubsection*{Einstein's summation convention}
 From now on, we will employ the Einstein's summation convention, which consists in suppressing the summation sign when the indices to be summed over each appear once as a subscript and once as a superscript in the same term. For example, we write
-\bse
-v=v^ie_i \qquad \text{and} \qquad T=T^{ij}_{\phantom{ij}k}e_i\otimes e_j \otimes f^k 
-\ese
-instead of
-\bse
-v=\sum_{i=1}^dv^ie_i \qquad \text{and} \qquad T=\sum_{i=1}^d\sum_{j=1}^d\sum_{k=1}^d
+\bi{rcl}
+v=v^ie_i \qquad &\text{and}& \qquad T=T^{ij}_{\phantom{ij}k}e_i\otimes e_j \otimes f^k \\
+\intertext{instead of}
+v=\sum_{i=1}^dv^ie_i \qquad &\text{and}& \qquad T=\sum_{i=1}^d\sum_{j=1}^d\sum_{k=1}^d
 T^{ij}_{\phantom{ij}k}e_i\otimes e_j \otimes f^k.
-\ese
-The ranges over which the indices run are usually understood and not written out. The convention on which indices go upstairs and which downstairs (which we have already been using) is that:
+\ei
+Indices that are summed over are called \emph{dummy indices}; they always appear in pairs and clearly it doesn't matter which particular letter we choose to denote them, provided it doesn't already appear in the expression. Indices that are not summed over are called \emph{free indices}; expressions containing free indices represent multiple expressions, one for each value of the free indices; free indices must match on both sides of an equation. For example
+\bi{rClrClrCl}
+v^ie_i&=&v^ke_k, &  T^{ij}_{\phantom{ij}k} &=& T^{imj}_{\phantom{imj}km}, & A_{ij} &=& C_kC^kB_{ij} + C_iC^kB_{kj}\\
+\intertext{are all valid expressions, while}
+c^kv^ie_i&=&c^kv^ke_k, \qquad & T^{ij}_{\phantom{ij}j} &=& T^{imj}_{\phantom{imj}km}, \qquad  & A_{ij} &=& C_kC^k + C_iC^lB_{lj}
+\ei
+are not. The ranges over which the indices run are usually understood and not written out.
+
+The convention on which indices go upstairs and which downstairs (which we have already been using) is that:
 \begin{itemize}
 \item the basis vectors of $V$ carry downstairs indices;
 \item the basis vectors of $V^*$ carry upstairs indices;
@@ -374,7 +380,7 @@ Using the summation convention, we have:
 \item $\omega(e_b)=(\omega_af^a)(e_b)=\omega_af^a(e_b)=\omega_b$;
 \item $\omega(v)=\omega_af^a(v^be_b)=\omega_av^a$;
 \een
-where $v\in V$, $\omega \in V^*$, $\{e_i\}$ is a basis of $V$ and $\{f^j\}$ is the dual basis.
+where $v\in V$, $\omega \in V^*$, $\{e_i\}$ is a basis of $V$ and $\{f^j\}$ is the dual basis to $\{e_i\}$.
 \ee
 
 \br
@@ -566,7 +572,7 @@ In particular, $\dim \Lambda^dV=1$. This means that
 i.e.\ there is essentially only one top form on $V$, up to a scalar factor.
 
 \bd
-A choice of top form on $V$ is called a choice of \emph{volume form} on $V$. A vector space with a chosen volume form is then called a \emph{vector space with volume}.
+A choice of top form on $V$ is called a choice of \emph{volume form}\index{volume (form)} on $V$. A vector space with a chosen volume form is then called a \emph{vector space with volume}.
 \ed
 This terminology is due to the next definition.
 \bd
@@ -581,7 +587,7 @@ You may have rightfully thought that the notion of volume would require some ext
 \er
 We are finally ready to define the determinant.
 \bd
-Let $V$ be a $d$-dimensional vector space and let $\phi \in \End (V) \cong_\mathrm{vec}T^1_1V$. The \emph{determinant} of $\phi$ is
+Let $V$ be a $d$-dimensional vector space and let $\phi \in \End (V) \cong_\mathrm{vec}T^1_1V$. The \emph{determinant}\index{determinant} of $\phi$ is
 \bse
 \det \phi := \frac{\omega(\phi(e_1),\ldots,\phi(e_d))}{\omega(e_1,\ldots,e_d)}
 \ese

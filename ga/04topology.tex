@@ -3,13 +3,13 @@
 We will now discuss topological spaces based on our previous development of set theory. As we will see, a topology on a set provides the weakest structure in order to define the two very important notions of convergence of sequences to points in a set, and of continuity of maps between two sets. The definition of topology on a set is, at first sight, rather abstract. But on the upside it is also extremely simple. This definition is the result of a historical development, it is the simplest definition of topology that mathematician found to be useful.
 
 \bd
-Let $M$ be a set. A \emph{topology} on $M$ is a set $\cO \se \cP(M)$ such that:
+Let $M$ be a set. A \emph{topology}\index{topology} on $M$ is a set $\cO \se \cP(M)$ such that:
 \ben
 \item[i)] $\vn \in \cO$ and $M \in \cO$;
 \item[ii)] $\{U,V\}\se \cO \imp \bigcap\, \{U,V\} \in \cO$;
 \item[iii)] $C \se \cO \imp \bigcup C \in \cO$.
 \een
-The pair $(M,\cO)$ is called a \emph{topological space}. If we write ``let $M$ be a topological space'' then some topology $\cO$ on $M$ is assumed.
+The pair $(M,\cO)$ is called a \emph{topological space}\index{topological space}. If we write ``let $M$ be a topological space'' then some topology $\cO$ on $M$ is assumed.
 \ed
 
 \br
@@ -54,7 +54,7 @@ Let $M$ be a set. Then $\cO=\{\vn , M\}$ is a topology on $M$. Indeed, we have:
 \item[ii)] $\bigcap\, \{\vn,\vn\} = \vn \in \cO$, $\ \bigcap\, \{\vn,M\} = \vn \in \cO$, and $\bigcap\, \{M,M\} = M \in \cO$;
 \item[iii)] If $M \in C$, then $\bigcup C = M \in \cO$, otherwise $\bigcup C = \vn \in \cO$.
 \een
-This is called the \emph{chaotic topology} and can be defined on any set.
+This is called the \emph{chaotic topology}\index{topology!chaotic} and can be defined on any set.
 \ee
 
 \be
@@ -64,7 +64,7 @@ Let $M$ be a set. Then $\cO=\cP(M)$ is a topology on $M$. Indeed, we have:
 \item[ii)] If $U,V \in \cP(M)$, then $\bigcap\, \{U,V\} \se M$ and hence $\bigcap\, \{U,V\} \in \cP(M)$;
 \item[iii)] If $C\se\cP(M)$, then $\bigcup C \se M$, and hence $\bigcup C \in \cP(M)$.
 \een
-This is called the \emph{discrete topology} and can be defined on any set.
+This is called the \emph{discrete topology}\index{topology!discrete} and can be defined on any set.
 \ee
 
 
@@ -78,7 +78,7 @@ Let $\cO_1$ and $\cO_2$ be two topologies on a set $M$. If $\cO_1 \ss \cO_2$, th
 \ed
 Clearly, the chaotic topology is the coarsest topology on any given set, while the discrete topology is the finest.
 \bd
-Let $(M,\cO)$ be a topological space. A subset $S$ of $M$ is said to be \emph{open (with respect to $\cO$)} if $S \in \cO$ and \emph{closed (with respect to $\cO$)} if $M\sm S \in \cO$. 
+Let $(M,\cO)$ be a topological space. A subset $S$ of $M$ is said to be \emph{open (with respect to $\cO$)}\index{open set} if $S \in \cO$ and \emph{closed (with respect to $\cO$)}\index{closed set} if $M\sm S \in \cO$. 
 \ed
 Notice that the notions of open and closed sets, as defined, are not mutually exclusive. A set could be both or neither, or one and not the other.
 \be
@@ -112,7 +112,7 @@ The quantity $\sqrt{\sum_{i=1}^d (y_i-x_i)^2}$ is usually denoted by $\|y-x\|_2$
 \er
 
 \bd
-The \emph{standard topology} on $\R^d$, denoted $\cO_\mathrm{std}$, is defined by:
+The \emph{standard topology}\index{standard topology}\index{topology!standard} on $\R^d$, denoted $\cO_\mathrm{std}$\index{$\cO_\mathrm{std}$}, is defined by:
 \bse
 U \in \cO_\mathrm{std} :\eqv \forall \, p \in U : \exists \, r \in \R^+ : B_r(p) \se U.
 \ese
@@ -170,7 +170,7 @@ Let $(M,\cO)$ be a topological space and let $N\ss M$. Then:
 \bse
 \cO|_N := \{U\cap N \mid U \in \cO\} \se \cP(N)
 \ese
-is a topology on $N$ called the \emph{induced (subset) topology}.
+is a topology on $N$ called the \emph{induced (subset) topology}\index{topology!induced}.
 \ep
 
 \bq
@@ -219,9 +219,9 @@ Let $(M,\cO)$ be a topological space and let $\sim$ be an equivalence relation o
 \bse
 M/\!\sim \ = \{[m]\in \cP(M) \mid m \in M\}
 \ese
-can be equipped with the \emph{quotient topology} $\cO_{M/\!\sim}$ defined by:
+can be equipped with the \emph{quotient topology}\index{quotient topology}\index{topology!quotient} $\cO_{M/\sim}$ defined by:
 \bse
-\cO_{M/\!\sim} := \{U \in M/\!\sim \ \mid \bigcup U = \bigcup_{[a]\in U}[a] \in \cO \}.
+\cO_{M/\sim} := \{U \in M/\!\sim \ \mid \bigcup U = \bigcup_{[a]\in U}[a] \in \cO \}.
 \ese
 \ed
 
@@ -252,7 +252,7 @@ Let $(A,\cO_A)$ and $(B,\cO_B)$ be topological spaces. Then the set $\cO_{A\time
 \bse
 U \in \cO_{A\times B} :\eqv \forall \, p \in U : \exists \, (S,T) \in \cO_A\times \cO_B : S\times T \se U
 \ese
-is a topology on $A\times B$ called the \emph{product topology}.
+is a topology on $A\times B$ called the \emph{product topology}\index{topology!product}.
 \ed
 
 \br
@@ -274,17 +274,17 @@ Therefore, a more minimalistic definition of the standard topology on $\R^d$ wou
 \subsection{Convergence}
 
 \bd
-Let $M$ be a set. A \emph{sequence} (of points) in $M$ is a function $q \cl \N \to  M$.
+Let $M$ be a set. A \emph{sequence}\index{sequence} (of points) in $M$ is a function $q \cl \N \to  M$.
 \ed
 
 \bd
-Let $(M,\cO)$ be a topological space. A sequence $q$ in $M$ is said to \emph{converge} against a \emph{limit point} $a\in M$ if:
+Let $(M,\cO)$ be a topological space. A sequence $q$ in $M$ is said to \emph{converge}\index{convergence} against a \emph{limit point}\index{limit point} $a\in M$ if:
 \bse
 \forall \, U \in \cO : a \in U \imp \exists \, N \in \N : \forall \, n > N : q(n) \in U.
 \ese
 \ed
 \br
-An open set $U$ of $M$ such that $a\in U$ is called an \emph{open neighbourhood} of $a$. If we denote this by $U(a)$, then the previous definition of convergence can be rewritten as:
+An open set $U$ of $M$ such that $a\in U$ is called an \emph{open neighbourhood}\index{neighbourhood} of $a$. If we denote this by $U(a)$, then the previous definition of convergence can be rewritten as:
 \bse
 \forall \, U(a): \exists \, N \in \N : \forall \, n > N : q(n) \in U.
 \ese
@@ -316,7 +316,7 @@ Let $M=\R$ and let $q=1-\frac{1}{n+1}$. Then, since $q$ is not almost constant, 
 \subsection{Continuity}
 
 \bd
-Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological spaces and let $\phi\cl M\to N$ be a map. Then, $\phi$ is said to be \emph{continuous} (with respect to the topologies $\cO_M$ and $\cO_N$) if:
+Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological spaces and let $\phi\cl M\to N$ be a map. Then, $\phi$ is said to be \emph{continuous}\index{continuity}\index{map!continuous} (with respect to the topologies $\cO_M$ and $\cO_N$) if:
 \bse
 \forall \, S \in \cO_N \, , \ \mathrm{preim}_\phi(S) \in \cO_M ,
 \ese
@@ -357,7 +357,7 @@ Consider $(\R^d,\cO_\mathrm{std})$ and $(\R^s,\cO_\mathrm{std})$. Then $\phi \cl
 \ee
 
 \bd
-Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological spaces. A bijection $\phi\cl M\to N$ is called a \emph{homeomorphism} if both $\phi\cl M\to N$ and $\phi^{-1}\cl N\to M$ are continuous.
+Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological spaces. A bijection $\phi\cl M\to N$ is called a \emph{homeomorphism}\index{homeomorphism} if both $\phi\cl M\to N$ and $\phi^{-1}\cl N\to M$ are continuous.
 \ed
 
 \br
@@ -375,7 +375,7 @@ M \ar[rr, bend left,"\phi"] & & N \ar[ll, bend left,"\phi^{-1}"]
 then $\phi$ provides a one-to-one pairing of the open sets of $M$ with the open sets of $N$.
 
 \bd
-If there exists a homeomorphism between two topological spaces $(M,\cO_M)$ and $(N,\cO_N)$, we say that the two spaces are \emph{homeomorphic} or \emph{topologically isomorphic} and we write $(M,\cO_M) \cong_\mathrm{top} (N,\cO_N)$.
+If there exists a homeomorphism between two topological spaces $(M,\cO_M)$ and $(N,\cO_N)$, we say that the two spaces are \emph{homeomorphic}\emph{topological space!homeomorphic} or \emph{topologically isomorphic}\index{isomorphism!of topological spaces} and we write $(M,\cO_M) \cong_\mathrm{top} (N,\cO_N)$.
 \ed
 
 Clearly, if $(M,\cO_M) \cong_\mathrm{top} (N,\cO_N)$, then $M \iset N$.

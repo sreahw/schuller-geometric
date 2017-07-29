@@ -5,7 +5,7 @@
 
 \usepackage{imakeidx}
 \indexsetup{firstpagestyle=empty}
-\makeindex[intoc, columns=3, title=Alphabetical Index, options= -s example_style.ist]
+\makeindex[intoc, columns=2, title=Alphabetical Index, options= -s example_style.ist]
 
 
 \usepackage{jheppub} % for details on the use of the package, please
@@ -36,6 +36,7 @@
 
 \usepackage{array,tabularx}
 \usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{etoolbox}
 %\usepackage{mathtools}
 \usepackage{xcolor,tikz}
 \usetikzlibrary{matrix,calc,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
@@ -47,6 +48,12 @@
 
 \usepackage{cancel}
 \newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+
+\makeatletter
+\patchcmd{\@IEEEeqnarray}{\relax}{\relax\intertext@}{}{}
+\makeatother
+
+
 
 %\usepackage[upright]{fourier}
 %\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
@@ -145,7 +152,8 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 %\affiliation[c]{A School for Advanced Studies,\\some-location, Country}
 
 % e-mail addresses: one for each author, in the same order as the authors
-\emailAdd{fschuller@perimeterinstitute.ca}
+\emailAdd{fps@aei.mpg.de}
+%fschuller@perimeterinstitute.ca
 %\emailAdd{second@asas.edu}
 %\emailAdd{third@one.univ}
 %\emailAdd{s.rea.hw@gmail.com}
@@ -157,17 +165,15 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 \begin{document} 
 
 \rule{0cm}{2cm}\\
-\includegraphics[width=12cm]{logo2}
+\includegraphics[width=14cm]{faulogo}
 
 \maketitle
 %\flushbottom
 
-%\newpage
 %\acknowledgments
 
 %This is the most common positions for acknowledgments. A macro is
 %available to maintain the same layout and spelling of the heading.
-\newpage
 
 
 
@@ -211,11 +217,11 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 
 
 \section{Differential structures: the pivotal concept of tangent vector spaces}
-\input{ga/09tangent}
+\input{ga/09tangent_space}
+%\newpage
 
-
-% \section{Construction of the tangent bundle}
-
+%\section{Construction of the tangent bundle}
+%\input{ga/10tangent_bundle}
 
 
 % \section{Tensor space theory II: over a ring}

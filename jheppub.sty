@@ -158,7 +158,7 @@
 %this is the ``itemsep'' of the affiliations list
 \newlength{\affiliationsSep}\setlength{\affiliationsSep}{-3pt}
 %this hook is needed if the toc starts on the first page
-\newcommand\beforetochook{\pagestyle{myplain}\pagenumbering{roman}}
+\newcommand\beforetochook{\pagestyle{myplain}\pagenumbering{roman}}%roman
 
 \DeclareFixedFont\trfont{OT1}{phv}{b}{sc}{11}
 
@@ -183,6 +183,13 @@
 \hrule height 1.5\p@%
 \afterRuleSpace
 % Collaboration
+
+
+
+{\raggedright\sffamily{Course delivered in the 2013/14 academic year by}\par}
+\afterAuthorSpace
+
+
 \if!\@collaboration!\else
 {\Large\bfseries\sffamily\raggedright\@collaboration}\par
 \afterCollaborationSpace
@@ -218,6 +225,39 @@
 \PackageWarningNoLine{\jname}{E-mails are missing.\MessageBreak Plese use \protect\emailAdd\space macro to provide e-mails.}
 \fi
 \afterEmailSpace
+
+
+
+
+
+
+
+
+
+
+
+
+{\raggedright\sffamily{Notes taken by Simon Rea}\par}
+\afterAuthorSpace
+\noindent\hspace{0.28cm}\begin{minipage}[l]{.9\textwidth}
+\begin{flushleft}
+\textit{E-mail:} \href{mailto:s.rea.hw@gmail.com}{\ttfamily s.rea.hw@gmail.com}
+\end{flushleft}
+\end{minipage}
+
+
+\vfill
+\noindent\ Last updated on \today
+
+
+
+
+
+
+
+
+
+
 %Erratum or addendum
 \if!\@xtum!\else\noindent{\@xtum}\afterXtumSpace\fi
 % Abstract
@@ -229,6 +269,7 @@
 % Dedication
 \if!\@dedicated!\else\vbox{\small\it\raggedleft\@dedicated}\afterDedicatedSpace\fi
 %
+
 \ifnotoc\else
 \iftoccontinuous\else\newpage\fi
 \beforetochook\hrule
@@ -237,7 +278,9 @@
 \hrule
 \afterTocRuleSpace
 \fi
+
 \setcounter{footnote}{0}
+\newpage
 \pagestyle{myplain}\pagenumbering{arabic}
 } % close the \renewcommand\maketitle{
 

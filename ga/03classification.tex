@@ -5,7 +5,7 @@ A recurrent theme in mathematics is the classification of \emph{spaces} by means
 A space is usually meant to be some set equipped with some structure, which is usually some other set. We will define each instance of space precisely when we will need them. In the case of sets considered themselves as spaces, there is no extra structure beyond the set and hence, the structure may be taken to be the empty set.
 
 \bd
-Let $A,B$ be sets. A \emph{map} $\phi \cl A \to B$ is a relation such that for each $a \in A$ there exists exactly one $b \in B$ such that $\phi(a,b)$.
+Let $A,B$ be sets. A \emph{map}\index{map} $\phi \cl A \to B$ is a relation such that for each $a \in A$ there exists exactly one $b \in B$ such that $\phi(a,b)$.
 \ed
 The standard notation for a map is:
 \bi{rrCl}
@@ -24,9 +24,9 @@ Let $M$ be a set. The simplest example of a map is the \emph{identity map} on $M
 
 The following is standard terminology for a map $\phi \cl A \to B$:
 \bit
-\item the set $A$ is called the \emph{domain} of $\phi$;
-\item the set $B$ is called the \emph{target} of $\phi$;
-\item the set $\phi(A) \equiv \img_\phi(A) := \{\phi(a) \mid a \in A\}$ is called the \emph{image} of $A$ under $\phi$;
+\item the set $A$ is called the \emph{domain}\index{domain} of $\phi$;
+\item the set $B$ is called the \emph{target}\index{target} of $\phi$;
+\item the set $\phi(A) \equiv \img_\phi(A) := \{\phi(a) \mid a \in A\}$ is called the \emph{image}\index{image} of $A$ under $\phi$;
 \eit
 \bd
 A \emph{map} $\phi \cl A \to B$ is said to be:
@@ -38,7 +38,7 @@ A \emph{map} $\phi \cl A \to B$ is said to be:
 \ed
 
 \bd
-Two sets $A$ and $B$ are called \emph{(set-theoretic) isomorphic} if there exists a bijection $\phi \cl A \to B$. In this case, we write $A \iset B$.
+Two sets $A$ and $B$ are called \emph{(set-theoretic) isomorphic}\index{isomorphism!of sets} if there exists a bijection $\phi \cl A \to B$. In this case, we write $A \iset B$.
 \ed
 
 \br
@@ -49,7 +49,7 @@ Bijections are the ``structure-preserving'' maps for sets. Intuitively, they pai
 
 \textbf{Classification of sets.} A set $A$ is:
 \bit
-\item \emph{infinite} if there exists a proper subset $B\ss A$ such that $B \iset A$. In particular, if $A$ is infinite, we further define $A$ to be:
+\item \emph{infinite}\index{set!infinite} if there exists a proper subset $B\ss A$ such that $B \iset A$. In particular, if $A$ is infinite, we further define $A$ to be:
 \bit
 \item[$*$] \emph{countably} infinite if $A \iset \N$;
 \item[$*$] \emph{uncountably} infinite otherwise.
@@ -164,7 +164,7 @@ Let $M$ be a set and let $\sim$ be a relation such that the following conditions
 \item[ii)] symmetry: $\forall \, m,n \in M: m \sim n \eqv n \sim n;$
 \item[iii)] transitivity: $\forall \, m,n,p \in M: (m \sim n \land n \sim p) \imp m \sim p.$
 \een
-Then $\sim$ is called an \emph{equivalence relation} on $M$.
+Then $\sim$ is called an \emph{equivalence relation}\index{equivalence relation}\index{relation!equivalence} on $M$.
 \ed
 
 \bd
@@ -266,7 +266,7 @@ This is easily seen to be \emph{ill-defined} since $[1]=[3]$ and $[2]=[4]$ but:
 
 Recall that, invoking the axiom of infinity, we defined:
 \bse
-\N := \{0,1,2,3,\ldots\},
+\N\index{$\N$} := \{0,1,2,3,\ldots\},
 \ese
 where:
 \bse
@@ -360,7 +360,7 @@ hence $m+q+p+s=p+n+r+q$, and thus $m+s=r+n$.
 \bd
 We define the set of \emph{integers} by:
 \bse
-\Z:=(\N\times\N)/\!\sim.
+\Z\index{$\Z$}:=(\N\times\N)/\!\sim.
 \ese
 \ed
 
@@ -398,7 +398,7 @@ $2+_\Z(-3):=[(2,0)]+_\Z[(0,3)]=[(2,3)]=[(0,1)]=:-1$. Hallelujah!
 
 In a similar fashion, we define the set of \emph{rational numbers} by:
 \bse
-\Q := (\Z\times\Z^*)/\!\sim,
+\Q\index{$\Q$} := (\Z\times\Z^*)/\!\sim,
 \ese
 where $\Z^*:=\Z\sm\{0\}$ and $\sim$ is a relation on $\Z\times\Z^*$ given by:
 \bse
@@ -434,7 +434,7 @@ where the operations of addition and multiplication that appear on the right han
 
 There are many ways to construct the reals from the rationals. One is to define a set $\mathscr{A}$ of \emph{almost homomorphisms} on $\Z$ and hence define:
 \bse
-\R := \mathscr{A}/\!\sim,
+\R\index{$\R$} := \mathscr{A}/\!\sim,
 \ese
 where $\sim$ is a ``suitable'' equivalence relation on $\mathscr{A}$.
 

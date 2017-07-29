@@ -1,6 +1,6 @@
 \subsection[\texorpdfstring{The $\in$-relation}{The epsilon-relation}]{The $\in$-relation}
 
-Set theory is built on the postulate that there is a fundamental relation (i.e.\ a predicate of two variables) denoted $\in$\index{$\in$} and read as ``epsilon''.
+Set\index{set} theory is built on the postulate that there is a fundamental relation (i.e.\ a predicate of two variables) denoted $\in$\index{$\in$} and read as ``epsilon''.
 There will be no definition of what $\in$ is, or of what a set is.
 Instead, we will have nine axioms concerning $\in$ and sets, and it is only in terms of these nine axioms that $\in$ and sets are defined at all.
 Here is an overview of the axioms. We will have:
@@ -30,7 +30,7 @@ and we read ``$x$ is in (or belongs to) $y$'' or ``$x$ is an element (or a membe
 
 \subsection{Zermelo-Fraenkel axioms of set theory}
 
-\textbf{Axiom on the $\in$-relation.} \emph{The expression $x\in y$ is a proposition if, and only if, both $x$ and $y$ are sets. In symbols:}
+\textbf{Axiom on the $\in$-relation.}\index{$\in$}\index{relation!$\in$}\index{axiom!on $\in$} \emph{The expression $x\in y$ is a proposition if, and only if, both $x$ and $y$ are sets. In symbols:}
 \bse
 \forall \, x : \forall \, y : (x\in y) \veebar \neg (x\in y).
 \ese
@@ -41,7 +41,7 @@ In other words, if $x\in y$ is not a proposition (i.e.\ it does not have the pro
 This seems so trivial that, for a long time, people thought that this not much of a condition.
 But, in fact, it is.
 It tells us when something is not a set.
-\be[Russell's paradox]
+\be[Russell's paradox]\index{Russell's paradox}
 Suppose that there is some $u$ which has the following property:
 \bse
 \forall \, x : (x \notin x \eqv x \in u),
@@ -77,7 +77,7 @@ u\in u , \quad x\in u , \quad u\in x , \quad x \notin u , \quad \t{etc.}
 are not propositions and thus, they are not part of axiomatic set theory.
 \er
 
-\textbf{Axiom on the existence of an empty set.} \emph{There exists a set that contains no elements.
+\textbf{Axiom on the existence of an empty set.}\index{empty set}\index{set!empty}\index{axiom!on the empty set} \emph{There exists a set that contains no elements.
 In symbols:}
 \bse
 \exists \, y : \forall \, x : x \notin y .
@@ -168,7 +168,7 @@ q_7 \eqv x = x'
 thereby concluding the proof in seven steps.
 \eq
 
-\textbf{Axiom on pair sets.} \emph{Let $x$ and $y$ be sets. Then there exists a set that contains as its elements precisely $x$ and $y$. In symbols:}
+\textbf{Axiom on pair sets.}\index{set!pair}\index{axiom!on pair sets} \emph{Let $x$ and $y$ be sets. Then there exists a set that contains as its elements precisely $x$ and $y$. In symbols:}
 \bse
 \forall \, x : \forall \, y : \exists \, m : \forall \, u : (u\in m \eqv (u = x \lor u = y)).
 \ese
@@ -194,7 +194,7 @@ The pair set axiom also guarantees the existence of one-element sets.
 If $x$ is a set, then we define $\{x\}:=\{x,x\}$. Informally, we can say that $\{x\}$ and $\{x,x\}$ express the same amount of information, namely that they contain $x$. 
 \er
 
-\textbf{Axiom on union sets.} \emph{Let $x$ be a set. Then there exists a set whose elements are precisely the elements of the elements of $x$. In symbols:}
+\textbf{Axiom on union sets.}\index{set!union}\index{axiom!on union sets} \emph{Let $x$ be a set. Then there exists a set whose elements are precisely the elements of the elements of $x$. In symbols:}
 \bse
 \forall \, x : \exists \, u : \forall \, y : (y \in u \eqv \exists \, s :(y \in s\land s \in x))
 \ese
@@ -226,21 +226,21 @@ Let $a_1,a_2,\ldots,a_N$ be sets. We define recursively for all $N\geq 2$:
 The fact that the $x$ that appears in $\bigcup x$ has to be a set is a crucial restriction. Informally, we can say that it is only possible to take unions of as many sets as would fit into a set. The ``collection'' of all the sets that do not contain themselves is not a set or, we could say, does not fit into a set. Therefore it is not possible to take the union of all the sets that do not contain themselves. This is very subtle, but also very precise.
 \er
 
-\textbf{Axiom of replacement.} \emph{Let $R$ be a functional relation and let $m$ be a set. Then the image of $m$ under $R$, denoted by $\img_R (m)$, is again a set.}
+\textbf{Axiom of replacement.}\index{axiom!of replacement} \emph{Let $R$ be a functional relation and let $m$ be a set. Then the image of $m$ under $R$, denoted by $\img_R (m)$, is again a set.}
 
 Of course, we now need to define the new terms that appear in this axiom. Recall that a relation is simply a predicate of two variables.
 \bd
-A relation $R$ is said to be \emph{functional} if:
+A relation $R$ is said to be \emph{functional}\index{relation!functional} if:
 \bse
 \forall \, x : \exists ! \, y : R(x,y) .
 \ese
 \ed
 \bd
-Let $m$ be a set and let $R$ be a functional relation. The \emph{image of $m$ under $R$} consists of all those $y$ for which there is an $x\in m$ such that $R(x,y)$. 
+Let $m$ be a set and let $R$ be a functional relation. The \emph{image of $m$ under $R$}\index{image} consists of all those $y$ for which there is an $x\in m$ such that $R(x,y)$. 
 \ed
 None of the previous axioms imply that the image of a set under a functional relation is again a set. The assumption that it always is, is made explicit by the axiom of replacement.
 
-Is is very likely that the reader has come across a weaker form of the axiom of replacement, called the \emph{principle of restricted comprehension}, which says the following.
+Is is very likely that the reader has come across a weaker form of the axiom of replacement, called the \emph{principle of restricted comprehension}\index{principle of restricted comprehension}, which says the following.
 \bp
 Let $P(x)$ be a predicate and let $m$ be a set. Then the elements $y \in m$ such that $P(y)$ is true constitute a set, which we denote by:
 \bse
@@ -286,7 +286,7 @@ We will rarely invoke the axiom of replacement in full. We will only invoke the 
 \er
 We can now define the intersection and the relative complement of sets.
 \bd
-Let $x$ be a set. Then we define the \emph{intersection} of $x$ by:
+Let $x$ be a set. Then we define the \emph{intersection}\index{set!intersection} of $x$ by:
 \bse
 \bigcap x := \{ a \in \bigcup x \mid \forall \, b \in x : a \in b \}.
 \ese
@@ -300,7 +300,7 @@ m\sm u := \{x \in m \mid x \notin u\}.
 These are both sets by the principle of restricted comprehension, which is ultimately due to axiom of replacement.
 \ed
 
-\textbf{Axiom on the existence of power sets.} \emph{Let $m$ be a set. Then there exists a set, denoted by $\cP(m)$, whose elements are precisely the subsets of $m$. In symbols:}
+\textbf{Axiom on the existence of power sets.}\index{set!power}\index{axiom!on power sets} \emph{Let $m$ be a set. Then there exists a set, denoted by $\cP(m)$, whose elements are precisely the subsets of $m$. In symbols:}
 \bse
 \forall \, x : \exists \, y : \forall \, a : ( a \in y \eqv a \se x).
 \ese
@@ -323,7 +323,7 @@ x\times y \se \cP(\cP(\bigcup\,\{x, y\})).
 Hence, the existence of $x\times y$ as a set follows from the axioms on unions, pair sets, power sets and the principle of restricted comprehension.
 \er
 
-\textbf{Axiom of infinity.} \emph{There exists a set that contains the empty set and,  together with every other element $y$, it also contains the set $\{y\}$ as an element. In symbols:}
+\textbf{Axiom of infinity.}\index{infinity}\index{axiom!of infinity} \emph{There exists a set that contains the empty set and,  together with every other element $y$, it also contains the set $\{y\}$ as an element. In symbols:}
 \bse
 \exists \, x : \vn \in x \land \forall \, y : (y\in x \imp \{y\} \in x).
 \ese
@@ -336,7 +336,7 @@ We can introduce the following notation for the elements of $x$:
 0 :=\vn , \quad 1  := \{\vn\},\quad 2:= \{\{\vn\}\}, \quad 3:= \{\{\{\vn\}\}\} , \quad \ldots
 \ese
 \bc
-The ``set'' $\N:=x$ is a set according to axiomatic set theory.
+The ``set'' $\N:=x$\index{$\N$} is a set according to axiomatic set theory.
 \ec
 This would not be then case without the axiom of infinity since it is not possible to prove that $\N$ constitutes a set from the previous axioms.
 \br
@@ -354,7 +354,7 @@ With this formulation, the natural numbers look like:
 This may appear more complicated than what we had before, but it is much nicer for two reasons.  First, the natural number $n$ is represented by an $n$-element set rather than a one-element set. Second, it generalizes much more naturally to the system of transfinite ordinal numbers where the successor operation $s(x)=x\cup\{x\}$ applies to transfinite ordinals as well as natural numbers. Moreover, the natural numbers have the same defining property as the ordinals: they are transitive sets strictly well-ordered by the $\in$-relation.
 \er
 
-\textbf{Axiom of choice.} \emph{Let $x$ be a set whose elements are non-empty and mutually disjoint. Then there exists a set $y$ which contains exactly one element of each element of $x$. In symbols:}
+\textbf{Axiom of choice.}\index{axiom!of choice} \emph{Let $x$ be a set whose elements are non-empty and mutually disjoint. Then there exists a set $y$ which contains exactly one element of each element of $x$. In symbols:}
 \bse
 \forall \, x : P(x) \imp \exists \, y : \forall \, a \in x :\exists! \, b \in a : a \in y,
 \ese
@@ -367,7 +367,7 @@ The axiom of choice is independent of the other 8 axioms, which means that one c
 \eit
 \er
 
-\textbf{Axiom of foundation.} \emph{Every non-empty set $x$ contains an element $y$ that has none of its elements in common with $x$. In symbols:}
+\textbf{Axiom of foundation.}\index{axiom!of foundation} \emph{Every non-empty set $x$ contains an element $y$ that has none of its elements in common with $x$. In symbols:}
 \bse
 \forall \, x : (\exists \,a : a \in x) \imp \exists \, y \in x : \bigcap \, \{x,y\} = \vn .
 \ese

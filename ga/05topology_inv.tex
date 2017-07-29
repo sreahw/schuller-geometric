@@ -1,14 +1,14 @@
 \subsection{Separation properties}
 
 \bd
-A topological space $(M,\cO)$ is said to be \emph{T1} if for any two distinct points $p,q\in M$, $p\neq q$:
+A topological space $(M,\cO)$ is said to be \emph{T1}\index{topological space!T1 property} if for any two distinct points $p,q\in M$, $p\neq q$:
 \bse
 \exists \, U(p) \in \cO : q \notin U(p).
 \ese
 \ed
 
 \bd
-A topological space $(M,\cO)$ is said to be \emph{T2} or \emph{Hausdorff} if, for any two distinct points, there exist non-intersecting open neighbourhoods of these two points:
+A topological space $(M,\cO)$ is said to be \emph{T2} or \emph{Hausdorff}\index{topological space!Hausdorff} if, for any two distinct points, there exist non-intersecting open neighbourhoods of these two points:
 \bse
 \forall \, p,q\in M : p\neq q \imp \exists \, U(p),V(q)\in \cO : U(p)\cap V(q) = \vn.
 \ese
@@ -33,7 +33,7 @@ There are many other ``T'' properties, including a \emph{T2\sfrac{1}{2}} propert
 \subsection{Compactness and paracompactness}
 
 \bd
-Let $(M,\cO)$ be a topological space. A set $C \se \cP(M)$ is called a \emph{cover} (of $M$) if:
+Let $(M,\cO)$ be a topological space. A set $C \se \cP(M)$ is called a \emph{cover}\index{cover}\index{topological space!(open) cover} (of $M$) if:
 \bse
 \bigcup C = M.
 \ese
@@ -45,7 +45,7 @@ Let $C$ be a cover. Then any subset $\widetilde{C}\se C$ such that $\widetilde{C
 \ed
 
 \bd
-A topological space $(M,\cO)$ is said to be \emph{compact} if every open cover has a finite subcover.
+A topological space $(M,\cO)$ is said to be \emph{compact}\index{compactness}\index{topological space!compact} if every open cover has a finite subcover.
 \ed
 
 \bd
@@ -54,17 +54,17 @@ Let $(M,\cO)$ be a topological space. A subset $N\se M$ is called \emph{compact}
 
 Determining whether a set is compact or not is not an easy task. Fortunately though, for $\R^d$ equipped with the standard topology $\cO_\mathrm{std}$, the following theorem greatly simplifies matters.
 
-\bt[Heine-Borel]
+\bt[Heine-Borel]\index{Heine-Borel theorem}
 Let $\R^d$ be equipped with the standard topology $\cO_\mathrm{std}$. Then, a subset of $\R^d$ is compact if, and only if, it is closed and bounded.
 \et
 
-A subset $S$ of $\R^d$ is said to be \emph{bounded} if:
+A subset $S$ of $\R^d$ is said to be \emph{bounded}\index{boundedness} if:
 \bse
 \exists \, r \in \R^+ : S \se B_r(0). 
 \ese
 
 \br
-It is also possible to generalize this result to arbitrary metric spaces. A \emph{metric space} is a pair $(M,d)$ where $M$ is a set and $d\cl M\times M \to \R$ is a map such that for any $x,y,z \in M$ the following conditions hold:
+It is also possible to generalize this result to arbitrary metric spaces. A \emph{metric space}\index{metric space} is a pair $(M,d)$ where $M$ is a set and $d\cl M\times M \to \R$ is a map such that for any $x,y,z \in M$ the following conditions hold:
 \ben
 \item[i)] $d(x,y) \geq 0$;
 \item[ii)] $d(x,y) = 0 \eqv x = y$;
@@ -137,7 +137,7 @@ Let $(M,\cO_M)$ and $(N,\cO_N)$ be compact topological spaces. Then $(M\times N,
 The above theorem easily extends to finite cartesian products. 
 
 \bd
-Let $(M,\cO)$ be a topological space and let $C$ be a cover. A \emph{refinement} of $C$ is a cover $R$ such that:
+Let $(M,\cO)$ be a topological space and let $C$ be a cover. A \emph{refinement}\index{refinement} of $C$ is a cover $R$ such that:
 \bse
 \forall \, U \in R : \exists \, V \in C : U \se V .
 \ese
@@ -155,7 +155,7 @@ is finite as a set.
 Compactness is a very strong property. Hence often times it does not hold, but a weaker and still useful property, called paracompactness, may still hold.
 
 \bd
-A topological space $(M,\cO)$ is said to be \emph{paracompact} if every open cover has an open refinement that is locally finite.
+A topological space $(M,\cO)$ is said to be \emph{paracompact}\index{topological space!paracompact}\index{paracompactness} if every open cover has an open refinement that is locally finite.
 \ed
 
 \bc
@@ -187,7 +187,7 @@ Let $(M,\cO_M)$ be a paracompact space and let $(N_i,\cO_{N_i})$ be compact spac
 \ec
 
 \bd
-Let $(M,\cO_M)$ be a topological space. A \emph{partition of unity} of $M$ is a set $\cF$ of continuous maps from $M$ to the interval $[0,1]$ such that for each $p\in M$ the following conditions hold:
+Let $(M,\cO_M)$ be a topological space. A \emph{partition of unity}\index{partition of unity}  of $M$ is a set $\cF$ of continuous maps from $M$ to the interval $[0,1]$ such that for each $p\in M$ the following conditions hold:
 \ben
 \item[i)] there exists $U(p)$ such that the set $\{f \in \cF \mid \forall \, x \in U(p):f(x)\neq 0\}$ is finite;
 \item[ii)] $\sum_{f\in \cF}f(p)=1$.
@@ -222,7 +222,7 @@ the partition of unity $\cF$ is subordinate to the open cover $C$.
 \subsection{Connectedness and path-connectedness}
 
 \bd
-A topological space $(M,\cO)$ is said to be \emph{connected} unless there exist two non-empty, non-intersecting open sets $A$ and $B$ such that $M=A\cup B$.
+A topological space $(M,\cO)$ is said to be \emph{connected}\index{connectedness}\index{topological space!connected} unless there exist two non-empty, non-intersecting open sets $A$ and $B$ such that $M=A\cup B$.
 \ed
 
 \be
@@ -245,7 +245,7 @@ A topological space $(M,\cO)$ is connected if, and only if, the only subsets tha
 \eq
 
 \bd
-A topological space $(M,\cO)$ is said to be \emph{path-connected} if for every pair of points $p,q\in M$ there exists a continuous curve $\g\cl[0,1]\to M$ such that $\g(0)=p$ and $\g(1)=q$.
+A topological space $(M,\cO)$ is said to be \emph{path-connected}\index{path-connectedness}\index{topological space!path-connected} if for every pair of points $p,q\in M$ there exists a continuous curve $\g\cl[0,1]\to M$ such that $\g(0)=p$ and $\g(1)=q$.
 \ed
 
 \be
@@ -279,7 +279,7 @@ Let $(M,\cO)$ be a topological space. Two curves $\g,\delta\cl[0,1]\to M$ such t
 \bse
 \g(0)=\delta(0) \quad \t{and} \quad \g(1)=\delta(1)
 \ese
-are said to be \emph{homotopic} if there exists a continuous map $h \cl [0,1]\times[0,1]\to M$ such that for all $\l \in [0,1]$:
+are said to be \emph{homotopic}\index{homotopic curves} if there exists a continuous map $h \cl [0,1]\times[0,1]\to M$ such that for all $\l \in [0,1]$:
 \bse
 h(0,\l) = \g(\l) \quad \t{and} \quad h(1,\l)=\delta(\l).
 \ese
@@ -330,7 +330,7 @@ Let $\mathscr{L}_p$ be the space of loops at $p\in M$. We define the \emph{conca
 \ed
 
 \bd
-Let $(M,\cO)$ be a topological space. The \emph{fundamental group} $\pi_1(p)$ of $(M,\cO)$ at $p\in M$ is the set:
+Let $(M,\cO)$ be a topological space. The \emph{fundamental group}\index{fundamental group} $\pi_1(p)$\index{$\pi_1(p)$} of $(M,\cO)$ at $p\in M$ is the set:
 \bse
 \pi_1(p) := \mathscr{L}_p/\!\sim\ = \{[\g] \mid \g \in \mathscr{L}_p\},
 \ese
@@ -341,13 +341,15 @@ where $\sim$ is the homotopy equivalence relation, together with the map $\bulle
 \ed
 
 \br
-Recall that a group is a pair $(G,\bullet)$ where $G$ is a set and $\bullet \cl G\times G \to G$ is a map (also called \emph{binary operation}) such that:
+Recall that a group\index{group} is a pair $(G,\bullet)$ where $G$ is a set and $\bullet \cl G\times G \to G$ is a map (also called \emph{binary operation}) such that:
 \ben
 \item[i)] $\forall \, a,b,c \in G : (a\bullet b)\bullet c = a \bullet (b\bullet c)$;
 \item[ii)] $\exists \, e \in G : \forall \, g \in G : g \bullet e = e \bullet g = g$;
 \item[iii)] $\forall \, g \in G : \exists \, g^{-1}\in G: g \bullet g^{-1} = g^{-1} \bullet g = e$.
 \een
-A \emph{group isomorphism} between two groups $(G,\bullet)$ and $(H,\circ)$ is a bijection $\phi\cl G \to H$ such that:
+A group is called \emph{abelian (or commutative)} if, in addition, $a\bullet b = b \bullet a$ for all $a,b\in G$.
+
+A \emph{group isomorphism}\index{isomorphism!of groups} between two groups $(G,\bullet)$ and $(H,\circ)$ is a bijection $\phi\cl G \to H$ such that:
 \bse
 \forall \, a,b \in G:\phi(a \bullet b) = \phi(a)\circ\phi(b).
 \ese
@@ -381,7 +383,7 @@ equipped with the subset topology inherited from $\R^3$. The sphere has the prop
 \ee
 
 \be
-The cylinder is defined as $C:=\R\times S^1$ equipped with the product topology. A loop in $C$ can either go around the cylinder (i.e.\ around its central axis) or not. If it does not, then it can be continuously deformed to a point (the identity loop). If it does, then it cannot be deformed to the identity loop (intuitively because the cylinder is infinitely long) and hence it is a homotopically different loop. The number of times a loop winds around the cylinder is called the \emph{winding number}. Loops with different winding numbers are not homotopic. Moreover, loops with different \emph{orientations} are also not homotopic and hence we have:
+The cylinder is defined as $C:=\R\times S^1$ equipped with the product topology. A loop in $C$ can either go around the cylinder (i.e.\ around its central axis) or not. If it does not, then it can be continuously deformed to a point (the identity loop). If it does, then it cannot be deformed to the identity loop (intuitively because the cylinder is infinitely long) and hence it is a homotopically different loop. The number of times a loop winds around the cylinder is called the \emph{winding number}\index{winding number}. Loops with different winding numbers are not homotopic. Moreover, loops with different \emph{orientations} are also not homotopic and hence we have:
 \bse
 \forall \, p \in C : (\pi_1(p),\bullet) \cong_\mathrm{grp}(\Z,+).
 \ese

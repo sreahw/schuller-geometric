@@ -1,10 +1,18 @@
 \subsection{Topological manifolds}
 
 \bd
-A paracompact, Hausdorff, topological space $(M,\cO)$ is called a \emph{$d$-dimensional (topological) manifold} if for every point $p\in M$ there exist a neighbourhood $U(p)$ and a homeomorphism $x\cl U(p) \to x(U(p)) \se \R^d$. We also write $\dim M = d$.
+A paracompact, Hausdorff, topological space $(M,\cO)$ is called a \emph{$d$-dimensional (topological) manifold}\index{manifold}\index{manifold!topological} if for every point $p\in M$ there exist a neighbourhood $U(p)$ and a homeomorphism $x\cl U(p) \to x(U(p)) \se \R^d$. We also write $\dim M = d$.
 \ed
 
-Intuitively, a $d$-dimensional manifold is a topological space which locally (i.e.\ around each point) looks like $\R^d$.
+Intuitively, a $d$-dimensional\index{dimension!manifold} manifold is a topological space which locally (i.e.\ around each point) looks like $\R^d$.
+\bp
+Let $M$ be a $d$-dimensional manifold and let $U,V\se M$ be open, with $U\cap V \neq \vn$. If $x$ and $y$ are two homeomorphisms
+\bse
+x\cl U \to x(U)\se \R^d \qquad \text{and}\qquad y\cl V \to y(V)\se\R^{d'},
+\ese
+then $d=d'$.
+\ep
+This ensures that the concept of dimension is indeed well-defined, i.e.\ it is the same at every point, at least on each connected component of the manifold.
 
 \be
 Trivially, $\R^d$ is a $d$-dimensional manifold for any $d \geq 1$. The space $S^1$ is a 1-dimensional manifold while the spaces $S^2$, $C$ and $T^2$ are 2-dimensional manifolds.
@@ -19,7 +27,7 @@ The space $S^1$ is a submanifold of $\R^2$ while the spaces $S^2$, $C$ and $T^2$
 \ee
 
 \bd
-Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological manifolds of dimension $m$ and $n$, respectively. Then, $(M\times N,\cO_{M\times N})$ is a topological manifold of dimension $m+n$ called the \emph{product manifold}.
+Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological manifolds of dimension $m$ and $n$, respectively. Then, $(M\times N,\cO_{M\times N})$ is a topological manifold of dimension $m+n$ called the \emph{product manifold}\index{manifold!product}.
 \ed
 
 \be
@@ -40,13 +48,13 @@ Products are very useful. Very often in physics one intuitively thinks of the pr
 
 
 \bd
-A \emph{bundle} (of topological manifolds) is a triple $(E,\pi,M)$ where $E$ and $M$ are topological manifolds called the \emph{total space} and the \emph{base space} respectively, and $\pi$ is a continuous, surjective map $\pi\cl E \to M$ called the \emph{projection map}.
+A \emph{bundle}\index{bundle} (of topological manifolds) is a triple $(E,\pi,M)$ where $E$ and $M$ are topological manifolds called the \emph{total space} and the \emph{base space} respectively, and $\pi$ is a continuous, surjective map $\pi\cl E \to M$ called the \emph{projection map}.
 \ed
 
 We will often denote the bundle $(E,\pi,M)$ by $E\xrightarrow{\,\pi\,}M$.
 
 \bd
-Let $E\xrightarrow{\,\pi\,}M$ be a bundle and let $p\in M$. Then, $F_p:=\mathrm{preim}_\pi(\{p\})$ is called the \emph{fibre} at the point $p$.
+Let $E\xrightarrow{\,\pi\,}M$ be a bundle and let $p\in M$. Then, $F_p:=\mathrm{preim}_\pi(\{p\})$ is called the \emph{fibre}\index{fibre} at the point $p$.
 \ed
 
 Intuitively, the fibre at the point $p\in M$ is a set of points in $E$ (represented below as a line) attached to the point $p$. The projection map sends all the points is the fibre $F_p$ to the point $p$.
@@ -85,7 +93,7 @@ F_p:=\mathrm{preim}_\pi(\{p\}) \cong_\mathrm{top} \left\{ \ba{ll} S^1 &\t{if }p<
 \ee
 
 \bd
-Let $E\xrightarrow{\,\pi\,}M$ be a bundle and let $F$ be a manifold. Then, $E\xrightarrow{\,\pi\,}M$ is called a \emph{fibre bundle}, with (typical) fibre $F$, if:
+Let $E\xrightarrow{\,\pi\,}M$ be a bundle and let $F$ be a manifold. Then, $E\xrightarrow{\,\pi\,}M$ is called a \emph{fibre bundle}\index{fibre bundle}\index{bundle!fibre}, with (typical) fibre $F$, if:
 \bse
 \forall \, p \in M : \mathrm{preim}_\pi(\{p\}) \cong_\mathrm{top} F.
 \ese
@@ -112,7 +120,7 @@ A $\C$-line bundle over $M$ is the fibre bundle $(E,\pi,M)$ with fibre $\C$. Not
 \ee
 
 \bd
-Let $E\xrightarrow{\,\pi\,}M$ be a bundle. A map $\s\cl M \to E$ is called a \emph{(cross-)section} of the bundle if $\pi \circ \s = \id_M$.
+Let $E\xrightarrow{\,\pi\,}M$ be a bundle. A map $\s\cl M \to E$ is called a \emph{(cross-)section}\index{section} of the bundle if $\pi \circ \s = \id_M$.
 \ed
 
 Intuitively, a section is a map $\s$ which sends each point $p\in M$ to \emph{some} point $\s(p)$ in its fibre $F_p$, so that the projection map $\pi$ takes $\s(p) \in F_p\se E$ back to the point $p\in M$.
@@ -128,8 +136,8 @@ Intuitively, a section is a map $\s$ which sends each point $p\in M$ to \emph{so
 \node at (0.5,-2.3) {$F_p$};
 \node at (1.55,-0.8) {$p \in M$};
 \draw[fill=black] (0.9501,-0.4298) circle (0.05);
-\draw [-stealth] plot[smooth, tension=.7] coordinates {(1.1834,-0.5006) (2.2576,0.2354) (2.5265,1.5914) (2.3316,2.0564)};
-\draw [-stealth] plot[smooth, tension=.7] coordinates {(1.8399,2.3042) (0.7458,1.7472) (0.3281,0.872) (0.7259,-0.1226)};
+\draw [->] plot[smooth, tension=.7] coordinates {(1.1834,-0.5006) (2.2576,0.2354) (2.5265,1.5914) (2.3316,2.0564)};
+\draw [->] plot[smooth, tension=.7] coordinates {(1.8399,2.3042) (0.7458,1.7472) (0.3281,0.872) (0.7259,-0.1226)};
 \node at (0.09,0.6333) {$\pi$};
 \node at (1.8,0.2) {$\s$};
 \node at (-1.6612,-0.3216) {$M$};
@@ -149,18 +157,18 @@ where $s\cl M \to F$ is any map.
 \ee
 
 \bd
-A \emph{subbundle} of a bundle $(E,\pi,M)$ is a triple $(E',\pi',M')$ where $E'\se E$ and $M'\se M$ are submanifolds and $\pi':=\pi|_{E'}$.
+A \emph{sub-bundle}\index{sub-bundle} of a bundle $(E,\pi,M)$ is a triple $(E',\pi',M')$ where $E'\se E$ and $M'\se M$ are submanifolds and $\pi':=\pi|_{E'}$.
 \ed
 
 \bd
-Let $(E,\pi,M)$ be a bundle and let $N\se M$ be a submanifold. The \emph{restricted bundle} (to $N$) is the triple $(E,\pi',N)$ where:
+Let $(E,\pi,M)$ be a bundle and let $N\se M$ be a submanifold. The \emph{restricted bundle}\index{bundle!restricted} (to $N$) is the triple $(E,\pi',N)$ where:
 \bse
 \pi':=\pi|_{\mathrm{preim}_\pi(N)}
 \ese
 \ed
 
 \bd
-Let $E\xrightarrow{\,\pi\,}M$ and $E'\xrightarrow{\,\pi'\,}M'$ be bundles and let $u\cl E\to E'$ and $v\cl M\to M'$ be maps. Then $(u,v)$ is called a \emph{bundle morphism} if the following diagram commutes:
+Let $E\xrightarrow{\,\pi\,}M$ and $E'\xrightarrow{\,\pi'\,}M'$ be bundles and let $u\cl E\to E'$ and $v\cl M\to M'$ be maps. Then $(u,v)$ is called a \emph{bundle morphism}\index{morphism} if the following diagram commutes:
 \bse
 \begin{tikzcd}
 E \ar[r,"u"] \ar[d,"\pi"]& E' \ar[d,"\pi'"]\\
@@ -173,7 +181,7 @@ i.e.\ if $\pi'\circ u = v \circ \pi$.
 If $(u,v)$ and $(u,v')$ are both bundle morphisms, then $v=v'$. That is, given $u$, if there exists $v$ such that $(u,v)$ is a bundle morphism, then $v$ is unique.
 
 \bd
-Two bundles $E\xrightarrow{\,\pi\,}M$ and $E'\xrightarrow{\,\pi'\,}M'$ are said to be \emph{isomorphic (as bundles)} if there exist bundle morphisms $(u,v)$ and $(u^{-1},v^{-1})$ satisfying:
+Two bundles $E\xrightarrow{\,\pi\,}M$ and $E'\xrightarrow{\,\pi'\,}M'$ are said to be \emph{isomorphic (as bundles)}\index{bundle!(locally) isomorphic} if there exist bundle morphisms $(u,v)$ and $(u^{-1},v^{-1})$ satisfying:
 \bse
 \begin{tikzcd}
 E \ar[rr,shift left,"u"] \ar[dd,"\pi"']&& E' \ar[ll,shift left,"u^{-1}"]\ar[dd,"\pi'"]\\
@@ -181,7 +189,7 @@ E \ar[rr,shift left,"u"] \ar[dd,"\pi"']&& E' \ar[ll,shift left,"u^{-1}"]\ar[dd,"
 M \ar[rr,shift left,"v"]&& M' \ar[ll,shift left,"v^{-1}"]
 \end{tikzcd}
 \ese
-Such a $(u,v)$ is called a \emph{bundle isomorphism}.
+Such a $(u,v)$ is called a \emph{bundle isomorphism}\index{isomorphism!of bundles}.
 \ed
 
 Bundle isomorphisms are the structure-preserving maps for bundles.
@@ -197,7 +205,7 @@ is isomorphic to the bundle $E'\xrightarrow{\,\pi'\,}M'$.
 \bd
 A bundle $E\xrightarrow{\,\pi\,}M$ is said to be:
 \ben
-\item[i)] \emph{trivial} if it is isomorphic to a product bundle;
+\item[i)] \emph{trivial}\index{bundle!(locally) trivial} if it is isomorphic to a product bundle;
 \item[ii)] \emph{locally trivial} if it is locally isomorphic to a product bundle.
 \een
 \ed
@@ -217,7 +225,7 @@ In quantum mechanics, what is usually called a ``wave function'' is not a functi
 \er
 
 \bd
-Let $E\xrightarrow{\,\pi\, }M$ be a bundle and let $f\cl M'\to M$ be a map from some manifold $M'$. The \emph{pull-back bundle of} $E\xrightarrow{\,\pi\, }M$ \emph{induced by} $f$ is defined as $E'\xrightarrow{\,\pi'\,}M'$, where:
+Let $E\xrightarrow{\,\pi\, }M$ be a bundle and let $f\cl M'\to M$ be a map from some manifold $M'$. The \emph{pull-back bundle of} \index{bundle!pull-back}$E\xrightarrow{\,\pi\, }M$ \emph{induced by} $f$ is defined as $E'\xrightarrow{\,\pi'\,}M'$, where:
 \bse
 E':=\{(m',e)\in M'\times E \mid f(m')=\pi(e)\}
 \ese
@@ -265,25 +273,25 @@ satisfies $\pi'\circ\s'=\id_{M'}$ and it is thus a section on the pull-back bund
 \subsection{Viewing manifolds from atlases}
 
 \bd
-Let $(M,\cO)$ be a $d$-dimensional manifold. Then, a pair $(U,x)$ where $U\in \cO$ and $x\cl U \to x(U) \se \R^d$ is a homeomorphism, is said to be a \emph{chart} of the manifold.
+Let $(M,\cO)$ be a $d$-dimensional manifold. Then, a pair $(U,x)$ where $U\in \cO$ and $x\cl U \to x(U) \se \R^d$ is a homeomorphism, is said to be a \emph{chart}\index{chart} of the manifold.
 \ed
 
-The \emph{components functions} of $x\cl U\to \R^d$ are the maps:
+The \emph{component functions (or maps)}\index{component map}\index{map!component} of $x\cl U\to x(U) \se \R^d$ are the maps:
 \bi{rcCl}
 x^i \cl & U  & \to & \R\\
-& p & \mapsto & \mathrm{proj}_i(x(p))
+& p & \mapsto & \proj_i(x(p))
 \ei
-for $1\leq i\leq d$, where $\mathrm{proj}_i(x(p))$ is the $i$-th component of $x(p)\in \R^d$. The $x^i(p)$ are called the \emph{co-ordinates} of the point $p\in U$ with respect to the chart $(U,x)$.
+for $1\leq i\leq d$, where $\mathrm{proj}_i(x(p))$ is the $i$-th component of $x(p)\in \R^d$. The $x^i(p)$ are called the \emph{co-ordinates}\index{co-ordinates} of the point $p\in U$ with respect to the chart $(U,x)$.
 
 \bd
-An \emph{atlas} of a manifold $M$ is a collection $\mathscr{A}:=\{(U_\a,x_\a)\mid \a \in \mathcal{A}\}$ of charts such that:
+An \emph{atlas}\index{atlas} of a manifold $M$ is a collection $\mathscr{A}:=\{(U_\a,x_\a)\mid \a \in \mathcal{A}\}$ of charts such that:
 \bse
 \bigcup_{\a \in \mathcal{A}}U_\a = M. 
 \ese
 \ed
 
 \bd
-Two charts $(U,x)$ and $(V,y)$ are said to be \emph{$C^0$-compatible} if either $U \cap V = \vn$ or if the map:
+Two charts $(U,x)$ and $(V,y)$ are said to be \emph{$C^0$-compatible} if either $U \cap V = \vn$ or the map:
 \bse
 y\circ x^{-1}\cl x(U\cap V) \to y(U\cap V)
 \ese
@@ -302,17 +310,17 @@ x(U\cap V) \se \R^d \ar[rr,"y\circ x^{-1}"']& & y(U\cap V)\se \R^d
 Since the maps $x$ and $y$ are homeomorphisms, the composition map $y \circ x^{-1}$ is also a homeomorphism and hence continuous. Therefore, any two charts on a topological manifold are $C^0$-compatible. This definition my thus seem redundant since it applies to every pair of charts. However, it is just a ``warm up'' since we will later refine this definition and define the \emph{differentiability} of maps on a manifold in terms of $C^k$-compatibility of charts. 
 
 \br
-The map $y\circ x^{-1}$ (and its inverse $x\circ y^{-1}$) is called the \emph{co-ordinate change map} or \emph{chart transition map}.
+The map $y\circ x^{-1}$ (and its inverse $x\circ y^{-1}$) is called the \emph{co-ordinate change map} or \emph{chart transition map}\index{map!transition}.
 \er
 
 \bd
-A \emph{$C^0$-atlas}\index{atlas}\index{atlas!$C^0$} of a manifold is an atlas of pairwise $C^0$-compatible charts.
+A \emph{$C^0$-atlas} of a manifold is an atlas of pairwise $C^0$-compatible charts.
 \ed
 
 Note that any atlas is also a \emph{$C^0$-atlas}.
 
 \bd
-A $C^0$-atlas $\mathscr{A}$ is said to be a \emph{maximal atlas}\index{atlas!maximal} if for every $(U,x)\in\mathscr{A}$, we have $(V,y)\in\mathscr{A}$ for all $(V,y)$ charts that are $C^0$-compatible with $(U,x)$.
+A $C^0$-atlas $\mathscr{A}$ is said to be a \emph{maximal atlas} if for every $(U,x)\in\mathscr{A}$, we have $(V,y)\in\mathscr{A}$ for all $(V,y)$ charts that are $C^0$-compatible with $(U,x)$.
 \ed
 
 \be
