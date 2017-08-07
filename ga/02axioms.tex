@@ -190,7 +190,7 @@ The pair set $\{x,y\}$ is thus an unordered pair. However, using the axiom on pa
 One candidate which satisfies this property is $(x,y):=\{x,\{x,y\}\}$, which is a set by the axiom on pair sets.
 
 \br
-The pair set axiom also guarantees the existence of one-element sets. 
+The pair set axiom also guarantees the existence of one-element sets, called \emph{singletons}\index{singleton}. 
 If $x$ is a set, then we define $\{x\}:=\{x,x\}$. Informally, we can say that $\{x\}$ and $\{x,x\}$ express the same amount of information, namely that they contain $x$. 
 \er
 
@@ -272,7 +272,7 @@ The principle of restricted comprehension is a consequence of the axiom of repla
 \bq
 We have two cases.
 \ben
-\item If $\neg \exists \, y \in m : P(y)$, then we define: $\{y \in m \mid P(y)\} := \vn$.
+\item If $\neg ( \exists \, y \in m : P(y))$, then we define: $\{y \in m \mid P(y)\} := \vn$.
 \item If $\exists \, \hat y \in m : P(\hat y)$, then let $R$ be the functional relation:
 \bse
 R(x,y):= (P(x)\land x=y)\lor(\neg P(x)\land \hat y = y)
@@ -360,7 +360,7 @@ This may appear more complicated than what we had before, but it is much nicer f
 \ese
 where $P(x) \eqv (\exists \,a : a \in x) \land (\forall \, a : \forall \, b : (a\in x \land b \in x) \imp \bigcap \, \{a,b\} = \vn )$.
 \br
-The axiom of choice is independent of the other 8 axioms, which means that one could have have set theory with or without the axiom of choice. However, standard mathematics uses the axiom of choice and hence so will we. There is a number of theorems that can only be proved by using the axiom of choice. Amongst these we have:
+The axiom of choice is independent of the other 8 axioms, which means that one could have set theory with or without the axiom of choice. However, standard mathematics uses the axiom of choice and hence so will we. There is a number of theorems that can only be proved by using the axiom of choice. Amongst these we have:
 \bit
 \item every vector space has a basis;
 \item there exists a complete system of representatives of an equivalence relation.

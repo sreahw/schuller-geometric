@@ -193,6 +193,14 @@ D(v\bullet w ) = D(v) \bullet w + v \bullet D(w)
 for all $v,w \in A$.
 \ed
 
+\br
+The definition of derivation can be extended to include maps $A\to B$, with suitable structures. The obvious first attempt would be to consider two algebras $(A,+_A,\cdot_A,\bullet_A)$, $(B,+_B,\cdot_B,\bullet_B)$, and require $D\cl A\xrightarrow{\sim}B$ to satisfy
+\bse
+D(v\bullet_Aw)= D(v)\bullet_Bw +_B v \bullet_B D(w).
+\ese
+However, this is meaningless as it stands since $\bullet_B\cl B\times B \to B$, but on the right hand side $\bullet_B$ acts on elements from $A$ too. In order for this to work, $B$ needs to be a equipped with a product by elements of $A$, both from the left and from the right. The structure we are looking for is called a \emph{bimodule} over $A$, and we will meet this later on. 
+\er
+
 \be
 The usual derivative operator is a derivation on $C^\infty(\R)$, the algebra of smooth real functions, since it is linear and satisfies the Leibniz rule.
 
@@ -226,15 +234,33 @@ However, derivations are maps, so we can still compose them as maps and define
 The map $[D_1,D_2]$ is (perhaps surprisingly) a derivation, since it is linear and
 \bi{rCl}
 [D_1,D_2](v\bullet w) &:=& (D_1\circ D_2-D_2\circ D_1)(v\bullet w)\\
-&=& D_1( D_2(v\bullet w)-D_2(D_1(v\bullet w))\\
+&=& D_1( D_2(v\bullet w))-D_2(D_1(v\bullet w))\\
 &=& D_1( D_2(v) \bullet w + v \bullet D_2(w))-D_2(D_1(v) \bullet w + v \bullet D_1(w))\\
 & = &  D_1( D_2(v) \bullet w) + D_1(v \bullet D_2(w))-D_2(D_1(v) \bullet w) - D_2(v \bullet D_1(w))\\
 & = &  D_1( D_2(v)) \bullet w + \Ccancel[gray]{D_2(v) \bullet D_1( w)} + \Ccancel[gray]{D_1(v) \bullet D_2(w)} + v \bullet D_1(D_2(w))\\
 & & \negmedspace {} - D_2(D_1(v)) \bullet w - \Ccancel[gray]{D_1(v)\bullet D_2( w)} - \Ccancel[gray]{D_2(v) \bullet D_1(w)} - v \bullet D_2(D_1(w))\\
-& = &  (D_1( D_2(v))-D_2( D_1(v))) \bullet w + v\bullet (D_1( D_2(w)-D_2( D_1(w))) \\
+& = &  (D_1( D_2(v))-D_2( D_1(v))) \bullet w + v\bullet (D_1( D_2(w))-D_2( D_1(w))) \\
 & = &  [D_1,D_2](v) \bullet w + v\bullet [D_1,D_2](w)
 \ei
 Then $(\Der_K(A),+,\cdot,[-,-])$ is a Lie algebra over $K$.
+\ee
+
+If we have a manifold, we can define the related notion of derivation on an open subset at a point.
+
+\bd
+Let $M$ be a manifold and let $p\in U \se M$, where $U$ is open. A \emph{derivation on $U$ at $p$} is an $\R$-linear map $D\cl C^\infty(U)\xrightarrow{\sim}\R$ satisfying the Leibniz rule
+\bse
+D(fg)=D(f)g(p)+f(p)D(g).
+\ese
+We denote by $\Der_p(U)$ the $\R$-vector space of derivations on $U$ at $p$, with operations defined pointwise.
+\ed
+
+\be
+The tangent vector $X_{\gamma,p}$ is a derivation on $U\se M$ at $p$, where $U$ is any neighbourhood of $p$. In fact, our definition of the tangent space is equivalent to
+\bse
+T_pM := \Der_p(U),
+\ese
+for some open $U$ containing $p$. One can show that this does not depend on which neighbourhood $U$ of $p$ we pick.
 \ee
 
 \subsection{A basis for the tangent space}
@@ -299,7 +325,7 @@ To show linear independence, suppose that
 \ese
 for some scalars $\lambda^a$. Note that this is an operator equation, and the zero on the right hand side is the zero operator $0\in T_pM$.
 
-Recall that, given the chart $(U,x)$, the coordinate maps $x^b\cl U \to \R$ are smooth, i.e.\ $x^b\in C^\infty(U)$. Thus we can feed them into the left hand side to obtain
+Recall that, given the chart $(U,x)$, the coordinate maps $x^b\cl U \to \R$ are smooth, i.e.\ $x^b\in C^\infty(U)$. Thus, we can feed them into the left hand side to obtain
 \bi{rCl}
 0 & = & \lambda^a \tvb{x}{a}{p} (x^b)\\
 & = & \lambda^a\, \partial_a (x^b\circ x^{-1})(x(p))\\
@@ -309,6 +335,10 @@ Recall that, given the chart $(U,x)$, the coordinate maps $x^b\cl U \to \R$ are 
 \ei
 i.e.\ $\lambda^b=0$ for all $1\leq b \leq \dim M$. So $\mathcal{B}$ is indeed a basis of $T_pM$, and since by construction $|\mathcal{B}|=\dim M$, the proof is complete. 
 \eq
+
+\br
+While it is possible to define infinite-dimensional manifolds, in this course we will only consider finite-dimensional ones. Hence $\dim T_pM=\dim M$ will always be finite in this course.
+\er
 
 \br
 Note that the basis that we have constructed in the proof is \emph{not} chart-independent. Indeed, each different chart will induce a different tangent space basis, and we distinguish between them by keeping the chart map in the notation for the basis elements.
@@ -334,7 +364,7 @@ Let $X\in T_pM$ be a tangent vector and let $(U,x)$ be a chart containing $p$. I
 \bse
 X = X^a \tvb{x}{a}{p} ,
 \ese
-then the real numbers $X^1,\ldots,X^{\dim M}$ are called the \emph{components}\index{components} of $X$ with respect to the tangent space basis induced by the chart $(U,x)$.
+then the real numbers $X^1,\ldots,X^{\dim M}$ are called the \emph{components}\index{components} of $X$ with respect to the tangent space basis induced by the chart $(U,x)$. The basis $\{\tvb{x}{a}{p}\}$ is also called a \emph{co-ordinate basis}.
 \ed
 
 \bp
@@ -345,17 +375,22 @@ Let $X\in T_pM$ and let $(U,x)$ and $(V,y)$ be two charts containing $p$. Then w
 \ep
 
 \bq
-Assume w.l.o.g.\ that $U=V$. Since $\left(\frac{\partial}{\partial x^a}\right)_p\in T_pM$ and $\bigl\{\bigl(\frac{\partial}{\partial y^b}\bigr)_{\negmedspace p}\bigr\}$ forms a basis, we must have
+Assume w.l.o.g.\ that $U=V$. Since $\tvb{x}{a}{p}\in T_pM$ and $\{\tvb{x}{a}{p}\}$ forms a basis, we must have
 \bse
 \tvb{x}{a}{p} = \lambda^b \tvb{y}{b}{p}
 \ese
 for some $\lambda^b$. Let us determine what the $\lambda^b$ are by applying both sides of the equation to the coordinate maps $y^c$:
 \bi{rCl}
-\tvb{x}{a}{p} (y^c) &=& \lambda^b\tvb{y}{b}{p} (y^c)\\
-\partial_a(y^c\circ x^{-1})(x(p)) &=& \lambda^b\, \partial_b(y^c\circ y^{-1})(y(p))\\
-\partial_a(y^c\circ x^{-1})(x(p)) &=& \lambda^b\, \delta^c_b\\
-\partial_a(y^c\circ x^{-1})(x(p)) &=& \lambda^c.
+\tvb{x}{a}{p} (y^c) &=& \partial_a(y^c\circ x^{-1})(x(p));\\
+\lambda^b\tvb{y}{b}{p} (y^c) &=& \lambda^b\, \partial_b(y^c\circ y^{-1})(y(p))\\
+&=& \lambda^b\, \partial_b(\proj_c)(y(p))\\
+&=& \lambda^b\, \delta^c_b\\
+&=& \lambda^c.
 \ei
+Hence
+\bse
+\lambda^c = \partial_a(y^c\circ x^{-1})(x(p)).
+\ese
 Substituting this expression for $\lambda^c$ gives the result.
 \eq
 
@@ -374,17 +409,44 @@ Hence, we read-off $\widetilde X^b = \partial_a(y^b\circ x^{-1})(x(p)) \, X^a$.
 \eq
 
 \br
-By abusing notation, we can write the previous equations in a more familiar form. Denote by $y^b$ the maps $y^b\circ x^{-1}\cl x(U)\se\R^{\dim M}\to\R$, which we think of as functions of the independent variables $x^1,\ldots,x^{\dim M}$. Then, we have
+By abusing notation, we can write the previous equations in a more familiar form. Denote by $y^b$ the maps $y^b\circ x^{-1}\cl x(U)\se\R^{\dim M}\to\R$; these are real functions of $\dim M$ independent real variables. Since here we are only interested in what happens at the point $p\in M$, we can think of the maps $x^1,\ldots,x^{\dim M}$ as the independent variables of each of the $y^b$.
+
+This is a general fact: if $\{*\}$ is a singleton (we let $*$ denote its unique element) and $x\cl\{*\}\to A$, $y\cl A \to B$ are maps, then $y\circ x$ is the same as the map $y$ with independent variable $x$. Intuitively, $x$ just ``chooses'' an element of $A$.
+
+Hence, we have $y^b = y^b(x^1,\ldots,x^{\dim M})$ and we can write
 \bse
-\tvb{x}{a}{p}= \frac{\partial y^b}{\partial x^a}(x(p))\tvb{y}{b}{p} \qquad \text{and} \qquad \widetilde X^b = \frac{\partial y^b}{\partial x^a}(x(p)) \, X^a
+\tvb{x}{a}{p}= \frac{\partial y^b}{\partial x^a}(x(p))\tvb{y}{b}{p} \qquad \text{and} \qquad \widetilde X^b = \frac{\partial y^b}{\partial x^a}(x(p)) \, X^a,
 \ese
-which correspond to our earlier $e_a=A^{b}_{\phantom{b}a}\widetilde e_b$ and $\widetilde v^b=A^b_{\phantom{b}a}v^a$. The inverse transformation, of course, is given by
+which correspond to our earlier $e_a=A^{b}_{\phantom{b}a}\widetilde e_b$ and $\widetilde v^b=A^b_{\phantom{b}a}v^a$. The function $y=y(x)$ expresses the new co-ordinates\index{co-ordinates} in terms of the old ones, and $A^{b}_{\phantom{b}a}$ is the \emph{Jacobian}\index{Jacobian matrix} matrix of this map, evaluated at $x(p)$. The inverse transformation, of course, is given by
 \bse
 B^b_{\phantom{b}a} = (A^{-1})^b_{\phantom{b}a} = \frac{\partial x^b}{\partial y^a}(y(p)).
 \ese
 \er
 
+\br
+The formula for change of components of vectors under a change of chart suggests yet another way to define the tangent space to $M$ at $p$.
 
+Let $\mathscr{A}_p:\{(U,x)\in \mathscr{A}\mid p \in U\}$ be the set of charts on $M$ containing $p$. A \emph{tangent vector} $v$ at $p$ is a map
+\bse
+v\cl \mathscr{A}_p \to \R^{\dim M}
+\ese
+satisfying
+\bse
+v((V,y)) = A\, v((U,x))
+\ese
+where $A$ is the Jacobian matrix of $y\circ x^{-1}\cl\R^{\dim M}\to\R^{\dim M}$ at $x(p)$. In components, we have
+\bse
+[v((V,y))]^b = \frac{\partial y^b}{\partial x^a}(x(p)) \, [v((U,x))]^a.
+\ese
+The tangent space $T_pM$ is then defined to be the set of all tangent vectors at $p$, endowed with the appropriate vector space structure.
+
+What we have given above is the mathematically rigorous version of the definition of vector typically found in physics textbooks, i.e.\ that a vector is a ``set of numbers'' $v^a$ which, under a change of coordinates $y=y(x)$, transform as
+\bse
+\widetilde v^b = \frac{\partial y^b}{\partial x^a} \, v^a.
+\ese
+
+For a comparison of the different definitions of $T_pM$  that we have presented and a proof of their equivalence, refer to Chapter 2 of \emph{Vector Analysis}, by Klaus J\"anich.
+\er
 
 
 

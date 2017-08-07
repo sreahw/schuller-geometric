@@ -56,11 +56,11 @@ are maps satisfying the following axioms:
 \begin{itemize}
 \item $(V,\oplus)$ is an abelian group;
 \item the map $\odot$ is an \emph{action} of $K$ on $(V,\oplus)$:
-\ben
-\item[i)] $\forall \, \lambda \in K : \forall \, v,w \in V : \lambda\odot(v\oplus w)=(\lambda\odot v)\oplus (\lambda\odot w)$;
-\item[ii)] $\forall \, \lambda,\mu \in K : \forall \, v \in V : (\lambda+\mu)\odot v= (\lambda \odot v) \oplus (\mu \odot v)$;
-\item[iii)] $\forall \, \lambda,\mu \in K : \forall \, v \in V : (\lambda\cdot\mu)\odot v= \lambda \odot (\mu \odot v)$;
-\item[iv)] $\forall \, v \in V : 1\odot v = v$.
+\ben[label=\roman*)]
+\item $\forall \, \lambda \in K : \forall \, v,w \in V : \lambda\odot(v\oplus w)=(\lambda\odot v)\oplus (\lambda\odot w)$;
+\item $\forall \, \lambda,\mu \in K : \forall \, v \in V : (\lambda+\mu)\odot v= (\lambda \odot v) \oplus (\mu \odot v)$;
+\item $\forall \, \lambda,\mu \in K : \forall \, v \in V : (\lambda\cdot\mu)\odot v= \lambda \odot (\mu \odot v)$;
+\item $\forall \, v \in V : 1\odot v = v$.
 \een
 \end{itemize}
 \ed
@@ -81,13 +81,13 @@ Also recall that if we have $n$ vector spaces over $K$, we can form the $n$-fold
 As usual by now, we will look at the structure preserving maps between vector spaces.
 
 \bd
-Let $(V,\oplus,\odot)$, $(W,\boxplus,\boxdot)$ be vector spaces over the same field $K$ and let $f\cl V\to W$ be a map. We say that $f$ is a \emph{linear map}\index{linear map}\index{map!linear} if for all $u_1,u_2\in V$ and all $\lambda \in K$
+Let $(V,\oplus,\odot)$, $(W,\boxplus,\boxdot)$ be vector spaces over the same field $K$ and let $f\cl V\to W$ be a map. We say that $f$ is a \emph{linear map}\index{linear map}\index{map!linear} if for all $v_1,v_2\in V$ and all $\lambda \in K$
 \bse
-f((\lambda\odot u_1)\oplus u_2) = (\lambda\boxdot f( u_1))\boxplus f(u_2).
+f((\lambda\odot v_1)\oplus v_2) = (\lambda\boxdot f( v_1))\boxplus f(v_2).
 \ese
 \ed
 
-From now on, we will drop the special notation for the vector space operations and suppress the dot for scalar multiplication. For instance, we will write the equation above as $f(\lambda u_1+u_2)=\lambda f(u_1)+f(u_2)$, hoping that this will not cause any confusion.
+From now on, we will drop the special notation for the vector space operations and suppress the dot for scalar multiplication. For instance, we will write the equation above as $f(\lambda v_1+v_2)=\lambda f(v_1)+f(v_2)$, hoping that this will not cause any confusion.
 
 \bd
 A bijective linear map is called a \emph{linear isomorphism}\index{isomorphism!of vector spaces} of vector spaces. Two vector spaces are said to be \emph{isomorphic} is there exists a linear isomorphism between them. We write $V\cong_\mathrm{vec}W$.
@@ -105,23 +105,23 @@ Let $V$ and $W$ be vector spaces over the same field $K$. Define the set
 where the notation $ f\cl V\xrightarrow{\sim}W$ stands for ``$f$ is a linear map from $V$ to $W$''.
 \ed
 The hom-set $\mathrm{Hom}(V,W)$ can itself be made into a vector space over $K$ by defining:
-\bi{rcCc}
+\bi{rrCl}
 \diamondplus \cl &\mathrm{Hom}(V,W) \times \mathrm{Hom}(V,W) &\to &\mathrm{Hom}(V,W)\\
 & (f,g) & \mapsto & f \diamondplus g
 \ei
 where
 \bi{rcCl}
-f \diamondplus g \cl &V  &\to &W\\
+f \diamondplus g \cl &V  &\xrightarrow{\sim} &W\\
 & v & \mapsto & (f \diamondplus g)(v) := f(v)+g(v),
 \ei 
 and
-\bi{rcCc}
+\bi{rrCl}
 \diamonddot \cl &K \times \mathrm{Hom}(V,W) &\to &\mathrm{Hom}(V,W)\\
 & (\lambda,f) & \mapsto & \lambda \diamonddot f
 \ei
 where
 \bi{rcCl}
-\lambda \diamonddot f \cl &V  &\to &W\\
+\lambda \diamonddot f \cl &V  &\xrightarrow{\sim} &W\\
 & v & \mapsto & (\lambda \diamonddot f)(v) := \lambda f(v).
 \ei 
 It is easy to check that both $f \diamondplus g$ and $\lambda \diamonddot f$ are indeed linear maps from $V$ to $W$. For instance, we have:
@@ -135,7 +135,7 @@ It is easy to check that both $f \diamondplus g$ and $\lambda \diamonddot f$ are
 so that $\lambda \diamonddot f\in \mathrm{Hom}(V,W)$. One should also check that $\diamondplus$ and $\diamonddot$ satisfy the vector space axioms.
 
 \br
-Notice that in the definition of vector space,none of the axioms require that $K$ necessarily be a field. In fact, just a (unital) ring would suffice. Vector spaces over rings, however, have vastly different properties than ordinary vector spaces, and indeed they have a name of their own. They are called \emph{modules} over a ring, and we will meet them later.
+Notice that in the definition of vector space, none of the axioms require that $K$ necessarily be a field. In fact, just a (unital) ring would suffice. Vector spaces over rings, have a name of their own. They are called \emph{modules} over a ring, and we will meet them later.
 
 For the moment, it is worth pointing out that everything we have done so far applies equally well to modules over a ring, up to and including the definition of $\mathrm{Hom}(V,W)$. However, if we try to make $\mathrm{Hom}(V,W)$ into a module, we run into trouble. Notice that in the derivation above, we used the fact the multiplication in a field is commutative. But this is not the case in general in a ring.
 \er
@@ -187,7 +187,7 @@ A bilinear map out of $V\times W$ is \emph{not} the same as a linear map out of 
 The map $f\cl \R^2\to \R$ given by $(x,y)\mapsto x+y$ is linear but not bilinear, while the map $(x,y)\mapsto xy$ is bilinear but not linear.
 \ee
 
-We can immediately generalize the above to define \emph{multilinear} maps out of a Cartesian product of vector spaces.
+We can immediately generalise the above to define \emph{multilinear} maps out of a Cartesian product of vector spaces.
 
 \bd
 Let $V$ be a vector space over $K$. A \emph{$(p,q)$-tensor}\index{tensor} $T$ on $V$ is a multilinear map
@@ -232,10 +232,10 @@ where $T \oplus S$ and $\lambda \odot T$ are defined pointwise, as we did with $
 We now define an important way of obtaining a new tensor from two given ones.
 
 \bd
-Let $T\in T^p_q V$ and $S\in T^r_s V$. We define the \emph{tensor product}\index{tensor!product} of $T$ and $S$ to be $T\otimes S\in T^{p+r}_{q+s}V$ where:
+Let $T\in T^p_q V$ and $S\in T^r_s V$. The \emph{tensor product}\index{tensor!product} of $T$ and $S$ is the tensor $T\otimes S\in T^{p+r}_{q+s}V$ defined by:
 \bi{rl}
 (T\otimes S)(\omega_1,\ldots,\omega_p,\omega_{p+1},\ldots,\omega_{p+r},v_1,&\ldots,v_q,v_{q+1},\ldots,v_{q+s})\\
-:=T(\omega_1,\ldots,\omega_p,v_1,&\ldots,v_q)S(\omega_{p+1},\ldots,\omega_{p+r},v_{q+1},\ldots,v_{q+s}),
+:=T(\omega_1,\ldots,\omega_p,v_1,&\ldots,v_q)\,S(\omega_{p+1},\ldots,\omega_{p+r},v_{q+1},\ldots,v_{q+s}),
 \ei
 with $\omega_i\in V^*$ and $v_i\in V$.
 \ed
@@ -268,7 +268,7 @@ Other examples we would like to consider are
 \ben[label=\alph*),start=3]
 \item $T^0_1 V \stackrel{?}{\cong}_\mathrm{vec} V$: while you will find this stated as true in some physics textbooks, it is in fact \emph{not true} in general;
 \item $T^1_1 V \stackrel{?}{\cong}_\mathrm{vec} \mathrm{End}(V)$: This is also not true in general;
-\item $(V^*)^* \stackrel{?}{\cong}_\mathrm{vec} V$: This only holds if $V$ is finite dimensional.
+\item $(V^*)^* \stackrel{?}{\cong}_\mathrm{vec} V$: This only holds if $V$ is finite-dimensional.
 \een
 \ee
 The definition of dimension hinges on the notion of a basis. Given a vector space Without any additional structure, the only notion of basis that we can define is a so-called Hamel basis.
@@ -280,27 +280,65 @@ Let $(V,+,\cdot)$ be a vector space over $K$. A subset $\mathcal{B}\se V$ is cal
 \bse
 \sum_{i=1}^N \lambda^ib_i = 0 \ \imp \ \lambda^1 = \cdots = \lambda^N = 0;
 \ese
-\item $\forall \, v \in V : \exists \, v^1,\ldots,v^M\in K : \exists \, b_1,\ldots,b_M \in \mathcal{B}:v=\ds \sum_{i=1}^Mv^ib_i$.
+\item $\mathcal{B}$ is a \emph{generating} or \emph{spanning set} of $V$, i.e.\
+\bse
+\forall \, v \in V : \exists \, v^1,\ldots,v^M\in K : \exists \, b_1,\ldots,b_M \in \mathcal{B}:v=\ds \sum_{i=1}^Mv^ib_i.
+\ese
 \end{itemize}
 \ed
 \br
 We can write the second condition more succinctly by defining
 \bse
-\mathrm{span}(\mathcal{B}) := \bigg\{\sum_{i=1}^n\lambda^ib_i \ \Big| \ \lambda^i\in K \land b_i\in \mathcal{B} \land n\geq 1\bigg\}
+\lspan_K(\mathcal{B}) := \bigg\{\sum_{i=1}^n\lambda^ib_i \ \Big| \ \lambda^i\in K \land b_i\in \mathcal{B} \land n\geq 1\bigg\}
 \ese
-and thus writing $\forall \, v \in V : v \in \mathrm{span}(\mathcal{B})$.
+and thus writing $V = \lspan_K(\mathcal{B})$.
 \er
 \br
 Note that we have been using superscripts for the elements of $K$, and these should not be confused with exponents.
 \er
+The following characterisation of a Hamel basis is often useful.
+\bp
+Let $V$ be a vector space and $\mathcal{B}$ a Hamel basis of $V$. Then $\mathcal{B}$ is a minimal spanning and maximal independent subset of $V$, i.e., if $S\se V$, then
+\begin{itemize}
+\item $\lspan(S) = V\ \Rightarrow \ |S| \geq |\mathcal{B}|$;
+\item $S$ is linearly independent $\ \Rightarrow\ |S| \leq |\mathcal{B}|$. 
+\end{itemize}
+\ep
+
 \bd
 Let $V$ be a vector space. The \emph{dimension}\index{dimension!vector space}\index{vector space!dimension} of $V$ is $\dim V := |\mathcal{B}|$, where $\mathcal{B}$ is a Hamel basis for $V$.
 \ed
 Even though we will not prove it, it is the case that every Hamel basis for a given vector space has the same cardinality, and hence the notion of dimension is well-defined.
 
+\bp
+If $\dim V < \infty$ and $S\se V$, then we have the following:
+\begin{itemize}
+\item if $\lspan_K(S) = V$ and $|S| = \dim V$, then $S$ is a Hamel basis of $V$;
+\item if $S$ is linearly independent and $|S| = \dim V$, then $S$ is a Hamel basis of $V$. 
+\end{itemize}
+\ep
+
 \begin{theorem}
 If $\dim V < \infty$, then $(V^*)^*\cong_\mathrm{vec}V$.
 \end{theorem}
+
+\bq[Sketch of proof]
+One constructs an explicit isomorphism as follows. Define the \emph{evaluation map} as
+\bi{rrCl}
+\ev \cl & V & \xrightarrow{\sim}& (V^*)^*\\
+& v & \mapsto & \ev_v
+\ei
+where
+\bi{rrCl}
+\ev_v \cl & V^* & \xrightarrow{\sim}& K\\
+& \omega & \mapsto & \ev_v(\omega):=\omega(v)
+\ei
+The linearity of $\ev$ follows immediately from the linearity of the elements of $V^*$, while that of $\ev_v$ from the fact that $V^*$ is a vector space. One then shows that $\ev$ is both injective and surjective, and hence an isomorphism.
+\eq 
+
+\br
+Note that while we need the concept of basis to state this result (since we require $\dim V < \infty$), the isomorphism that we have constructed is independent of any choice of basis.
+\er
 
 \br
 It is not hard to show that $(V^*)^*\cong_\mathrm{vec}V$ implies $T^0_1 V \cong_\mathrm{vec} V$ and $T^1_1 V \cong_\mathrm{vec} \mathrm{End}(V)$. So the last two hold in finite dimensions, but they need not hold in infinite dimensions.
@@ -310,19 +348,27 @@ It is not hard to show that $(V^*)^*\cong_\mathrm{vec}V$ implies $T^0_1 V \cong_
 While a choice of basis often simplifies things, when defining new objects it is important to do so without making reference to a basis. If we do define something in terms of a basis (e.g.\ the dimension of a vector space), then we have to check that the thing is well-defined, i.e.\ it does not depend on which basis we choose. Some people say: \textit{``A gentleman only chooses a basis if he must.''}
 \er
 
-If $V$ is finite dimensional, then $V^*$ is also finite dimensional and $V\cong_\mathrm{vec}V^*$. Moreover, given a basis $\mathcal{B}$ of $V$, there is a spacial basis of $V^*$ associated to $\mathcal{B}$.
+If $V$ is finite-dimensional, then $V^*$ is also finite-dimensional and $V\cong_\mathrm{vec}V^*$. Moreover, given a basis $\mathcal{B}$ of $V$, there is a spacial basis of $V^*$ associated to $\mathcal{B}$.
 
 \bd
-Let $V$ be a finite dimensional vector space with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$. The \emph{dual basis} to $\mathcal{B}$ is the unique basis $\mathcal{B'}=\{f^1,\ldots,f^{\dim V}\}$ of $V^*$ such that
+Let $V$ be a finite-dimensional vector space with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$. The \emph{dual basis} to $\mathcal{B}$ is the unique basis $\mathcal{B'}=\{f^1,\ldots,f^{\dim V}\}$ of $V^*$ such that
 \bse
 \forall \, 1\leq i,j \leq \dim V :\quad  f^i(e_j) = \delta^i_j := \begin{cases}1 \quad \text{if }i=j\\0 \quad \text{if }i\neq j\end{cases}
 \ese
 \ed
 
+\br
+If $V$ is finite-dimensional, then $V$ is isomorphic to both $V^*$ and $(V^*)^*$. In the case of $V^*$, an isomorphism is given by sending each element of a basis $\mathcal{B}$ of $V$ to a different element of the dual basis $\mathcal{B}'$, and then extending linearly to $V$.
+
+You will (and probably already have) read that a vector space is \emph{canonically} isomorphic to its double dual, but \emph{not} canonically isomorphic to its dual, because an arbitrary choice of basis on $V$ is necessary in order to provide an isomorphism. 
+
+The proper treatment of this matter falls within the scope of \emph{category theory}, and the relevant notion is called \emph{natural isomorphism}. See, for instance, the book \emph{Basic Category Theory} by Tom Leinster for an introduction to the subject.
+\er
+
 Once we have a basis $\mathcal{B}$, the expansion of $v\in V$ in terms of elements of $\mathcal{B}$ is, in fact, unique. Hence we can meaningfully speak of the \emph{components}\index{components} of $v$ in the basis $\mathcal{B}$. The notion of coordinates can also be generalised to the case of tensors.
 
 \bd
-Let $V$ be a finite dimensional vector space over $K$ with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$ and let $T\in T^p_qV$. We define the \emph{components}\index{tensor!components} of $T$ in the basis $\mathcal{B}$ to be the numbers
+Let $V$ be a finite-dimensional vector space over $K$ with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$ and let $T\in T^p_qV$. We define the \emph{components}\index{tensor!components} of $T$ in the basis $\mathcal{B}$ to be the numbers
 \bse
 T^{a_1\ldots a_p}_{\phantom{a_1\ldots a_p}b_1\ldots b_q} := T(f^{a_1},\ldots,f^{a_p},e_{b_1},\ldots,e_{b_q})\in K,
 \ese
@@ -386,7 +432,7 @@ where $v\in V$, $\omega \in V^*$, $\{e_i\}$ is a basis of $V$ and $\{f^j\}$ is t
 \br
 The Einstein's summation convention should only be used when dealing with linear spaces and multilinear maps. The reason for this is the following. Consider a map $\phi\cl V\times W \to Z$, and let $v=v^ie_i\in V$ and $w=w^i\widetilde e_i\in W$. Then we have:
 \bse
-\phi(v,w) = \phi\,\bigg({\color{gray}\sum_{i=1}^d}v^ie_i,{\color{gray}\sum_{j=1}^{\widetilde{d}}} w^j\widetilde e_j\bigg) = {\color{gray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}\phi(v^ie_i,w^j\widetilde e_j)= {\color{gray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}v^iw^j\phi(e_i,\widetilde e_j).
+\phi(v,w) = \phi\,\bigg({\color{lightgray}\sum_{i=1}^d}v^ie_i,{\color{lightgray}\sum_{j=1}^{\widetilde{d}}} w^j\widetilde e_j\bigg) = {\color{lightgray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}\phi(v^ie_i,w^j\widetilde e_j)= {\color{lightgray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}v^iw^j\phi(e_i,\widetilde e_j).
 \ese
 Note that by suppressing the greyed out summation signs, the second and third term above are indistinguishable. But this is only true if $\phi$ is bilinear! Hence the summation convention should not be used (at least, not without extra care) in other areas of mathematics.
 \er

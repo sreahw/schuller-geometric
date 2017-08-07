@@ -1,0 +1,295 @@
+\documentclass[a4paper,11pt]{article}
+\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+             % images in pdf, png or jpg format)
+
+
+\usepackage{imakeidx}
+\indexsetup{firstpagestyle=empty}
+\makeindex[intoc, columns=2, title=Alphabetical Index, options= -s example_style.ist]
+
+
+\usepackage{jheppub} % for details on the use of the package, please
+                     % see the JHEP-author-manual
+\usepackage[T1]{fontenc} % if needed
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{Figures/}} % Set the default folder for images
+
+\usepackage{enumitem} % Required for manipulating the whitespace between and within lists
+
+\usepackage{subfig} % Required for creating figures with multiple parts (subfigures)
+
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts,xfrac,pifont} % For including math equations, theorems, symbols, etc
+
+\usepackage{cleveref} % More descriptive referencing
+
+%page margins and paragraph indentation
+%\usepackage{geometry}
+%\geometry{a4paper,hmarginratio=1:1}
+%\setlength{\parindent}{0pt}
+
+%fonts
+  %\usepackage[cm]{sfmath}
+  %\renewcommand{\familydefault}{\sfdefault}
+  %\usepackage{libertine}
+  %\usepackage[libertine]{newtxmath}
+
+\usepackage{array,tabularx}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{etoolbox}
+%\usepackage{mathtools}
+\usepackage{emerald,xcolor,tikz}
+
+
+\usepackage{soul}
+
+\usetikzlibrary{matrix,calc,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
+\usetikzlibrary{arrows,cd}
+\usepackage{bbding}
+\usetikzlibrary{positioning}
+%\tikzset{every picture/.style={remember picture}}
+\tikzset{>=stealth}
+
+\usepackage{cancel}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+
+\makeatletter
+\patchcmd{\@IEEEeqnarray}{\relax}{\relax\intertext@}{}{}
+\makeatother
+
+
+
+%\usepackage[upright]{fourier}
+%\newcommand{\tikzmark}[3][]{\tikz[overlay,remember picture,baseline] \node [anchor=base,#1](#2) {#3};}
+
+
+%\usepackage[cmintegrals,cmbraces]{newtxmath}
+%\usepackage{ebgaramond-maths}
+%\newcommand{\tikzmark}[1]{\tikz[baseline,remember picture] \coordinate (#1) {};}
+
+%\usepackage{mathptmx}
+\usepackage{calc}
+
+%----------------------------------------------------------------------------------------
+%	THEOREM STYLES
+%---------------------------------------------------------------------------------------
+
+%\newtheoremstyle{dotless}{}{}{\itshape}{}{\bfseries}{}{ }{}
+%\theoremstyle{dotless}
+
+\theoremstyle{definition} % Define theorem styles here based on the definition style (used for definitions and examples)
+\newtheorem*{definition}{Definition}
+
+\theoremstyle{plain} % Define theorem styles here based on the plain style (used for theorems, lemmas, propositions)
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{remark} % Define theorem styles here based on the remark style (used for remarks and notes)
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{notation}{Notation}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{solution}{Solution}
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS
+%---------------------------------------------------------------------------------------
+%clever cross-references
+%\usepackage[noabbrev,capitalize]{cleveref}
+
+\usepackage{hyperref}
+\hypersetup{
+%draft, % Uncomment to remove all links (useful for printing in black and white)
+colorlinks=true, linkcolor=black, breaklinks=true,
+bookmarks=true,bookmarksnumbered=true,
+%urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, % Link colors
+pdftitle={}, % PDF title
+pdfauthor={\textcopyright}, % PDF Author
+pdfsubject={}, % PDF Subject
+pdfkeywords={}, % PDF Keywords
+pdfencoding=unicode, %
+pdfstartview={FitH}, %
+pdfcreator={pdfLaTeX}, % PDF Creator
+}
+
+%dotted lines in contents
+%\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+
+
+\input{shortcuts}
+
+
+
+
+
+
+
+
+
+
+
+\title{\boldmath Lectures on the Geometric Anatomy\\of Theoretical Physics}
+
+
+%% %simple case: 2 authors, same institution
+\author{Dr Frederic P. Schuller} 
+%\author{Simon Rea}
+\affiliation{Friedrich-Alexander-Universit\"at Erlangen-N\"urnberg,\\Institut f\"ur Theoretische Physik III}
+
+% more complex case: 4 authors, 3 institutions, 2 footnotes
+%\author[a,b,1]{F. Irst,\note{Corresponding author.}}
+%\author[c]{S. Econd,}
+%\author[a,2]{T. Hird\note{Also at Some University.}}
+%\author[a,2]{and Fourth}
+
+% The "\note" macro will give a warning: "Ignoring empty anchor..."
+% you can safely ignore it.
+
+%\affiliation[a]{One University,\\some-street, Country}
+%\affiliation[b]{Another University,\\different-address, Country}
+%\affiliation[c]{A School for Advanced Studies,\\some-location, Country}
+
+% e-mail addresses: one for each author, in the same order as the authors
+\emailAdd{fps@aei.mpg.de}
+%fschuller@perimeterinstitute.ca
+%\emailAdd{second@asas.edu}
+%\emailAdd{third@one.univ}
+%\emailAdd{s.rea.hw@gmail.com}
+
+
+
+
+
+\begin{document} 
+
+\rule{0cm}{2cm}\\
+\includegraphics[width=14cm]{faulogo}
+\maketitle
+
+
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction}
+\markright{Introduction}
+\input{ga/00intro}
+\newpage
+
+\section{Logic of propositions and predicates}
+\input{ga/01logic}
+\newpage
+
+\section{Axioms of set theory}
+\input{ga/02axioms}
+\newpage
+
+\section{Classification of sets}
+\input{ga/03classification}
+\newpage
+
+\section{Topological spaces: construction and purpose}
+\input{ga/04topology}
+\newpage
+
+\section{Topological spaces: some heavily used invariants}
+\input{ga/05topology_inv}
+\newpage
+
+\section{Topological manifolds and bundles}
+\input{ga/06manifolds}
+\newpage
+
+\section{Differentiable structures: definition and classification}
+\input{ga/07differentiable}
+\newpage
+
+\section{Tensor space theory I: over a field}
+\input{ga/08tensor_i}
+\newpage
+
+ \section{Differential structures: the pivotal concept of tangent vector spaces}
+ \input{ga/09tangent_space}
+ \newpage
+
+\section{Construction of the tangent bundle}
+\input{ga/10tangent_bundle}
+\newpage
+
+\section{Tensor space theory II: over a ring}
+\input{ga/11tensor_ii}
+\newpage
+
+\section{Grassmann algebra and de Rham cohomology}
+\input{ga/12grassmann}
+\newpage
+
+% \section{Lie groups and their Lie algebras}
+
+
+
+% \section{Classification of Lie algebras and Dynkin diagrams}
+
+
+
+% \section{The Lie group $SL(2,\C)$ and its Lie algebra $\mathfrak{sl}(2,\C)$}
+
+
+
+% \section{Dynkin diagrams from Lie algebras, and vice versa}
+
+
+
+% \section{Representation theory of Lie groups and Lie algebras}
+
+
+
+% \section{Reconstruction of a Lie group from its algebra}
+
+
+
+% \section{Principal fibre bundles}
+
+
+
+% \section{Associated fibre bundles}
+
+
+
+% \section{Connections and connection 1-forms}
+
+
+
+% \section{Local representations of a connection on the base manifold: Yang-Mills fields}
+
+
+
+% \section{Parallel transport}
+
+
+
+% \section{Curvature and torsion on principal bundles}
+
+
+
+% \section{Covariant derivatives}
+
+
+
+% \section{Application: Quantum mechanics on curved spaces}
+
+
+
+% \section{Application: Spin structures}
+
+
+
+% \section{Application: Kinematical and dynamical symmetries}
+
+
+%\printindex
+
+\end{document}

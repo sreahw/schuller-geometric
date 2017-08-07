@@ -1,0 +1,81 @@
+\subsection{Differential forms}
+
+
+\bd
+Let $M$ be a smooth manifold. A \emph{(differential) $n$-form} on $M$ is a $(0,n)$ smooth tensor field $\omega$ which is totally antisymmetric, i.e.\
+\bse
+\omega(X_1,\ldots,X_n) = \sgn(\pi)\, \omega(X_{\pi(1)},\ldots,X_{\pi(n)}),
+\ese
+where $\pi \in S_n$.  
+\ed
+
+\be
+\ben[label=\alph*)]
+\item A manifold $M$ is said to be \emph{orientable} if it admits an oriented atlas, i.e.\ an atlas in which all chart transition maps, which are maps between open subsets of $\R^{\dim M}$, have a positive determinant.
+
+If $M$ is orientable, then there exists a nowhere vanishing top form ($n=\dim M$) on $M$ providing the volume.
+\item The electromagnetic field strength $F$ is a differential $2$-form.
+\item In classical mechanics, if $Q$ is a smooth manifold describing the possible system configurations, then the phase space is $T^*Q$. There exists a canonically defined $2$-form on $T^*Q$ known as a symplectic form, which we will define later.
+\een
+\ee
+
+We denote by $\Omega^n(M)$ the set of all differential $n$-forms on $M$, which then becomes a $C^\infty(M)$-module by defining the addition and multiplication operations pointwise. 
+
+The tensor product $\otimes$ does not interact well with forms, since the tensor product of two forms is not necessarily a form. Hence, we define the following.
+
+\bd
+Let $M$ be a smooth manifold. We define the \emph{wedge} (or \emph{exterior) product} of forms as
+\bi{rrCl}
+\wedge \cl & \Omega^n(M) \times \Omega^m(M) & \to & \Omega^{n+m}(M)\\
+& (\omega,\sigma) & \mapsto & \omega \wedge \sigma,
+\ei
+where
+\bse
+(\omega\wedge\sigma)(X_1,\ldots,X_{n+m}) := \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} (\omega \otimes \sigma)(X_1,\ldots,X_{n+m}). 
+\ese
+\ed
+For example, if $\omega,\sigma\in\Omega^1(M)$, then
+\bse
+\omega\wedge\sigma = \omega\otimes\sigma - \sigma \otimes \omega. 
+\ese
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
