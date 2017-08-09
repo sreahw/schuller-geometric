@@ -1,6 +1,6 @@
 \subsection{Cotangent spaces and the differential}
 
-Since the tangent space is a vector space, we can do all the constructions we had in the abstract setting. 
+Since the tangent space is a vector space, we can do all the constructions we saw previously in the abstract vector space setting. 
 
 \bd
 Let $M$ be a manifold and $p\in M$. The \emph{cotangent space}\index{cotangent space} to $M$ at $p$ is
@@ -73,7 +73,7 @@ with $p\in U\se M$.
 \ed
 
 \br
-Note that, by writing $\d_pf(X) := X(f)$, we have committed a slight (but nonetheless real) abuse of notation. Since $d_pf(X)\in T_{f(p)}\R$, it takes in a function and return a real number, but $X(f)$ is already a real number! Implicitly, we have employed the isomorphism
+Note that, by writing $\d_pf(X) := X(f)$, we have committed a slight (but nonetheless real) abuse of notation. Since $\d_pf(X)\in T_{f(p)}\R$, it takes in a function and return a real number, but $X(f)$ is already a real number! This is due to the fact that we have implicitly employed the isomorphism
 \bi{rrCl}
 \iota_d\cl & T_p\R^d&\to&\R^d\\
 & X & \mapsto & (X(\proj_1),\ldots,X(\proj_d)),
@@ -135,7 +135,7 @@ Let $\phi\cl M \to N$ be a smooth map between smooth manifolds. The \emph{push-f
 \ei
 \ed
 
-If $\gamma\R\to M$ is a smooth curve on $M$ and $\phi\cl M\to N$ is smooth, then $\phi\circ\gamma\cl \R \to N$ is a smooth curve on $M$. Informally, we say that we can push a curve $\gamma$ on $M$ forward to the curve $\phi\circ \gamma$ on $N$. 
+If $\gamma\cl\R\to M$ is a smooth curve on $M$ and $\phi\cl M\to N$ is smooth, then $\phi\circ\gamma\cl \R \to N$ is a smooth curve on $N$. Informally, we say that we can push a curve $\gamma$ on $M$ forward to the curve $\phi\circ \gamma$ on $N$. 
 
 \bp
 Let $\phi\cl M\to N$ be smooth. The tangent vector $X_{\gamma,p}\in T_pM$ is pushed forward to the tangent vector $X_{\phi\circ\gamma,\phi(p)}\in T_{\phi(p)}N$, i.e.\
@@ -306,16 +306,22 @@ we have $a(\dim M)=2$, and thus every $3$-dimensional manifold can be immersed i
 
 \subsection{The tangent bundle}
 
-Let $M$ be a smooth manifold. Define the set
+We would like to define a vector field on a manifold $M$ as a ``smooth'' map that assigns to each $p\in M$ a tangent vector in $T_pM$. However, since this would then be a ``map'' to a different space at each point, it is unclear how to define its smoothness. 
+
+The simplest solution is to merge all the tangent spaces into a unique set and equip it with a smooth structure, so that we can then define a vector field as a smooth map between smooth manifolds.
+
+\bd
+Given a smooth manifold $M$, the \emph{tangent bundle} of $M$ is the disjoint union of all the tangent spaces to $M$, i.e.\
 \bse
-TM :=\bigcup_{p\in M}T_pM
+TM :=\coprod_{p\in M}T_pM,
 \ese
-and further define the projection map
+equipped with the canonical projection map
 \bi{rrCl}
 \pi \cl & TM & \to & M\\
 & X & \mapsto & p,
 \ei
-where $p$ is such that $X\in T_pM$. Note that, since $T_pM$ and $T_qM$ are disjoint if $p\neq q$, then for each $X\in TM$ there is, in fact, a unique $p\in M$ such that $X\in T_pM$.
+where $p$ is the unique $p\in M$ such that $X\in T_pM$.
+\ed
 
 Ideally, we would like to require that $\pi$ be a \emph{smooth} map, but in order to do so, we first need to equip $TM$ with the structure a smooth manifold. We can achieve this by constructing a smooth atlas for $TM$ from a smooth atlas on $M$, as follows.
 
@@ -360,10 +366,6 @@ Hence, we have
 which is smooth in each component, and hence smooth.
 \eq
 We are finally able to define the tangent bundle.
-
-\bd
-Let $M$ be a $d$-dimensional manifold. The \emph{tangent bundle}\index{tangent bundle} of $M$ is the $2d$-dimensional manifold $TM$, equipped with the smooth projection map $\pi\cl TM \to M$.
-\ed
 
 Similarly, one can construct the \emph{cotangent bundle} $T^*M$ to $M$ by defining
 \bse
