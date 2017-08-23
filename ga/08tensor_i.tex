@@ -12,7 +12,7 @@ An \emph{(algebraic) field}\index{field (algebraic)} is a triple $(K,+,\cdot)$, 
 \item[iii)] $\forall \, a \in K : \exists \, {-a} \in K : a+(-a)=(-a)+a=0$;
 \item[iv)] $\forall \, a,b \in K : a+b=b+a$;
 \een
-\item $(K^*,\cdot)$, where $K^*=K\sm\{0\}$, is an abelian group, i.e.
+\item $(K^*,\cdot)$, where $K^*:=K\sm\{0\}$, is an abelian group, i.e.
 \ben
 \item[v)] $\forall \, a,b,c \in K^* : (a\cdot b)\cdot c=a\cdot (b\cdot c)$;
 \item[vi)] $\exists \, 1 \in K^* : \forall \, a \in K^* : a\cdot 1=1\cdot a=a$;
@@ -155,7 +155,11 @@ Note that, unlike $\mathrm{End}(V)$, $\mathrm{Aut}(V)$ is \emph{not} a vector sp
 \er
 
 \bd
-Let $V$ be a vector space over $K$. The \emph{dual}\index{vector space!dual}\index{dual space} vector space to $V$ is $V^*:=\mathrm{Hom}(V,K)$, where $K$ is considered as a vector space over itself.
+Let $V$ be a vector space over $K$. The \emph{dual}\index{vector space!dual}\index{dual space} vector space to $V$ is
+\bse
+V^*:=\Hom(V,K),
+\ese
+where $K$ is considered as a vector space over itself.
 \ed
 
 The dual vector space to $V$ is the vector space of linear maps from $V$ to the underlying field $K$, which are variously called \emph{linear functionals}, \emph{covectors}\index{covector}, or \emph{one-forms} on $V$. The dual plays a very important role, in that from a vector space and its dual, we will construct the tensor products.
@@ -587,7 +591,7 @@ A \emph{transposition} is a permutation which exchanges two elements, keeping al
 \bp
 Every permutation $\pi\in S_n$ can be written as a product (composition) of transpositions in $S_n$.
 \ep
-While this decomposition is not unique, for each given $\pi \in S_n$, the number of transpositions in its decomposition is always either even or odd. Hence, we can define the \emph{sign} of $\pi \in S_n$ as:
+While this decomposition is not unique, for each given $\pi \in S_n$, the number of transpositions in its decomposition is always either even or odd. Hence, we can define the \emph{sign} (or \emph{signature}) of $\pi \in S_n$ as:
 \bse
 \mathrm{sgn}(\pi) := \begin{cases}+1 \qquad &\text{if $\pi$ is the product of an even number of transpositions}\\-1 \qquad &\text{if $\pi$ is the product of an odd number of transpositions.}\end{cases}
 \ese
@@ -598,7 +602,7 @@ Let $V$ be a $d$-dimensional vector space. An $n$-\emph{form} on $V$ is a $(0,n)
 \forall \, \pi \in S_n : \ \omega(v_1,v_2,\ldots,v_n) = \mathrm{sgn}(\pi)\, \omega(v_{\pi(1)},v_{\pi(2)},\ldots,v_{\pi(n)}). 
 \ese
 \ed
-Note that a $0$-form is scalar, and a $1$-form is a covector. A $d$-form is also called a \emph{top form}. There are several equivalent definitions of $n$-form. For instance, we have the following.
+Note that a $0$-form is a scalar, and a $1$-form is a covector. A $d$-form is also called a \emph{top form}. There are several equivalent definitions of $n$-form. For instance, we have the following.
 \bp
 A $(0,n)$-tensor $\omega$ is an $n$-form if, and only if, $\omega(v_1,\ldots,v_n)=0$ whenever $\{v_1,\ldots,v_n\}$ is linearly dependent.
 \ep
@@ -606,7 +610,7 @@ While $T^0_nV$ is certainly non-empty when $n>d$, the proposition immediately im
 \bp
 Denote by $\Lambda^nV$ the vector space of $n$-forms on $V$. Then we have
 \bse
-\dim \Lambda^nV = \begin{cases} \binom{d}{n} \qquad  &\text{if }\ 1\leq n \leq d\\ 0 &\text{if }\ n > d,\end{cases}
+\dim \Lambda^nV = \begin{cases} \binom{d}{n} \quad  &\text{if }\ 1\leq n \leq d\\ 0 &\text{if }\ n > d,\end{cases}
 \ese
 where $\binom{d}{n} = \frac{d!}{n!(d-n)!}$ is the binomial coefficient, read as ``$d$ choose $n$''.
 \ep

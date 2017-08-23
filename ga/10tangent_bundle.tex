@@ -135,7 +135,7 @@ Let $\phi\cl M \to N$ be a smooth map between smooth manifolds. The \emph{push-f
 \ei
 \ed
 
-If $\gamma\cl\R\to M$ is a smooth curve on $M$ and $\phi\cl M\to N$ is smooth, then $\phi\circ\gamma\cl \R \to N$ is a smooth curve on $N$. Informally, we say that we can push a curve $\gamma$ on $M$ forward to the curve $\phi\circ \gamma$ on $N$. 
+If $\gamma\cl\R\to M$ is a smooth curve on $M$ and $\phi\cl M\to N$ is smooth, then $\phi\circ\gamma\cl \R \to N$ is a smooth curve on $N$. 
 
 \bp
 Let $\phi\cl M\to N$ be smooth. The tangent vector $X_{\gamma,p}\in T_pM$ is pushed forward to the tangent vector $X_{\phi\circ\gamma,\phi(p)}\in T_{\phi(p)}N$, i.e.\
@@ -194,15 +194,23 @@ However, if $\phi\cl M\to N$ is a diffeomorphism, then we can also pull a vector
 
 \bse
 \begin{tikzcd}
-C^\infty(M) \ar[rr,"-\circ\phi^{-1}"] \ar[ddrr,"(\phi^*)_p(Y)"'] && C^\infty(N) \ar[dd,"Y"]    && T_pM \ar[dd,"\eta"']   && T_{\phi(p)}N \ar[ll,"((\phi^{-1})_*)_{\phi(p)}"'] \ar[ddll,"(\phi_*)_p(\eta)"] \\
+C^\infty(M) \ar[rr,"-\circ\phi^{-1}"] \ar[ddrr,"(\phi^*)_p(Y)"'] && C^\infty(N) \ar[dd,"Y"]    && T_pM \ar[dd,"\eta"']   &&& T_{\phi(p)}N \ar[lll,"((\phi^{-1})_*)_{\phi(p)}"'] \ar[ddlll,"(\phi_*)_p(\eta)"] \\
 && && &&\\
 && \R && \R && 
 \end{tikzcd}
 \ese
-Again, this is only possible if $\phi$ is a diffeomorphism. In general, you should keep in mind that
+This is only possible if $\phi$ is a diffeomorphism. In general, you should keep in mind that
 \begin{center}
 \emph{Vectors are pushed forward,\\ covectors are pulled back.}
 \end{center}
+\er
+
+\br
+Given a smooth map $\phi\cl M \to N$, if $f\in C^\infty (N)$, then $f\circ \phi$ is often called the pull-back of $f$ along $\phi$. Similarly, if $\gamma$ is a curve on $M$, then $\phi \circ \gamma$ is called the push-forward of $\gamma$ along $\phi$. For example, we can say that 
+\begin{itemize}
+\item the push-forward of a tangent vector acting on a function is the tangent vector acting on the pull-back of the function;
+\item the push-forward of a tangent vector to a curve is the tangent vector to the push-forward of the curve.
+\end{itemize}
 \er
 
 \subsection{Immersions and embeddings}
@@ -265,14 +273,29 @@ is injective, for all $p\in M$. The manifold $M$ is said to be an \emph{immersed
 % \een
 % \ee
 
+From the theory of linear algebra, we immediately deduce that, for $\phi\cl M\to N$ to be an immersion, we must have $\dim M \leq \dim N$. A closely related notion is that of a \emph{submersion}, where we require each $(\phi_*)_p$ to be surjective, and thus we must have $\dim M \geq \dim N$. However, we will not need this here. 
+
+\be
+Consider the map $\phi\cl S^1\to \R^2$ whose image is reproduced below.
+
+\begin{center}
+\includegraphics[scale=0.8]{graphics/immers}
+\end{center}
+\ee
+The map $\phi$ is not injective, i.e.\ there are $p,q\in S^1$, with $p\neq q$ and $\phi(p)=\phi(q)$. Of course, this means that $T_{\phi(p)}\R^2=T_{\phi(q)}\R^2$. However, the maps $(\phi_*)_p$ and $(\phi_*)_q$ are both injective, with their images being represented by the blue and red arrows, respectively. Hence, the map $\phi$ is immersion.
+
 \bd
-A smooth map $\phi\cl M \to N$ is said to be an \emph{embedding}\index{embedding} of $M$ into $N$ if
+A smooth map $\phi\cl M \to N$ is said to be a \emph{(smooth) embedding}\index{embedding} of $M$ into $N$ if
 \begin{itemize}
 \item $\phi\cl M\to N$ is an immersion;
 \item $M \cong_{\mathrm{top}}\phi(M)\se N$, where $\phi(M)$ carries the subset topology inherited from $N$.
 \end{itemize}
 The manifold $M$ is said to be an \emph{embedded submanifold} of $N$.
 \ed
+
+\br
+If a continuous map between topological spaces satisfies the second condition above, then it is called a \emph{topological embedding}. Therefore, a smooth embedding is a topological embedding which is also an immersion (as opposed to simply being a smooth topological embedding).
+\er
 
 In the early days of differential geometry there were two approaches to study manifolds. One was the extrinsic view, within which manifolds are defined as special subsets of $\R^d$, and the other was the intrinsic view, which is the view that we have adopted here.
 
@@ -323,7 +346,7 @@ equipped with the canonical projection map
 where $p$ is the unique $p\in M$ such that $X\in T_pM$.
 \ed
 
-Ideally, we would like to require that $\pi$ be a \emph{smooth} map, but in order to do so, we first need to equip $TM$ with the structure a smooth manifold. We can achieve this by constructing a smooth atlas for $TM$ from a smooth atlas on $M$, as follows.
+We now need to equip $TM$ with the structure of a smooth manifold. We can achieve this by constructing a smooth atlas for $TM$ from a smooth atlas on $M$, as follows.
 
 Let $\mathscr{A}_M$ be a smooth atlas on $M$ and let $(U,x)\in \mathscr{A}_M$. If $X\in \preim_\pi(U)\se TM$, then $X\in T_{\pi(X)}M$, by definition of $\pi$. Moreover, since $\pi(X)\in U$, we can expand $X$ in terms of the basis induced by the chart $(U,x)$:
 \bse
@@ -365,11 +388,11 @@ Hence, we have
 \ei
 which is smooth in each component, and hence smooth.
 \eq
-We are finally able to define the tangent bundle.
+The tangent bundle of a smooth manifold $M$ is therefore itself a smooth manifold of dimension $2\dim M$, and the projection $\pi\cl TM\to M$ is smooth with respect to this structure. 
 
 Similarly, one can construct the \emph{cotangent bundle} $T^*M$ to $M$ by defining
 \bse
-T^*M := \bigcup_{p\in M} T^*_pM
+T^*M := \coprod_{p\in M} T^*_pM
 \ese
 and going through the above again, using the dual basis $\{(\d x^a)_p\}$ instead of $\{\tvb{x}{a}{p}\}$.
 

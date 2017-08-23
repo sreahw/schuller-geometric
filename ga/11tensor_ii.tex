@@ -3,7 +3,7 @@
 Now that we have defined the tangent bundle, we are ready to define vector fields.
 
 \bd
-Let $M$ be a smooth manifold, and let $TM$ be its tangent bundle. A \emph{vector field}\index{vector field} on $M$ is a smooth section of the tangent bundle, i.e.\ a smooth map $\sigma\cl M \to TM$ such that $\pi \circ \sigma = \id_M$.
+Let $M$ be a smooth manifold, and let $TM\xrightarrow{\,\pi\,}M$ be its tangent bundle. A \emph{vector field}\index{vector field} on $M$ is a smooth section of the tangent bundle, i.e.\ a smooth map $\sigma\cl M \to TM$ such that $\pi \circ \sigma = \id_M$.
 \bse
 \begin{tikzcd}
 TM \ar[dd,shift left,"\pi"] \\
@@ -16,7 +16,42 @@ We denote the set of all vector fields on $M$ by $\Gamma(TM)$\index{$\Gamma(TM)$
 \bse
 \Gamma(TM) := \{\sigma \cl M \to TM \mid \sigma \text{ is smooth and }\pi\circ\sigma=\id_M\}.
 \ese
-This is, in fact, the standard notation for the set of all sections on a bundle. We can equip the set $\Gamma(TM)$ with the following operations. The first is our, by now familiar, pointwise addition:
+This is, in fact, the standard notation for the set of all sections on a bundle.
+
+Recall that, given a smooth map $\phi\cl M \to N$, the push-forward $(\phi_*)_p$ is a linear map that takes in a tangent vector in $T_pM$ and outputs a tangent vector in $T_{\phi(p)}N$. Of course, we have one such map for each $p\in M$. We can collect them all into a single smooth map.
+\bd
+Let $\phi\cl M \to N$ be smooth. The \emph{push-forward} $\phi_*$ is defined as
+\bi{rrCl}
+\phi_*\cl & TM & \to & TN\\
+& X &\mapsto & (\phi_*)_{\pi(X)}(X).
+\ei
+\ed
+Any vector $X\in TM$ must belong to $T_pM$ for some $p\in M$, namely $p=\pi(X)$. The map $\phi_*$ simply takes any vector $X\in TM$ and applies the usual push-forward at the ``right'' point, producing a vector in $TN$.
+
+The ideal next step would be to try to construct a map $\Phi_*\cl\Gamma(TM)\to\Gamma(TN)$ that allows us to push vector fields on $M$ forward to vector fields on $N$. Given $\sigma\in\Gamma(TM)$, we would like to construct a $\Phi_*(\sigma)\in\Gamma(TN)$. This is not trivial, since $\Phi_*(\sigma)$ needs to be, in particular, a smooth map $N\to TN$. Note that the composition $\phi_*\circ\sigma$ is a map $M\to TN$, and hence $\im_{\phi_*\circ\sigma}(M)\se TN$. Thus, we can try to define $\Phi_*(\sigma)$ by mapping each $p\in N$ to some tangent vector in $\im_{\phi_*\circ\sigma}(M)$. Unfortunately, there are at least two ways in which this can go wrong.
+\ben
+\item The map $\phi$ could fail to be injective. Then, there would be two points $p_1,p_2\in M$ such that $p_1\neq p_2$ and $\phi(p_1)=\phi(p_2)=:q\in N$. Hence, we would have two tangent vectors on $N$ with base-point $q$, namely $(\phi_*\circ\sigma)(p_1)$ and $(\phi_*\circ\sigma)(p_2)$. These two \emph{need not} be equal, and if they are not then the map $\Phi_*(\sigma)$ is ill-defined at $q$.
+\item The map $\phi$ could fail to be surjective. Then, there would be some $q\in N$ such that there is no $X\in \im_{\phi_*\circ\sigma}(M)$ with $\pi(X)=q$ (where $\pi\cl TN\to N$). The map $\Phi_*(\sigma)$ would then be undefined at $q$.
+\een
+Of course, everything becomes easier if $\phi\cl M \to N$ is a diffeomorphism. 
+\bse
+\begin{tikzcd}
+TM \ar[rr,"\phi_*"] && TN \\
+\\
+M \ar[uu,"\sigma"] \ar[rr,"\phi"] && N \ar[uu,"\Phi_*(\sigma)"']
+\end{tikzcd}
+\ese
+If $\sigma \in \Gamma(TM)$, we can define the \emph{push-forward} $\Phi_*(\sigma)\in \Gamma(TN)$ as
+\bse
+\Phi_*(\sigma) := \phi_*\circ\sigma\circ\phi^{-1}.
+\ese
+
+More generally, if $\phi\cl M\to N$ is smooth and $\sigma\in \Gamma(TM)$, $\eta\in\Gamma(TN)$, we can define $\Phi_*(\sigma)=\eta$ if $\sigma$ and $\eta$ are $\phi$-\emph{related}, i.e.\ if they satisfy
+\bse
+\eta\circ\phi=\phi_*\circ\sigma.
+\ese
+
+We can equip the set $\Gamma(TM)$ with the following operations. The first is our, by now familiar, pointwise addition:
 \bi{rrCl}
 \oplus \cl & \Gamma(TM) \times \Gamma(TM) & \to & \Gamma(TM)\\
 & (\sigma,\tau) & \mapsto & \sigma \oplus \tau,
@@ -43,10 +78,10 @@ If we consider the triple $(C^\infty(M),+,\bullet)$, where $\bullet$ is pointwis
 \item $(\Gamma(TM),\oplus)$ is an abelian group, with $0\in \Gamma(TM)$ being the section that maps each $p\in M$ to the zero tangent vector in $T_pM$;
 \item $\Gamma(TM)\sm\{0\}$ satisfies
 \ben[label=\roman*)]
-\item $\forall \, f \in C^\infty(M) : \forall \, \sigma,\tau \in \Gamma(TM) : f\odot(\sigma\oplus \tau)=(f\odot \sigma)\oplus (f\odot \tau)$;
-\item $\forall \, f,g \in C^\infty(M) : \forall \,  \sigma \in \Gamma(TM): (f+g)\odot \sigma= (f \odot \sigma) \oplus (g \odot \sigma)$;
-\item $\forall \, f,g \in C^\infty(M) :  \sigma \in \Gamma(TM) : (f\bullet g)\odot \sigma= f \odot (g \odot \sigma)$;
-\item $\forall \, \sigma \in \Gamma(TM)  : 1 \odot \sigma = \sigma$,
+\item $\forall \, f \in C^\infty(M) : \forall \, \sigma,\tau \in \Gamma(TM) \sm\{0\}: f\odot(\sigma\oplus \tau)=(f\odot \sigma)\oplus (f\odot \tau)$;
+\item $\forall \, f,g \in C^\infty(M) : \forall \,  \sigma \in \Gamma(TM)\sm\{0\}: (f+g)\odot \sigma= (f \odot \sigma) \oplus (g \odot \sigma)$;
+\item $\forall \, f,g \in C^\infty(M) :  \sigma \in \Gamma(TM)\sm\{0\} : (f\bullet g)\odot \sigma= f \odot (g \odot \sigma)$;
+\item $\forall \, \sigma \in \Gamma(TM) \sm\{0\} : 1 \odot \sigma = \sigma$,
 \een
 where $1\in C^\infty(M)$ maps every $p\in M$ to $1\in \R$.
 \end{itemize}
@@ -92,11 +127,14 @@ A ring $(R,+,\cdot)$ is said to be
 \begin{itemize}
 \item \emph{commutative} if $\ \forall \, a,b\in R : a\cdot b = b \cdot a$;
 \item \emph{unital} if $\ \exists\, 1\in R : \forall \, a\in R : 1\cdot a = a \cdot 1 = a$;
-\item \emph{a division ring} if it is unital and $\ \forall\, a \in R : \exists \, a^{-1}\in R:a\cdot a^{-1}=a^{-1}\cdot a = 1$.
+\item a \emph{division} (or \emph{skew) ring} if it is unital and 
+\bse
+\forall\, a \in R\sm\{0\} : \exists \, a^{-1}\in R\sm\{0\}: \ a\cdot a^{-1}=a^{-1}\cdot a = 1.
+\ese
 \end{itemize}
 \ed
 
-Division rings are also called \emph{skew rings}. In a unital ring, an element for which there exists a multiplicative inverse is said to be a \emph{unit}. The set of units of a ring $R$ is denoted $R^*$ (not to be confused with the vector space dual) and forms a group under multiplication. Then $R$ is a division ring iff $R^*=R\sm\{0\}$.
+In a unital ring, an element for which there exists a multiplicative inverse is said to be a \emph{unit}. The set of units of a ring $R$ is denoted by $R^*$ (not to be confused with the vector space dual) and forms a group under multiplication. Then, $R$ is a division ring iff $R^*=R\sm\{0\}$.
 
 \be
 The sets $\Z$, $\Q$, $\R$, and $\C$ are all rings under the usual operations. They are also all fields, except $\Z$.
