@@ -5,7 +5,7 @@ In this section, whenever we say ``manifold'', we mean a (real) $d$-dimensional 
 \bd
 Let $M$ be a manifold. We define the infinite-dimensional vector space over $\R$ with underlying set
 \bse
-C^\infty(M)\index{$C^\infty(M)$} := \{f\cl M \to \R \mid f\text{ is smooth}\}
+\mathcal{C}^\infty(M)\index{$\mathcal{C}^\infty(M)$} := \{f\cl M \to \R \mid f\text{ is smooth}\}
 \ese
 and operations defined pointwise, i.e.\ for any $p\in M$,
 \bi{rCl}
@@ -13,7 +13,7 @@ and operations defined pointwise, i.e.\ for any $p\in M$,
 (\lambda f)(p) & := & \lambda f(p).
 \ei
 \ed
-A routine check shows that this is indeed a vector space. We can similarly define $C^\infty(U)$, with $U$ an open subset of $M$.
+A routine check shows that this is indeed a vector space. We can similarly define $\mathcal{C}^\infty(U)$, with $U$ an open subset of $M$.
 
 \bd
 A \emph{smooth curve}\index{smooth curve} on $M$ is a smooth map $\gamma\cl \R \to M$, where $\R$ is understood as a $1$-dimensional manifold.
@@ -24,7 +24,7 @@ This definition also applies to smooth maps $I\to M$ for an open interval $I\se 
 Let $\gamma\cl\R\to M$ be a smooth curve through $p\in M$; w.l.o.g.\ %\footnote{without loss of generality} 
 let $\gamma(0)=p$. The \emph{directional derivative operator}\index{directional derivative operator} at $p$ along $\gamma$ is the linear map
 \bi{rrCl}
-X_{\gamma,p}\cl & C^\infty(M) & \xrightarrow{\sim} & \R\\
+X_{\gamma,p}\cl & \mathcal{C}^\infty(M) & \xrightarrow{\sim} & \R\\
 & f & \mapsto & (f\circ\gamma)'(0),
 \ei
 where $\R$ is understood as a $1$-dimensional vector space over the field $\R$.
@@ -32,7 +32,7 @@ where $\R$ is understood as a $1$-dimensional vector space over the field $\R$.
 Note that $f\circ\gamma$ is a map $\R\to\R$, hence we can calculate the usual derivative and evaluate it at $0$.
 
 \br
-In differential geometry, $X_{\gamma,p}$ is called the \emph{tangent vector}\index{tangent vector} to the curve $\gamma$ at the point $p\in M$. Intuitively, $X_{\gamma,p}$ is the velocity $\gamma$ at $p$. Consider the curve $\delta(t):=\gamma(2t)$, which is the same curve parametrised twice as fast. We have, for any $f\in C^\infty(M)$:
+In differential geometry, $X_{\gamma,p}$ is called the \emph{tangent vector}\index{tangent vector} to the curve $\gamma$ at the point $p\in M$. Intuitively, $X_{\gamma,p}$ is the velocity $\gamma$ at $p$. Consider the curve $\delta(t):=\gamma(2t)$, which is the same curve parametrised twice as fast. We have, for any $f\in \mathcal{C}^\infty(M)$:
 \bse
 X_{\delta,p}(f) = (f\circ\delta)'(0)=2(f\circ\gamma)'(0)=2 X_{\gamma,p}(f)
 \ese
@@ -54,7 +54,7 @@ and scalar multiplication
 \odot\cl & \R\times T_pM & \to & T_pM \\
 & (\lambda,X_{\gamma,p}) & \mapsto & \lambda \odot X_{\gamma,p},
 \ei
-both defined pointwise, i.e. for any $f\in C^\infty(M)$,
+both defined pointwise, i.e. for any $f\in \mathcal{C}^\infty(M)$,
 \bi{rCl}
 (X_{\gamma,p}\oplus X_{\delta,p})(f) & := & X_{\gamma,p}(f) + X_{\delta,p}(f)\\
 (\lambda \odot X_{\gamma,p})(f) & := & \lambda X_{\gamma,p}(f).
@@ -88,7 +88,7 @@ Note that $\sigma$ is smooth since it is constructed via addition and compositio
 % \preim_\gamma(U) \se \R \ar[r,"\gamma"]  & U \ar[r, bend left,"x"]  & x(U)\se \R^{\dim M} \ar[l, bend left,"x^{-1}"]
 % \end{tikzcd}
 % \ese
-Thus $\sigma$ is a smooth curve through $p$. Let $f\in C^\infty(U)$ be arbitrary. Then we have
+Thus $\sigma$ is a smooth curve through $p$. Let $f\in \mathcal{C}^\infty(U)$ be arbitrary. Then we have
 \bi{rCl}
 X_{\sigma,p}(f)& := & (f\circ \sigma)'(0)\\
 & = & [f\circ x^{-1} \circ ( (x\circ \gamma) + (x \circ \delta) -x(p))]'(0)\\
@@ -109,7 +109,7 @@ X_{\sigma,p}(f) & := & (f \circ \sigma)'(0)\\
  & = & \lambda (f\circ \gamma)'(0) \\
  & := & (\lambda \odot X_{\gamma,p} )(f)  
 \ei
-for any $f\in C^\infty(U)$. Hence $\lambda \odot X_{\gamma,p}=X_{\sigma,p}\in T_pM$. \qedhere
+for any $f\in \mathcal{C}^\infty(U)$. Hence $\lambda \odot X_{\gamma,p}=X_{\sigma,p}\in T_pM$. \qedhere
 \een
 \eq
 
@@ -137,12 +137,12 @@ An \emph{algebra}\index{algebra} over a field $K$ is a quadruple $(A,+,\cdot,\bu
 \ed
 
 \be
-Define a product on $C^\infty(M)$ by
+Define a product on $\mathcal{C}^\infty(M)$ by
 \bi{rrCl}
-\bullet \cl & C^\infty(M)\times C^\infty(M) &\to& C^\infty(M)\\
+\bullet \cl & \mathcal{C}^\infty(M)\times \mathcal{C}^\infty(M) &\to& \mathcal{C}^\infty(M)\\
 & (f,g) & \mapsto & f \bullet g,
 \ei
-where $f \bullet g$ is defined pointwise. Then $(C^\infty(M),+,\cdot,\bullet)$ is an algebra over $\R$.
+where $f \bullet g$ is defined pointwise. Then $(\mathcal{C}^\infty(M),+,\cdot,\bullet)$ is an algebra over $\R$.
 \ee
 The usual qualifiers apply to algebras as well.
 \bd
@@ -154,13 +154,13 @@ An algebra $(A,+,\cdot,\bullet)$ is said to be
 \een
 \ed
 \be
-Clearly, $(C^\infty(M),+,\cdot,\bullet)$ is an associative, unital, commutative algebra.
+Clearly, $(\mathcal{C}^\infty(M),+,\cdot,\bullet)$ is an associative, unital, commutative algebra.
 \ee
 
 An important class of algebras are the so-called Lie algebras, in which the product $v\bullet w$ is usually denoted $[v,w]$.
 
 \bd
-A \emph{Lie algebra}\index{Lie algebra} $A$ is an algebra whose product $[-,-]$, called \emph{Lie bracket}, satisfies
+A \emph{Lie algebra}\index{Lie algebra} $A$ is an algebra whose product $[-,-]$, called \emph{Lie bracket}\index{Lie bracket}, satisfies
 \ben[label=\roman*)]
 \item antisymmetry: $\ \forall\, v\in A : [v,v]=0$;
 \item the Jacobi identity\index{Jacobi identity}: $\ \forall\, v,w,z\in A : [v,[w,z]] + [w,[z,v]] + [z,[v,w]] = 0$.
@@ -202,9 +202,9 @@ However, this is meaningless as it stands since $\bullet_B\cl B\times B \to B$, 
 \er
 
 \be
-The usual derivative operator is a derivation on $C^\infty(\R)$, the algebra of smooth real functions, since it is linear and satisfies the Leibniz rule.
+The usual derivative operator is a derivation on $\mathcal{C}^\infty(\R)$, the algebra of smooth real functions, since it is linear and satisfies the Leibniz rule.
 
-The second derivative operator, however, is not a derivation on $C^\infty(\R)$, since it does not satisfy the Leibniz rule. This shows that the composition of derivations need not be a derivation.
+The second derivative operator, however, is not a derivation on $\mathcal{C}^\infty(\R)$, since it does not satisfy the Leibniz rule. This shows that the composition of derivations need not be a derivation.
 \ee
 
 \be
@@ -248,7 +248,7 @@ Then $(\Der_K(A),+,\cdot,[-,-])$ is a Lie algebra over $K$.
 If we have a manifold, we can define the related notion of derivation on an open subset at a point.
 
 \bd
-Let $M$ be a manifold and let $p\in U \se M$, where $U$ is open. A \emph{derivation on $U$ at $p$} is an $\R$-linear map $D\cl C^\infty(U)\xrightarrow{\sim}\R$ satisfying the Leibniz rule
+Let $M$ be a manifold and let $p\in U \se M$, where $U$ is open. A \emph{derivation on $U$ at $p$} is an $\R$-linear map $D\cl \mathcal{C}^\infty(U)\xrightarrow{\sim}\R$ satisfying the Leibniz rule
 \bse
 D(fg)=D(f)g(p)+f(p)D(g).
 \ese
@@ -285,7 +285,7 @@ W.l.o.g., let $(U,x)$ be a chart \emph{centred}\index{chart!centred} at $p$, i.e
 \gamma_{(a)}(0) &:=& p\\ 
 \gamma_{(a)}(t) &:=& x^{-1} \circ (0,\ldots,0,t,0,\ldots,0)
 \ei
-where the $t$ is in the $a^\text{th}$ position, with $1\leq a \leq \dim M$. Let us calculate the action of the tangent vector $X_{\gamma_{(a)},p}\in T_pM$ on an arbitrary function $f\in C^\infty(U)$:
+where the $t$ is in the $a^\text{th}$ position, with $1\leq a \leq \dim M$. Let us calculate the action of the tangent vector $X_{\gamma_{(a)},p}\in T_pM$ on an arbitrary function $f\in \mathcal{C}^\infty(U)$:
 \bi{rCl}
 X_{\gamma_{(a)},p} (f) & := & (f\circ\gamma_{(a)})'(0)\\
 & = &  (f\circ \id_U \circ \gamma_{(a)})'(0)\\
@@ -305,7 +305,7 @@ where the $x$ refers to the chart map. We now claim that
 \ese
 is a basis of $T_pM$. First, we show that $\mathcal{B}$ spans $T_pM$.
 
-Let $X\in T_pM$. Then, by definition, there exists some smooth curve $\sigma$ through $p$ such that $X=X_{\sigma,p}$. For any $f\in C^\infty(U)$, we have
+Let $X\in T_pM$. Then, by definition, there exists some smooth curve $\sigma$ through $p$ such that $X=X_{\sigma,p}$. For any $f\in \mathcal{C}^\infty(U)$, we have
 \bi{rCl}
 X(f) & = & X_{\sigma,p}(f)\\
 & := & (f\circ\sigma)'(0)\\
@@ -325,7 +325,7 @@ To show linear independence, suppose that
 \ese
 for some scalars $\lambda^a$. Note that this is an operator equation, and the zero on the right hand side is the zero operator $0\in T_pM$.
 
-Recall that, given the chart $(U,x)$, the coordinate maps $x^b\cl U \to \R$ are smooth, i.e.\ $x^b\in C^\infty(U)$. Thus, we can feed them into the left hand side to obtain
+Recall that, given the chart $(U,x)$, the coordinate maps $x^b\cl U \to \R$ are smooth, i.e.\ $x^b\in \mathcal{C}^\infty(U)$. Thus, we can feed them into the left hand side to obtain
 \bi{rCl}
 0 & = & \lambda^a \tvb{x}{a}{p} (x^b)\\
 & = & \lambda^a\, \partial_a (x^b\circ x^{-1})(x(p))\\
@@ -349,9 +349,9 @@ This is not a cause of concern for our proof however, since every basis of a vec
 \br
 While the symbol $\tvb{x}{a}{p}$ has nothing to do with the idea of partial differentiation with respect to the variable $x^a$, it is notationally consistent with it, in the following sense.
 
-Let $M=\R^d$, $(U,x)=(\R^d,\id_{\R^d})$ and let $\tvb{x}{a}{p}\in T_p\R^d$. If $f\in C^\infty(\R^d)$, then
+Let $M=\R^d$, $(U,x)=(\R^d,\id_{\R^d})$ and let $\tvb{x}{a}{p}\in T_p\R^d$. If $f\in \mathcal{C}^\infty(\R^d)$, then
 \bse
-\tvb{x}{a}{p} (f) = \partial_a(f\circ x^{-1})(x(p)) = \partial_a(f)(p),
+\tvb{x}{a}{p} (f) = \partial_a(f\circ x^{-1})(x(p)) = \partial_a f(p),
 \ese
 since $x=x^{-1}=\id_{\R^d}$. Moreover, we have $\proj_a=x^a$. Thus, we can think of $x^1,\ldots,x^d$ as the independent variables of $f$, and we can then write
 \bse

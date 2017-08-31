@@ -18,20 +18,54 @@ We denote the set of all vector fields on $M$ by $\Gamma(TM)$\index{$\Gamma(TM)$
 \ese
 This is, in fact, the standard notation for the set of all sections on a bundle.
 
+\br
+An equivalent definition is that a vector field $\sigma$ on $M$ is an $\R$-linear map
+\bse
+\sigma\cl \mathcal{C}^\infty(M) \xrightarrow{\sim} \mathcal{C}^\infty(M)
+\ese
+satisfying the Leibniz rule (with respect to pointwise multiplication on $\mathcal{C}^\infty(M)$) 
+\bse
+\sigma (fg) = g\, \sigma(f) + f \, \sigma(g).
+\ese
+This definition is better suited for some purposes, and later on we will switch from one to the other without making any notational distinction between them.
+\er
+
+\be
+Let $(U,x)$ be a chart on $M$. For each $1\leq a \leq \dim M$, the map
+\bi{rrCl}
+\sigma\cl & U & \to & TU\\
+& p &\mapsto &\tvb{x}{a}{p}
+\ei
+is a vector field on the submanifold $U$. We can also think of this as a linear map
+\bi{rrCl}
+\frac{\partial}{\partial x^a} \cl & \mathcal{C}^\infty(U) & \xrightarrow{\sim} & \mathcal{C}^\infty(U)\\
+& f & \mapsto & \frac{\partial}{\partial x^a}(f) = \partial_a(f\circ x^{-1})\circ x. 
+\ei
+By abuse of notation, one usually denotes the right hand side above simply as $\partial_a f$.
+\bse
+\begin{tikzcd}
+U \ar[dd,"x"'] \ar[rr,"f"] && \R   & U \ar[dd,"x"'] \ar[rr,"\partial_af"] && \R\\
+ && & &&\\
+x(U)\se \R^{\dim M} \ar[uurr,"f\circ x^{-1}"']&& & x(U)\se \R^{\dim M} \ar[uurr,"\partial_a(f\circ x^{-1})"'] &&
+\end{tikzcd}
+\ese
+\ee
+
 Recall that, given a smooth map $\phi\cl M \to N$, the push-forward $(\phi_*)_p$ is a linear map that takes in a tangent vector in $T_pM$ and outputs a tangent vector in $T_{\phi(p)}N$. Of course, we have one such map for each $p\in M$. We can collect them all into a single smooth map.
 \bd
-Let $\phi\cl M \to N$ be smooth. The \emph{push-forward} $\phi_*$ is defined as
+Let $\phi\cl M \to N$ be smooth. The \emph{push-forward}\index{push-forward} $\phi_*$ is defined as
 \bi{rrCl}
 \phi_*\cl & TM & \to & TN\\
 & X &\mapsto & (\phi_*)_{\pi(X)}(X).
 \ei
 \ed
-Any vector $X\in TM$ must belong to $T_pM$ for some $p\in M$, namely $p=\pi(X)$. The map $\phi_*$ simply takes any vector $X\in TM$ and applies the usual push-forward at the ``right'' point, producing a vector in $TN$.
+Any vector $X\in TM$ must belong to $T_pM$ for some $p\in M$, namely $p=\pi(X)$. The map $\phi_*$ simply takes any vector $X\in TM$ and applies the usual push-forward at the ``right'' point, producing a vector in $TN$. One can similarly define $\phi^*\cl T^*N \to T^*M$.
 
 The ideal next step would be to try to construct a map $\Phi_*\cl\Gamma(TM)\to\Gamma(TN)$ that allows us to push vector fields on $M$ forward to vector fields on $N$. Given $\sigma\in\Gamma(TM)$, we would like to construct a $\Phi_*(\sigma)\in\Gamma(TN)$. This is not trivial, since $\Phi_*(\sigma)$ needs to be, in particular, a smooth map $N\to TN$. Note that the composition $\phi_*\circ\sigma$ is a map $M\to TN$, and hence $\im_{\phi_*\circ\sigma}(M)\se TN$. Thus, we can try to define $\Phi_*(\sigma)$ by mapping each $p\in N$ to some tangent vector in $\im_{\phi_*\circ\sigma}(M)$. Unfortunately, there are at least two ways in which this can go wrong.
 \ben
-\item The map $\phi$ could fail to be injective. Then, there would be two points $p_1,p_2\in M$ such that $p_1\neq p_2$ and $\phi(p_1)=\phi(p_2)=:q\in N$. Hence, we would have two tangent vectors on $N$ with base-point $q$, namely $(\phi_*\circ\sigma)(p_1)$ and $(\phi_*\circ\sigma)(p_2)$. These two \emph{need not} be equal, and if they are not then the map $\Phi_*(\sigma)$ is ill-defined at $q$.
-\item The map $\phi$ could fail to be surjective. Then, there would be some $q\in N$ such that there is no $X\in \im_{\phi_*\circ\sigma}(M)$ with $\pi(X)=q$ (where $\pi\cl TN\to N$). The map $\Phi_*(\sigma)$ would then be undefined at $q$.
+\item The map $\phi$ may fail to be injective. Then, there would be two points $p_1,p_2\in M$ such that $p_1\neq p_2$ and $\phi(p_1)=\phi(p_2)=:q\in N$. Hence, we would have two tangent vectors on $N$ with base-point $q$, namely $(\phi_*\circ\sigma)(p_1)$ and $(\phi_*\circ\sigma)(p_2)$. These two \emph{need not} be equal, and if they are not then the map $\Phi_*(\sigma)$ is ill-defined at $q$.
+\item The map $\phi$ may fail to be surjective. Then, there would be some $q\in N$ such that there is no $X\in \im_{\phi_*\circ\sigma}(M)$ with $\pi(X)=q$ (where $\pi\cl TN\to N$). The map $\Phi_*(\sigma)$ would then be undefined at $q$.
+\item Even if the map $\phi$ is bijective, its inverse $\phi^{-1}$ may fail to be smooth. But then $\Phi_*(\sigma)$ would not be guaranteed to be a smooth map.
 \een
 Of course, everything becomes easier if $\phi\cl M \to N$ is a diffeomorphism. 
 \bse
@@ -46,9 +80,9 @@ If $\sigma \in \Gamma(TM)$, we can define the \emph{push-forward} $\Phi_*(\sigma
 \Phi_*(\sigma) := \phi_*\circ\sigma\circ\phi^{-1}.
 \ese
 
-More generally, if $\phi\cl M\to N$ is smooth and $\sigma\in \Gamma(TM)$, $\eta\in\Gamma(TN)$, we can define $\Phi_*(\sigma)=\eta$ if $\sigma$ and $\eta$ are $\phi$-\emph{related}, i.e.\ if they satisfy
+More generally, if $\phi\cl M\to N$ is smooth and $\sigma\in \Gamma(TM)$, $\tau\in\Gamma(TN)$, we can define $\Phi_*(\sigma)=\tau$ if $\sigma$ and $\tau$ are $\phi$-\emph{related}, i.e.\ if they satisfy
 \bse
-\eta\circ\phi=\phi_*\circ\sigma.
+\tau\circ\phi=\phi_*\circ\sigma.
 \ese
 
 We can equip the set $\Gamma(TM)$ with the following operations. The first is our, by now familiar, pointwise addition:
@@ -63,7 +97,7 @@ where
 \ei
 Note that the $+$ on the right hand side above is the addition in $T_pM$. More interestingly, we also define the following multiplication operation:
 \bi{rrCl}
-\odot \cl & C^\infty(M) \times \Gamma(TM) & \to & \Gamma(TM)\\
+\odot \cl & \mathcal{C}^\infty(M) \times \Gamma(TM) & \to & \Gamma(TM)\\
 & (f,\sigma) & \mapsto & f\odot\sigma,
 \ei
 where
@@ -71,25 +105,25 @@ where
 f \odot \sigma \cl & M & \to & \Gamma(TM)\\
 & p & \mapsto & (f\odot \sigma)(p) := f(p) \sigma(p).
 \ei
-Note that since $f\in C^\infty(M)$, we have $f(p)\in \R$ and hence the multiplication above is the scalar multiplication on $T_pM$.
+Note that since $f\in \mathcal{C}^\infty(M)$, we have $f(p)\in \R$ and hence the multiplication above is the scalar multiplication on $T_pM$.
 
-If we consider the triple $(C^\infty(M),+,\bullet)$, where $\bullet$ is pointwise function multiplication as defined in the section on algebras and derivations, then the triple $(\Gamma(TM),\oplus,\odot)$ satisfies
+If we consider the triple $(\mathcal{C}^\infty(M),+,\bullet)$, where $\bullet$ is pointwise function multiplication as defined in the section on algebras and derivations, then the triple $(\Gamma(TM),\oplus,\odot)$ satisfies
 \begin{itemize}
 \item $(\Gamma(TM),\oplus)$ is an abelian group, with $0\in \Gamma(TM)$ being the section that maps each $p\in M$ to the zero tangent vector in $T_pM$;
 \item $\Gamma(TM)\sm\{0\}$ satisfies
 \ben[label=\roman*)]
-\item $\forall \, f \in C^\infty(M) : \forall \, \sigma,\tau \in \Gamma(TM) \sm\{0\}: f\odot(\sigma\oplus \tau)=(f\odot \sigma)\oplus (f\odot \tau)$;
-\item $\forall \, f,g \in C^\infty(M) : \forall \,  \sigma \in \Gamma(TM)\sm\{0\}: (f+g)\odot \sigma= (f \odot \sigma) \oplus (g \odot \sigma)$;
-\item $\forall \, f,g \in C^\infty(M) :  \sigma \in \Gamma(TM)\sm\{0\} : (f\bullet g)\odot \sigma= f \odot (g \odot \sigma)$;
+\item $\forall \, f \in \mathcal{C}^\infty(M) : \forall \, \sigma,\tau \in \Gamma(TM) \sm\{0\}: f\odot(\sigma\oplus \tau)=(f\odot \sigma)\oplus (f\odot \tau)$;
+\item $\forall \, f,g \in \mathcal{C}^\infty(M) : \forall \,  \sigma \in \Gamma(TM)\sm\{0\}: (f+g)\odot \sigma= (f \odot \sigma) \oplus (g \odot \sigma)$;
+\item $\forall \, f,g \in \mathcal{C}^\infty(M) :  \sigma \in \Gamma(TM)\sm\{0\} : (f\bullet g)\odot \sigma= f \odot (g \odot \sigma)$;
 \item $\forall \, \sigma \in \Gamma(TM) \sm\{0\} : 1 \odot \sigma = \sigma$,
 \een
-where $1\in C^\infty(M)$ maps every $p\in M$ to $1\in \R$.
+where $1\in \mathcal{C}^\infty(M)$ maps every $p\in M$ to $1\in \R$.
 \end{itemize}
 
-These are precisely the axioms for a vector space! The only obstacle to saying that $\Gamma(TM)$ is a vector space over $C^\infty(M)$ is that the triple $(C^\infty(M),+,\bullet)$ is \emph{not} an algebraic field, but only a ring. We could simply talk about ``vector spaces over rings'', but vector spaces over ring have wildly different properties than vector spaces over fields, so much so that they have their own name: \emph{modules}.
+These are precisely the axioms for a vector space! The only obstacle to saying that $\Gamma(TM)$ is a vector space over $\mathcal{C}^\infty(M)$ is that the triple $(\mathcal{C}^\infty(M),+,\bullet)$ is \emph{not} an algebraic field, but only a ring. We could simply talk about ``vector spaces over rings'', but vector spaces over ring have wildly different properties than vector spaces over fields, so much so that they have their own name: \emph{modules}.
 
 \br
-Of course, we could have defined $\odot$ simply as pointwise \emph{global} scaling, using the reals $\R$ instead of the real functions $C^\infty(M)$.
+Of course, we could have defined $\odot$ simply as pointwise \emph{global} scaling, using the reals $\R$ instead of the real functions $\mathcal{C}^\infty(M)$.
 The, since $(\R,+,\cdot)$ is an algebraic field, we would then have the obvious $\R$-vector space structure on $\Gamma(TM)$. However, a basis for this vector space is necessarily uncountably infinite, and hence it does not provide a very useful decomposition for our vector fields.
 
 Instead, the operation $\odot$ that we have defined allows for \emph{local} scaling, i.e.\ we can scale a vector field by a different value at each point, and a much more useful decomposition of vector fields within the module structure.
@@ -103,7 +137,7 @@ Unlike mathematicians, most people who apply mathematics tend to consider rings 
 For your benefit, we first recall some basic facts about rings.
 
 \bd
-A \emph{ring}\index{ring} is a triple $(R,+,\cdot)$ where $R$ is a set and $+,\cdot\cl R\times R\to R$ are maps satisfying the following axioms
+A \emph{ring}\index{ring} is a triple $(R,+,\cdot)$, where $R$ is a set and $+,\cdot\cl R\times R\to R$ are maps satisfying the following axioms
 \begin{itemize}
 \item $(R,+)$ is an abelian group:
 \ben[label=\roman*)]
@@ -127,7 +161,7 @@ A ring $(R,+,\cdot)$ is said to be
 \begin{itemize}
 \item \emph{commutative} if $\ \forall \, a,b\in R : a\cdot b = b \cdot a$;
 \item \emph{unital} if $\ \exists\, 1\in R : \forall \, a\in R : 1\cdot a = a \cdot 1 = a$;
-\item a \emph{division} (or \emph{skew) ring} if it is unital and 
+\item a \emph{division} (or \emph{skew}) \emph{ring} if it is unital and 
 \bse
 \forall\, a \in R\sm\{0\} : \exists \, a^{-1}\in R\sm\{0\}: \ a\cdot a^{-1}=a^{-1}\cdot a = 1.
 \ese
@@ -143,8 +177,8 @@ The sets $\Z$, $\Q$, $\R$, and $\C$ are all rings under the usual operations. Th
 \be
 Let $M$ be a smooth manifold. Then
 \begin{itemize}
-\item $(C^\infty(M),+,\cdot)$, where $\cdot$ is scalar multiplication (by a real number) is an $\R$-vector space. It is not a ring since $\cdot$ is not a map $C^\infty(M)\times C^\infty(M) \to C^\infty(M)$.
-\item $(C^\infty(M),+,\bullet)$, where $\bullet$ is pointwise multiplication of maps, is a commutative, unital ring, but not a division ring and hence, not a field.
+\item $(\mathcal{C}^\infty(M),+,\cdot)$, where $\cdot$ is scalar multiplication (by a real number), is an $\R$-vector space. It is not a ring since $\cdot$ is not a map $\mathcal{C}^\infty(M)\times \mathcal{C}^\infty(M) \to \mathcal{C}^\infty(M)$.
+\item $(\mathcal{C}^\infty(M),+,\bullet)$, where $\bullet$ is pointwise multiplication of maps, is a commutative, unital ring, but not a division ring and hence, not a field.
 \end{itemize}
 In general, if $(A,+,\cdot,\bullet)$ is an algebra, then $(A,+,\bullet)$ is a ring.
 \ee
@@ -175,7 +209,7 @@ Any ring $R$ is trivially a module over itself.
 \ee
 
 \be
-The triple $(\Gamma(TM),\oplus,\odot)$ is a $C^\infty(M)$-module.
+The triple $(\Gamma(TM),\oplus,\odot)$ is a $\mathcal{C}^\infty(M)$-module.
 \ee
 
 In the following, we will usually denote $\oplus$ by $+$ and suppress the $\odot$, as we did with vector spaces.
@@ -201,11 +235,11 @@ Before we delve into the proof, let us consider some geometric examples.
 \bse
 v=v^1e_1+v^2e_2
 \ese
-for some $v^1,v^2\in C^\infty(\R^2)$ and $e_1,e_2\in \Gamma(T\R^2)$. Hence, even though $\Gamma(T\R^2)$ is a $C^\infty(\R^2)$-module and $C^\infty(\R^2)$ is \emph{not} a division ring, it still has a basis. Note that the coefficients in the linear expansion of $v$ are functions.
+for some $v^1,v^2\in \mathcal{C}^\infty(\R^2)$ and $e_1,e_2\in \Gamma(T\R^2)$. Hence, even though $\Gamma(T\R^2)$ is a $\mathcal{C}^\infty(\R^2)$-module and $\mathcal{C}^\infty(\R^2)$ is \emph{not} a division ring, it still has a basis. Note that the coefficients in the linear expansion of $v$ are functions.
 
 This example shows that the converse to the above theorem is not true: if $D$ is not a division ring, then a $D$-module may or may not have a basis.
 
-\item Let $M=S^2$. A famous result in algebraic topology, known as the \emph{hairy ball theorem}\index{hairy ball theorem}, states that there is no non-vanishing smooth tangent vector field on even-dimensional $n$-spheres. Hence, we can multiply any smooth vector field $v\in\Gamma(TS^2)$ by a function $f\in C^\infty(S^2)$ which is zero everywhere except where $v$ is, obtaining $fv=0$ despite $f\neq 0$ and $v\neq 0$. Therefore, there is no set of linearly independent vector fields on $S^2$, much less a basis.
+\item Let $M=S^2$. A famous result in algebraic topology, known as the \emph{hairy ball theorem}\index{hairy ball theorem}, states that there is no non-vanishing smooth tangent vector field on even-dimensional $n$-spheres. Hence, we can multiply any smooth vector field $v\in\Gamma(TS^2)$ by a function $f\in \mathcal{C}^\infty(S^2)$ which is zero everywhere except where $v$ is, obtaining $fv=0$ despite $f\neq 0$ and $v\neq 0$. Therefore, there is no set of linearly independent vector fields on $S^2$, much less a basis.
 \een
 \ee
 
@@ -215,7 +249,7 @@ The proof of the theorem requires the axiom of choice, in the equivalent form kn
 A partially ordered set $P$ whose every totally ordered subset $T$ has an upper bound in $P$ contains a maximal element.
 \el
 
-Of course, we now need to define the new terms introduced by the lemma. 
+Of course, we now need to define the new terms that appear in the statement of Zorn's lemma. 
 
 \bd
 A \emph{partially ordered set} (\emph{poset} for short) is a pair $(P,\leq)$ where $P$ is a set and~$\leq$ is a \emph{partial order} on $P$, i.e.\ a relation on $P$ satisfying
@@ -273,7 +307,7 @@ A generating set always exists, as one may take $S=V$.
 \bse
 P:=\{U\in \mathcal{P}(S)\mid U \text{ is linearly independent}\}
 \ese
-and $\leq\medspace :=\medspace \se$, we partial order by set-theoretic inclusion.
+and $\leq\medspace :=\medspace \se$, that is, we partial order by set-theoretic inclusion.
 \item Let $T\se P$ be any totally ordered subset of $P$. Then $\bigcup T$ is an upper bound for $T$, and it is linearly independent (by the total ordering assumption). Hence $\bigcup T \in P$.
 
 By Zorn's lemma, $P$ has a maximal element. Le $\mathcal{B}\in P$ be any such element. BY construction, $\mathcal{B}$ is a maximal (with respect to inclusion) linearly independent subset of the generating set $S$.
@@ -330,7 +364,7 @@ Clearly, every free module is also projective.
 \ee
 
 \bd
-Let $M$ and $N$ be two (left) $R$-modules. A map $f\cl M \to N$ is said to be an\emph{$R$-linear map}, or an \emph{$R$-module homomorphism}, if
+Let $M$ and $N$ be two (left) $R$-modules. A map $f\cl M \to N$ is said to be an \emph{$R$-linear map}, or an \emph{$R$-module homomorphism}, if
 \bse
 \forall \, r\in R : \forall \, m_1,m_2\in M : \ f(rm_1 + m_2)=rf(m_1)+f(m_2),
 \ese
@@ -352,13 +386,13 @@ F\cong_\mathrm{mod} = \underbrace{R\oplus\cdots\oplus R}_{d \text{ copies}} =: R
 One can show that if $R^d\cong_\mathrm{mod} R^{d'}$, then $d=d'$ and hence, the concept of dimension is well-defined for finitely generated, free modules.
 
 \begin{theorem}[Serre, Swan, et al.]
-Let $E$ be a vector fibre bundle over a smooth manifold $M$. Then, the set $\Gamma(E)$ of all smooth section of $E$ over $M$ is a finitely generated, projective $C^\infty(M)$-module.
+Let $E$ be a vector fibre bundle over a smooth manifold $M$. Then, the set $\Gamma(E)$ of all smooth section of $E$ over $M$ is a finitely generated, projective $\mathcal{C}^\infty(M)$-module.
 \end{theorem}
 
 A vector fibre bundle is a fibre bundle in which every fibre is a vector space. An example is the tangent bundle to a manifold.
 
 \br
-An immediate consequence of the theorem is that, for any vector fibre bundle $E$ over $M$, there exists a $C^\infty(M)$-module $Q$ such that the direct sum $\Gamma(E)\oplus Q$ is free. If $Q$ can be chosen to be the trivial module $\{0\}$, then $\Gamma(E)$ is itself free, as it is the case with $\Gamma(T\R^2)$. In a sense, the module $Q$ quantifies the failure of $\Gamma(E)$ to have a basis.
+An immediate consequence of the theorem is that, for any vector fibre bundle $E$ over $M$, there exists a $\mathcal{C}^\infty(M)$-module $Q$ such that the direct sum $\Gamma(E)\oplus Q$ is free. If $Q$ can be chosen to be the trivial module $\{0\}$, then $\Gamma(E)$ is itself free, as it is the case with $\Gamma(T\R^2)$. In a sense, the module $Q$ quantifies the failure of $\Gamma(E)$ to have a basis.
 \er
 
 \begin{theorem}
@@ -369,28 +403,66 @@ Let $P,Q$ be finitely generated (projective) modules over a commutative ring $R$
 is again a finitely generated (projective) $R$-module, with operations defined pointwise.
 \end{theorem}
 
-The proof is exactly the same as with vector spaces.
-
-\be
-In particular, we can use this to define the dual of a module. For instance
+The proof is exactly the same as with vector spaces. As an example, we can use this to define the dual of a module. For instance
 \bse
-\Hom_{C^\infty(M)}(\Gamma(TM),C^\infty(M)) =: \Gamma(TM)^*.
+\Hom_{\mathcal{C}^\infty(M)}(\Gamma(TM),\mathcal{C}^\infty(M)) =: \Gamma(TM)^*.
 \ese
-One can show that $\Gamma(TM)^*$ coincides with the smooth sections over the cotangent bundle $\Gamma(T^*M)$, i.e.\ the covector fields.
-\ee
+One can show that $\Gamma(TM)^*$ coincides with the smooth sections over the cotangent bundle $\Gamma(T^*M)$, i.e.\ the covector fields. Recall that, just like a vector field, a covector field is a smooth section of the cotangent bundle $T^*M$, that is, a smooth map $\omega\cl M \to T^*M$ with $\pi\circ\omega=\id_M$. Unlike what we had with vector fields, we can always define the pull-back of a covector field along any smooth map between manifolds.
+\bd
+Let $\phi\cl M \to N$ be smooth and let $\omega\in\Gamma(T^*N)$. We define the \emph{pull-back}\index{pull-back} $\Phi^*(\omega)\in\Gamma(T^*M)$ of $\omega$  as
+\bi{rrCl}
+\Phi^*(\omega) \cl & M & \to & T^*M\\
+& p & \mapsto & \Phi^*(\omega)(p), 
+\ei
+where
+\bi{rrCl}
+\Phi^*(\omega)(p) \cl & T_pM & \xrightarrow{\sim} & \R\\
+& X & \mapsto & \Phi^*(\omega)(p)(X) := \omega(\phi(p))(\phi_*(X)),
+\ei
+as in the following diagram
+\bse
+\begin{tikzcd}
+T^*M  && T^*N \ar[ll,"\phi^*"'] \\
+\\
+M \ar[uu,"\Phi^*(\omega)"] \ar[rr,"\phi"] && N \ar[uu,"\omega"']
+\end{tikzcd}
+\ese
+\ed
 
-We are now fully prepared to give the following standard textbook definition.
+We can, of course, generalise these ideas by constructing the $(r,s)$ tensor bundle of $M$
+\bse
+T^r_sM := \coprod_{p\in M}(T^r_s)_pM
+\ese
+and hence define a type $(r,s)$ tensor field on $M$ to be an element of $\Gamma(T^r_sM)$, i.e.\ a smooth section of the tensor bundle. If $\phi\cl M \to N$ is smooth, we can define the pull-back of contravariant (i.e.\ type $(0,q)$) tensor fields by generalising the pull-back of covector fields. If $\phi\cl M \to N$ is a diffeomorphism, then we can define the pull-back of any smooth $(p,q)$ tensor field $\tau\in\Gamma(T^r_sN)$ as
+\bi{rl}
+\Phi^*(\tau)(p)(\omega_1,\ldots,&\, \omega_r,X_1,\ldots,X_s)\\
+& := \tau(\phi(p))\bigl((\phi^{-1})^*(\omega_1),\ldots,(\phi^{-1})^*(\omega_r),\phi_*(X_1),\ldots,\phi_*(X_s)\bigr),
+\ei
+with $\omega_i\in T^*_pM$ and $X_i\in T_pM$.
+
+There is, however, an equivalent characterisation of tensor fields as genuine multilinear maps. This is, in fact, the standard textbook definition.
 
 \bd
-Let $M$ be a smooth manifold. An \emph{$(r,s)$ smooth tensor field}\index{tensor field} $\tau$ on $M$ is a $C^\infty(M)$-multilinear map
+Let $M$ be a smooth manifold. A smooth \emph{$(r,s)$ tensor field}\index{tensor field} $\tau$ on $M$ is a $\mathcal{C}^\infty(M)$-multilinear map
 \bse
-\tau\cl \underbrace{\Gamma(T^*M)\times \cdots \times \Gamma(T^*M)}_{r \text{ copies}} \times \underbrace{\Gamma(TM)\times \cdots \times \Gamma(TM)}_{s \text{ copies}} \to C^\infty(M).
+\tau\cl \underbrace{\Gamma(T^*M)\times \cdots \times \Gamma(T^*M)}_{r \text{ copies}} \times \underbrace{\Gamma(TM)\times \cdots \times \Gamma(TM)}_{s \text{ copies}} \to \mathcal{C}^\infty(M).
 \ese
-We denote by $T^r_sM$ the $C^\infty(M)$-module of all $(r,s)$ smooth tensor fields on $M$, with module operations defined pointwise.
 \ed
+The equivalence of this to the bundle definition is due to the pointwise nature of tensors. For instance, a covector field $\omega\in \Gamma(T^*M)$ can act on a vector field $X\in\Gamma(TM)$ to yield a smooth function $\omega(X)\in\mathcal{C}^\infty(M)$ by
+\bse
+(\omega(X))(p) := \omega(p)(X(p)).
+\ese
+The, we see that for any $f\in\mathcal{C}^\infty(M)$, we have
+\bse
+(\omega(fX))(p) = \omega(p)(f(p)X(p)) = f(p)\omega(p)(X(p)) =: (f\omega(X))(p)
+\ese
+and hence, the map $\omega\cl \Gamma(TM)\xrightarrow{\sim}\mathcal{C}^\infty(M)$ is $\mathcal{C}^\infty(M)$-linear.
+
+Similarly, the set $\Gamma(T^r_sM)$ of all $(r,s)$ smooth tensor fields on $M$ can be made into a $\mathcal{C}^\infty(M)$-module, with module operations defined pointwise.
+
 We can also define the tensor product of tensor fields
 \bi{rrCl}
-\otimes \cl & T^p_qM \times T^r_sM & \to & T^{p+r}_{q+s}M\\
+\otimes \cl & \Gamma(T^p_qM) \times \Gamma(T^r_sM) & \to & \Gamma(T^{p+r}_{q+s}M)\\
 &(\tau,\sigma) & \mapsto & \tau \otimes \sigma
 \ei
 analogously to what we had with tensors on a vector space, i.e.\
@@ -400,7 +472,7 @@ analogously to what we had with tensors on a vector space, i.e.\
 \ei
 with $\omega_i\in \Gamma(T^*M)$ and $X_i\in \Gamma(TM)$.
 
-
+Therefore, we can think of tensor fields on $M$ either as sections of some tensor bundle on $M$, that is, as maps assigning to each $p\in M$ a tensor ($\R$-multilinear map) on the vector space $T_pM$, or as a $\mathcal{C}^\infty(M)$-multilinear map as above. We will always try to pick the most useful or easier to understand, based on the context.
 
 
 

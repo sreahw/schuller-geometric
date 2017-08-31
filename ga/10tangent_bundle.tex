@@ -30,22 +30,22 @@ Let $M$ and $N$ be manifolds and let $\phi\cl M \to N$ be smooth. The \emph{diff
 \ei
 where $\d_p\phi\,(X)$ is the tangent vector to $N$ at $\phi(p)$ 
 \bi{rrCl}
-\d_p \phi\,(X) \cl & C^\infty(N) & \xrightarrow{\sim} & \R\\
+\d_p \phi\,(X) \cl & \mathcal{C}^\infty(N) & \xrightarrow{\sim} & \R\\
 & g & \mapsto & (\d_p\phi\,(X))(g):=X(g\circ \phi).
 \ei
 \ed
 If this definition looks confusing, it is worth it to pause and think about what it is saying. Intuitively, if $\phi$ takes us from $M$ to $N$, then $\d_p\phi$ takes us from $T_pM$ to $T_{\phi(p)}N$. The way in which it does so, is the following.
 \bse
 \begin{tikzcd}
-M \ar[rr,"\phi"] \ar[ddrr,"g\circ\phi"'] && N \ar[dd,"g"] && C^\infty(M) \ar[dd,"X"] && C^\infty(N) \ar[ll,"-\circ\phi"']\ar[ddll,"\d_p\phi\,(X)"]\\
+M \ar[rr,"\phi"] \ar[ddrr,"g\circ\phi"'] && N \ar[dd,"g"] && \mathcal{C}^\infty(M) \ar[dd,"X"] && \mathcal{C}^\infty(N) \ar[ll,"-\circ\phi"']\ar[ddll,"\d_p\phi\,(X)"]\\
 && && &&\\
 && \R && \R&&
 \end{tikzcd}
 \ese
-Given $X\in T_pM$, we want to construct $ \d_p\phi\,(X)\in T_{\phi(p)}N$, i.e.\ a derivation on $N$ at $f(p)$. Derivations act on functions. So, given $g\cl N\to \R$, we want to construct a real number by using $\phi$ and $X$. There is really only one way to do is. If we precompose $g$ with $\phi$, we obtain $g\circ\phi\cl M \to \R$, which is an element of $\C^\infty(M)$. We can then happily apply $X$ to this function to obtain a real number. You should check that $ \d_p\phi\,(X)$ is indeed a tangent vector to $N$.
+Given $X\in T_pM$, we want to construct $ \d_p\phi\,(X)\in T_{\phi(p)}N$, i.e.\ a derivation on $N$ at $f(p)$. Derivations act on functions. So, given $g\cl N\to \R$, we want to construct a real number by using $\phi$ and $X$. There is really only one way to do is. If we precompose $g$ with $\phi$, we obtain $g\circ\phi\cl M \to \R$, which is an element of $\mathcal{C}^\infty(M)$. We can then happily apply $X$ to this function to obtain a real number. You should check that $ \d_p\phi\,(X)$ is indeed a tangent vector to $N$.
 
 \br
-Note that, to be careful, we should replace $C^\infty(M)$ and $C^\infty(N)$ above with $C^\infty(U)$ and $C^\infty(V)$, where $U\se M$ and $V\se N$ are open and contain $p$ and $\phi(p)$, respectively.
+Note that, to be careful, we should replace $\mathcal{C}^\infty(M)$ and $\mathcal{C}^\infty(N)$ above with $\mathcal{C}^\infty(U)$ and $\mathcal{C}^\infty(V)$, where $U\se M$ and $V\se N$ are open and contain $p$ and $\phi(p)$, respectively.
 \er
 
 \be
@@ -56,7 +56,7 @@ If $M=\R^d$ and $N=\R^{d'}$, then the differential of $f\cl\R^d\to\R^{d'}$ at $p
 is none other than the Jacobian of $f$ at $p$. 
 \ee
 
-A special case of the differential is the gradient of a function in $C^\infty(M)$.
+A special case of the differential is the gradient of a function in $\mathcal{C}^\infty(M)$.
 
 \bd
 Let $M$ be a manifold and let $f\cl M \to\R$ be smooth. The \emph{gradient of $f$ at $p\in M$} is the covector
@@ -66,7 +66,7 @@ Let $M$ be a manifold and let $f\cl M \to\R$ be smooth. The \emph{gradient of $f
 \ei
 In fact, we can define the \emph{gradient operator at $p\in M$} as the $\R$-linear map 
 \bi{rrCl}
-\d_p \cl & C^\infty(U) & \xrightarrow{\sim}& T^*_pM\\
+\d_p \cl & \mathcal{C}^\infty(U) & \xrightarrow{\sim}& T^*_pM\\
 & f & \mapsto & \d_pf,
 \ei
 with $p\in U\se M$.
@@ -145,7 +145,7 @@ Let $\phi\cl M\to N$ be smooth. The tangent vector $X_{\gamma,p}\in T_pM$ is pus
 \ep
 
 \bq
-Let $f\in C^\infty(V)$, with $(V,x)$ a chart on $N$ and $\phi(p)\in V$. By applying the definitions, we have
+Let $f\in \mathcal{C}^\infty(V)$, with $(V,x)$ a chart on $N$ and $\phi(p)\in V$. By applying the definitions, we have
 \bi{rCl"s}
 (\phi_*)_p(X_{\gamma,p}) (f)& = & (X_{\gamma,p}) (f\circ\phi) & (definition of $(\phi_*)_p$)\\
 & = &  ((f\circ\phi)\circ \gamma)'(0) & (definition of $X_{\gamma,p}$)\\
@@ -180,7 +180,7 @@ We have seen that, given a smooth $\phi\cl M\to N$, we can push a vector $X\in T
 
 \bse
 \begin{tikzcd}
-C^\infty(M) \ar[dd,"X"] && C^\infty(N) \ar[ll,"-\circ\phi"']\ar[ddll,"(\phi_*)_p(X)"]   && T_pM \ar[rr,"(\phi_*)_p"] \ar[ddrr,"(\phi^*)_p(\omega)"'] && T_{\phi(p)}N \ar[dd,"\omega"]\\
+\mathcal{C}^\infty(M) \ar[dd,"X"] && \mathcal{C}^\infty(N) \ar[ll,"-\circ\phi"']\ar[ddll,"(\phi_*)_p(X)"]   && T_pM \ar[rr,"(\phi_*)_p"] \ar[ddrr,"(\phi^*)_p(\omega)"'] && T_{\phi(p)}N \ar[dd,"\omega"]\\
 && && &&\\
 \R&& && && \R
 \end{tikzcd}
@@ -194,7 +194,7 @@ However, if $\phi\cl M\to N$ is a diffeomorphism, then we can also pull a vector
 
 \bse
 \begin{tikzcd}
-C^\infty(M) \ar[rr,"-\circ\phi^{-1}"] \ar[ddrr,"(\phi^*)_p(Y)"'] && C^\infty(N) \ar[dd,"Y"]    && T_pM \ar[dd,"\eta"']   &&& T_{\phi(p)}N \ar[lll,"((\phi^{-1})_*)_{\phi(p)}"'] \ar[ddlll,"(\phi_*)_p(\eta)"] \\
+\mathcal{C}^\infty(M) \ar[rr,"-\circ\phi^{-1}"] \ar[ddrr,"(\phi^*)_p(Y)"'] && \mathcal{C}^\infty(N) \ar[dd,"Y"]    && T_pM \ar[dd,"\eta"']   &&& T_{\phi(p)}N \ar[lll,"((\phi^{-1})_*)_{\phi(p)}"'] \ar[ddlll,"(\phi_*)_p(\eta)"] \\
 && && &&\\
 && \R && \R && 
 \end{tikzcd}
@@ -206,7 +206,7 @@ This is only possible if $\phi$ is a diffeomorphism. In general, you should keep
 \er
 
 \br
-Given a smooth map $\phi\cl M \to N$, if $f\in C^\infty (N)$, then $f\circ \phi$ is often called the pull-back of $f$ along $\phi$. Similarly, if $\gamma$ is a curve on $M$, then $\phi \circ \gamma$ is called the push-forward of $\gamma$ along $\phi$. For example, we can say that 
+Given a smooth map $\phi\cl M \to N$, if $f\in \mathcal{C}^\infty (N)$, then $f\circ \phi$ is often called the pull-back of $f$ along $\phi$. Similarly, if $\gamma$ is a curve on $M$, then $\phi \circ \gamma$ is called the push-forward of $\gamma$ along $\phi$. For example, we can say that 
 \begin{itemize}
 \item the push-forward of a tangent vector acting on a function is the tangent vector acting on the pull-back of the function;
 \item the push-forward of a tangent vector to a curve is the tangent vector to the push-forward of the curve.
@@ -364,7 +364,7 @@ Assuming that $TM$ is equipped with a suitable topology, for instance the initia
 is a smooth atlas on $TM$. Note that, from its definition, it is clear that $\xi$ is a bijection. We will not show that $(\preim_\pi(U),\xi)$ is a chart here, but we will show that $\mathscr{A}_{TM}$ is a smooth atlas.
 
 \bp
-Any two charts $(\preim_\pi(U),\xi), (\preim_\pi(\widetilde U),\widetilde \xi)\in\mathscr{A}_{TM}$ are $C^\infty$-compatible.
+Any two charts $(\preim_\pi(U),\xi), (\preim_\pi(\widetilde U),\widetilde \xi)\in\mathscr{A}_{TM}$ are $\mathcal{C}^\infty$-compatible.
 \ep
 
 \bq

@@ -291,7 +291,7 @@ An \emph{atlas}\index{atlas} of a manifold $M$ is a collection $\mathscr{A}:=\{(
 \ed
 
 \bd
-Two charts $(U,x)$ and $(V,y)$ are said to be \emph{$C^0$-compatible} if either $U \cap V = \vn$ or the map:
+Two charts $(U,x)$ and $(V,y)$ are said to be \emph{$\mathcal{C}^0$-compatible} if either $U \cap V = \vn$ or the map:
 \bse
 y\circ x^{-1}\cl x(U\cap V) \to y(U\cap V)
 \ese
@@ -307,24 +307,24 @@ x(U\cap V) \se \R^d \ar[rr,"y\circ x^{-1}"']& & y(U\cap V)\se \R^d
 \end{tikzcd}
 \ese
 
-Since the maps $x$ and $y$ are homeomorphisms, the composition map $y \circ x^{-1}$ is also a homeomorphism and hence continuous. Therefore, any two charts on a topological manifold are $C^0$-compatible. This definition my thus seem redundant since it applies to every pair of charts. However, it is just a ``warm up'' since we will later refine this definition and define the \emph{differentiability} of maps on a manifold in terms of $C^k$-compatibility of charts. 
+Since the maps $x$ and $y$ are homeomorphisms, the composition map $y \circ x^{-1}$ is also a homeomorphism and hence continuous. Therefore, any two charts on a topological manifold are $\mathcal{C}^0$-compatible. This definition my thus seem redundant since it applies to every pair of charts. However, it is just a ``warm up'' since we will later refine this definition and define the \emph{differentiability} of maps on a manifold in terms of $\mathcal{C}^k$-compatibility of charts. 
 
 \br
 The map $y\circ x^{-1}$ (and its inverse $x\circ y^{-1}$) is called the \emph{co-ordinate change map} or \emph{chart transition map}\index{map!transition}.
 \er
 
 \bd
-A \emph{$C^0$-atlas} of a manifold is an atlas of pairwise $C^0$-compatible charts.
+A \emph{$\mathcal{C}^0$-atlas} of a manifold is an atlas of pairwise $\mathcal{C}^0$-compatible charts.
 \ed
 
-Note that any atlas is also a \emph{$C^0$-atlas}.
+Note that any atlas is also a \emph{$\mathcal{C}^0$-atlas}.
 
 \bd
-A $C^0$-atlas $\mathscr{A}$ is said to be a \emph{maximal atlas} if for every $(U,x)\in\mathscr{A}$, we have $(V,y)\in\mathscr{A}$ for all $(V,y)$ charts that are $C^0$-compatible with $(U,x)$.
+A $\mathcal{C}^0$-atlas $\mathscr{A}$ is said to be a \emph{maximal atlas} if for every $(U,x)\in\mathscr{A}$, we have $(V,y)\in\mathscr{A}$ for all $(V,y)$ charts that are $\mathcal{C}^0$-compatible with $(U,x)$.
 \ed
 
 \be
-Not every $C^0$-atlas is a maximal atlas. Indeed, consider $(\R,\cO_\mathrm{std})$ and the atlas $\mathscr{A}:=(\R,\id_\R)$. Then $\mathscr{A}$ is not maximal since $((0,1),\id_\R)$ is a chart which is $C^0$-compatible with $(\R,\id_\R)$ but $((0,1),\id_\R) \notin \mathscr{A}$.
+Not every $\mathcal{C}^0$-atlas is a maximal atlas. Indeed, consider $(\R,\cO_\mathrm{std})$ and the atlas $\mathscr{A}:=(\R,\id_\R)$. Then $\mathscr{A}$ is not maximal since $((0,1),\id_\R)$ is a chart which is $\mathcal{C}^0$-compatible with $(\R,\id_\R)$ but $((0,1),\id_\R) \notin \mathscr{A}$.
 \ee
 
 We can now look at ``objects on'' topological manifolds from two points of view. For instance, consider a curve on a $d$-dimensional manifold $M$, i.e.\ a map $\g\cl \R\to M$. We now ask whether this curve is continuous, as it should be if models the trajectory of a particle on the ``physical space'' $M$.

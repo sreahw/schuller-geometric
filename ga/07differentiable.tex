@@ -1,7 +1,7 @@
 
 \subsection{Adding structure by refining the (maximal) atlas}
 
-We saw previously that for a topological manifold $(M,\cO)$, the concept of a $C^0$-atlas was fully redundant since every atlas is also a $C^0$-atlas. We will now generalise the notion of a $C^0$-atlas, or more precisely, the notion of $C^0$-compatibility of charts, to something which is non-trivial and non-redundant.
+We saw previously that for a topological manifold $(M,\cO)$, the concept of a $\mathcal{C}^0$-atlas was fully redundant since every atlas is also a $\mathcal{C}^0$-atlas. We will now generalise the notion of a $\mathcal{C}^0$-atlas, or more precisely, the notion of $\mathcal{C}^0$-compatibility of charts, to something which is non-trivial and non-redundant.
 
 \begin{definition}
 An atlas $\mathscr{A}$ for a topological manifold is called a {\scalebox{0.75}\FiveFlowerOpen}-\emph{atlas} if any two charts $(U,x), (V,y) \in \mathscr{A}$ are {\scalebox{0.75}\FiveFlowerOpen}-compatible.
@@ -17,10 +17,10 @@ x(U\cap V) \se \R^{\dim M} \ar[rr,"y\circ x^{-1}"']& & y(U\cap V)\se \R^{\dim M}
 \ese
 Before you think Dr Schuller finally went nuts, the symbol {\scalebox{0.75}\FiveFlowerOpen} is being used as a placeholder for any of the following:
 \begin{itemize}
-\item ${\scalebox{0.75}\FiveFlowerOpen} = C^0$: this just reduces to the previous definition;
-\item ${\scalebox{0.75}\FiveFlowerOpen} = C^k$: the transition maps are $k$-times continuously differentiable as maps between open subsets of $\R^{\dim M}$;
-\item ${\scalebox{0.75}\FiveFlowerOpen} = C^\infty$: the transition maps are smooth (infinitely many times differentiable); equivalently, the atlas is $C^k$ for all $k\geq 0$;
-\item ${\scalebox{0.75}\FiveFlowerOpen} = C^\omega$: the transition maps are (real) analytic, which is stronger than being smooth;
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^0$: this just reduces to the previous definition;
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^k$: the transition maps are $k$-times continuously differentiable as maps between open subsets of $\R^{\dim M}$;
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^\infty$: the transition maps are smooth (infinitely many times differentiable); equivalently, the atlas is $\mathcal{C}^k$ for all $k\geq 0$;
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^\omega$: the transition maps are (real) analytic, which is stronger than being smooth;
 \item ${\scalebox{0.75}\FiveFlowerOpen} =$ complex: if $\dim M$ is even, $M$ is a \emph{complex manifold} if the transition maps are continuous and satisfy the Cauchy-Riemann equations; its complex dimension is $\tfrac{1}{2}\dim M$.
 \end{itemize}
 
@@ -42,17 +42,17 @@ which are known as the Cauchy-Riemann equations\index{Cauchy-Riemann equations}.
 
 We now go back to manifolds.
 
-\begin{theorem}[Whitney] Any maximal $C^k$-atlas, with $k\geq 1$, contains a $C^\infty$-atlas. Moreover, any two maximal $C^k$-atlases that contain the same $C^\infty$-atlas are identical.
+\begin{theorem}[Whitney] Any maximal $\mathcal{C}^k$-atlas, with $k\geq 1$, contains a $\mathcal{C}^\infty$-atlas. Moreover, any two maximal $\mathcal{C}^k$-atlases that contain the same $\mathcal{C}^\infty$-atlas are identical.
 \end{theorem}
 
-An immediate implication is that if we can find a $C^1$-atlas for a manifold, then we can also assume the existence of a $C^\infty$-atlas for that manifold. This is not the case for topological manifolds in general: a space with a $C^0$-atlas may not admit any $C^1$-atlas. But if we have at least a $C^1$-atlas, then we can obtain a $C^\infty$-atlas simply by removing charts, keeping only the ones which are $C^\infty$-compatible.
+An immediate implication is that if we can find a $\mathcal{C}^1$-atlas for a manifold, then we can also assume the existence of a $\mathcal{C}^\infty$-atlas for that manifold. This is not the case for topological manifolds in general: a space with a $\mathcal{C}^0$-atlas may not admit any $\mathcal{C}^1$-atlas. But if we have at least a $\mathcal{C}^1$-atlas, then we can obtain a $\mathcal{C}^\infty$-atlas simply by removing charts, keeping only the ones which are $\mathcal{C}^\infty$-compatible.
 
-Hence, for the purposes of this course, we will not distinguish between $C^k$ ($k\geq 1$) and $C^\infty$-manifolds in the above sense.
+Hence, for the purposes of this course, we will not distinguish between $\mathcal{C}^k$ ($k\geq 1$) and $\mathcal{C}^\infty$-manifolds in the above sense.
 
-We now give the explicit definition of a $C^k$-manifold.
+We now give the explicit definition of a $\mathcal{C}^k$-manifold.
 
 \bd
-A $C^k$\emph{-manifold}\index{manifold} is a triple $(M,\cO,\mathscr{A})$, where $(M,\cO)$ is a topological manifold and $\mathscr{A}$ is a maximal $C^k$-atlas.
+A $\mathcal{C}^k$\emph{-manifold}\index{manifold} is a triple $(M,\cO,\mathscr{A})$, where $(M,\cO)$ is a topological manifold and $\mathscr{A}$ is a maximal $\mathcal{C}^k$-atlas.
 \ed
 
 \br 
@@ -68,17 +68,17 @@ Two {\scalebox{0.75}\FiveFlowerOpen}-atlases $\mathscr{A}$, $\mathscr{B}$ are \e
 Alternatively, we can define the compatibility of two atlases in terms of the compatibility of any pair of charts, one from each atlas.
 
 \be
-Let $(M,\cO)=(\R,\cO_\mathrm{std})$. Consider the two atlases $\mathscr{A}=\{(\R,\id_\R)\}$ and $\mathscr{B}=\{(\R,x)\}$, where $x\cl a \mapsto \sqrt[3]{a}$. Since they both contain a single chart, the compatibility condition on the transition maps is easily seen to hold (in both cases, the only transition map is $\id_\R$). Hence they are both $C^\infty$-atlases.
+Let $(M,\cO)=(\R,\cO_\mathrm{std})$. Consider the two atlases $\mathscr{A}=\{(\R,\id_\R)\}$ and $\mathscr{B}=\{(\R,x)\}$, where $x\cl a \mapsto \sqrt[3]{a}$. Since they both contain a single chart, the compatibility condition on the transition maps is easily seen to hold (in both cases, the only transition map is $\id_\R$). Hence they are both $\mathcal{C}^\infty$-atlases.
 
-Consider now $\mathscr{A}\cup\mathscr{B}$. The transition map $\id_\R\circ x^{-1}$ is the map $a\mapsto a^3$, which is smooth. However, the other transition map, $x\circ\id_\R^{-1}$, is the map $x$, which is not even differentiable once (the first derivative at $0$ does not exist). Consequently, $\mathscr{A}$ and $\mathscr{B}$ are not even $C^1$-compatible.
+Consider now $\mathscr{A}\cup\mathscr{B}$. The transition map $\id_\R\circ x^{-1}$ is the map $a\mapsto a^3$, which is smooth. However, the other transition map, $x\circ\id_\R^{-1}$, is the map $x$, which is not even differentiable once (the first derivative at $0$ does not exist). Consequently, $\mathscr{A}$ and $\mathscr{B}$ are not even $\mathcal{C}^1$-compatible.
 \ee
 
-The previous example shows that we can equip the real line with (at least) two different incompatible $C^\infty$-structures. This looks like a disaster as it implies that there is an arbitrary choice to be made about which differentiable structure to use. Fortunately, the situation is not as bad as it looks, as we will see in the next sections.
+The previous example shows that we can equip the real line with (at least) two different incompatible $\mathcal{C}^\infty$-structures. This looks like a disaster as it implies that there is an arbitrary choice to be made about which differentiable structure to use. Fortunately, the situation is not as bad as it looks, as we will see in the next sections.
 
 \subsection{Differentiable manifolds}
 \index{manifold!differentiable}
 \bd
-Let $\phi\cl M\to N$ be a map, where $(M,\cO_M,\mathscr{A}_M)$ and $(N,\cO_N,\mathscr{A}_N)$ are $C^k$-manifolds. Then $\phi$ is said to be ($C^k$-)\emph{differentiable at} $p\in M$ if for some charts $(U,x)\in\mathscr{A}_M$ with $p\in U$ and $(V,y)\in\mathscr{A}_N$ with $\phi(p)\in V$, the map $y\circ\phi\circ x^{-1}$ is $k$-times continuously differentiable at $x(p)\in x(U)\se\R^{\dim M}$ in the usual sense.
+Let $\phi\cl M\to N$ be a map, where $(M,\cO_M,\mathscr{A}_M)$ and $(N,\cO_N,\mathscr{A}_N)$ are $\mathcal{C}^k$-manifolds. Then $\phi$ is said to be ($\mathcal{C}^k$-)\emph{differentiable at} $p\in M$ if for some charts $(U,x)\in\mathscr{A}_M$ with $p\in U$ and $(V,y)\in\mathscr{A}_N$ with $\phi(p)\in V$, the map $y\circ\phi\circ x^{-1}$ is $k$-times continuously differentiable at $x(p)\in x(U)\se\R^{\dim M}$ in the usual sense.
 \bse
 \begin{tikzcd}
 U\se M \ar[rr,"\phi"] \ar[dd,"x"] && V\se N \ar[dd,"y"]\\
@@ -106,23 +106,23 @@ U\cap\widetilde U\se M \ar[rr,"\phi"] \ar[dd,"x"] \ar[uu,"\widetilde x"'] && V\c
 x(U\cap\widetilde U)\se\R^{\dim M}\ar[rr,"y\circ\phi\circ x^{-1}"] \ar[uuuu,bend left=70,"\widetilde x\circ x^{-1}"]&& y(V\cap\widetilde V)\se\R^{\dim N} \ar[uuuu,bend right=70,"\widetilde y\circ y^{-1}"']
 \end{tikzcd}
 \ese
-Consider the map $\widetilde x\circ x^{-1}$ in the diagram above. Since the charts $(U,x)$ and $(\widetilde U,\widetilde x)$ belong to the same $C^k$-atlas $\mathscr{A}_M$, by definition the transition map $\widetilde x\circ x^{-1}$ is $C^k$-differentiable as a map between subsets of $\R^{\dim M}$, and similarly for $\widetilde y\circ y^{-1}$. We now notice that we can write:
+Consider the map $\widetilde x\circ x^{-1}$ in the diagram above. Since the charts $(U,x)$ and $(\widetilde U,\widetilde x)$ belong to the same $\mathcal{C}^k$-atlas $\mathscr{A}_M$, by definition the transition map $\widetilde x\circ x^{-1}$ is $\mathcal{C}^k$-differentiable as a map between subsets of $\R^{\dim M}$, and similarly for $\widetilde y\circ y^{-1}$. We now notice that we can write:
 \bse
 \widetilde y\circ\phi\circ \widetilde x^{-1} = (\widetilde y\circ y^{-1})\circ(y\circ\phi\circ x^{-1})\circ(\widetilde x\circ x^{-1})^{-1}
 \ese
-and since the composition of $C^k$ maps is still $C^k$, we are done.
+and since the composition of $\mathcal{C}^k$ maps is still $\mathcal{C}^k$, we are done.
 \eq
-This proof shows the significance of restricting to $C^k$-atlases. Such atlases only contain charts for which the transition maps are $C^k$, which is what makes our definition of differentiability of maps between manifolds well-defined.
+This proof shows the significance of restricting to $\mathcal{C}^k$-atlases. Such atlases only contain charts for which the transition maps are $\mathcal{C}^k$, which is what makes our definition of differentiability of maps between manifolds well-defined.
 
-The same definition and proof work for smooth ($C^\infty$) manifolds, in which case we talk about \emph{smooth maps}. As we said before, this is the case we will be most interested in.
+The same definition and proof work for smooth ($\mathcal{C}^\infty$) manifolds, in which case we talk about \emph{smooth maps}. As we said before, this is the case we will be most interested in.
 
 \be
 Consider the smooth manifolds $(\R^d,\cO_\mathrm{std},\mathscr{A}_d)$ and $(\R^{d'},\cO_\mathrm{std},\mathscr{A}_{_d'})$, where $\mathscr{A}_d)$ and $\mathscr{A}_{_d'})$ are the maximal atlases containing the charts $(\R^d,\id_{\R^d})$ and $(\R^{d'},\id_{\R^{d'}})$ respectively, and let $f\cl \R^{d}\to \R^{d'}$ be a map. The diagram defining the differentiability of $f$ with respect to these charts is
 \bse
 \begin{tikzcd}
-\R^{d} \ar[rrr,"f"] \ar[dd,"\id_{\R^d}"] &&& \R^{d'} \ar[dd,"\id_{\R^{d'}}"]\\
+\R^{d} \ar[rrrr,"f"] \ar[dd,"\id_{\R^d}"] &&&& \R^{d'} \ar[dd,"\id_{\R^{d'}}"]\\
 &&\\
-\R^{d} \ar[rrr,"\id_{\R^{d'}}\circ f\circ (\id_{\R^d})^{-1}"]&&& \R^{d'}
+\R^{d} \ar[rrrr,"\id_{\R^{d'}}\circ f\circ (\id_{\R^d})^{-1}"]&&&& \R^{d'}
 \end{tikzcd}
 \ese
 and, by definition, the map $f$ is smooth as a map between manifolds if, and only if, the map $\id_{\R^{d'}}\circ f\circ (\id_{\R^d})^{-1}=f$ is smooth in the usual sense.
@@ -132,9 +132,9 @@ and, by definition, the map $f$ is smooth as a map between manifolds if, and onl
 Let $(M,\cO,\mathscr{A})$ be a $d$-dimensional smooth manifold and let $(U,x)\in\mathscr{A}$. Then $x\cl U \to x(U)\se \R^d$ is smooth. Indeed, we have
 \bse
 \begin{tikzcd}
-U \ar[rr,"x"] \ar[dd,"x"] && x(U) \ar[dd,"\id_{x(U)}"]\\
+U \ar[rrr,"x"] \ar[dd,"x"] &&& x(U) \ar[dd,"\id_{x(U)}"]\\
 &&\\
-x(U)\se\R^{d} \ar[rr,"\id_{x(U)}\circ x\circ x^{-1}"]&& x(U)\se\R^{d} 
+x(U)\se\R^{d} \ar[rrr,"\id_{x(U)}\circ x\circ x^{-1}"]&&& x(U)\se\R^{d} 
 \end{tikzcd}
 \ese
 Hence $x\cl U \to x(U)$ is smooth if, and only if, the map $\id_{x(U)}\circ x\circ x^{-1}=\id_{x(U)}$ is smooth in the usual sense, which it certainly is.
@@ -142,9 +142,9 @@ Hence $x\cl U \to x(U)$ is smooth if, and only if, the map $\id_{x(U)}\circ x\ci
 The coordinate maps $x^i:={\proj_i}\circ x\cl U \to \R$ are also smooth. Indeed, consider the diagram
 \bse
 \begin{tikzcd}
-U \ar[rr,"x^i"] \ar[dd,"x"] && \R \ar[dd,"\id_\R"]\\
+U \ar[rrr,"x^i"] \ar[dd,"x"] &&& \R \ar[dd,"\id_\R"]\\
 &&\\
-x(U)\se\R^{d} \ar[rr,"{\id_\R}\circ x^i\circ x^{-1}"]&& \R 
+x(U)\se\R^{d} \ar[rrr,"{\id_\R}\circ x^i\circ x^{-1}"]&&& \R 
 \end{tikzcd}
 \ese
 Then, $x^i$ is smooth if, and only if, the map

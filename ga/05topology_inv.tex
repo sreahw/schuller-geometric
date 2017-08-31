@@ -205,9 +205,9 @@ Let $(M,\cO_M)$ be a Hausdorff topological space. Then $(M,\cO_M)$ is paracompac
 \be
 Let $\R$ be equipped with the standard topology. Then $\R$ is paracompact by Stone's theorem. Hence, every open cover of $\R$ admits a partition of unity subordinate to that cover. As a simple example, consider $\cF = \{f,g\}$, where:
 \bse
-f(x) = \left\{ \ba{ll} 0 & \t{if } x \leq 0\\ x^2 & \t{if } 0\leq x\leq 1\\ 1 & \t{if } x \geq 1 \ea \right.
-\quad \t{and} \quad
-g(x) = \left\{ \ba{ll} 1 & \t{if } x \leq 0\\ 1-x^2 & \t{if } 0\leq x\leq 1\\ 0 & \t{if } x \geq 1 \ea \right.
+f(x) = \left\{ \ba{ll} 0 & \t{ if } x \leq 0\\ x^2 & \t{ if } 0\leq x\leq 1\\ 1 & \t{ if } x \geq 1 \ea \right.
+\quad \t{and } \quad
+g(x) = \left\{ \ba{ll} 1 & \t{ if } x \leq 0\\ 1-x^2 & \t{ if } 0\leq x\leq 1\\ 0 & \t{ if } x \geq 1 \ea \right. 
 \ese
 Then $\cF$ is a partition of unity of $\R$. Indeed, $f,g\cl \R \to [0,1]$ are both continuous, condition i) is satisfied since $\cF$ itself is finite, and we have $\forall \, x \in \R : f(x)+g(x)=1$.
 
@@ -240,7 +240,7 @@ A topological space $(M,\cO)$ is connected if, and only if, the only subsets tha
 \bq
 \ben
 \item[($\imp$)] Suppose, for the sake of contradiction, that there exists $U\se M$ such that $U$ is both open and closed and $U\notin\{\vn,M\}$. Consider the sets $U$ and $M\sm U$. Clearly, we have $U \cap M\sm U = \vn$. Moreover, $M\sm U$ is open since $U$ is closed. Therefore, $U$ and $M\sm U$ are two open, non-empty, non-intersecting sets such that $M = U \cup M \sm U$, contradicting the connectedness of $(M,\cO)$.
-\item[($\Leftarrow$)] Suppose that $(M,\cO)$ is not connected. Then there exist open, non-empty, non-intersecting subsets $A,B\se M$ such that $M=A\cup B$. Clearly, $A \neq M$, otherwise we would have $B=\vn$. Moreover, since $B$ is open, $A=M\sm B$ is closed. Hence, $A$ is a set which is both open and closed and $a \notin \{\vn,M\}$.\qedhere
+\item[($\Leftarrow$)] Suppose that $(M,\cO)$ is not connected. Then there exist open, non-empty, non-intersecting subsets $A,B\se M$ such that $M=A\cup B$. Clearly, $A \neq M$, otherwise we would have $B=\vn$. Moreover, since $B$ is open, $A=M\sm B$ is closed. Hence, $A$ is a set which is both open and closed and $A \notin \{\vn,M\}$.\qedhere
 \een
 \eq
 
@@ -265,7 +265,7 @@ If a topological space is path-connected, then it is also connected.
 \et
 
 \bq
-Let $(M,\cO)$ be path-connected but not connected. Then there exist open, non-empty, non-intersecting subsets $A,B\se M$ such that $M=A\cup B$. Let $p \in A$ and $q \in B$. Since $(M,\cO)$ is path-connected, there exists a continuous curve $\g\cl[0,1]\to M$ such that $\g(0)=p$ and $\g(1)=q$. Then:
+Let $(M,\cO)$ be path-connected but not connected. Then there exist open, non-empty, non-intersecting subsets $A,B\subset M$ such that $M=A\cup B$. Let $p \in A$ and $q \in B$. Since $(M,\cO)$ is path-connected, there exists a continuous curve $\g\cl[0,1]\to M$ such that $\g(0)=p$ and $\g(1)=q$. Then:
 \bse
 [0,1] = \mathrm{preim}_\g(M) =  \mathrm{preim}_\g(A\cup B) =  \mathrm{preim}_\g(A)\cup  \mathrm{preim}_\g( B).
 \ese
@@ -312,7 +312,7 @@ Pictorially, two curves are homotopic if they can be continuously deformed into 
 \end{figure}
 
 \bp
-Let $\g \sim \delta :\eqv \g$ and $\delta$ are homotopic. Then $\sim$ is an equivalence relation.
+Let $\g \sim \delta :\eqv$ ``$\g$ and $\delta$ are homotopic''. Then, $\sim$ is an equivalence relation.
 \ep
 
 \bd
@@ -334,10 +334,11 @@ Let $(M,\cO)$ be a topological space. The \emph{fundamental group}\index{fundame
 \bse
 \pi_1(p) := \mathscr{L}_p/\!\sim\ = \{[\g] \mid \g \in \mathscr{L}_p\},
 \ese
-where $\sim$ is the homotopy equivalence relation, together with the map $\bullet \cl\pi_1(p)\times \pi_1(p)\to \pi_1(p)$ defined by:
-\bse
-[\g]\bullet[\delta]:=[\g*\delta] .
-\ese
+where $\sim$ is the homotopy equivalence relation, together with the map 
+\bi{rrCl}
+\bullet \cl & \pi_1(p)\times \pi_1(p) &\to &\pi_1(p)\\
+&(\g,\delta)&\mapsto & [\g]\bullet[\delta]:=[\g*\delta] .
+\ei
 \ed
 
 \br
