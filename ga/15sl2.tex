@@ -1,0 +1,389 @@
+
+\subsection{The structure of \texorpdfstring{$\SL(2,\C)$}{SL(2,C)}}
+
+Recall the the Lie group structure is the combination of a number of simpler structures, which we will now examine in detail for the \emph{special linear group} of degree $2$ over $\C$, also known as the \emph{relativistic spin group}\index{relativistic spin group}.
+
+\subsubsection*{$\SL(2,\C)$ as a set}
+We define the following subset of $\C^4:=\C\times\C\times\C\times\C$
+\bse
+\SL(2,\C) := \biggl\{ \biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr) \in \C^4 \ \Big|\ ad-bc = 1 \biggr\},
+\ese
+where the array is just an alternative notation for a quadruple.
+
+\subsubsection*{$\SL(2,\C)$ as a group}
+
+We define an operation
+\bi{rrCl}
+\bullet \cl & \SL(2,\C) \times \SL(2,\C) & \to & \SL(2,\C)\\[3pt]
+& (\biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr) ,\biggl(\begin{matrix} e & f \\ g & h\end{matrix}\biggr))  & \mapsto & \biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr) \bullet \biggl(\begin{matrix} e & f \\ g & h\end{matrix}\biggr),
+\ei
+where
+\bse
+\biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr) \bullet \biggl(\begin{matrix} e & f \\ g & h\end{matrix}\biggr) := \biggl(\begin{matrix} ae+bg & af+bh \\ ce+dg & cf+dh\end{matrix}\biggr).
+\ese
+Formally, this operation is the same as matrix multiplication. We can check directly that the result of applying $\bullet$ lands back in $\SL(2,\C)$, or simply recall that the determinant of a product is the product of the determinants. Moreover, the operation $\bullet$
+\ben[label=\roman*)]
+\item is associative (straightforward but tedious to check);
+\item has an identity element, namely $\biggl(\begin{matrix} 1 & 0 \\ 0 & 1\end{matrix}\biggr)\in \SL(2,\C)$;
+\item admits inverses: for each $\biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr)\in \SL(2,\C)$, we have $\biggl(\begin{matrix} d & -b \\ -c & a\end{matrix}\biggr)\in \SL(2,\C)$ and
+\bse
+\biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr)\bullet\biggl(\begin{matrix} d & -b \\ -c & a\end{matrix}\biggr) = \biggl(\begin{matrix} d & -b \\ -c & a\end{matrix}\biggr)\bullet \biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr) = \biggl(\begin{matrix} 1 & 0 \\ 0 & 1\end{matrix}\biggr).
+\ese
+Hence, we have $\biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr)^{-1}= \biggl(\begin{matrix} d & -b \\ -c & a\end{matrix}\biggr)$.
+\een
+Therefore, the pair $(\SL(2,\C),\bullet)$ is a (non-commutative) group.
+
+\subsubsection*{$\SL(2,\C)$ as a topological space}
+
+Recall that if $N$ is a subset of $M$ and $\mathcal{O}$ is a topology on $M$, then we can equip $N$ with the subset topology inherited from $M$
+\bse
+\mathcal{O}|_N := \{U\cap N \mid U \in \mathcal{O}\}.
+\ese
+We begin by establishing a topology on $\C$ as follows. Let
+\bse
+B_r(z):=\{y\in\C\mid |z-y|<r\}
+\ese
+be the open ball of radius $r>0$ and centre $z\in \C$.
+\begin{center}
+\begin{tikzpicture}
+\draw [->] (-0.3,0) -- (3.2,0) node[below] {Re}; 
+\draw [->] (0,-0.3) -- (0,3) node[left] {Im}; 
+\draw[fill=lightergray,dashed]  (1.5,2) circle (0.8) node[left] {$z$};
+\draw (1.8,2.35) node {$r$};
+\draw[fill]  (1.5,2) circle (0.05);
+\draw (1.5,2) edge +(0.8*cos 30,0.8*sin 30);
+\draw (3.3,2.7) node {$\C$};
+\draw (2.6,1.1) node {$B_r(z)$};
+\end{tikzpicture}
+\end{center}
+Define $\mathcal{O}_\C$ implicitly by
+\bse
+U\in \mathcal{O}_\C\ :\Leftrightarrow\ \forall \, z \in U : \exists \, r>0 : B_r(z)\se U.
+\ese
+Then, the pair $(\C,\mathcal{O}_\C)$ is a topological space. In fact, we have
+\bse
+(\C,\mathcal{O}_\C) \cong_\mathrm{top} (\R^2,\mathcal{O}_\mathrm{std}).
+\ese
+We can then equip $\C^4$ with the product topology so that we can finally define
+\bse
+\mathcal{O} := (\mathcal{O}_\C)|_{\SL(2,\C)},
+\ese
+so that the pair $(\SL(2,\C),\mathcal{O})$ is a topological space. In fact, it is a connected topological space, and we will need this property later on.
+
+\subsubsection*{$\SL(2,\C)$ as a topological manifold}
+
+Recall that a topological space $(M,\mathcal{O})$ is a complex topological manifold if each point $p\in M$ has an open neighbourhood $U(p)$ which is homeomorphic to an open subset of $\C^d$. Equivalently, there must exist a $\mathcal{C}^0$-atlas, i.e.\ a collection $\mathscr{A}$ of charts $(U_\alpha,x_\alpha)$, where the $U_\alpha$ are open and cover $M$ and each $x$ is a homeomorphism onto a subset of $\C^d$.
+
+Let $U$ be the set
+\bse
+U:= \biggl\{ \biggl( \begin{matrix} a & b \\ c & d \end{matrix}\biggr) \in \SL(2,\C) \ \Big| \ a \neq 0 \biggr\}
+\ese
+and define the map
+\bi{rrCl}
+x \cl & U & \to & x(U) \se \C^*\times\C\times \C\\
+& \biggl( \begin{matrix} a & b \\ c & d \end{matrix}\biggr) & \mapsto & (a,b,c),
+\ei
+where $\C^*=\C\setminus\{0\}$. With a little work, one can show that $U$ is an open subset of $(\SL(2,\C),\mathcal{O})$ and $x$ is a homeomorphism with inverse
+\bi{rrCl}
+x^{-1} \cl & x(U) & \to & U\\
+& (a,b,c)& \mapsto & \biggl( \begin{matrix} a & b \\ c & \frac{1+bc}{a} \end{matrix}\biggr) .
+\ei
+However, since $\SL(2,\C)$ contains elements with $a=0$, the chart $(U,x)$ does not cover the whole space, and hence we need at least one more chart. We thus define the set
+\bse
+V:= \biggl\{ \biggl( \begin{matrix} a & b \\ c & d \end{matrix}\biggr) \in \SL(2,\C) \ \Big| \ b \neq 0 \biggr\}
+\ese
+and the map
+\bi{rrCl}
+y \cl & V & \to & x(V) \se \C\times \C^*\times \C\\
+& \biggl( \begin{matrix} a & b \\ c & d \end{matrix}\biggr) & \mapsto & (a,b,d).
+\ei
+Similarly to the above, $V$ is open and $y$ is a homeomorphism with inverse
+\bi{rrCl}
+y^{-1} \cl & x(V) & \to & V\\
+& (a,b,d)& \mapsto & \biggl( \begin{matrix} a & b \\ \frac{ad-1}{b}  & d\end{matrix}\biggr) .
+\ei
+An element of $\SL(2,\C)$ cannot have both $a$ and $b$ equal to zero, for otherwise $ad-bc=0\neq 1$. Hence $\mathscr{A}_{\mathrm{top}}:=\{(U,x),(V,y)\}$ is an atlas, and since every atlas is automatically a $\mathcal{C}^0$-atlas, the triple $(\SL(2,\C),\mathcal{O},\mathscr{A}_{\mathrm{top}})$ is a 3-dimensional, complex, topological manifold.
+
+\subsubsection*{$\SL(2,\C)$ as a complex differentiable manifold}
+
+Recall that to obtain a $\mathcal{C}^1$-differentiable manifold from a topological manifold with atlas $\mathscr{A}$, we have to check that every transition map between charts in $\mathscr{A}$ is differentiable in the usual sense.
+
+In our case, we have the atlas $\mathscr{A}_{\mathrm{top}}:=\{(U,x),(V,y)\}$. We evaluate
+\bse
+(y\circ x^{-1})(a,b,c) = y (\biggl( \begin{matrix} a & b \\ c & \frac{1+bc}{a} \end{matrix}\biggr) ) = (a,b,\tfrac{1+bc}{a}).
+\ese
+Hence we have the transition map 
+\bi{rrCl}
+y\circ x^{-1} \cl & x(U\cap V) & \to & y(U\cap V)\\
+& (a,b,c) & \mapsto & ( a,b,\tfrac{1+bc}{a}).
+\ei
+Similarly, we have 
+\bse
+(x\circ y^{-1})(a,b,d) = y (\biggl( \begin{matrix} a & b \\ \frac{ad-1}{b} & d \end{matrix}\biggr) ) = (a,b,\tfrac{ad-1}{b}).
+\ese
+Hence, the other transition map is 
+\bi{rrCl}
+x\circ y^{-1} \cl & y(U\cap V) & \to & x(U\cap V)\\
+& (a,b,c) & \mapsto & ( a,b,\tfrac{ad-1}{b}).
+\ei
+Since $a\neq 0$ and $b\neq 0$, the transition maps are complex differentiable (this is a good time to review your complex analysis!). 
+
+Therefore, the atlas $\mathscr{A}_{\mathrm{top}}$ is a differentiable atlas. By defining $\mathscr{A}$ to be the maximal differentiable atlas containing $\mathscr{A}_{\mathrm{top}}$, we have that $(\SL(2,\C),\mathcal{O},\mathscr{A})$ is a 3-dimensional, complex differentiable manifold.
+
+\subsubsection*{$\SL(2,\C)$ as a Lie group}
+
+We equipped $\SL(2,\C)$ with both a group and a manifold structure. In order to obtain a Lie group structure, we have to check that these two structures are compatible, that is, we have to show that the two maps
+\bi{rrCl}
+\mu \cl & \SL(2,\C) \times \SL(2,\C) & \to & \SL(2,\C)\\[3pt]
+& (\biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr) ,\biggl(\begin{matrix} e & f \\ g & h\end{matrix}\biggr))  & \mapsto & \biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr) \bullet \biggl(\begin{matrix} e & f \\ g & h\end{matrix}\biggr)
+\ei
+and 
+\bi{rrCl}
+i \cl & \SL(2,\C) & \to & \SL(2,\C)\\[3pt]
+& \biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr)  & \mapsto &\biggl(\begin{matrix} a & b \\ c & d\end{matrix}\biggr)^{-1} %= \biggl(\begin{matrix} d & -b \\ -c & a\end{matrix}\biggr)
+\ei
+are differentiable with respect to the differentiable structure on $\SL(2,\C)$. For instance, for the inverse map $i$, we have to show that the map $y\circ i \circ x^{-1}$ is differentiable in the usual for any pair of charts $(U,x),(V,y)\in \mathscr{A}$. 
+\bse
+\begin{tikzcd}
+U \se\SL(2,\C) \ar[dd,"x"]\ar[rr,"i"]&& V\se \SL(2,\C)\ar[dd,"y"]\\
+&&\\
+x(U) \se \C^3 \ar[rr,"y\circ i\circ x^{-1}"]&& y(V)\se \C^3
+\end{tikzcd}
+\ese
+However, since $\SL(2,\C)$ is connected, the differentiability of the transition maps in $\mathscr{A}$ implies that if $y\circ i\circ x^{-1}$ is differentiable for any two given charts, then it is differentiable for all charts in $\mathscr{A}$. Hence, we can simply let $(U,x)$ and $(V,y)$ be the two charts on $\SL(2,\C)$ defined above. Then, we have
+\bse
+(y\circ i\circ x^{-1}) (a,b,c) = (y\circ i) ( \biggl(\begin{matrix} a & b \\ c & \frac{1+bc}{a}\end{matrix}\biggr) ) = y ( \biggl(\begin{matrix} \frac{1+bc}{a} & -b \\ -c & a\end{matrix}\biggr)) = (\tfrac{1+bc}{a},-b,a)
+\ese
+which is certainly complex differentiable as a map between open subsets of $\C^3$ (recall that $a\neq 0$ on $x(U)$).
+
+Checking that $\mu$ is complex differentiable is slightly more involved, since we first have to equip $\SL(2,\C) \times \SL(2,\C)$ with a suitable ``product differentiable structure'' and then proceed as above. Once that is done, we can finally conclude that $((\SL(2,\C),\mathcal{O},\mathscr{A}),\bullet)$ is a $3$-dimensional complex Lie group.
+
+\subsection{The Lie algebra of \texorpdfstring{$\SL(2,\C)$}{SL(2,C)}}
+
+Recall that to every Lie group $G$, there is an associated Lie algebra $\mathcal{L}(G)$, where
+\bse
+\mathcal{L}(G) := \{X\in \Gamma(TG)\mid \forall \, g,h\in G : (\ell_g)_*(X|_h)=X_{gh}\},
+\ese
+which we then proved to be isomorphic to the Lie algebra $T_eG$ with Lie bracket
+\bse
+[A,B]_{T_eG} := j^{-1} ([j(A),j(B)]_{\mathcal{L}(G)})
+\ese
+induced by the Lie bracket on $\mathcal{L}(G)$ via the isomorphism $j$
+\bse
+j(A)|_g := (\ell_g)_*(A).
+\ese
+In the case of $\SL(2,\C)$, the left translation map by $\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)$ is 
+\bi{rrCl}
+\ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \cl & \SL(2,\C) &\to & \SL(2,\C)\\
+& \biggl(\begin{matrix}e & f \\ g  & h\end{matrix}\biggr) & \mapsto & \biggl(\begin{matrix}a & b \\ c & d\end{matrix}\biggr) \bullet \biggl(\begin{matrix}e & f \\ g  & h\end{matrix}\biggr) 
+\ei
+By using the standard notation $\sl(2,\C)\equiv \mathcal{L}(\SL(2,\C))$, we have
+\bse
+\sl(2,\C) \cong_{\mathrm{Lie \, alg}} T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C).
+\ese
+We would now like to explicitly determine the Lie bracket on $T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C)$, and hence determine its structure constants.
+
+Recall that if $(U,x)$ is a chart on a manifold $M$ and $p\in U$, then the chart $(U,x)$ induces a basis of the tangent space $T_pM$. We shall use our previously defined chart $(U,x)$ on $\SL(2,\C)$, where $U:= \{ \left( \begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right) \in \SL(2,\C) \mid a \neq 0 \}$ and 
+\bi{rrCl}
+x \cl & U & \to & x(U) \se \C^3\\
+& \biggl( \begin{matrix} a & b \\ c & d \end{matrix}\biggr) & \mapsto & (a,b,c).
+\ei
+Note that the $d$ appearing here is completely redundant, since the membership condition of $\SL(2,\C)$ forces $d=\frac{1+bc}{a}$. However, we will keep writing the $d$ to avoid having a fraction in a matrix in a subscript.
+
+The chart $(U,x)$ contains $\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)$ and hence we get an induced co-ordinate basis
+\bse
+\biggl\{\tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\in  T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C) \ \Big| \ 1\leq i \leq 3 \biggr\}
+\ese
+so that any $A\in  T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C)$ can be written as
+\bse
+A = \lambda^1 \tvb{x}{1}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} + \lambda^2 \tvb{x}{2}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} + \lambda^3\tvb{x}{3}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)},
+\ese
+for some $\lambda^1, \lambda^2,\lambda^3\in \C$. Since the Lie bracket is bilinear, its action on these basis vectors uniquely extends to the whole of $T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C)$ by linear continuation. Hence, we simply have to determine the action of the Lie bracket of $\sl(2,\C)$ on the images under the isomorphism $j$ of these basis vectors. 
+
+Let us now determine the image of these co-ordinate induced basis elements under the isomorphism $j$. The object
+\bse
+j\biggl(    \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) \in \sl(2,\C) 
+\ese
+is a left-invariant vector field on $\SL(2,\C)$. It assigns to each point $\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)\in U\se \SL(2,\C)$ the tangent vector
+\bse
+j\biggl(    \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) \bigg|_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} : =
+\Bigl(\ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \Bigr)_*     \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} \in T_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)}\SL(2,\C). 
+\ese
+This tangent vector is a $\C$-linear map $\mathcal{C}^\infty(\SL(2,\C))\xrightarrow{\sim}\C$, where $\mathcal{C}^\infty(\SL(2,\C))$ is the $\C$-vector space (in fact, the $\C$-algebra) of smooth complex-valued functions on $\SL(2,\C)$ although, to be precise, since we are working in a chart we should only consider functions defined on $U$. For (the restriction to $U$ of) any $f\in \mathcal{C}^\infty(\SL(2,\C))$ we have, explicitly,
+\bi{rCl}
+\Bigl(\ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \Bigr)_*     \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} (f) & = & \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} \Bigl(f\circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \Bigr)\\
+& = & \partial_i\Bigl(f\circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}\Bigr) (x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)),
+\ei
+where the argument of $\partial_i$ in the last line is a map $x(U)\se\C^3\to\C$, hence $\partial_i$ is simply the operation of complex differentiation with respect to the $i$-th (out of the 3) complex variable of the map $f\circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}$, which is then to be evaluated at $x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)\in \C^3$. By inserting an identity in the composition, we have
+\bi{rCl}
+& = &\partial_i\Bigl(f\circ {\id_U} \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}\Bigr) (x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)) \\
+& = & \partial_i\Bigl(f\circ ( x^{-1}\circ x) \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}\Bigr) (x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right))\\
+& = & \partial_i\Bigl((f\circ  x^{-1})\circ (x \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1})\Bigr) (x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)),
+\ei
+where $f\circ  x^{-1}\cl x(U)\se \C^3 \to \C$ and $(x \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1})\cl x(U)\se \C^3 \to x(U)\se\C^3$ and hence, we can use the multi-dimensional chain rule to obtain
+\bi{rCl}
+& = & \Bigl(\partial_m(f\circ  x^{-1})\bigl((x \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}) (x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right))\bigr)\Bigr)\Bigl( 
+\partial_i (x^m \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}) (x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right))\Bigr),
+\ei
+with the summation going from $m=1$ to $m=3$. The first factor is simply
+\bi{rCl}
+\partial_m(f\circ  x^{-1})\bigl((x \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)}) \left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)\bigr) & =\phantom{:} & \partial_m(f\circ  x^{-1})(x\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right))\\
+& =: & \tvb{x}{m}{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} (f) .
+\ei
+To see what the second factor is, we first consider the map $x^m \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}$. This map acts on the triple $(e,f,g)\in x(U)$ as
+\bi{rCl}
+(x^m \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}) (e,f,g) & = & (x^m \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} ) \biggl(\begin{matrix}e & f \\ g & \frac{1+fg}{e}\end{matrix}\biggr)\\
+& = & x^m (\biggl(\begin{matrix}a & b \\ c & d\end{matrix}\biggr) \bullet \biggl(\begin{matrix}e & f \\ g & \frac{1+fg}{e}\end{matrix}\biggr))\\
+& = & x^m (\left(\begin{matrix}ae+bg &\, af+ \frac{b(1+fg)}{e} \\ ce+dg &\, cf+\frac{d(1+fg)}{e}\end{matrix}\right) ),
+\ei
+and since $x^m := {\proj_m} \circ x$, with $m\in \{1,2,3\}$, we have 
+\bse
+(x^m \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}) (e,f,g) = \proj_m (ae+bg, af+ \tfrac{b(1+fg)}{e}, ce+dg ),
+\ese
+the map $\proj_m$ simply picks the $m$-th component of the triple. We now have to apply $\partial_i$ to this map, with $i\in \{1,2,3\}$, i.e.\ we have to differentiate with respect to each of the three complex variables $e$, $f$, and $g$. We can write the result as
+\bse
+\partial_i(x^m \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}) (e,f,g)= D(e,f,g)^m_{\phantom{m}i},
+\ese
+where $m$ labels the rows and $i$ the columns of the matrix
+\bse
+D(e,f,g)= \left(\begin{matrix}a & 0 & b\\ -\frac{b(1+fg)}{e^2} &\,a+\frac{bg}{e} &\frac{bf}{e}\\ c & 0 & d\end{matrix}\right).
+\ese
+Finally, by evaluating this at $(e,f,g)=x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right) = (1,0,0)$, we obtain
+\bse
+\partial_i(x^m \circ \ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \circ x^{-1}) (x\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right))= D^m_{\phantom{m}i},
+\ese
+where, by recalling that $d=\frac{1+bc}{a}$,
+\bse
+D:= D(1,0,0)= \left(\begin{matrix}a & 0 & b\ \\ -b & a & 0\\ c & 0 & \frac{1+bc}{a}\end{matrix}\right).
+\ese
+Putting the two factors back together yields
+\bse
+\Bigl(\ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \Bigr)_*     \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} (f) =  D^m_{\phantom{m}i} \tvb{x}{m}{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} (f) .
+\ese
+Since this holds for an arbitrary $f\in\mathcal{C}^\infty(\SL(2,\C))$, we have
+\bse
+j\biggl(    \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) \bigg|_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} : =
+\Bigl(\ell_{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)} \Bigr)_*     \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} = D^m_{\phantom{m}i} \tvb{x}{m}{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)}, 
+\ese
+and since the point $\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)\in U\se\SL(2,\C)$ is also arbitrary, we have
+\bse
+j\biggl( \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) = D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} \in \sl(2,\C),
+\ese
+where $D$ is now the corresponding matrix of co-ordinate functions
+\bse
+D:=\left(\begin{matrix}x^1 & 0 & x^2\ \\ -x^2 & x^1 & 0\\ x^3 & 0 & \frac{1+x^2x^3}{x^1}\end{matrix}\right).
+\ese
+Note that while the three vector fields
+\bi{rrCl}
+\frac{\partial}{\partial x^m} \cl &  \SL(2,\C) & \to &  T\SL(2,\C)\\
+& \biggl(\begin{matrix}a & b \\ c & d\end{matrix}\biggr) & \mapsto & \tvb{x}{m}{\left(\begin{smallmatrix}a & b \\ c & d\end{smallmatrix}\right)}
+\ei
+are not individually left-invariant, their linear combination with coefficients $D^m_{\phantom{m}i}$ is indeed left-invariant. Recall that these vector fields
+\ben[label=\roman*)]
+\item are $\C$-linear maps
+\bi{rrCl}
+\frac{\partial}{\partial x^m}\cl &\mathcal{C}^\infty(\SL(2,\C))&\xrightarrow{\sim} &\mathcal{C}^\infty(\SL(2,\C))\\
+& f & \mapsto & \partial_m(f\circ x^{-1})\circ x;
+\ei
+\item satisfy the Leibniz rule
+\bse
+\frac{\partial}{\partial x^m} (fg) = f\frac{\partial}{\partial x^m}(g)+g\frac{\partial}{\partial x^m}(f);
+\ese
+\item act on the coordinate functions $x^i\in \mathcal{C}^\infty(\SL(2,\C))$ as
+\bse
+\frac{\partial}{\partial x^m} (x^i) = \partial_m (x^i \circ x^{-1})\circ x = \partial_m ({\proj_i}\circ x \circ x^{-1}) \circ x =\delta^i_m\circ x= \delta^i_m,
+\ese
+since the composition of a constant function with any composable function is just the constant function.
+\een
+We now have an expansion of the images of the basis of $T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C)$ under $j$:
+\bi{rCl}
+j\biggl( \tvb{x}{1}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) & = & x^1  \frac{\partial}{\partial x^1} - x^2\frac{\partial}{\partial x^2}  + x^3\frac{\partial}{\partial x^3} \\
+j\biggl( \tvb{x}{2}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) & = & x^1 \frac{\partial}{\partial x^2}  \\
+j\biggl( \tvb{x}{3}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) & = & x^2\, \frac{\partial}{\partial x^1} + \tfrac{1+x^2x^3}{x^1} \frac{\partial}{\partial x^3}  .
+\ei
+We now have to calculate the (vector field) bracket of every pair of these. We can also do them all at once, which is a good exercise in index gymnastics. We have
+\bse
+\biggl[j\biggl( \tvb{x}{i}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) ,j\biggl( \tvb{x}{k}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr) \biggr] =  \left[  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m}, D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n}\right].
+\ese
+Letting this act on an arbitrary $f\in \mathcal{C}^\infty(\SL(2,\C))$, by definition
+\bse
+\left[  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m}, D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n}\right](f) :=  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} \Bigl( D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n} (f)\Bigr) -  D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n} \Bigl(D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m}(f)\Bigr).
+\ese
+The first term gives
+\bi{rCl}
+ D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} \Bigl( D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n} (f)\Bigr) & = &  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} ( D^n_{\phantom{n}k}\, \partial_n (f\circ x^{-1})\circ x)\\
+& = & D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}k})\,(\partial_n (f\circ x^{-1})\circ x) +  D^m_{\phantom{m}i}D^n_{\phantom{n}k} \,\frac{\partial}{\partial x^m} (\partial_n (f\circ x^{-1})\circ x)\\
+& = & D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}k})\,(\partial_n (f\circ x^{-1})\circ x) +  D^m_{\phantom{m}i}D^n_{\phantom{n}k} \,\partial_m(\partial_n (f\circ x^{-1})\circ x\circ x^{-1})\circ x\\
+& = & D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}k})\,(\partial_n (f\circ x^{-1})\circ x) +  D^m_{\phantom{m}i}D^n_{\phantom{n}k} \,\partial_m\partial_n (f\circ x^{-1})\circ x.
+\ei
+Similarly, we have
+\bse
+D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n} \Bigl(  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (f)\Bigr) = D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n} (D^m_{\phantom{m}i})\,(\partial_m (f\circ x^{-1})\circ x) +  D^n_{\phantom{n}k}D^m_{\phantom{m}i}\,\partial_n\partial_m (f\circ x^{-1})\circ x.
+\ese
+Hence, recalling that $\partial_m\partial_n=\partial_n\partial_m$ by Schwarz's theorem, we have  
+\bi{rCl}
+\left[  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m}, D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n}\right](f) &=&  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}k})\, (\partial_n (f\circ x^{-1})\circ x) +  \Ccancel[gray]{D^m_{\phantom{m}i}D^n_{\phantom{n}k} \,\partial_m\partial_n (f\circ x^{-1})\circ x}\\
+& & \negmedspace {} - D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n} (D^m_{\phantom{m}i})\,(\partial_m (f\circ x^{-1})\circ x) - \Ccancel[gray]{D^n_{\phantom{n}k}D^m_{\phantom{m}i}\,\partial_n\partial_m (f\circ x^{-1})\circ x}\\
+& = & \Bigl( D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}k}) - D^m_{\phantom{m}k}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}i})\Bigr)\partial_n (f\circ x^{-1})\circ x\\
+& = & \Bigl( D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}k}) - D^m_{\phantom{m}k}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}i})\Bigr)\frac{\partial}{\partial x^n} (f),
+\ei
+where we relabelled some dummy indices. Since the $f\in\mathcal{C}^\infty(\SL(2,\C))$ was arbitrary,
+\bse
+\left[  D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m}, D^n_{\phantom{n}k}\, \frac{\partial}{\partial x^n}\right] =  \Bigl( D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}k}) - D^m_{\phantom{m}k}\, \frac{\partial}{\partial x^m} (D^n_{\phantom{n}i})\Bigr)\frac{\partial}{\partial x^n} .
+\ese
+We can now evaluate this explicitly. For $i=1$ and $k=2$, we have
+\bi{rCl}
+\left[  D^m_{\phantom{m}1} \frac{\partial}{\partial x^m}, D^n_{\phantom{n}2} \frac{\partial}{\partial x^n}\right] &=&  \Bigl( \Ccancel[gray]{D^m_{\phantom{m}1} \frac{\partial}{\partial x^m} (D^1_{\phantom{1}2})} - D^m_{\phantom{m}2} \frac{\partial}{\partial x^m} (D^1_{\phantom{1}1})\Bigr)\frac{\partial}{\partial x^1}\\
+& &\negmedspace{}+  \Bigl( D^m_{\phantom{m}1} \frac{\partial}{\partial x^m} (D^2_{\phantom{2}2}) - D^m_{\phantom{m}2} \frac{\partial}{\partial x^m} (D^2_{\phantom{2}1})\Bigr)\frac{\partial}{\partial x^2}\\
+& & \negmedspace{}+ \Bigl( \Ccancel[gray]{D^m_{\phantom{m}1} \frac{\partial}{\partial x^m} (D^3_{\phantom{3}2})} - D^m_{\phantom{m}2} \frac{\partial}{\partial x^m} (D^3_{\phantom{3}1})\Bigr)\frac{\partial}{\partial x^3}\\
+& = & -D^1_{\phantom{1}2}\frac{\partial}{\partial x^1}+(D^1_{\phantom{1}1}+D^2_{\phantom{2}2})\frac{\partial}{\partial x^2}-D^3_{\phantom{3}2}\frac{\partial}{\partial x^3}\\
+& = & 2x^1 \frac{\partial}{\partial x^2}.
+\ei
+Similarly, we compute
+\bi{rCl}
+\left[  D^m_{\phantom{m}1} \frac{\partial}{\partial x^m}, D^n_{\phantom{n}3} \frac{\partial}{\partial x^n}\right] &=&  \Bigl( D^m_{\phantom{m}1} \frac{\partial}{\partial x^m} (D^1_{\phantom{1}3}) - D^m_{\phantom{m}3} \frac{\partial}{\partial x^m} (D^1_{\phantom{1}1})\Bigr)\frac{\partial}{\partial x^1}\\
+& &\negmedspace{}+  \Bigl( \Ccancel[gray]{D^m_{\phantom{m}1} \frac{\partial}{\partial x^m} (D^2_{\phantom{2}3})} - D^m_{\phantom{m}3} \frac{\partial}{\partial x^m} (D^2_{\phantom{2}1})\Bigr)\frac{\partial}{\partial x^2}\\
+& & \negmedspace{}+ \Bigl( D^m_{\phantom{m}1} \frac{\partial}{\partial x^m} (D^3_{\phantom{3}3}) - D^m_{\phantom{m}3} \frac{\partial}{\partial x^m} (D^3_{\phantom{3}1})\Bigr)\frac{\partial}{\partial x^3}\\
+& = & -2x^2\frac{\partial}{\partial x^1}-2(\tfrac{1+x^2x^3}{x^1})\frac{\partial}{\partial x^3}
+\ei
+and
+\bi{rCl}
+\left[  D^m_{\phantom{m}2} \frac{\partial}{\partial x^m}, D^n_{\phantom{n}3} \frac{\partial}{\partial x^n}\right] &=&  \Bigl( D^m_{\phantom{m}2} \frac{\partial}{\partial x^m} (D^1_{\phantom{1}3}) - \Ccancel[gray]{D^m_{\phantom{m}3} \frac{\partial}{\partial x^m} (D^1_{\phantom{1}2})}\Bigr)\frac{\partial}{\partial x^1}\\
+& &\negmedspace{}+  \Bigl( \Ccancel[gray]{D^m_{\phantom{m}2} \frac{\partial}{\partial x^m} (D^2_{\phantom{2}3})} - D^m_{\phantom{m}3} \frac{\partial}{\partial x^m} (D^2_{\phantom{2}2})\Bigr)\frac{\partial}{\partial x^2}\\
+& & \negmedspace{}+ \Bigl( D^m_{\phantom{m}2} \frac{\partial}{\partial x^m} (D^3_{\phantom{3}3}) - \Ccancel[gray]{D^m_{\phantom{m}3} \frac{\partial}{\partial x^m} (D^3_{\phantom{3}2})}\Bigr)\frac{\partial}{\partial x^3}\\
+& = & (D^2_{\phantom{2}1}-D^1_{\phantom{1}3})\frac{\partial}{\partial x^1}+D^2_{\phantom{2}3}\frac{\partial}{\partial x^2}-D^3_{\phantom{3}2}\frac{\partial}{\partial x^3}\\
+& = & x^1 \frac{\partial}{\partial x^1}- x^2\frac{\partial}{\partial x^2} + x^3\frac{\partial}{\partial x^3},
+\ei
+where the differentiation rules that we have used come from the definition of the vector field $\frac{\partial}{\partial x^m}$, the Leibniz rule, and the action on co-ordinate functions.
+
+By applying $j^{-1}$, which is just evaluation at the identity, to these vector fields, we finally obtain that the induced Lie bracket on $T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C)$ satisfies
+
+\bi{rCl}
+\biggl[\tvb{x}{1}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)},\tvb{x}{2}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} \biggr] & = & 2\tvb{x}{2}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\\[4pt]
+\biggl[\tvb{x}{1}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)},\tvb{x}{3}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} \biggr] & = & -2\tvb{x}{3}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\\[4pt]
+\biggl[\tvb{x}{2}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)},\tvb{x}{3}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)} \biggr] & = & \tvb{x}{1}{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}.
+\ei
+Hence, the structure constants of $T_{\left(\begin{smallmatrix}1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\SL(2,\C)$ with respect to the co-ordinate basis are
+\bse
+C^2_{\phantom{2}12} = 2, \qquad C^3_{\phantom{3}13}=-2,\qquad C^1_{\phantom{1}23}=1,
+\ese
+with all other being either zero or related to these by anti-symmetry.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

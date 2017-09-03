@@ -1,0 +1,401 @@
+\subsection{Topological spaces}
+
+We will now discuss topological spaces based on our previous development of set theory. As we will see, a topology on a set provides the weakest structure in order to define the two very important notions of convergence of sequences to points in a set, and of continuity of maps between two sets. The definition of topology on a set is, at first sight, rather abstract. But on the upside it is also extremely simple. This definition is the result of a historical development, it is the simplest definition of topology that mathematician found to be useful.
+
+\bd
+Let $M$ be a set. A \emph{topology}\index{topology} on $M$ is a set $\cO \se \cP(M)$ such that:
+\ben
+\item[i)] $\vn \in \cO$ and $M \in \cO$;
+\item[ii)] $\{U,V\}\se \cO \imp \bigcap\, \{U,V\} \in \cO$;
+\item[iii)] $C \se \cO \imp \bigcup C \in \cO$.
+\een
+The pair $(M,\cO)$ is called a \emph{topological space}\index{topological space}. If we write ``let $M$ be a topological space'' then some topology $\cO$ on $M$ is assumed.
+\ed
+
+\br
+Unless $|M|=1$, there are (usually many) different topologies $\cO$ that one can choose on the set $M$.
+% \btab[h!]
+% \centering
+% \btb{c|ccccccc}
+% $|M|$ & 1 & 2 & 3 & 4 & 5 & 6 & 7\\
+% \hline
+% \btb{@{}c@{}}\rule{0pt}{12pt}Number of\\topologies\etb & 1 & 4 & 29 & 355 & 6,942 & 209,527 & 9,535,241 \\
+% \etb
+% \etab
+\btab[h!]
+\centering
+\btb{c|c}
+$|M|$ & \btb{@{}c@{}}Number of\\topologies\etb\\
+\hline
+\rule{0pt}{12pt} 1 & 1 \\
+ 2 & 4 \\
+ 3 & 29 \\
+ 4 & 355 \\
+ 5 & 6,942 \\
+ 6 & 209,527 \\
+ 7 & 9,535,241 \\
+\etb
+\etab
+\er
+
+\be
+Let $M = \{a,b,c\}$. Then $\cO=\{\vn,\{a\},\{b\},\{a,b\},\{a,b,c\}\}$ is a topology on $M$ since:
+\ben
+\item[i)] $\vn \in \cO$ and $M \in \cO$;
+\item[ii)] Clearly, for any $S \in \cO$, $\bigcap\,\{\vn,S\}=\vn\in\cO$ and $\bigcap\,\{S,M\}=S\in\cO$. Moreover, $\{a\}\cap\{b\}=\vn\in\cO$, $\ \{a\}\cap\{a,b\} =\{a\}\in \cO$, and $\{b\}\cap\{a,b\} =\{b\}\in \cO$;
+\item[iii)] Let $C\se\cO$. If $M \in C$, then $\bigcup C = M\in \cO$. If $\{a,b\} \in C$ (or $\{a\},\{b\}\in C$) but $M \notin C$, then $\bigcup C = \{a,b\}\in \cO$. If either $\{a\}\in C$ or $\{b\}\in C$, but $\{a,b\} \notin C$ and $M \notin C$, then $\bigcup C = \{a\}\in \cO$ or $\bigcup C = \{b\}\in \cO$, respectively. Finally, if none of the above hold, then $\bigcup C = \vn \in \cO$.
+\een
+\ee
+
+\be
+Let $M$ be a set. Then $\cO=\{\vn , M\}$ is a topology on $M$. Indeed, we have:
+\ben
+\item[i)] $\vn \in \cO$ and $M \in \cO$;
+\item[ii)] $\bigcap\, \{\vn,\vn\} = \vn \in \cO$, $\ \bigcap\, \{\vn,M\} = \vn \in \cO$, and $\bigcap\, \{M,M\} = M \in \cO$;
+\item[iii)] If $M \in C$, then $\bigcup C = M \in \cO$, otherwise $\bigcup C = \vn \in \cO$.
+\een
+This is called the \emph{chaotic topology}\index{topology!chaotic} and can be defined on any set.
+\ee
+
+\be
+Let $M$ be a set. Then $\cO=\cP(M)$ is a topology on $M$. Indeed, we have:
+\ben
+\item[i)] $\vn \in \cP(M)$ and $M \in \cP(M)$;
+\item[ii)] If $U,V \in \cP(M)$, then $\bigcap\, \{U,V\} \se M$ and hence $\bigcap\, \{U,V\} \in \cP(M)$;
+\item[iii)] If $C\se\cP(M)$, then $\bigcup C \se M$, and hence $\bigcup C \in \cP(M)$.
+\een
+This is called the \emph{discrete topology}\index{topology!discrete} and can be defined on any set.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+We now give some common terminology regarding topologies.
+
+\bd
+Let $\cO_1$ and $\cO_2$ be two topologies on a set $M$. If $\cO_1 \ss \cO_2$, then we say that $\cO_1$ is a \emph{coarser} (or \emph{weaker}) topology than $\cO_2$. Equivalently, we say that $\cO_2$ is a \emph{finer} (or \emph{stronger}) topology than $\cO_1$.
+\ed
+Clearly, the chaotic topology is the coarsest topology on any given set, while the discrete topology is the finest.
+\bd
+Let $(M,\cO)$ be a topological space. A subset $S$ of $M$ is said to be \emph{open (with respect to $\cO$)}\index{open set} if $S \in \cO$ and \emph{closed (with respect to $\cO$)}\index{closed set} if $M\sm S \in \cO$. 
+\ed
+Notice that the notions of open and closed sets, as defined, are not mutually exclusive. A set could be both or neither, or one and not the other.
+\be
+Let $(M,\cO)$ be a topological space. Then $\vn$ is open since $\vn \in \cO$. However, $\vn$ is also closed since $M\sm \vn = M \in \cO$. Similarly for $M$.
+\ee
+\be
+Let $M = \{a,b,c\}$ and let $\cO=\{\vn,\{a\},\{a,b\},\{a,b,c\}\}$. Then $\{a\}$ is open but not closed, $\{b,c\}$ is closed but not open, and $\{b\}$ is neither open nor closed.
+\ee
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+We will now define what is called the standard topology on $\R^d$, where:
+\bse
+\R^d:=\underbrace{\R\times\R\times\cdots\times\R}_\text{$d$ times}.
+\ese
+We will need the following auxiliary definition.
+
+\bd
+For any $x\in\R^d$ and any $r \in \R^+:=\{s\in\R\mid s>0\}$, we define the \emph{open ball} of radius $r$ around the point $x$:
+\bse
+B_r(x) := \bigl\{y\in \R^d \mid \textstyle\sqrt{\sum_{i=1}^d (y_i-x_i)^2} <r \bigr\},
+\ese
+where $x:=(x_1,x_2,\ldots,x_d)$ and $y:=(y_1,y_2,\ldots,y_d)$, with $x_i,y_i\in\R$.
+\ed
+
+\br
+The quantity $\sqrt{\sum_{i=1}^d (y_i-x_i)^2}$ is usually denoted by $\|y-x\|_2$, where $\|\cdot\|_2$ is the 2-norm on $\R^d$. However, the definition of a norm on a set requires the set to be equipped with a vector space structure (which we haven't defined yet), while our construction does not. Moreover, our construction can be proven to be independent of the particular norm used to define it, i.e.\ any other norm will induce the same topological structure. 
+\er
+
+\bd
+The \emph{standard topology}\index{standard topology}\index{topology!standard} on $\R^d$, denoted $\cO_\mathrm{std}$\index{$\cO_\mathrm{std}$}, is defined by:
+\bse
+U \in \cO_\mathrm{std} :\eqv \forall \, p \in U : \exists \, r \in \R^+ : B_r(p) \se U.
+\ese
+\ed
+
+Of course, simply calling something a topology, does not automatically make it into a topology. We have to prove that $\cO_\mathrm{std}$ as we defined it, does constitute a topology.
+
+\bp
+The pair $(\R^d,\cO_\mathrm{std})$ is a topological space.
+\ep
+
+\bq
+\ben
+\item[i)] First, we need to check whether $\vn \in \cO_\mathrm{std}$, i.e.\ whether:
+\bse
+\forall \, p \in \vn : \exists \, r \in \R^+ : B_r(p) \se \vn
+\ese
+is true. This proposition is of the form $\forall \, p \in \vn : Q(p)$, which was defined as being equivalent to:
+\bse
+\forall \, p : p \in \vn \imp Q(p).
+\ese
+However, since $p\in\vn$ is false, the implication is true independent of $p$. Hence the initial proposition is true and thus $\vn \in \cO_\mathrm{std}$.
+
+Second, by definition, we have $B_r(x)\se\R^d$ independent of $x$ and $r$, hence:
+\bse
+\forall \, p \in \R^d : \exists \, r \in \R^+ : B_r(p) \se \R^d
+\ese
+is true and thus $\R^d\in\cO_\mathrm{std}$.
+\item[ii)] Let $U,V \in \cO_\mathrm{std}$ and let $p \in U \cap V$. Then:
+\bse
+p \in U \cap V :\eqv p \in U \land p \in V
+\ese
+and hence, since $U,V \in \cO_\mathrm{std}$, we have:
+\bse
+\exists \, r_1 \in \R^+ : B_{r_1}(p) \se U \quad \land \quad \exists \, r_2 \in \R^+ : B_{r_2}(p) \se V.
+\ese
+Let $r=\min\{r_1,r_2\}$. Then:
+\bse
+B_r(p)\se B_{r_1}(p)\se U \quad \land \quad B_r(p)\se B_{r_2}(p)\se V
+\ese
+and hence $B_r(p)\se U \cap V$. Therefore $U\cap V \in \cO_\mathrm{std}$.
+\item[iii)] Let $C \se \cO_\mathrm{std}$ and let $p \in \bigcup C$. Then, $p \in U$ for some $U \in C$ and, since $U \in \cO_\mathrm{std}$, we have:
+\bse
+\exists \, r \in \R^+ : B_r(p)\se U \se \bigcup C .
+\ese
+\een
+Therefore, $\cO_\mathrm{std}$ is indeed a topology on $\R^d$.
+\eq
+
+
+\subsection{Construction of new topologies from given ones}
+
+\bp
+Let $(M,\cO)$ be a topological space and let $N\ss M$. Then:
+\bse
+\cO|_N := \{U\cap N \mid U \in \cO\} \se \cP(N)
+\ese
+is a topology on $N$ called the \emph{induced (subset) topology}\index{topology!induced}.
+\ep
+
+\bq
+\ben
+\item[i)] Since $\vn \in \cO$ and $\vn = \vn \cap N$, we have $\vn \in \cO|_N$. Similarly, we have $M \in \cO$ and $N = M \cap N$, and thus $N \in \cO|_N$.
+\item[ii)] Let $U,V \in \cO|_N$. Then, by definition:
+\bse
+\exists \, S \in \cO : U = S \cap N \quad \land \quad \exists \, T \in \cO : V = T \cap N .
+\ese
+We thus have:
+\bse
+U \cap V = (S\cap N) \cap (T \cap N) = (S\cap T) \cap N.
+\ese
+Since $S,T\in \cO$ and $\cO$ is a topology, we have $S\cap T \in \cO$ and hence $U\cap V \in \cO|_N$.
+\item[iii)] Let $C:=\{S_\a\mid \a \in \cA\} \se \cO|_N$. By definition, we have:
+\bse
+\forall \, \a \in \cA : \exists \, U_\a \in \cO : S_\a = U_\a \cap N.
+\ese
+Then, using the notation:
+\bse
+\bigcup_{\a\in\cA}S_\a := \bigcup C =\bigcup \,\{S_\a\mid \a \in \cA\}
+\ese
+and De Morgan's law, we have:
+\bse
+\bigcup_{\a\in\cA}S_\a = \bigcup_{\a\in\cA}(U_\a \cap N) = \bigg( \bigcup_{\a\in\cA}U_\a\biggr) \cap N.
+\ese
+Since $\cO$ is a topology, we have $\bigcup_{\a\in\cA}U_\a \in \cO$ and hence $\bigcup C \in \cO|_N$.
+\een
+Thus $\cO|_N$ is a topology on $N$.
+\eq
+
+\be
+Consider $(\R,\cO_\mathrm{std})$ and let:
+\bse
+N =[-1,1]:=\{x\in\R\mid -1 \leq x \leq 1\}.
+\ese
+Then $(N,\cO_\mathrm{std}|_N)$ is a topological space. The set $(0,1]$ is clearly not open in $(\R,\cO_\mathrm{std})$ since $(0,1]\notin\cO_\mathrm{std}$. However, we have:
+\bse
+(0,1] = (0,2)\cap[-1,1]
+\ese
+where $(0,2) \in \cO_\mathrm{std}$ and hence $(0,1]\in\cO_\mathrm{std}|_N$, i.e.\ the set $(0,1]$ is open in $(N,\cO_\mathrm{std}|_N)$.
+\ee
+
+\bd
+Let $(M,\cO)$ be a topological space and let $\sim$ be an equivalence relation on $M$. Then, the quotient set:
+\bse
+M/\!\sim \ = \{[m]\in \cP(M) \mid m \in M\}
+\ese
+can be equipped with the \emph{quotient topology}\index{quotient topology}\index{topology!quotient} $\cO_{M/\sim}$ defined by:
+\bse
+\cO_{M/\sim} := \{U \in M/\!\sim \ \mid \bigcup U = \bigcup_{[a]\in U}[a] \in \cO \}.
+\ese
+\ed
+
+An equivalent definition of the quotient topology is as follows. Let $q\cl M \to M/\!\sim$ be the map:
+\bi{rrCl}
+q \cl & M & \to & M/\!\sim \\
+& m & \mapsto & [m]
+\ei
+Then we have:
+\bse
+\cO_{M/\!\sim} := \{U \in M/\!\sim \ \mid \mathrm{preim}_q(U) \in \cO \}.
+\ese
+
+\be
+The \emph{circle} (or 1-sphere) is defined as the set $S^1:= \{(x,y)\in \R^2\mid x^2+y^2=1\}$ equipped with the subset topology inherited from $\R^2$. The open sets of the circle are (unions of) open arcs, i.e.\ arcs without the endpoints. Individual points on the circle are clearly not open since there is no open set of $\R^2$ whose intersection with the circle is a single point. However, an individual point on the circle is a closed set since its complement is an open arc.
+
+An alternative definition of the circle is the following. Let $\sim$ be the equivalence relation on $\R$ defined by:
+\bse
+x\sim y :\eqv \exists \, n \in \Z : x = y + 2\pi n. 
+\ese
+Then the circle can be defined as the set $S^1:=\R/\!\sim$ equipped with the quotient topology.
+\ee
+
+
+
+\bd
+Let $(A,\cO_A)$ and $(B,\cO_B)$ be topological spaces. Then the set $\cO_{A\times B}$ defined implicitly by:
+\bse
+U \in \cO_{A\times B} :\eqv \forall \, p \in U : \exists \, (S,T) \in \cO_A\times \cO_B : S\times T \se U
+\ese
+is a topology on $A\times B$ called the \emph{product topology}\index{topology!product}.
+\ed
+
+\br
+This definition can easily be extended to $n$-fold cartesian products:
+\bse
+U \in \cO_{A_1\times \cdots \times A_n} :\eqv \forall \, p \in U : \exists \, (S_1,\ldots,S_n) \in \cO_{A_1}\times \cdots \times \cO_{A_n} : S_1\times \cdots\times S_n \se U.
+\ese
+\er
+
+\br
+Using the previous definition, one can check that the standard topology on $\R^d$ satisfies:
+\bse
+\cO_\mathrm{std} = \cO_{\underbrace{\scriptstyle \R\times\R\times\cdots\times\R}_\text{ $d$ times}}.
+\ese
+Therefore, a more minimalistic definition of the standard topology on $\R^d$ would consist in defining $\cO_\mathrm{std}$ only for $\R$ (i.e.\ $d=1$) and then extending it to $\R^d$ by the product topology.
+\er
+
+
+\subsection{Convergence}
+
+\bd
+Let $M$ be a set. A \emph{sequence}\index{sequence} (of points) in $M$ is a function $q \cl \N \to  M$.
+\ed
+
+\bd
+Let $(M,\cO)$ be a topological space. A sequence $q$ in $M$ is said to \emph{converge}\index{convergence} against a \emph{limit point}\index{limit point} $a\in M$ if:
+\bse
+\forall \, U \in \cO : a \in U \imp \exists \, N \in \N : \forall \, n > N : q(n) \in U.
+\ese
+\ed
+\br
+An open set $U$ of $M$ such that $a\in U$ is called an \emph{open neighbourhood}\index{neighbourhood} of $a$. If we denote this by $U(a)$, then the previous definition of convergence can be rewritten as:
+\bse
+\forall \, U(a): \exists \, N \in \N : \forall \, n > N : q(n) \in U.
+\ese
+\er
+\be
+Consider the topological space $(M,\{\vn,M\})$. Then every sequence in $M$ converges to every point in $M$. Indeed, let $q$ be any sequence and let $a \in M$. Then, $q$ converges against $a$ if:
+\bse
+\forall \, U \in \{\vn,M\} : a \in U \imp \exists \, N \in \N : \forall \, n > N : q(n) \in U.
+\ese
+This proposition is vacuously true for $U=\vn$, while for $U=M$ we have $q(n)\in M$ independent of $n$. Therefore, the (arbitrary) sequence $q$ converges to the (arbitrary) point $a\in M$. 
+\ee
+\be
+Consider the topological space $(M,\cP(M))$. Then only definitely constant sequences converge, where a sequence is \emph{definitely constant} with value $c\in M$ if:
+\bse
+\exists \, N \in \N : \forall \, n > N : q(n) = c.
+\ese
+This is immediate from the definition of convergence since in the discrete topology all singleton sets (i.e.\ one-element sets) are open. 
+\ee
+\be
+Consider the topological space $(\R^d,\cO_\mathrm{std})$. Then, a sequence $q\cl \N \to \R^d$ converges against $a\in \R^d$ if:
+\bse
+\forall\, \ve >0 : \exists \, N \in \N : \forall \, n > N : \|q(n)-a\|_2<\ve.
+\ese
+\ee
+\be
+Let $M=\R$ and let $q=1-\frac{1}{n+1}$. Then, since $q$ is not almost constant, it is not convergent in $(\R,\cP(\R))$, but it is convergent in $(\R,\cO_\mathrm{std})$.
+\ee
+
+\subsection{Continuity}
+
+\bd
+Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological spaces and let $\phi\cl M\to N$ be a map. Then, $\phi$ is said to be \emph{continuous}\index{continuity}\index{map!continuous} (with respect to the topologies $\cO_M$ and $\cO_N$) if:
+\bse
+\forall \, S \in \cO_N \, , \ \mathrm{preim}_\phi(S) \in \cO_M ,
+\ese
+where $\mathrm{preim}_\phi(S) := \{m \in M : \phi(m) \in S\}$ is the pre-image of $S$ under the map $\phi$.
+\ed
+Informally, one says that $\phi$ is continuous if the pre-images of open sets are open. 
+\be
+If $M$ is equipped with the discrete topology, or $N$ with the chaotic topology, then any map $\phi\cl M \to N$ is continuous. Indeed, let $S \in \cO_N$. If $\cO_M=\cP(M)$ (and $\cO_N$ is any topology), then we have:
+\bse
+\mathrm{preim}_\phi(S) = \{m \in M : \phi(m) \in S\} \se M \in \cP(M) = \cO_M.
+\ese
+If instead $\cO_N=\{\vn,N\}$ (and $\cO_M$ is any topology), then either $S=\vn$ or $S=N$ and thus, we have:
+\bse
+\mathrm{preim}_\phi(\vn) = \vn \in \cO_M \quad \t{and} \quad \mathrm{preim}_\phi(N) = M \in \cO_M.
+\ese
+\ee
+\be
+Let $M = \{a,b,c\}$ and $N=\{1,2,3\}$, with respective topologies:
+\bse
+\cO_M=\{\vn,\{b\},\{a,c\},\{a,b,c\}\} \quad \t{and} \quad \cO_N=\{\vn,\{2\},\{3\},\{1,3\},\{2,3\},\{1,2,3\}\},
+\ese
+and let $\phi\cl M \to N$ by defined by:
+\bse
+\phi(a) = 2, \quad \phi(b)=1, \quad \phi(c)=2.
+\ese
+Then $\phi$ is continuous. Indeed, we have:
+\begin{align*}
+\mathrm{preim}_\phi(\vn) &= \vn, & \mathrm{preim}_\phi(\{2\}) &= \{a,c\}, & \mathrm{preim}_\phi(\{3\}) &= \vn,\\ 
+\mathrm{preim}_\phi(\{1,3\}) &= \{b\}, & \mathrm{preim}_\phi(\{2,3\}) &= \{a,c\}, & \mathrm{preim}_\phi(\{1,2,3\}) &= \{a,b,c\},
+\end{align*}
+and hence $\mathrm{preim}_\phi(S) \in \cO_M$ for all $S \in \cO_N$.
+\ee
+\be
+Consider $(\R^d,\cO_\mathrm{std})$ and $(\R^s,\cO_\mathrm{std})$. Then $\phi \cl \R^d\to\R^s$ is continuous with respect to the standard topologies if it satisfies the usual $\ve$-$\delta$ definition of continuity:
+\bse
+\forall \, a \in \R^d: \forall \, \ve >0 :\exists \, \delta >0 : \forall \, 0<\|x-a\|_2<\delta:\|\phi(x)-\phi(a)\|_2<\ve.
+\ese
+\ee
+
+\bd
+Let $(M,\cO_M)$ and $(N,\cO_N)$ be topological spaces. A bijection $\phi\cl M\to N$ is called a \emph{homeomorphism}\index{homeomorphism} if both $\phi\cl M\to N$ and $\phi^{-1}\cl N\to M$ are continuous.
+\ed
+
+\br
+Homeo(morphism)s are  the structure-preserving maps in topology.
+\er
+
+If there exists a homeomorphism $\phi$ between $(M,\cO_M)$ and $(N,\cO_N)$,
+
+\bse
+\begin{tikzcd}
+M \ar[rr, bend left,"\phi"] & & N \ar[ll, bend left,"\phi^{-1}"]
+\end{tikzcd}
+\ese
+
+then $\phi$ provides a one-to-one pairing of the open sets of $M$ with the open sets of $N$.
+
+\bd
+If there exists a homeomorphism between two topological spaces $(M,\cO_M)$ and $(N,\cO_N)$, we say that the two spaces are \emph{homeomorphic}\index{topological space!homeomorphic} or \emph{topologically isomorphic}\index{isomorphism!of topological spaces} and we write $(M,\cO_M) \cong_\mathrm{top} (N,\cO_N)$.
+\ed
+
+Clearly, if $(M,\cO_M) \cong_\mathrm{top} (N,\cO_N)$, then $M \iset N$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

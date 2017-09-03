@@ -1,0 +1,216 @@
+
+\subsection{Adding structure by refining the (maximal) atlas}
+
+We saw previously that for a topological manifold $(M,\cO)$, the concept of a $\mathcal{C}^0$-atlas was fully redundant since every atlas is also a $\mathcal{C}^0$-atlas. We will now generalise the notion of a $\mathcal{C}^0$-atlas, or more precisely, the notion of $\mathcal{C}^0$-compatibility of charts, to something which is non-trivial and non-redundant.
+
+\begin{definition}
+An atlas $\mathscr{A}$ for a topological manifold is called a {\scalebox{0.75}\FiveFlowerOpen}-\emph{atlas} if any two charts $(U,x), (V,y) \in \mathscr{A}$ are {\scalebox{0.75}\FiveFlowerOpen}-compatible.
+\end{definition}
+
+In other words, either $U\cap V = \vn$ or if $U\cap V \neq \vn$, then the transition map $y\circ x^{-1}$ from $x(U\cap V)$ to $y(U\cap V)$ must be {\scalebox{0.75}\FiveFlowerOpen}.
+\bse
+\begin{tikzcd}
+& U\cap V \se M \ar[ldd,"x"'] \ar[rdd,"y"]&\\
+&&&\\
+x(U\cap V) \se \R^{\dim M} \ar[rr,"y\circ x^{-1}"']& & y(U\cap V)\se \R^{\dim M}
+\end{tikzcd}
+\ese
+Before you think Dr Schuller finally went nuts, the symbol {\scalebox{0.75}\FiveFlowerOpen} is being used as a placeholder for any of the following:
+\begin{itemize}
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^0$: this just reduces to the previous definition;
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^k$: the transition maps are $k$-times continuously differentiable as maps between open subsets of $\R^{\dim M}$;
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^\infty$: the transition maps are smooth (infinitely many times differentiable); equivalently, the atlas is $\mathcal{C}^k$ for all $k\geq 0$;
+\item ${\scalebox{0.75}\FiveFlowerOpen} = \mathcal{C}^\omega$: the transition maps are (real) analytic, which is stronger than being smooth;
+\item ${\scalebox{0.75}\FiveFlowerOpen} =$ complex: if $\dim M$ is even, $M$ is a \emph{complex manifold} if the transition maps are continuous and satisfy the Cauchy-Riemann equations; its complex dimension is $\tfrac{1}{2}\dim M$.
+\end{itemize}
+
+As an aside, if you haven't met the Cauchy-Riemann equations yet, recall than since $\R^2$ and $\C$ are isomorphic as sets, we can identify the function 
+\bi{rcCl}
+f\cl & \R^2 & \to     & \R^2 \\
+     &(x,y) & \mapsto & (u(x,y),v(x,y))
+\ei
+where $u,v \cl \R^2\to\R$, with the function
+\bi{rcCl}
+f\cl & \C & \to     & \C \\
+     &x+\mathrm{i}y & \mapsto & u(x,y)+\mathrm{i}v(x,y).
+\ei
+If $u$ and $v$ are real differentiable at $(x_0,y_0)$, then $f=u+\mathrm{i}v$ is complex differentiable at $z_0=x_0+\mathrm{i}y_0$ if, and only if, $u$ and $v$ satisfy
+\bse
+\frac{\partial u}{\partial x}(x_0,y_0)= \frac{\partial v}{\partial y}(x_0,y_0) \quad \land \quad \frac{\partial u}{\partial y}(x_0,y_0)= - \frac{\partial v}{\partial x}(x_0,y_0),
+\ese
+which are known as the Cauchy-Riemann equations\index{Cauchy-Riemann equations}. Note that differentiability in the complex plane is a much stronger condition than differentiability over the real numbers. If you want to know more, you should take a course in complex analysis or function theory.
+
+We now go back to manifolds.
+
+\begin{theorem}[Whitney] Any maximal $\mathcal{C}^k$-atlas, with $k\geq 1$, contains a $\mathcal{C}^\infty$-atlas. Moreover, any two maximal $\mathcal{C}^k$-atlases that contain the same $\mathcal{C}^\infty$-atlas are identical.
+\end{theorem}
+
+An immediate implication is that if we can find a $\mathcal{C}^1$-atlas for a manifold, then we can also assume the existence of a $\mathcal{C}^\infty$-atlas for that manifold. This is not the case for topological manifolds in general: a space with a $\mathcal{C}^0$-atlas may not admit any $\mathcal{C}^1$-atlas. But if we have at least a $\mathcal{C}^1$-atlas, then we can obtain a $\mathcal{C}^\infty$-atlas simply by removing charts, keeping only the ones which are $\mathcal{C}^\infty$-compatible.
+
+Hence, for the purposes of this course, we will not distinguish between $\mathcal{C}^k$ ($k\geq 1$) and $\mathcal{C}^\infty$-manifolds in the above sense.
+
+We now give the explicit definition of a $\mathcal{C}^k$-manifold.
+
+\bd
+A $\mathcal{C}^k$\emph{-manifold}\index{manifold} is a triple $(M,\cO,\mathscr{A})$, where $(M,\cO)$ is a topological manifold and $\mathscr{A}$ is a maximal $\mathcal{C}^k$-atlas.
+\ed
+
+\br 
+A given topological manifold can carry different incompatible atlases.
+\er
+
+Note that while we only defined compatibility of charts, it should be clear what it means for two atlases of the same type to be compatible.
+
+\bd
+Two {\scalebox{0.75}\FiveFlowerOpen}-atlases $\mathscr{A}$, $\mathscr{B}$ are \emph{compatible}\index{atlas!compatible} if their union $\mathscr{A}\cup\mathscr{B}$ is again a {\scalebox{0.75}\FiveFlowerOpen}-atlas, and are incompatible otherwise.
+\ed
+
+Alternatively, we can define the compatibility of two atlases in terms of the compatibility of any pair of charts, one from each atlas.
+
+\be
+Let $(M,\cO)=(\R,\cO_\mathrm{std})$. Consider the two atlases $\mathscr{A}=\{(\R,\id_\R)\}$ and $\mathscr{B}=\{(\R,x)\}$, where $x\cl a \mapsto \sqrt[3]{a}$. Since they both contain a single chart, the compatibility condition on the transition maps is easily seen to hold (in both cases, the only transition map is $\id_\R$). Hence they are both $\mathcal{C}^\infty$-atlases.
+
+Consider now $\mathscr{A}\cup\mathscr{B}$. The transition map $\id_\R\circ x^{-1}$ is the map $a\mapsto a^3$, which is smooth. However, the other transition map, $x\circ\id_\R^{-1}$, is the map $x$, which is not even differentiable once (the first derivative at $0$ does not exist). Consequently, $\mathscr{A}$ and $\mathscr{B}$ are not even $\mathcal{C}^1$-compatible.
+\ee
+
+The previous example shows that we can equip the real line with (at least) two different incompatible $\mathcal{C}^\infty$-structures. This looks like a disaster as it implies that there is an arbitrary choice to be made about which differentiable structure to use. Fortunately, the situation is not as bad as it looks, as we will see in the next sections.
+
+\subsection{Differentiable manifolds}
+\index{manifold!differentiable}
+\bd
+Let $\phi\cl M\to N$ be a map, where $(M,\cO_M,\mathscr{A}_M)$ and $(N,\cO_N,\mathscr{A}_N)$ are $\mathcal{C}^k$-manifolds. Then $\phi$ is said to be ($\mathcal{C}^k$-)\emph{differentiable at} $p\in M$ if for some charts $(U,x)\in\mathscr{A}_M$ with $p\in U$ and $(V,y)\in\mathscr{A}_N$ with $\phi(p)\in V$, the map $y\circ\phi\circ x^{-1}$ is $k$-times continuously differentiable at $x(p)\in x(U)\se\R^{\dim M}$ in the usual sense.
+\bse
+\begin{tikzcd}
+U\se M \ar[rr,"\phi"] \ar[dd,"x"] && V\se N \ar[dd,"y"]\\
+&&\\
+x(U)\se\R^{\dim M}\ar[rr,"y\circ\phi\circ x^{-1}"] && y(V)\se\R^{\dim N}
+\end{tikzcd}
+\ese
+\ed
+The above diagram shows a typical theme with manifolds. We have a map $\phi\cl M\to N$ and we want to define some property of $\phi$ at $p\in M$ analogous to some property of maps between subsets of $\R^d$. What we typically do is consider some charts $(U,x)$ and $(V,y)$ as above and define the desired property of $\phi$ at $p\in U$ in terms of the corresponding property of the downstairs map $y\circ\phi\circ x^{-1}$ at the point $x(p)\in\R^d$.
+
+Notice that in the previous definition we only require that \emph{some} charts from the two atlases satisfy the stated property. So we should worry about whether this definition depends on which charts we pick. In fact, this ``lifting'' of the notion of differentiability from the chart representation of $\phi$ to the manifold level is well-defined.
+
+\bp
+The definition of differentiability is well-defined.
+\ep
+
+\bq
+We want to show that if $y\circ\phi\circ x^{-1}$ is differentiable at $x(p)$ for some $(U,x)\in\mathscr{A}_M$ with $p\in U$ and $(V,y)\in\mathscr{A}_N$ with $\phi(p)\in V$, then $\widetilde y\circ\phi\circ \widetilde x^{-1}$ is differentiable at $\widetilde x(p)$ for all charts $(\widetilde U,\widetilde x)\in\mathscr{A}_M$ with $p\in \widetilde U$ and $(\widetilde V,\widetilde y)\in\mathscr{A}_N$ with $\phi(p)\in \widetilde V$.
+\bse
+\begin{tikzcd}
+\widetilde x(U\cap\widetilde U)\se\R^{\dim M}\ar[rr,"\widetilde y\circ\phi\circ \widetilde x^{-1}"] && \widetilde y(V\cap\widetilde V)\se\R^{\dim N}\\
+&&\\
+U\cap\widetilde U\se M \ar[rr,"\phi"] \ar[dd,"x"] \ar[uu,"\widetilde x"'] && V\cap\widetilde V\se N \ar[dd,"y"] \ar[uu,"\widetilde y"']\\
+&&\\
+x(U\cap\widetilde U)\se\R^{\dim M}\ar[rr,"y\circ\phi\circ x^{-1}"] \ar[uuuu,bend left=70,"\widetilde x\circ x^{-1}"]&& y(V\cap\widetilde V)\se\R^{\dim N} \ar[uuuu,bend right=70,"\widetilde y\circ y^{-1}"']
+\end{tikzcd}
+\ese
+Consider the map $\widetilde x\circ x^{-1}$ in the diagram above. Since the charts $(U,x)$ and $(\widetilde U,\widetilde x)$ belong to the same $\mathcal{C}^k$-atlas $\mathscr{A}_M$, by definition the transition map $\widetilde x\circ x^{-1}$ is $\mathcal{C}^k$-differentiable as a map between subsets of $\R^{\dim M}$, and similarly for $\widetilde y\circ y^{-1}$. We now notice that we can write:
+\bse
+\widetilde y\circ\phi\circ \widetilde x^{-1} = (\widetilde y\circ y^{-1})\circ(y\circ\phi\circ x^{-1})\circ(\widetilde x\circ x^{-1})^{-1}
+\ese
+and since the composition of $\mathcal{C}^k$ maps is still $\mathcal{C}^k$, we are done.
+\eq
+This proof shows the significance of restricting to $\mathcal{C}^k$-atlases. Such atlases only contain charts for which the transition maps are $\mathcal{C}^k$, which is what makes our definition of differentiability of maps between manifolds well-defined.
+
+The same definition and proof work for smooth ($\mathcal{C}^\infty$) manifolds, in which case we talk about \emph{smooth maps}. As we said before, this is the case we will be most interested in.
+
+\be
+Consider the smooth manifolds $(\R^d,\cO_\mathrm{std},\mathscr{A}_d)$ and $(\R^{d'},\cO_\mathrm{std},\mathscr{A}_{_d'})$, where $\mathscr{A}_d)$ and $\mathscr{A}_{_d'})$ are the maximal atlases containing the charts $(\R^d,\id_{\R^d})$ and $(\R^{d'},\id_{\R^{d'}})$ respectively, and let $f\cl \R^{d}\to \R^{d'}$ be a map. The diagram defining the differentiability of $f$ with respect to these charts is
+\bse
+\begin{tikzcd}
+\R^{d} \ar[rrrr,"f"] \ar[dd,"\id_{\R^d}"] &&&& \R^{d'} \ar[dd,"\id_{\R^{d'}}"]\\
+&&\\
+\R^{d} \ar[rrrr,"\id_{\R^{d'}}\circ f\circ (\id_{\R^d})^{-1}"]&&&& \R^{d'}
+\end{tikzcd}
+\ese
+and, by definition, the map $f$ is smooth as a map between manifolds if, and only if, the map $\id_{\R^{d'}}\circ f\circ (\id_{\R^d})^{-1}=f$ is smooth in the usual sense.
+\ee
+
+\be
+Let $(M,\cO,\mathscr{A})$ be a $d$-dimensional smooth manifold and let $(U,x)\in\mathscr{A}$. Then $x\cl U \to x(U)\se \R^d$ is smooth. Indeed, we have
+\bse
+\begin{tikzcd}
+U \ar[rrr,"x"] \ar[dd,"x"] &&& x(U) \ar[dd,"\id_{x(U)}"]\\
+&&\\
+x(U)\se\R^{d} \ar[rrr,"\id_{x(U)}\circ x\circ x^{-1}"]&&& x(U)\se\R^{d} 
+\end{tikzcd}
+\ese
+Hence $x\cl U \to x(U)$ is smooth if, and only if, the map $\id_{x(U)}\circ x\circ x^{-1}=\id_{x(U)}$ is smooth in the usual sense, which it certainly is.
+
+The coordinate maps $x^i:={\proj_i}\circ x\cl U \to \R$ are also smooth. Indeed, consider the diagram
+\bse
+\begin{tikzcd}
+U \ar[rrr,"x^i"] \ar[dd,"x"] &&& \R \ar[dd,"\id_\R"]\\
+&&\\
+x(U)\se\R^{d} \ar[rrr,"{\id_\R}\circ x^i\circ x^{-1}"]&&& \R 
+\end{tikzcd}
+\ese
+Then, $x^i$ is smooth if, and only if, the map
+\bse
+{\id_\R}\circ x^i\circ x^{-1} =  x^i\circ x^{-1} = \proj_i
+\ese
+is smooth in the usual sense, which it certainly is.
+\ee
+
+\subsection{Classification of differentiable structures}
+
+\bd
+Let $\phi\cl M \to N$ be a bijective map between smooth manifolds. If both $\phi$ and $\phi^{-1}$ are smooth, then $\phi$ is said to be a \emph{diffeomorphism}\index{diffeomorphism}\index{isomorphism!of smooth manifolds}.
+\ed
+
+Diffeomorphisms are the structure preserving maps between smooth manifolds. 
+
+\bd
+Two manifolds $(M,\cO_M,\mathscr{A}_M)$, $(N,\cO_N,\mathscr{A}_N)$ are said to be \emph{diffeomorphic} if there exists a diffeomorphism $\phi\cl M\to N$ between them. We write $M \cong_\text{diff}N$.
+\ed
+
+Note that if the differentiable structure is understood (or irrelevant), we typically write $M$ instead of the triple $(M,\cO_M,\mathscr{A}_M)$.
+
+\br
+Being diffeomorphic is an equivalence relation. In fact, it is customary to consider diffeomorphic manifolds to be \emph{the same} from the point of view of differential geometry. This is similar to the situation with topological spaces, where we consider homeomorphic spaces to be the same from the point of view of topology. This is typical of all structure preserving maps.
+\er
+
+Armed with the notion of diffeomorphism, we can now ask the following question: how many smooth structures on a given topological space are there, up to diffeomorphism?
+
+The answer is quite surprising: it depends on the dimension of the manifold!
+
+\begin{theorem}[Radon-Moise]
+Let $M$ be a manifold with $\dim M = 1, 2$, or $3$. Then there is a unique smooth structure on $M$ up to diffeomorphism.
+\end{theorem}
+
+Recall that in a previous example, we showed that we can equip $(\R,\cO_\mathrm{std})$ with two incompatible atlases $\mathscr{A}$ and $\mathscr{B}$. Let $\mathscr{A}_\mathrm{max}$ and $\mathscr{B}_\mathrm{max}$ be their extensions to maximal atlases, and consider the smooth manifolds $(\R,\cO_\mathrm{std},\mathscr{A}_\mathrm{max})$ and  $(\R,\cO_\mathrm{std},\mathscr{B}_\mathrm{max})$. Clearly, these are different manifolds, because the atlases are different, but since $\dim \R=1$, they must be diffeomorphic.
+
+The answer to the case $\dim M > 4$ (we emphasize $\dim M \neq 4$) is provided by \emph{surgery theory}. This is a collection of tools and techniques in topology with which one obtains a new manifold from given ones by performing surgery on them, i.e.\ by cutting, replacing and gluing parts in such a way as to control topological invariants like the fundamental group. The idea is to understand all manifolds in dimensions higher than 4 by performing surgery systematically. In particular, using  surgery theory, it has been shown that there are only finitely many smooth manifolds (up to diffeomorphism) one can make from a topological manifold.
+
+This is not as neat as the previous case, but since there are only finitely many structures, we can still enumerate them, i.e.\ we can write an exhaustive list.
+
+While finding all the differentiable structures may be difficult for any given manifold, this theorem has an immediate impact on a physical theory that models spacetime as a manifold. For instance, some physicists believe that spacetime should be modelled as a $10$-dimensional manifold (we are neither proposing nor condemning this view). If that is indeed the case, we need to worry about which differentiable structure we equip our 10-dimensional manifold with, as each different choice will likely lead to different predictions. But since there are only finitely many such structures, physicists can, at least in principle, devise and perform finitely many experiments to distinguish between them and determine which is the right one, if any.
+
+We now turn to the special case $\dim M = 4$. The result is that if $M$ is a non-compact topological manifold, then there are uncountably many non-diffeomorphic smooth structures that we can equip $M$ with. In particular, this applies to $(\R^4,\cO_\mathrm{std})$.
+
+In the compact case there are only partial results. By way of example, here is one such result.
+
+\bp
+If $(M,\cO)$, with $\dim M = 4$, has $b_2>18$, where $b_2$ is the second Betti number, then there are countably many non-diffeomorphic smooth structures that we can equip $(M,\cO)$ with. 
+\ep
+
+Betti numbers are defined in terms of homology groups, but intuitively we have:
+\begin{itemize}
+\item $b_0$ is the number of connected components a space has;
+\item $b_1$ is the number of circular (1-dimensional) holes a space has;
+\item $b_2$ is the number of 2-dimensional holes a space has;
+\end{itemize}
+and so on. Hence if a manifold has a number of 2-dimensional holes greater than 18, then there only countably many structures that we can choose from, but they are still infinitely many.
+
+
+
+
+
+
+
+
+
+
+

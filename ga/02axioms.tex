@@ -1,0 +1,397 @@
+\subsection[\texorpdfstring{The $\in$-relation}{The epsilon-relation}]{The $\in$-relation}
+
+Set\index{set} theory is built on the postulate that there is a fundamental relation (i.e.\ a predicate of two variables) denoted $\in$\index{$\in$} and read as ``epsilon''.
+There will be no definition of what $\in$ is, or of what a set is.
+Instead, we will have nine axioms concerning $\in$ and sets, and it is only in terms of these nine axioms that $\in$ and sets are defined at all.
+Here is an overview of the axioms. We will have:
+\bit
+\item 2 basic existence axioms, one about the $\in$ relation and the other about the existence of the empty set;
+\item 4 construction axioms, which establish rules for building new sets from given ones.
+They are the pair set axiom, the union set axiom, the replacement axiom and the power set axiom; 
+\item 2 further existence/construction axioms, these are slightly more advanced and newer compared to the others;
+\item 1 axiom of foundation, excluding some constructions as not being sets.
+\eit
+Using the $\in$-relation we can immediately define the following relations:
+\bit
+\item $x\notin y :\eqv \neg(x\in y)$
+\item $x\se y :\eqv \forall \, a : (a\in x \imp a\in y)$
+\item $x = y :\eqv (x\se y) \land (y\se x)$
+\item $x \ss y :\eqv (x \se y) \land \neg (x = y)$
+\eit
+\br
+A comment about notation.
+Since $\in$ is a predicate of two variables, for consistency of notation we should write $\in\!\!(x,y)$.
+However, the notation $x\in y$ is much more common (as well as intuitive) and hence we simply define:
+\bse
+x\in y :\eqv\ \in\!\!(x,y)
+\ese
+and we read ``$x$ is in (or belongs to) $y$'' or ``$x$ is an element (or a member) of $y$''.  Similar remarks apply to the other relations $\notin$, $\se$ and $=$.
+\er
+
+\subsection{Zermelo-Fraenkel axioms of set theory}
+
+\textbf{Axiom on the $\in$-relation.}\index{$\in$}\index{relation!$\in$}\index{axiom!on $\in$} \emph{The expression $x\in y$ is a proposition if, and only if, both $x$ and $y$ are sets. In symbols:}
+\bse
+\forall \, x : \forall \, y : (x\in y) \veebar \neg (x\in y).
+\ese
+We remarked, previously, that it is not the task of predicate logic to inquire about the nature of the variables on which predicates depend.
+This first axiom clarifies that the variables on which the relation $\in$ depend are sets.
+In other words, if $x\in y$ is not a proposition (i.e.\ it does not have the property of being either true or false) then $x$ and $y$ are not both sets.
+
+This seems so trivial that, for a long time, people thought that this not much of a condition.
+But, in fact, it is.
+It tells us when something is not a set.
+\be[Russell's paradox]\index{Russell's paradox}
+Suppose that there is some $u$ which has the following property:
+\bse
+\forall \, x : (x \notin x \eqv x \in u),
+\ese
+i.e.\ $u$ contains all the sets that are not elements of themselves, and no others.
+We wish to determine whether $u$ is a set or not.
+In order to do so, consider the expression $u\in u$.
+If $u$ is a set then, by the first axiom, $u\in u$ is a proposition.
+
+However, we will show that his is not the case.
+Suppose first that $u\in u$ is true.
+Then $\neg(u\notin u)$ is true and thus $u$ does not satisfy the condition for being an element of $u$, and hence is not an element of $u$.
+Thus:
+\bse
+u \in u \imp \neg(u \in u)
+\ese
+and this is a contradiction.
+Therefore, $u\in u$ cannot be true.
+Then, if it is a proposition, it must be false.
+However, if $u \notin u$, then $u$ satisfies the condition for being a member of $u$ and thus:
+\bse
+u \notin u \imp \neg(u \notin u)
+\ese
+which is, again, a contradiction.
+Therefore, $u\in u$ does not have the property of being either true or false (it can be neither) and hence it is not a proposition.
+Thus, our first axiom implies that $u$ is not a set, for if it were, then $u\in u$ would be a proposition.
+\ee
+\br
+The fact that $u$ as defined above is not a set means that expressions like:
+\bse
+u\in u , \quad x\in u , \quad u\in x , \quad x \notin u , \quad \t{etc.}
+\ese
+are not propositions and thus, they are not part of axiomatic set theory.
+\er
+
+\textbf{Axiom on the existence of an empty set.}\index{empty set}\index{set!empty}\index{axiom!on the empty set} \emph{There exists a set that contains no elements.
+In symbols:}
+\bse
+\exists \, y : \forall \, x : x \notin y .
+\ese
+Notice the use of ``an'' above.
+In fact, we have all the tools to prove that there is only one empty set.
+We do not need this to be an axiom.
+\bt
+There is only one empty set, and we denote it by $\vn$.
+\et
+\bq(Standard textbook style).
+Suppose that $x$ and $x'$ are both empty sets.
+Then $y\in x$ is false as $x$ is the empty set.
+But then:
+\bse
+ (y \in x) \imp (y \in x')
+\ese
+is true, and in particular it is true independently of $y$.
+Therefore:
+\bse
+\forall \, y : (y \in x) \imp (y \in x')
+\ese
+and hence $x \se x'$.
+Conversely, by the same argument, we have:
+\bse
+\forall \, y : (y \in x') \imp (y \in x)
+\ese
+and thus $x' \se x$.
+Hence $(x \se x') \land (x' \se x)$ and therefore $x = x'$.
+\eq
+This is the proof that is found in standard textbooks.
+However, we gave a definition of what a proof within the axiomatic system of propositional logic is, and this ``proof'' does not satisfy our definition of proof.
+
+In order to give a precise proof, we first have to encode our assumptions into a sequence of axioms.
+These consist of the axioms of propositional logic (the empty sequence) plus:
+\bi{rCl}
+a_1 & \eqv & \forall \, y : y \notin x\\
+a_2 & \eqv & \forall \, y : y \notin x'
+\ei
+i.e.\ $x$ and $x'$ are both empty sets.
+We now have to write down a (finite) sequence of propositions:
+\bi{rCl}
+q_1 & \eqv & \ldots\\
+q_2 & \eqv & \ldots\\
+& \vdots &\\
+q_M & \eqv & x = x'
+\ei
+with $M$ to be determined and such that, for each $1\leq j \leq M$ one of the following is satisfied:
+\ben
+\item[(A)] $q_j \eqv a_1$ or  $q_j \eqv a_2$;
+\item[(T)] $q_j$ is a tautology;
+\item[(M)] $\exists \, 1\leq m,n <j : (q_m\land q_n \imp q_j)$ is true.
+\een
+These are the three conditions that a sequence of propositions must satisfy in order to be a proof.
+\bq(Formal)
+We begin with a tautology.
+\bi{rCll}
+q_1 & \eqv & y\notin x \imp \forall \, y : (y \in x \imp y \in x') \qquad & \t{(T)}\\
+q_2 & \eqv & \forall \, y : y \notin x & \t{(A) using $a_1$}\\
+q_3 & \eqv & \forall \, y : (y \in x \imp y \in x') & \t{(M) using $q_1$ and $q_2$}
+\ei
+The third step follows since $q_1 \land q_2 \imp q_3$ is of the form:
+\bse
+((p \imp r) \land p ) \imp r,
+\ese
+where $p \eqv y \notin x$ and $r \eqv \forall \, y : (y \in x \imp y \in x')$ and it is easily seen to be true by constructing a truth table. Moreover, by the definition of $\se$, we may rewrite $q_3$ as:
+\bse
+q_3 \eqv x \se x'.
+\ese
+The next three steps are very similar to the first three:
+\bi{rCll}
+q_4 & \eqv & y\notin x' \imp \forall \, y : (y \in x' \imp y \in x) \qquad & \t{(T)}\\
+q_5 & \eqv & \forall \, y : y \notin x' & \t{(A) using $a_2$}\\
+q_6 & \eqv & \forall \, y : (y \in x' \imp y \in x) & \t{(M) using $q_4$ and $q_5$}
+\ei
+where again, $q_6$ may be written as:
+\bse
+q_6 \eqv x' \se x.
+\ese
+Finally, we have:
+\bi{rCll}
+q_7 & \eqv & (x\se x')\land(x'\se x) \qquad & \t{(M) using $q_3$ and $q_6$}.
+\ei
+This follows since since $q_3 \land q_6 \imp q_7$ is of the form $p \imp p$ which is obviously a tautology. Recalling the definition of $=$, we may rewrite $q_7$ as:
+\bse
+q_7 \eqv x = x'
+\ese
+thereby concluding the proof in seven steps.
+\eq
+
+\textbf{Axiom on pair sets.}\index{set!pair}\index{axiom!on pair sets} \emph{Let $x$ and $y$ be sets. Then there exists a set that contains as its elements precisely $x$ and $y$. In symbols:}
+\bse
+\forall \, x : \forall \, y : \exists \, m : \forall \, u : (u\in m \eqv (u = x \lor u = y)).
+\ese
+The set $m$ is called the \emph{pair set} of $x$ and $y$ and it is denoted by $\{x,y\}$.
+\br
+We have chosen $\{x,y\}$ as the notation for the pair set of $x$ and $y$, but what about $\{y,x\}$?
+The fact that the definition of the pair set remains unchanged if we swap $x$ and $y$ suggests that $\{x,y\}$ and $\{y,x\}$ are the same set.
+Indeed, by definition, we have:
+\bse
+(a \in \{x,y\} \imp a \in \{y,x\} ) \land (a \in \{y,x\} \imp a \in \{x,y\} ) 
+\ese
+independently of $a$, hence $(\{x,y\} \se \{y,x\}) \land (\{y,x\} \se \{x,y\})$ and thus $\{x,y\} = \{y,x\}$.
+\er
+
+The pair set $\{x,y\}$ is thus an unordered pair. However, using the axiom on pair sets, it is also possible to define an \emph{ordered pair} $(x,y)$ such that $(x,y)\neq(y,x)$. The defining property of an ordered pair is the following:
+\bse
+(x,y) = (a,b) \eqv x=a\land y=b.
+\ese
+One candidate which satisfies this property is $(x,y):=\{x,\{x,y\}\}$, which is a set by the axiom on pair sets.
+
+\br
+The pair set axiom also guarantees the existence of one-element sets, called \emph{singletons}\index{singleton}. 
+If $x$ is a set, then we define $\{x\}:=\{x,x\}$. Informally, we can say that $\{x\}$ and $\{x,x\}$ express the same amount of information, namely that they contain $x$. 
+\er
+
+\textbf{Axiom on union sets.}\index{set!union}\index{axiom!on union sets} \emph{Let $x$ be a set. Then there exists a set whose elements are precisely the elements of the elements of $x$. In symbols:}
+\bse
+\forall \, x : \exists \, u : \forall \, y : (y \in u \eqv \exists \, s :(y \in s\land s \in x))
+\ese
+The set $u$ is denoted by $\bigcup x$.
+\be
+Let $a,b$ be sets. Then $\{a\}$ and $\{b\}$ are sets by the pair set axiom, and hence $x:=\{\{a\},\{b\}\}$ is a set, again by the pair set axiom. Then the expression:
+\bse
+\bigcup x = \{a,b\}
+\ese
+is a set by the union axiom.
+\ee
+Notice that, since $a$ and $b$ are sets, we could have immediately concluded that $\{a,b\}$ is a set by the pair set axiom. The union set axiom is really needed to construct sets with more than 2 elements.
+\be
+Let $a,b,c$ be sets. Then $\{a\}$ and $\{b,c\}$ are sets by the pair set axiom, and hence $x:=\{\{a\},\{b,c\}\}$ is a set, again by the pair set axiom. Then the expression:
+\bse
+\bigcup x =: \{a,b,c\}
+\ese
+is a set by the union set axiom. This time the union set axiom was really necessary to establish that $\{a,b,c\}$ is a set, i.e.\ in order to be able to use it meaningfully in conjunction with the $\in$-relation.
+\ee
+The previous example easily generalises to a definition.
+\bd
+Let $a_1,a_2,\ldots,a_N$ be sets. We define recursively for all $N\geq 2$:
+\bse
+\{a_1,a_2,\ldots,a_{N+1}\} := \bigcup \left\{\{a_1,a_2,\ldots,a_{N}\},\{a_{N+1}\} \right\} .
+\ese
+\ed
+
+\br
+The fact that the $x$ that appears in $\bigcup x$ has to be a set is a crucial restriction. Informally, we can say that it is only possible to take unions of as many sets as would fit into a set. The ``collection'' of all the sets that do not contain themselves is not a set or, we could say, does not fit into a set. Therefore it is not possible to take the union of all the sets that do not contain themselves. This is very subtle, but also very precise.
+\er
+
+\textbf{Axiom of replacement.}\index{axiom!of replacement} \emph{Let $R$ be a functional relation and let $m$ be a set. Then the image of $m$ under $R$, denoted by $\img_R (m)$, is again a set.}
+
+Of course, we now need to define the new terms that appear in this axiom. Recall that a relation is simply a predicate of two variables.
+\bd
+A relation $R$ is said to be \emph{functional}\index{relation!functional} if:
+\bse
+\forall \, x : \exists ! \, y : R(x,y) .
+\ese
+\ed
+\bd
+Let $m$ be a set and let $R$ be a functional relation. The \emph{image of $m$ under $R$}\index{image} consists of all those $y$ for which there is an $x\in m$ such that $R(x,y)$. 
+\ed
+None of the previous axioms imply that the image of a set under a functional relation is again a set. The assumption that it always is, is made explicit by the axiom of replacement.
+
+Is is very likely that the reader has come across a weaker form of the axiom of replacement, called the \emph{principle of restricted comprehension}\index{principle of restricted comprehension}, which says the following.
+\bp
+Let $P(x)$ be a predicate and let $m$ be a set. Then the elements $y \in m$ such that $P(y)$ is true constitute a set, which we denote by:
+\bse
+\{y \in m \mid P(y)\} .
+\ese
+\ep
+\br
+The principle of restricted comprehension is not to be confused with the ``principle'' of universal comprehension which states that $\{y \mid P(y)\} $ is a set for any predicate and was shown to be inconsistent by Russell. Observe that the $y \in m$ condition makes it so that $\{y \in m \mid P(y)\}$ cannot have more elements than $m$ itself.
+\er
+\br
+If $y$ is a set, we define the following notation:
+\bse
+\forall \, x \in y : P(x) :\eqv \forall \, x : (x \in y \imp P(x))
+\ese
+and:
+\bse
+\exists \, x \in y : P(x) :\eqv \neg (\forall \, x \in y : \neg P(x)).
+\ese
+Pulling the $\neg$ through, we can also write:
+\bi{rCl}
+\exists \, x \in y : P(x) & \eqv & \neg (\forall \, x \in y : \neg P(x))\\
+ & \eqv & \neg (\forall \, x : (x \in y \imp \neg P(x)))\\
+ & \eqv & \exists \, x : \neg (x \in y \imp \neg P(x)))\\
+ & \eqv & \exists \, x : (x \in y \land P(x)),
+\ei
+where we have used the equivalence $(p \imp q) \eqv \neg (p \land \neg q)$.
+\er
+The principle of restricted comprehension is a consequence of the axiom of replacement.
+\bq
+We have two cases.
+\ben
+\item If $\neg ( \exists \, y \in m : P(y))$, then we define: $\{y \in m \mid P(y)\} := \vn$.
+\item If $\exists \, \hat y \in m : P(\hat y)$, then let $R$ be the functional relation:
+\bse
+R(x,y):= (P(x)\land x=y)\lor(\neg P(x)\land \hat y = y)
+\ese
+and hence define $\{y \in m \mid P(y)\} := \img_R(m)$. \qedhere
+\een
+\eq
+Don't worry if you don't see this immediately. You need to stare at the definitions for a while and then it will become clear.
+\br
+We will rarely invoke the axiom of replacement in full. We will only invoke the weaker principle of restricted comprehension, with which we are all familiar with.
+\er
+We can now define the intersection and the relative complement of sets.
+\bd
+Let $x$ be a set. Then we define the \emph{intersection}\index{set!intersection} of $x$ by:
+\bse
+\bigcap x := \{ a \in \bigcup x \mid \forall \, b \in x : a \in b \}.
+\ese
+If $a,b\in x$ and $\bigcap x = \vn$, then $a$ and $b$ are said to be \emph{disjoint}.
+\ed
+\bd
+Let $u$ and $m$ be sets such that $u \se m$. Then the \emph{complement} of $u$ relative to $m$ is defined as:
+\bse
+m\sm u := \{x \in m \mid x \notin u\}.
+\ese
+These are both sets by the principle of restricted comprehension, which is ultimately due to axiom of replacement.
+\ed
+
+\textbf{Axiom on the existence of power sets.}\index{set!power}\index{axiom!on power sets} \emph{Let $m$ be a set. Then there exists a set, denoted by $\cP(m)$, whose elements are precisely the subsets of $m$. In symbols:}
+\bse
+\forall \, x : \exists \, y : \forall \, a : ( a \in y \eqv a \se x).
+\ese
+
+Historically, in na\"ive set theory, the principle of universal comprehension was thought to be needed in order to define the power set of a set. Traditionally, this would have been (inconsistently) defined as:
+\bse
+\cP (m) := \{y \mid y \se m \} .
+\ese
+To define power sets in this fashion, we would need to know, a priori, from which ``bigger'' set the elements of the power set come from. However, this in not possible based only on the previous axioms and, in fact, there is no other choice but to dedicate an additional axiom for the existence of power sets.
+
+\be
+Let $m = \{a,b\}$. Then $\cP(m)=\{\vn,\{a\},\{b\},\{a,b\}\}$.
+\ee
+
+\br
+If one defines $(a,b) := \{a,\{a,b\}\}$, then the \emph{cartesian product} $x \times y$ of two sets $x$ and $y$, which informally is the set of all ordered pairs of elements of $x$ and $y$, satisfies:
+\bse
+x\times y \se \cP(\cP(\bigcup\,\{x, y\})).
+\ese
+Hence, the existence of $x\times y$ as a set follows from the axioms on unions, pair sets, power sets and the principle of restricted comprehension.
+\er
+
+\textbf{Axiom of infinity.}\index{infinity}\index{axiom!of infinity} \emph{There exists a set that contains the empty set and,  together with every other element $y$, it also contains the set $\{y\}$ as an element. In symbols:}
+\bse
+\exists \, x : \vn \in x \land \forall \, y : (y\in x \imp \{y\} \in x).
+\ese
+Let us consider one such set $x$. Then $\vn \in x$ and hence $\{\vn\}\in x$. Thus, we also have $\{\{\vn\}\}\in x$ and so on. Therefore:
+\bse
+x = \{\vn,\{\vn\},\{\{\vn\}\},\{\{\{\vn\}\}\},\ldots\}.
+\ese
+We can introduce the following notation for the elements of $x$:
+\bse
+0 :=\vn , \quad 1  := \{\vn\},\quad 2:= \{\{\vn\}\}, \quad 3:= \{\{\{\vn\}\}\} , \quad \ldots
+\ese
+\bc
+The ``set'' $\N:=x$\index{$\N$} is a set according to axiomatic set theory.
+\ec
+This would not be then case without the axiom of infinity since it is not possible to prove that $\N$ constitutes a set from the previous axioms.
+\br
+At this point, one might suspect that we would need an extra axiom for the existence of the real numbers. But, in fact, we can define $\R := \cP(\N)$, which is a set by the axiom on power sets.
+\er
+\br
+The version of the axiom of infinity tat we stated is the one that was first put forward by Zermelo. A more modern formulation is the following. \emph{There exists a set that contains the empty set and, together with every other element $y$, it also contains the set $y\cup\{y\}$ as an element.} Here we used the notation:
+\bse
+x \cup y := \bigcup \, \{x,y\}.
+\ese
+With this formulation, the natural numbers look like:
+\bse
+\N := \{\vn, \{\vn\}, \{\vn,\{\vn\}\}, \{\vn,\{\vn\},\{\vn,\{\vn\}\}\}, \ldots \}
+\ese
+This may appear more complicated than what we had before, but it is much nicer for two reasons.  First, the natural number $n$ is represented by an $n$-element set rather than a one-element set. Second, it generalizes much more naturally to the system of transfinite ordinal numbers where the successor operation $s(x)=x\cup\{x\}$ applies to transfinite ordinals as well as natural numbers. Moreover, the natural numbers have the same defining property as the ordinals: they are transitive sets strictly well-ordered by the $\in$-relation.
+\er
+
+\textbf{Axiom of choice.}\index{axiom!of choice} \emph{Let $x$ be a set whose elements are non-empty and mutually disjoint. Then there exists a set $y$ which contains exactly one element of each element of $x$. In symbols:}
+\bse
+\forall \, x : P(x) \imp \exists \, y : \forall \, a \in x :\exists! \, b \in a : a \in y,
+\ese
+where $P(x) \eqv (\exists \,a : a \in x) \land (\forall \, a : \forall \, b : (a\in x \land b \in x) \imp \bigcap \, \{a,b\} = \vn )$.
+\br
+The axiom of choice is independent of the other 8 axioms, which means that one could have set theory with or without the axiom of choice. However, standard mathematics uses the axiom of choice and hence so will we. There is a number of theorems that can only be proved by using the axiom of choice. Amongst these we have:
+\bit
+\item every vector space has a basis;
+\item there exists a complete system of representatives of an equivalence relation.
+\eit
+\er
+
+\textbf{Axiom of foundation.}\index{axiom!of foundation} \emph{Every non-empty set $x$ contains an element $y$ that has none of its elements in common with $x$. In symbols:}
+\bse
+\forall \, x : (\exists \,a : a \in x) \imp \exists \, y \in x : \bigcap \, \{x,y\} = \vn .
+\ese
+An immediate consequence of this axiom is that there is no set that contains itself as an element.\\
+
+The totality of all these nine axioms are called \emph{ZFC set theory}, which is a shorthand for Zermelo-Fraenkel set theory with the axiom of Choice.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

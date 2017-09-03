@@ -1,0 +1,326 @@
+
+Lie theory is a topic of the utmost importance in both physics and differential geometry. 
+
+\subsection{Lie groups}
+
+\bd
+A \emph{Lie group}\index{Lie group} is a group $(G,\bullet)$, where $G$ is a smooth manifold and the maps
+\bi{rrCl}
+\mu \cl & G\times G & \to & G\\
+& (g_1,g_2) & \mapsto & g_1\bullet g_2
+\ei
+and
+\bi{rrCl}
+i \cl & G & \to & G\\
+& g & \mapsto & g^{-1}
+\ei
+are both smooth. Note that $G\times G$ inherits a smooth atlas from the smooth atlas of $G$.
+\ed
+
+\bd
+The \emph{dimension} of a Lie group $(G,\bullet)$ is the dimension of $G$ as a manifold.
+\ed
+
+\be
+\ben[label=\alph*)]
+\item Consider $(\R^n,+)$, where $\R^n$ is understood as a smooth $n$-dimensional manifold. This is a commutative (or abelian) Lie group (since $\bullet$ is commutative), often called the $n$-dimensional translation group.
+
+\item Let $S^1:=\{z\in\C\mid |z|=1\}$ and let $\cdot$ be the usual multiplication of complex numbers. Then $(S^1,\cdot)$ is a commutative Lie group usually denoted $\mathrm{U}(1)$.
+
+\item Let $\mathrm{GL}(n,\R)=\{\phi\cl\R^n\xrightarrow{\sim}\R^n\mid \det \phi \neq 0\}$. This set can be endowed with the structure of a smooth $n^2$-dimensional manifold, by noting that there is a bijection between linear maps $\phi\cl\R^n\xrightarrow{\sim}\R^n$ and $\R^{2n}$. The condition $\det \phi\neq 0$ is a so-called \emph{open condition}, meaning that $\mathrm{GL}(n,\R)$ can be identified with an open subset of $\R^{2n}$, from which it then inherits a smooth structure.
+
+Then, $(\mathrm{GL}(n,\R),\circ)$ is a Lie group called the \emph{general linear group}.
+
+\item Let $V$ be an $n$-dimensional $\R$-vector space equipped with a pseudo inner product, i.e.\ an bilinear map $(-,-)\cl V\times V \to \R$ satisfying
+\ben
+\item[i)] symmetry: $\forall \, v,w\in V : \ (v,w)=(w,v)$;
+\item[ii)] non-degeneracy: $(\forall \, w\in V : (v,w)=0)\Rightarrow v = 0$.
+\een
+Ordinary inner products satisfy a stronger condition than non-degeneracy, called positive definiteness, which is $\forall \, v \in V : (v,v)\geq 0$ and $(v,v)=0 \Rightarrow v=0$.
+
+Given a symmetric bilinear map $(-,-)$ on $V$, there is always a basis $\{e_a\}$ of $V$ such that $(e_a,e_a)=\pm 1$ and zero otherwise. If we get $p$-many $1$s and $q$-many $-1$s (with $p+q=n$, of course), then the pair $(p,q)$ is called the \emph{signature}\index{signature} of the map. Positive definiteness is the requirement that the signature be $(n,0)$, although in relativity we require the signature to be $(n-1,1)$. A theorem states that there are (up to isomorphism) only as many pseudo inner products on $V$ as there are different signatures.
+
+We can define the set
+\bse
+\mathrm{O}(p,q):=\{\phi\cl V\xrightarrow{\sim} V \mid \forall \, v,w\in V : (\phi(v),\phi(w))=(v,w)\}.
+\ese
+The pair $(\mathrm{O}(p,q),\circ)$ is a Lie group called the \emph{orthogonal group}\index{orthogonal group} with respect to the pseudo inner product $(-,-)$. This is, in fact, a Lie subgroup of $\mathrm{GL}(p+q,\R)$. Some notable examples are $\mathrm{O}(3,1)$, which is known as the \emph{Lorentz group}\index{Lorentz group} in relativity, and $\mathrm{O}(3,0)$, which is the 3-dimensional rotation group.
+\een
+\ee
+
+\bd
+Let $(G,\bullet)$ and $(H,\circ)$ be Lie groups. A map $\phi\cl G \to H$ is \emph{Lie group homomorphism} if it is a group homomorphism and a smooth map.
+
+A \emph{Lie group isomorphism}\index{isomorphism!of Lie groups} is a group homomorphism which is also a diffeomorphism. 
+\ed
+
+\subsection{The left translation map}
+
+To every element of a Lie group there is associated a special map. Note that everything we will do here can be done equivalently by using right translation maps. 
+
+\bd
+Let $(G,\bullet)$ be a Lie group and let $g\in G$. The map
+\bi{rrCl}
+\ell_g \cl & G & \to & G\\
+& h & \mapsto & \ell_g(h):=g\bullet h \equiv gh
+\ei
+is called the \emph{left translation}\index{left translation} by $g$.
+\ed
+If there is no danger of confusion, we usually suppress the $\bullet$ notation.  
+\bp
+Let $G$ be a Lie group. For any $g\in G$, the left translation map $\ell_g\cl G \to G$ is a diffeomorphism.
+\ep
+
+\bq
+Let $h,h'\in G$. Then, we have
+\bse
+\ell_g(h)=\ell_g(h')\ \Leftrightarrow\ g h = g h' \ \Leftrightarrow\ h=h'.
+\ese
+Moreover, for any $h\in G$, we have $g^{-1} h\in G$ and
+\bse
+\ell_g(g^{-1} h) = gg^{-1} h = h.
+\ese
+Therefore, $\ell_g$ is a bijection on $G$. Note that
+\bse
+\ell_g = \mu(g,-)
+\ese
+and since $\mu\cl G\times G \to G$ is smooth by definition, so is $\ell_g$. 
+
+The inverse map is $(\ell_g)^{-1}=\ell_{g^{-1}}$, since
+\bse
+\ell_{g^{-1}} \circ \ell_{g} = \ell_{g} \circ \ell_{g^{-1}} = \id_G.
+\ese
+Then, for the same reason as above with $g$ replaced by $g^{-1}$, the inverse map $(\ell_g)^{-1}$ is also smooth. Hence, the map $\ell_g$ is indeed a diffeomorphism.
+\eq
+
+Note that, in general, $\ell_g$ is not an isomorphism of groups, i.e.\ 
+\bse
+\ell_g(hh') \neq \ell_g(h)\,\ell_g(h')
+\ese
+in general. However, as the final part of the previous proof suggests, we do have
+\bse
+\ell_g \circ \ell_h = \ell_{gh}
+\ese
+for all $g,h\in G$. 
+
+Since $\ell_g\cl G\to G$ is a diffeomorphism, we have a well-defined push-forward map
+\bi{rrCl}
+(L_g)_* \cl & \Gamma(TG) & \to &\Gamma(TG) \\
+& X & \mapsto & (L_g)_*(X) 
+\ei
+where
+\bi{rrCl}
+(L_g)_*(X) \cl & G & \to & TG \\
+& h & \mapsto & (L_g)_*(X)(h):= (\ell_g)_*(X(g^{-1}h)).
+\ei
+We can draw the diagram
+\bse
+\begin{tikzcd}
+TG \ar[rr,"(\ell_g)_*"] && TG\\
+&&\\
+G \ar[uu,"X"] \ar[rr,"\ell_g"]&& G\ar[uu,"(L_g)_*(X)"']
+\end{tikzcd}
+\ese
+Note that this is exactly the same as our previous
+\bse
+\Phi_*(\sigma):=\phi_*\circ\sigma\circ\phi^{-1}.
+\ese
+By introducing the notation $X|_h := X(h)$, so that $X|_h\in T_hG$, we can write
+\bse
+(L_g)_*(X)|_h := (\ell_g)_*(X|_{g^{-1}h}).
+\ese
+Alternatively, recalling that the map $\ell_g$ is a diffeomorphism and relabelling the elements of $G$, we can write this as
+\bse
+(L_g)_*(X)|_{gh} := (\ell_g)_*(X|_{h}).
+\ese
+A further reformulation comes from considering the vector field $X\in\Gamma(TG)$ as an $\R$-linear map $X\cl\mathcal{C}^\infty(G)\xrightarrow{\sim}\mathcal{C}^\infty(G)$. Then, for any $f\in \mathcal{C}^\infty(G)$
+\bse
+(L_g)_*(X)(f) := X(f\circ\ell_g).
+\ese
+\bp
+Let $G$ be a Lie group. For any $g,h\in G$, we have
+\bse
+(L_g)_*\circ(L_h)_* = (L_{gh})_*.
+\ese
+\ep
+\bq
+Let $f\in \mathcal{C}^\infty(G)$. Then, we have
+\bi{rCl}
+\bigl((L_g)_*\circ(L_h)_*\bigr)(X)(f) & = & (L_g)_*\bigl((L_h)_*(X)\bigr)(f)\\
+& = & (L_h)_*(X)(f\circ \ell_g)\\
+& = & X(f\circ \ell_g\circ \ell_h)\\
+& = & X(f\circ \ell_{gh})\\
+& =: & (L_{gh})_*(X)(f),
+\ei
+as we wanted to show.
+\eq
+The previous identity applies to the pointwise push-forward as well, i.e.\
+\bse
+\bigl((\ell_{g_1})_*\circ(\ell_{g2})_*\bigr)(X|_h) = (\ell_{g_1g_2})_*(X|_h)
+\ese
+for any $g_1,g_2,h\in G$ and $X|_h\in T_hG$.
+
+\subsection{The Lie algebra of a Lie group}
+
+In Lie theory, we are typically not interested in general vector fields, but rather on special class of vector fields which are invariant under the induced push-forward of the left translation maps $\ell_g$.
+\bd
+Let $G$ be a Lie group. A vector field $X\in\Gamma(TG)$ is said to be \emph{left-invariant}\index{left-invariant vector field} if
+\bse
+\forall \, g \in G  : \ (L_g)_*(X) = X.
+\ese
+Equivalently, we can require this to hold pointwise
+\bse
+\forall \, g,h \in G : \ (\ell_g)_*(X|_h) = X|_{gh}.
+\ese
+\ed
+By recalling the last reformulation of the push-forward, we have that $X\in\Gamma(TG)$ is left-invariant if, and only if
+\bse
+\forall \, f \in \mathcal{C}^\infty(G) : \ X (f \circ \ell_g) = X(f) \circ \ell_g.
+\ese
+We denote the set of all left-invariant vector fields on $G$ as $\mathcal{L}(G)$. Of course,
+\bse
+\mathcal{L}(G)\se\Gamma(TG)
+\ese
+but, in fact, more is true. One can check that $\mathcal{L}(G)$ is closed under 
+\bi{c}
++\cl \mathcal{L}(G)\times \mathcal{L}(G) \to \mathcal{L}(G)\\
+\cdot  \cl \mathcal{C}^\infty(G)\times \mathcal{L}(G) \to \mathcal{L}(G),
+\ei
+only for the constant functions in $\mathcal{C}^\infty(G)$. Therefore, $\mathcal{L}(G)$ is not a $\mathcal{C}^\infty(G)$-submodule of $\Gamma(TG)$, but it is an $\R$-vector subspace of $\Gamma(TG)$.
+
+Recall that, up to now, we have refrained from thinking of $\Gamma(TG)$ as an $\R$-vector space since it is infinite-dimensional and, even worse, a basis is in general uncountable. A priori, this could be true for $\mathcal{L}(G)$ as well, but we will see that the situation is, in fact, much nicer as $\mathcal{L}(G)$ will turn out to be a finite-dimensional vector space over $\R$. 
+
+\begin{theorem}
+Let $G$ be a Lie group with identity element $e\in G$. Then $\mathcal{L}(G)\cong_\mathrm{vec} T_eG$.
+\end{theorem}
+
+\bq
+We will construct a linear isomorphism $j\cl T_eG\xrightarrow{\sim}\mathcal{L}(G)$. Define
+\bi{rrCl}
+j \cl & T_eG& \to & \Gamma(TG)\\
+& A & \mapsto & j(A),
+\ei
+where
+\bi{rrCl}
+j(A) \cl & G& \to & TG\\
+& g & \mapsto & j(A)|_g := (\ell_g)_*(A).
+\ei
+\ben[label=\roman*)]
+\item First, we show that for any $A\in T_eG$, $j(A)$ is a smooth vector field on $G$. It suffices to check that for any $f\in \mathcal{C}^\infty(G)$, we have $j(A)(f)\in \mathcal{C}^\infty(G)$. Indeed
+\bi{rCl}
+(j(A)(f))(g) & = & j(A)|_g(f)\\
+& := &  (\ell_g)_*(A)(f)\\
+& = &  A(f\circ\ell_g)\\
+& = &  (f\circ\ell_g\circ\gamma)'(0),
+\ei
+where $\gamma$ is a curve through $e\in G$ whose tangent vector at $e$ is $A$. The map
+\bi{rrClCl}
+\varphi \cl & \R\times G &\to & \R &&\\
+&(t,g)&\mapsto & \varphi(t,g) & := &(f\circ\ell_{g}\circ\gamma)(t) \\
+&&&& = & f(g\gamma(t))
+\ei
+is a composition of smooth maps, hence it is smooth. Then
+\bse
+(j(A)(f))(g) = (\partial_1\varphi)(0,g)
+\ese
+depends smoothly on $g$ and thus $j(A)(f)\in \mathcal{C}^\infty(G)$.
+\item Let $g,h\in G$. Then, for every $A\in T_eG$, we have
+\bi{rCl}
+(\ell_g)_*(j(A)|_h) & := & (\ell_g)_*((\ell_h)_*(A))\\
+& = & (\ell_{gh})_*(A)\\
+& = & j(A)|_{gh},
+\ei
+so $j(A)\in \mathcal{L}(G)$. Hence, the map $j$ is really $j\cl T_eG \to \mathcal{L}(G)$.
+\item Let $A,B\in T_eG$ and $\lambda \in \R$. Then, for any $g\in G$
+\bi{rCl}
+j(\lambda A + B)|_g & = & (\ell_g)_* (\lambda A + B)\\
+& = & \lambda (\ell_g)_*( A) +  (\ell_g)_*(B)\\
+& = & \lambda j(A)|_g + j(B)|_g,
+\ei
+since the push-forward is an $\R$-linear map. Hence, we have $j\cl T_eG \xrightarrow{\sim} \mathcal{L}(G)$.
+\item Let $A,B\in T_eG$. Then
+\bi{rCl}
+j(A) = j(B) & \Leftrightarrow & \forall \, g \in G : j(A)|_g = j(B)|_g\\
+&\Rightarrow & j(A)|_e = j(B)|_e\\
+ & \Leftrightarrow & (\ell_e)_*(A) = (\ell_e)_*(B)\\
+& \Leftrightarrow & A=B,
+\ei
+since $(\ell_e)_*=\id_{TG}$. Hence, the map $j$ is injective.
+\item Let $X\in \mathcal{L}(G)$. Define $A^X:=X|_e\in T_eG$. Then, we have
+\bse
+j(A^X)|_g = (\ell_g)_*(A^X)=(\ell_g)_*(X|_e) = X_{ge}=X_g,
+\ese
+since $X$ is left-invariant. Hence $X=j(A^X)$ and thus $j$ is surjective. 
+\een
+Therefore, $j\cl T_eG\xrightarrow{\sim}\mathcal{L}(G)$ is indeed a linear isomorphism.
+\eq
+
+\bc
+The space $\mathcal{L}(G)$ is finite-dimensional and $\dim \mathcal{L}(G)=\dim G$.
+\ec
+
+We will soon see that the identification of $\mathcal{L}(G)$ and $T_eG$ goes beyond the level of linear isomorphism, as they are isomorphic as Lie algebras. Recall that a Lie algebra over an algebraic field $K$ is a vector space over $K$ equipped with a Lie bracket $[-,-]$, i.e.\ a $K$-bilinear, antisymmetric map which satisfies the Jacobi identity.
+
+Given $X,Y\in \Gamma(TM)$, we defined their Lie bracket, or commutator, as
+\bse
+[X,Y] (f):= X(Y(f))-Y(X(f))
+\ese
+for any $f\in \mathcal{C}^\infty(M)$. You can check that indeed $[X,Y]\in\Gamma(TM)$, and that the bracket is $\R$-bilinear, antisymmetric and satisfies the Jacobi identity. Thus, $(\Gamma(TM),+,\cdot,[-,-])$ is an infinite-dimensional Lie algebra over $\R$. We suppress the $+$ and $\cdot$ when they are clear from the context.
+In the case of a manifold that is also a Lie group, we have the following.
+\begin{theorem}
+Let $G$ be a Lie group. Then $\mathcal{L}(G)$ is a Lie subalgebra of $\Gamma(TG)$.
+\end{theorem}
+\bq
+A Lie subalgebra of a Lie algebra is simply a vector subspace which is closed under the action of the Lie bracket. Therefore, we only need to check that
+\bse
+\forall \, X,Y \in \mathcal{L}(G) : \ [X,Y]\in \mathcal{L}(G).
+\ese
+Let $X,Y \in \mathcal{L}(G)$. For any $g\in G$ and $f\in\mathcal{C}^\infty(G)$, we have
+\bi{rCl}
+[X,Y](f\circ\ell_g) & := & X(Y(f\circ\ell_g))-Y(X(f\circ\ell_g))\\
+& = & X(Y(f)\circ\ell_g)-Y(X(f)\circ\ell_g)\\
+& = & X(Y(f))\circ\ell_g-Y(X(f))\circ\ell_g\\
+& = & \bigl(X(Y(f))-Y(X(f))\bigr)\circ\ell_g\\
+& = & [X,Y](f)\circ\ell_g.
+\ei
+Hence, $[X,Y]$ is left-invariant.
+\eq
+
+\bd
+Let $G$ be a Lie group. The \emph{associated Lie algebra} of $G$ is $\mathcal{L}(G)$. 
+\ed
+Note $\mathcal{L}(G)$ is a rather complicated object, since its elements are vector fields, hence we would like to work with $T_eG$ instead, whose elements are tangent vectors. Indeed, we can use the bracket on $L(G)$ to define a bracket on $T_eG$ such that they be isomorphic as Lie algebras. First, let us define the isomorphism of Lie algebras.
+\bd
+Let $(L_1,[-,-]_{L_1})$ and $(L_2,[-,-]_{L_2})$ be Lie algebras over the same field. A linear map $\phi\cl L_1 \xrightarrow{\sim}L_2$ is a \emph{Lie algebra homomorphism} if
+\bse
+\forall \, x,y\in L_1 : \ \phi([x,y]_{L_1}) = [\phi(x),\phi(y)]_{L_2}.
+\ese
+If $\phi$ is bijective, then it is a \emph{Lie algebra isomorphism}\index{isomorphism!of Lie algebras} and we write $L_1\cong_\mathrm{Lie\, alg} L_2$.
+\ed
+
+By using the bracket $[-,-]_{\mathcal{L}(G)}$ on $\mathcal{L}(G)$ we can define, for any $A,B\in T_eG$
+\bse
+[A,B]_{T_eG} := j^{-1} \bigl( [j(A),j(B)]_{\mathcal{L}(G)} \bigr),
+\ese
+where $j^{-1}(X)=X|_e$. Equipped with these brackets, we have
+\bse
+\mathcal{L}(G)\cong_\mathrm{Lie\, alg}T_eG.
+\ese
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

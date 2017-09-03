@@ -1,0 +1,316 @@
+\subsection{Propositional logic}
+
+\bd
+A \emph{proposition}\index{proposition} $p$ is a variable\footnote{By this we mean a formal expression, with no extra structure assumed.} that can take the values \emph{true} ($T$) or \emph{false} ($F$), and no others.
+\ed
+
+This is what a proposition is from the point of view of propositional logic.
+In particular, it is not the task of propositional logic to decide whether a complex statement of the form ``there is extraterrestrial life'' is true or not.
+Propositional logic already deals with the complete proposition, and it just assumes that is either true or false.
+It is also not the task of propositional logic to decide whether a statement of the type ``in winter is colder than outside'' is a proposition or not (i.e. if it has the property of being either true or false).
+In this particular case, the statement looks rather meaningless.
+
+\bd
+A proposition which is always true is called a \emph{tautology}\index{tautology}, while one which is always false is called a \emph{contradiction}\index{contradiction}.
+\ed
+
+It is possible to build new propositions from given ones using \emph{logical operators}.
+The simplest kind of logical operators are \emph{unary} operators, which take in one proposition and return another proposition.
+There are four unary operators in total, and they differ by the truth value of the resulting proposition which, in general, depends on the truth value of $p$.
+We can represent them in a table as follows:
+
+\btab[h!]
+\centering
+\btb{c||c|c|c|c}
+$p$ & $\neg p$ & $\mathrm{id}(p)$ & $\top p$ & $\bot p$ \\
+\hline
+\rule{0pt}{12pt} F & T & F & T & F\\
+T & F & T & T & F
+\etb
+\etab
+where $\neg$ is the \emph{negation} operator, $\mathrm{id}$ is the \emph{identity} operator, $\top$ is the \emph{tautology} operator and $\bot$ is the \emph{contradiction} operator.
+These clearly exhaust all possibilities for unary operators.
+
+The next step is to consider \emph{binary} operators, i.e. operators that take in two propositions and return a new proposition.
+There are four combinations of the truth values of two propositions and, since a binary operator assigns one of the two possible truth values to each of those, we have 16 binary operators in total.
+The operators $\land$, $\lor$ and~$\veebar$, called \emph{and}, \emph{or} and \emph{exclusive or} respectively, should already be familiar to you.
+
+\btab[h!]
+\centering
+\btb{c|c||c|c|c}
+$p$ & $q$ & $p\land q$ & $p\lor q$ & $p\veebar q$ \\
+\hline
+\rule{0pt}{12pt} F & F & F & F & F\\
+F & T & F & T & T\\
+T & F & F & T & T\\
+T & T & T & T & F
+\etb
+\etab
+
+There is one binary operator, the \emph{implication}\index{implication} operator $\imp$, which is sometimes a little ill understood, unless you are already very knowledgeable about these things. Its usefulness comes in conjunction with the \emph{equivalence} operator $\eqv$. We have:
+
+\btab[h!]
+\centering
+\btb{c|c||c|c}
+$p$ & $q$ & $p\imp q$ & $p\eqv q$ \\
+\hline
+\rule{0pt}{12pt} F & F & T & T \\
+F & T & T & F \\
+T & F & F & F \\
+T & T & T & T 
+\etb
+\etab
+
+While the fact that the proposition $p\imp q$ is true whenever $p$ is false may be surprising at first, it is just the definition of the implication operator and it is an expression of the principle ``Ex falso quod libet'', that is, from a false assumption anything follows.
+Of course, you may be wondering why on earth we would want to define the implication operator in this way.
+The answer to this is hidden in the following result.
+
+\bt
+Let $p,q$ be propositions.
+Then $(p\imp q) \eqv ((\neg q)\imp (\neg p))$.
+\et
+
+\bq
+We simply construct the truth tables for $p\imp q$ and $ (\neg q)\imp (\neg p)$.
+
+\btab[h!]
+\centering
+\btb{c|c||c|c|c|c}
+$p$ & $q$ & $\neg p$ & $\neg q$ & $p\imp q$ & $(\neg q)\imp (\neg p)$ \\
+\hline
+\rule{0pt}{12pt} F & F & T & T & T & T\\
+F & T & T & F & T & T\\
+T & F & F & T & F & F\\
+T & T & F & F & T & T
+\etb
+\etab
+
+The columns for $p\imp q$ and $ (\neg q)\imp (\neg p)$ are identical and hence we are done.
+\eq
+
+\br
+We agree on decreasing binding strength in the sequence:
+\bse
+\neg \, , \ \land \, , \ \lor \, , \ \imp \, , \ \eqv .
+\ese
+For example, $(\neg q)\imp (\neg p)$ may be written unambiguously as $\neg q\imp \neg p$.
+\er
+
+\br
+All higher order operators $\heartsuit (p_1,\ldots,p_N)$ can be constructed from a single binary operator defined by:
+
+\btab[h!]
+\centering
+\btb{c|c||c}
+$p$ & $q$ & $ p \uparrow q$ \\
+\hline
+\rule{0pt}{12pt} F & F & T \\
+F & T & T \\
+T & F & T\\
+T & T & F
+\etb
+\etab
+
+This is called the \emph{nand} operator and, in fact, we have $(p \uparrow q) \eqv \neg (p \land q)$.
+\er
+
+\subsection{Predicate logic}
+
+\bd
+A \emph{predicate}\index{predicate} is (informally) a proposition-valued function of some variable or variables. In particular, a predicate of two variables is called a \emph{relation}\index{relation}.
+\ed
+
+For example, $P(x)$ is a proposition for each choice of the variable $x$, and its truth value depends on $x$.
+Similarly, the predicate $Q(x,y)$ is, for any choice of $x$ and $y$, a proposition and its truth value depends on $x$ and $y$.
+
+Just like for propositional logic, it is not the task of predicate logic to examine how predicates are built from the variables on which they depend.
+In order to do that, one would need some further language establishing the rules to combine the variables $x$ and $y$ into a predicate.
+Also, you may want to specify from which ``set'' $x$ and $y$ come from.
+Instead, we leave it completely open, and simply consider $x$ and $y$ formal variables, with no extra conditions imposed.
+
+This may seem a bit weird since from elementary school one is conditioned to always ask where "x" comes from upon seeing an expression like $P(x)$.
+However, it is crucial that we refrain from doing this here, since we want to only later define the notion of set, using the language of propositional and predicate logic.
+As with propositions, we can construct new predicates from given ones by using the operators define in the previous section. For example, we might have:
+\bse
+Q(x,y,z) :\eqv P(x) \land R(y,z),
+\ese
+where the symbol $:\eqv$ means ``defined as being equivalent to''.
+More interestingly, we can construct a new proposition from a given predicate by using \emph{quantifiers}.
+\bd
+Let $P(x)$ be a predicate. Then:
+\bse
+\forall \, x : P(x) ,
+\ese
+is a proposition, which we read as ``for all $x$, $P$ of $x$ (is true)'', and it is defined to be true if $P(x)$ is true independently of $x$, false otherwise. The symbol $\forall$\index{$\forall$} is called \emph{universal quantifier}\index{universal quantifier}.
+\ed
+\bd
+Let $P(x)$ be a predicate.
+Then we define:
+\bse
+\exists \, x : P(x) : \eqv \neg (\forall \, x : \neg P(x)).
+\ese
+The proposition $\exists \, x : P(x)$ is read as ``there exists (at least one) $x$ such that $P$ of $x$ (is true)'' and the symbol $\exists$\index{$\exists$} is called \emph{existential quantifier}\index{existential quantifier}.
+\ed
+The following result is an immediate consequence of these definitions.
+\bc
+Let $P(x)$ be a predicate. Then:
+\bse
+\forall \, x : P(x) \eqv \neg (\exists \, x : \neg P(x) ).
+\ese
+\ec
+\br
+It is possible to define quantification of predicates of more than one variable.
+In order to do so, one proceeds in steps quantifying a predicate of one variable at each step. 
+\er
+\be
+Let $P(x,y)$ be a predicate.
+Then, for fixed $y$, $P(x,y)$ is a predicate of one variable and we define:
+\bse
+Q(y) :\eqv \forall \, x : P(x,y).
+\ese
+Hence we may have the following:
+\bse
+\exists \, y : \forall \, x : P(x,y) :\eqv \exists \, y : Q(y).
+\ese
+Other combinations of quantifiers are defined analogously.
+\ee
+\br
+The order of quantification matters (if the quantifiers are not all the same).
+For a given predicate $P(x,y)$, the propositions:
+\bse
+\exists \, y : \forall \, x : P(x,y)  \quad \text{and} \quad \forall \, x : \exists \, y : P(x,y) 
+\ese
+are not necessarily equivalent.
+\er
+\be
+Consider the proposition expressing the existence of additive inverses in the real numbers. We have:
+\bse
+\forall \, x : \exists \, y : \ x+y=0,
+\ese
+i.e. for each $x$ there exists an inverse $y$ such that $x+y=0$. For $1$ this is $-1$, for $2$ it is $-2$ etc.
+Consider now the proposition obtained by swapping the quantifiers in the previous proposition:
+\bse
+\exists \, y : \forall \, x : \ x+y=0.
+\ese
+
+What this proposition is saying is that there exists a real number $y$ such that, no matter what $x$ is, we have $x+y=0$.
+This is clearly false, since if $x+y=0$ for some $x$ then $(x+1)+y\neq 0$, so the same $y$ cannot work for both $x$ and $x+1$, let alone every $x$.
+\ee
+Notice that the proposition $\exists \, x : P(x)$ means ``there exists \emph{at least one} $x$ such that $P(x)$ is true''. Often in mathematics we prove that ``there exists \emph{a unique} $x$ such that $P(x)$ is true''. We therefore have the following definition.
+
+\bd
+Let $P(x)$ be a predicate. We define the \emph{unique existential quantifier} $\exists !$ by:
+\bse
+\exists ! \, x : P(x) :\eqv (\exists \, x : P(x)) \land \forall \, y : \forall \, z : (P(y)\land P(z) \imp y=z) .
+\ese
+\ed
+This definition clearly separates the existence condition from the uniqueness condition. An equivalent definition with the advantage of brevity is:
+\bse
+\exists ! \, x : P(x) :\eqv (\exists \, x : \forall \, y : P(y) \eqv x=y)
+\ese
+
+\subsection{Axiomatic systems and theory of proofs}
+
+\bd
+An \emph{axiomatic system} is a finite sequence of propositions $a_1,a_2,\ldots,a_N$, which are called the \emph{axioms}\index{axiom} of the system.
+\ed
+
+\bd
+A \emph{proof}\index{proof} of a proposition $p$ within an axiomatic system $a_1,a_2,\ldots,a_N$ is a finite sequence of propositions $q_1,q_2,\ldots,q_M$ such that $q_M=p$ and for any $1\leq j \leq M$ one of the following is satisfied:
+\ben
+\item[(A)] $q_j$ is a proposition from the list of axioms;
+\item[(T)] $q_j$ is a tautology;
+\item[(M)] $\exists \, 1\leq m,n <j : (q_m\land q_n \imp q_j)$ is true.
+\een
+\ed
+\br
+If $p$ can be proven within an axiomatic system $a_1,a_2,\ldots,a_N$, we write:
+\bse
+a_1,a_2,\ldots,a_N \vdash p
+\ese
+and we read ``$a_1,a_2,\ldots,a_N$ proves $p$''.
+\er
+\br
+This definition of proof allows to easily recognise a proof.
+A computer could easily check that whether or not the conditions (A), (T) and (M) are satisfied by a sequence of propositions.
+To actually find a proof of a proposition is a whole different story.
+\er
+\br
+Obviously, any tautology that appears in the list of axioms of an axiomatic system can be removed from the list without impairing the power of the axiomatic system.  
+\er
+
+An extreme case of an axiomatic system is propositional logic.
+The axiomatic system for propositional logic is the empty sequence.
+This means that all we can prove in propositional logic are tautologies.
+
+\bd
+An axiomatic system $a_1,a_2,\ldots,a_N$ is said to be \emph{consistent}\index{consistency} if there exists a proposition $q$ which cannot be proven from the axioms.
+In symbols:
+\bse
+\exists \, q : \neg (a_1,a_2,\ldots,a_N \vdash q).
+\ese
+\ed
+
+The idea behind this definition is the following.
+Consider an axiomatic system which contains contradicting propositions:
+\bse
+a_1,\ldots,s,\ldots,\neg s,\ldots,a_N .
+\ese
+Then, given \emph{any} proposition $q$, the following is a proof of $q$ within this system:
+\bse
+s, \neg s, q.
+\ese
+Indeed, $s$ and $\neg s$ are legitimate steps in the proof since they are axioms.
+Moreover, $s\land \neg s$ is a contradiction and thus $(s\land \neg s) \imp q$ is a tautology.
+Therefore, $q$ follows from condition (M).
+This shows that any proposition can be proven within a system with contradictory axioms.
+In other words, the inability to prove every proposition is a property possessed by no contradictory system, and hence we define a consistent system as one with this property.
+
+Having come this far, we can now state (and prove) an impressively sounding theorem.
+
+\bt
+Propositional logic is consistent.
+\et
+
+\bq
+Suffices to show that there exists a proposition that cannot be proven within propositional logic. Propositional logic has the empty sequence as axioms.
+Therefore, only conditions (T) and (M) are relevant here.
+The latter allows the insertion of a proposition $q_j$ such that $(q_m\land q_n) \imp q_j$ is true, where $q_m$ and $q_n$ are propositions that precede $q_j$ in the proof sequence.
+However, since (T) only allows the insertion of a tautology anywhere in the proof sequence, the propositions $q_m$ and $q_n$ must be tautologies.
+Consequently, for $(q_m\land q_n) \imp q_j$ to be true, $q_j$ must also be a tautology.
+Hence, the proof sequence consists entirely of tautologies and thus only tautologies can be proven.
+
+Now let $q$ be any proposition.
+Then $q\land \neg q$ is a contradiction, hence not a tautology and thus cannot be proven.
+Therefore, propositional logic is consistent.
+\eq
+
+\br
+While it is perfectly fine and clear how to define consistency, it is perfectly difficult to prove consistency for a given axiomatic system, propositional logic being a big exception.
+\er
+
+\bt
+Any axiomatic system powerful enough to encode elementary arithmetic is either inconsistent or contains an \emph{undecidable}\index{undecidable} proposition, i.e.\ a proposition that can be neither proven nor disproven within the system.
+\et
+
+An example of an undecidable proposition is the Continuum hypothesis within the Zermelo-Fraenkel axiomatic system.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

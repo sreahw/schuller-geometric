@@ -1,0 +1,685 @@
+\subsection{Differential forms}
+
+
+\bd
+Let $M$ be a smooth manifold. A \emph{(differential) $n$-form}\index{differential form} on $M$ is a $(0,n)$ smooth tensor field $\omega$ which is totally antisymmetric, i.e.\
+\bse
+\omega(X_1,\ldots,X_n) = \sgn(\pi)\, \omega(X_{\pi(1)},\ldots,X_{\pi(n)}),
+\ese
+for any $\pi \in S_n$, with $X_i\in \Gamma(TM)$.  
+\ed
+
+Alternatively, we can define a differential form as a smooth section of the appropriate bundle on $M$, i.e.\ as a map assigning to each $p\in M$ an $n$-form on the vector space $T_pM$.
+
+\be
+\ben[label=\alph*)]
+\item A manifold $M$ is said to be \emph{orientable} if it admits an oriented atlas, i.e.\ an atlas in which all chart transition maps, which are maps between open subsets of $\R^{\dim M}$, have a positive determinant.
+
+If $M$ is orientable, then there exists a nowhere vanishing top form ($n=\dim M$) on $M$ providing the volume.
+\item The electromagnetic field strength $F$ is a differential $2$-form built from the electric and magnetic fields, which are also taken to be forms. We will define these later in some detail.
+\item In classical mechanics, if $Q$ is a smooth manifold describing the possible system configurations, then the phase space is $T^*Q$. There exists a canonically defined $2$-form on $T^*Q$ known as a symplectic form, which we will define later.
+\een
+\ee
+
+If $\omega$ is an $n$-form, then $n$ is said to be the \emph{degree} of $\omega$. We denote by $\Omega^n(M)$ the set of all differential $n$-forms on $M$, which then becomes a $\mathcal{C}^\infty(M)$-module by defining the addition and multiplication operations pointwise.
+
+\be
+Of course, we have $\Omega^0(M)\equiv \mathcal{C}^\infty(M)$ and $\Omega^1(M)\equiv \Gamma(T^0_1M)\equiv\Gamma(T^*M)$.
+\ee
+
+Similarly to the case of forms on vector spaces, we have $\Omega^n(M)=\{0\}$ for $n>\dim M$, and otherwise $\dim \Omega^n(M)= {{\dim M}\choose{n}}$, as a $\mathcal{C}^\infty(M)$-module.
+
+We can specialise the pull-back of tensors to differential forms.
+
+\bd
+Let $\phi\cl M \to N$ be a smooth map and let $\omega\in \Omega^n(N)$. Then we define the \emph{pull-back} $\Phi^*(\omega)\in \Omega^n(M)$ of $\omega$ as
+\bi{rrCl}
+\Phi^*(\omega)\cl & M &\to & T^*M\\
+& p & \mapsto & \Phi^*(\omega) (p), 
+\ei
+where
+\bse
+\Phi^*(\omega)(p)(X_1,\ldots,X_n):=\omega (\phi(p))\bigl( \phi_*(X_1),\ldots,\phi_*(X_n) \bigr),
+\ese
+for $X_i\in T_pM$.
+\ed
+The map $\Phi^*\cl\Omega^n(N)\to\Omega^n(M)$ is $\R$-linear, and its action on $\Omega^0(M)$ is simply
+\bi{rrCl}
+\Phi^*\cl & \Omega^0(M) & \to & \Omega^0(M)\\
+&f &\mapsto &\Phi^*(f) := f\circ \phi.
+\ei
+This works for any smooth map $\phi$, and it leads to a slight modification of our mantra:
+\begin{center}
+\textit{Vectors are pushed forward,}\\
+\textit{forms are pulled back.}
+\end{center}
+The tensor product $\otimes$ does not interact well with forms, since the tensor product of two forms is not necessarily a form. Hence, we define the following.
+
+\bd
+Let $M$ be a smooth manifold. We define the \emph{wedge}\index{wedge product} (or \emph{exterior}) \emph{product} of forms as the map
+\bi{rrCl}
+\wedge \cl & \Omega^n(M) \times \Omega^m(M) & \to & \Omega^{n+m}(M)\\
+& (\omega,\sigma) & \mapsto & \omega \wedge \sigma,
+\ei
+where
+\bse
+(\omega\wedge\sigma)(X_1,\ldots,X_{n+m}) := \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} \sgn(\pi) (\omega \otimes \sigma)(X_{\pi(1)},\ldots,X_{\pi(n+m)})
+\ese
+and $X_1,\ldots,X_{n+m}\in\Gamma(TM)$. By convention, for any $f,g\in \Omega^0(M)$ and $\omega\in \Omega^n(M)$, we set
+\bse
+f\wedge g := fg \qquad \text{and} \qquad f\wedge\omega=\omega\wedge f = f\omega.
+\ese
+\ed
+\be
+Suppose that $\omega,\sigma\in\Omega^1(M)$. Then, for any $X,Y\in\Gamma(TM)$
+\bi{rCl}
+(\omega\wedge\sigma)(X,Y) & = & (\omega\otimes\sigma)(X,Y) - (\omega\otimes\sigma)(Y,X)\\
+& = & (\omega\otimes\sigma)(X,Y) - \omega(Y)\sigma(X)\\
+& = & (\omega\otimes\sigma)(X,Y) - (\sigma \otimes \omega)(X,Y)\\
+& = & (\omega\otimes\sigma -\sigma \otimes \omega)(X,Y).
+\ei
+Hence
+\bse
+\omega\wedge\sigma = \omega\otimes\sigma - \sigma \otimes \omega. 
+\ese
+\ee
+The wedge product is bilinear over $\mathcal{C}^\infty(M)$, that is
+\bse
+(f\omega_1 +\omega_2)\wedge \sigma = f\, \omega_1\wedge\sigma+\omega_2\wedge\sigma,
+\ese
+for all $f\in\mathcal{C}^\infty(M)$, $\omega_1,\omega_2\in\Omega^n(M)$ and $\sigma\in\Omega^m(M)$, and similarly for the second argument.
+
+\br
+If $(U,x)$ is a chart on $M$, then every $n$-form $\omega\in \Omega^n(U)$ can be expressed locally on $U$ as
+\bse
+\omega = \omega_{a_1\cdots a_n} \, \d x^{a_1} \wedge \cdots \wedge \d x^{a_n},
+\ese
+where $\omega_{a_1\cdots a_n}\in \mathcal{C}^\infty(U)$ and $1\leq a_1 < \cdots < a_n \leq \dim M$. The $\d x^{a_i}$ appearing above are the covector fields ($1$-forms)
+\bse
+\d x^{a_i} \cl p\mapsto \d_px^{a_i}.
+\ese
+\er
+
+The pull-back distributes over the wedge product.
+
+\begin{theorem}
+Let $\phi\cl M\to N$ be smooth, $\omega\in\Omega^n(N)$ and $\sigma\in\Omega^m(N)$. Then, we have
+\bse
+\Phi^*(\omega\wedge\sigma) = \Phi^*(\omega)\wedge\Phi^*(\sigma).  
+\ese
+\end{theorem}
+
+\bq
+Let $p\in M$ and $X_1,\ldots,X_{n+m}\in T_pM$. Then we have
+\bi{rCl}
+\IEEEeqnarraymulticol{3}{l}{\bigl( \Phi^*(\omega)\wedge\Phi^*(\sigma) \bigr)  (p)(X_1,\ldots,X_{n+m}) }\\
+\qquad \qquad & = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} \sgn(\pi) \bigl( \Phi^*(\omega)\otimes\Phi^*(\sigma) \bigr)(p)(X_{\pi(1)},\ldots,X_{\pi(n+m)})\\
+& = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} \sgn(\pi)\Phi^*(\omega)(p)(X_{\pi(1)},\ldots,X_{\pi(n)})\\[-10pt]
+& & \hspace{3.9cm} \Phi^*(\sigma) (p)(X_{\pi(n+1)},\ldots,X_{\pi(n+m)})\\
+& = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} \sgn(\pi)\omega(\phi(p))\bigl( \phi_*(X_{\pi(1)}),\ldots,\phi_*(X_{\pi(n)})\bigr) \\[-10pt]
+& & \hspace{4.4cm} \sigma(\phi(p))\bigl( \phi_*(X_{\pi(n+1)}),\ldots,\phi_*(X_{\pi(n+m)})\bigr)\\
+& = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}}\sgn(\pi) (\omega\otimes\sigma) (\phi(p)) \bigl( \phi_*(X_{\pi(1)}),\ldots,\phi_*(X_{\pi(n+m)})\bigr)\\
+& = & (\omega\wedge\sigma) (\phi(p)) \bigl( \phi_*(X_1),\ldots,\phi_*(X_{n+m})\bigr)\\
+& = & \Phi^*(\omega\wedge\sigma) (p) ( X_1,\ldots,X_{n+m}).
+\ei
+% \bi{rCl}
+% \IEEEeqnarraymulticol{3}{l}{\bigl( \Phi^*(\omega)\wedge\Phi^*(\sigma) \bigr)  (p)(X_1,\ldots,X_{n+m}) }\\
+% \qquad & = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} \sgn(\pi) \bigl( \Phi^*(\omega)\otimes\Phi^*(\sigma) \bigr)(p)(X_{\pi(1)},\ldots,X_{\pi(n+m)})\\
+% & = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} \sgn(\pi)\Phi^*(\omega)(p)(X_{\pi(1)},\ldots,X_{\pi(n)})\,\Phi^*(\sigma) (p)(X_{\pi(n+1)},\ldots,X_{\pi(n+m)})\\
+% & = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}} \sgn(\pi)\omega(\phi(p))\bigl( \phi_*(X_{\pi(1)}),\ldots,\phi_*(X_{\pi(n)})\bigr) \,\sigma(\phi(p))\bigl( \phi_*(X_{\pi(n+1)}),\ldots,\phi_*(X_{\pi(n+m)})\bigr)\\
+% & = & \frac{1}{n!\,m!} \sum_{\pi \in S_{n+m}}\sgn(\pi) (\omega\otimes\sigma) (\phi(p)) \bigl( \phi_*(X_{\pi(1)}),\ldots,\phi_*(X_{\pi(n+m)})\bigr)\\
+% & = & (\omega\wedge\sigma) (\phi(p)) \bigl( \phi_*(X_1),\ldots,\phi_*(X_{n+m})\bigr)\\
+% & = & \Phi^*(\omega\wedge\sigma) (p) ( X_1,\ldots,X_{n+m}).
+% \ei
+Since $p\in M$ was arbitrary, the statement follows.
+\eq
+
+\subsection{The Grassmann algebra}
+
+Note that the wedge product takes two differential forms and produces a differential form of a different type. It would be much nicer to have a space which is closed under the action of $\wedge$. In fact, such a space exists and it is called the Grassmann algebra of $M$.
+
+\bd
+Let $M$ be a smooth manifold. Define the $\mathcal{C}^\infty(M)$-module
+\bse
+\Gr(M)\equiv\Omega(M) := \bigoplus_{n=0}^{\dim M} \Omega^n(M).
+\ese
+The \emph{Grassmann algebra}\index{Grassmann algebra} on $M$ is the algebra $(\Omega(M),+,\cdot,\wedge)$, where
+\bse
+\wedge\cl \Omega(M)\times\Omega(M)\to\Omega(M)
+\ese
+is the linear continuation of the previously defined $\wedge\cl\Omega^n(M)\times\Omega^m(M)\to\Omega^{n+m}(M)$.
+\ed
+Recall that the direct sum of modules has the Cartesian product of the modules as underlying set and module operations defined componentwise. Also, note that by ``algebra'' here we really mean ``algebra over a module''.
+
+\be
+Let $\psi=\omega+\sigma$, where $\omega\in\Omega^1(M)$ and $\sigma\in\Omega^3(M)$. Of course, this ``+'' is neither the addition on $\Omega^1(M)$ nor the one on $\Omega^3(M)$, but rather that on $\Omega(M)$ and, in fact, $\psi\in\Omega(M)$. 
+
+Let $\varphi\in \Omega^n(M)$, for some $n$. Then
+\bse
+\varphi\wedge\psi=\varphi\wedge(\omega+\sigma)= \varphi\wedge\omega+\varphi\wedge\sigma,
+\ese
+where $\varphi\wedge\omega\in\Omega^{n+1}(M)$, $\varphi\wedge\sigma\in\Omega^{n+3}(M)$, and $\varphi\wedge\psi\in\Omega(M)$.
+\ee
+
+\be
+There is a lot of talk about \emph{Grassmann numbers}, particularly in supersymmetry. One often hears that these are ``numbers that do not commute, but anticommute''. Of course, objects cannot be commutative or anticommutative by themselves. These qualifiers only apply to operations on the objects.
+In fact, the Grassmann numbers are just the elements of a Grassmann algebra. 
+\ee
+
+The following result is about the anticommutative behaviour of $\wedge$. 
+
+\begin{theorem}
+Let $\omega\in\Omega^n(M)$ and $\sigma\in\Omega^m(M)$. Then
+\bse
+\omega\wedge\sigma=(-1)^{nm}\,\sigma\wedge\omega.
+\ese
+\end{theorem}
+
+We say that $\wedge$ is \emph{graded commutative}, that is, it satisfies a version of anticommutativity which depends on the degrees of the forms.
+
+\bq
+First note that if $\omega,\sigma\in\Omega^1(M)$, then
+\bse
+\omega\wedge\sigma = \omega\otimes\sigma - \sigma \otimes \omega = \negmedspace {}- \sigma \wedge \omega. 
+\ese
+Recall that is $\omega\in\Omega^n(M)$ and $\sigma\in\Omega^m(M)$, then locally on a chart $(U,x)$ we can write
+\bi{C}
+\omega = \omega_{a_1\cdots a_n}\d x^{a_1}\wedge \cdots \wedge \d x^{a_n} \\
+\sigma = \sigma_{b_1\cdots b_m}\d x^{b_1}\wedge \cdots \wedge \d x^{b_m}
+\ei
+with $1\leq a_1 < \cdots < a_n \leq \dim M$ and similarly for the $b_i$. The coefficients $\omega_{a_1\cdots a_n}$ and $\sigma_{b_1\cdots b_m}$ are smooth functions in $\mathcal{C}^\infty(U)$. Since $\d x^{a_i},\d x^{b_j}\in \Omega^1(M)$, we have
+\bi{rCl}
+\omega\wedge\sigma & = & \omega_{a_1\cdots a_n}\sigma_{b_1\cdots b_m}\,\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}\wedge\d x^{b_1}\wedge \cdots \wedge \d x^{b_m}\\
+& = &(-1)^n\,\omega_{a_1\cdots a_n}\sigma_{b_1\cdots b_m}\,\d x^{b_1}\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}\wedge\d x^{b_2}\wedge \cdots \wedge \d x^{b_m}\\
+& = &(-1)^{2n}\,\omega_{a_1\cdots a_n}\sigma_{b_1\cdots b_m}\,\d x^{b_1}\wedge\d x^{b_2}\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}\wedge\d x^{b_3}\wedge \cdots \wedge \d x^{b_m}\\
+& \vdots &\\
+& = &(-1)^{nm}\,\omega_{a_1\cdots a_n}\sigma_{b_1\cdots b_m}\,\d x^{b_1}\wedge \cdots \wedge \d x^{b_m}\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}\\
+& = & (-1)^{nm} \, \sigma \wedge \omega
+\ei
+since we have swapped $1$-forms $nm$-many times.
+\eq
+
+\br
+We should stress that this is only true when $\omega$ and $\sigma$ are pure degree forms, rather than linear combinations of forms of different degrees. Indeed, if $\varphi,\psi\in\Omega(M)$, a formula like
+\bse
+\varphi\wedge\psi = \cdots \psi \wedge \varphi
+\ese
+does not make sense in principle, because the different parts of $\varphi$ and $\psi$ can have different commutation behaviours.
+\er
+
+\subsection{The exterior derivative}
+
+Recall the definition of the gradient operator at a point $p\in M$. We can extend that definition to define the ($\R$-linear) operator:
+\bi{rrCl}
+\d \cl & \mathcal{C}^\infty(M) & \xrightarrow{\sim} & \Gamma(T^*M)\\
+& f & \mapsto & \d f
+\ei
+where, of course, $\d f \cl p \mapsto \d_pf$. Alternatively, we can think of $\d f$ as the $\R$-linear map
+\bi{rrCl}
+\d f \cl & \Gamma(TM) & \xrightarrow{\sim} & \mathcal{C}^\infty(M)\\
+& X &\mapsto & \d f (X) = X(f).
+\ei
+
+\br
+Locally on some chart $(U,x)$ on $M$, the covector field (or $1$-form) $\d f$ can be expressed as
+\bse
+\d f = \lambda_a\, \d x^a
+\ese
+for some smooth functions $\lambda_i\in\mathcal{C}^\infty(U)$. To determine what they are, we simply apply both sides to the vector fields induced by the chart. We have
+\bse
+\d f \biggl( \frac{\partial}{\partial x^b}\biggr) =  \frac{\partial}{\partial x^b}(f) = \partial_bf
+\ese
+and
+\bse
+\lambda_a\, \d x^a\biggl( \frac{\partial}{\partial x^b}\biggr) =\lambda_a\,  \frac{\partial}{\partial x^b}(x^a) = \lambda_a\,\delta^a_b = \lambda_b.
+\ese
+Hence, the local expression of $\d f$ on $(U,x)$ is
+\bse
+\d f = \partial_a f \, \d x^a.
+\ese
+\er
+Note that the operator $\d$ satisfies the Leibniz rule
+\bse
+\d (fg) = g\, \d f + f\, \d g.
+\ese
+We can also understand this as an operator that takes in $0$-forms and outputs $1$-forms
+\bse
+\d \cl \Omega^0(M)\xrightarrow{\sim}\Omega^1(M).
+\ese
+This can then be extended to an operator which acts on any $n$-form. We will need the following definition.
+\bd
+Let $M$ be a smooth manifold and let $X,Y\in\Gamma(TM)$. The commutator (or Lie bracket\index{Lie bracket}) of $X$ and $Y$ is defined as
+\bi{rrCl}
+[X,Y]\cl & \mathcal{C}^\infty(M) &\xrightarrow{\sim} &\mathcal{C}^\infty(M)\\ 
+& f & \mapsto & [X,Y](f):=X(Y(f))-Y(X(f)),
+\ei
+where we are using the definition of vector fields as $\R$-linear maps $\mathcal{C}^\infty(M) \xrightarrow{\sim} \mathcal{C}^\infty(M)$.
+\ed
+
+\bd
+The \emph{exterior derivative}\index{exterior derivative} on $M$ is the $\R$-linear operator
+\bi{rrCl}
+\d\cl &\Omega^n(M)&\xrightarrow{\sim} &\Omega^{n+1}(M)\\
+& \omega & \mapsto & \d \omega
+\ei
+with $\d \omega$ being defined as
+\bi{rCl}
+\d \omega (X_1,\ldots,X_{n+1}) & := & \sum_{i=1}^{n+1} (-1)^{i+1}\, X_i \bigl(\omega(X_1,\ldots,\widehat{X_i},\ldots,X_{n+1})\bigr)\\
+& & {} \negmedspace + \sum_{i<j} (-1)^{i+j}\,\omega\bigl([X_i,X_j],X_1,\ldots,\widehat{X_i},\ldots,\widehat{X_j},\ldots,X_{n+1}\bigr),
+\ei
+where $X_i\in \Gamma(TM)$ and the hat denotes omissions.
+\ed
+
+\br
+Note that the operator $\d$ is only well-defined when it acts on forms. In order to define a derivative operator on general tensors we will need to add extra structure to our differentiable manifold.
+\er
+
+\be
+In the case $n=1$, the form $\d \omega\in\Omega^2(M)$ is given by
+\bse
+\d \omega (X,Y) = X(\omega(Y))-Y(\omega(X))-\omega([X,Y]).
+\ese
+Let us check that this is indeed a $2$-form, i.e.\ an antisymmetric, $\mathcal{C}^\infty(M)$-multilinear map
+\bse
+\d\omega\cl \Gamma(TM)\times\Gamma(TM)\to\mathcal{C}^\infty(M).
+\ese
+By using the antisymmetry of the Lie bracket, we immediately get
+\bse
+\d \omega(X,Y)= - \,\d\omega(Y,X).
+\ese
+Moreover, thanks to this identity, it suffices to check $\mathcal{C}^\infty(M)$-linearity in the first argument only. Additivity is easily checked
+\bi{rCl}
+\d\omega(X_1+X_2,Y) & = & (X_1+X_2)(\omega(Y))-Y(\omega(X_1+X_2))-\omega([X_1+X_2,Y])\\
+& = & X_1(\omega(Y))+X_2(\omega(Y))-Y(\omega(X_1)+\omega(X_2))-\omega([X_1,Y]+[X_2,Y])\\
+& = & X_1(\omega(Y))+X_2(\omega(Y))-Y(\omega(X_1))-Y(\omega(X_2))-\omega([X_1,Y])-\omega([X_2,Y])\\
+&=& \d\omega(X_1,Y) +\d\omega(X_2,Y).
+\ei
+For $\mathcal{C}^\infty(M)$-scaling, first we calculate $[fX,Y]$. Let $g\in\mathcal{C}^\infty(M)$. Then
+\bi{rCl}
+[fX,Y](g) &=& fX(Y(g)) -Y (fX(g))\\
+&=& fX(Y(g)) - fY(X(g)) -Y (f)X(g)\\
+&=& f(X(Y(g)) - Y(X(g))) -Y (f)X(g)\\
+&=& f[X,Y](g) -Y(f)X(g)\\
+&=& (f[X,Y] -Y(f)X)(g).
+\ei
+Therefore
+\bse
+[fX,Y]=f[X,Y]-Y(f)X.
+\ese
+Hence, we can calculate
+\bi{rCl}
+\d\omega(fX,Y) & = & fX(\omega(Y))-Y(\omega(fX))-\omega([fX,Y])\\
+& = & fX(\omega(Y))-Y(f\omega(X))-\omega(f[X,Y]-Y(f)X)\\
+& = & fX(\omega(Y))-fY(\omega(X))-Y(f)\omega(X)-f\omega([X,Y])+\omega(Y(f)X)\\
+& = & fX(\omega(Y))-fY(\omega(X))-\Ccancel[gray]{Y(f)\omega(X)}-f\omega([X,Y])+\Ccancel[gray]{Y(f)\omega(X)}\\
+&=& f\,\d\omega(X,Y), 
+\ei
+which is what we wanted.
+\ee
+
+The exterior derivative satisfies a graded version of the Leibniz rule with respect to the wedge product.
+
+\begin{theorem}
+Let $\omega\in\Omega^n(M)$ and $\sigma\in\Omega^m(M)$. Then
+\bse
+\d(\omega\wedge\sigma)=\d\omega\wedge\sigma+(-1)^n\,\omega\wedge\d\sigma.
+\ese
+\end{theorem}
+
+\bq
+We will work in local coordinates. Let $(U,x)$ be a chart on $M$ and write
+\bi{C}
+\omega = \omega_{a_1\cdots a_n}\d x^{a_1}\wedge \cdots \wedge \d x^{a_n} =: \omega_A \d x^A\\
+\sigma = \sigma_{b_1\cdots b_m}\d x^{b_1}\wedge \cdots \wedge \d x^{b_m} =: \sigma_B \d x^B.
+\ei
+Locally, the exterior derivative operator $\d$ acts as
+\bse
+\d \omega = \d \omega_A \wedge \d x^A.
+\ese
+Hence
+\bi{rCl}
+\d (\omega\wedge\sigma) & = & \d (\omega_A\sigma_B\, \d x^A\wedge \d x^B)\\
+ & = & \d (\omega_A\sigma_B)\wedge\d x^A\wedge \d x^B\\
+ & = & (\sigma_B \d \omega_A +\omega_A\d\sigma_B)\wedge\d x^A\wedge \d x^B\\
+ & = & \sigma_B \d \omega_A\wedge\d x^A\wedge \d x^B+\omega_A\d\sigma_B \wedge\d x^A\wedge \d x^B\\
+ & = & \sigma_B \d \omega_A\wedge\d x^A\wedge \d x^B+(-1)^n\omega_A\d x^A\wedge\d\sigma_B \wedge \d x^B\\
+ & = & \sigma_B \d \omega\wedge \d x^B+(-1)^n\omega_A\d x^A\wedge\d\sigma\\
+ & = & \d \omega\wedge  \sigma+(-1)^n\, \omega\wedge\d\sigma
+\ei
+since we have ``anticommuted'' the $1$-form $\d\sigma_B$ through the $n$-form $\d x^A$, picking up $n$ minus signs in the process.
+\eq
+
+An important property of the exterior derivative is the following.
+
+\begin{theorem}
+Let $\phi\cl M\to N$ be smooth. For any $\omega\in\Omega^n(N)$, we have
+\bse
+\Phi^*(\d \omega) = \d (\Phi^*(\omega)).
+\ese
+\end{theorem}
+
+
+\bq[Proof (sketch)] 
+We first show that this holds for $0$-forms (i.e.\ smooth functions).
+
+Let $f\in\mathcal{C}^\infty(N)$, $p\in M$ and $X\in T_pM$. Then
+\bi{rCl"s}
+\Phi^*(\d f)(p)(X) & = & \d f (\phi(p)) (\phi_*(X)) & (definition of $\Phi^*$)\\
+& = & \phi_*(X) (f) & (definition of $\d f$)\\
+& = & X (f\circ \phi) & (definition of $\phi_*$)\\
+& = & \d (f\circ \phi) (p) (X) & (definition of $\d (f\circ\phi$))\\
+& = & \d (\Phi^*(f)) (p) (X) & (definition of $\Phi^*$),
+\ei
+so that we have $\Phi^*(\d f) = \d (\Phi^*(f))$.
+
+The general result follows from the linearity of $\Phi^*$ and the fact that the pull-back distributes over the wedge product.
+\eq
+
+\br
+Informally, we can write this result as $\Phi^*\d=\d\Phi^*$, and say that the exterior derivative ``commutes'' with the pull-back.
+
+However, you should bear in mind that the two $\d$'s appearing in the statement are two different operators. On the left hand side, it is $\d\cl\Omega^n(N)\to\Omega^{n+1}(N)$, while it is $\d\cl\Omega^n(M)\to\Omega^{n+1}(M)$ on the right hand side.
+\er
+
+\br
+Of course, we could also combine the operators $\d$ into a single operator acting on the Grassmann algebra on $M$
+\bse
+\d \cl \Omega(M)\to\Omega(M)
+\ese
+by linear continuation.
+\er
+
+\be
+In the modern formulation of Maxwell's electrodynamics, the electric and magnetic fields $E$ and $B$ are taken to be a $1$-form and a $2$-form on $\R^3$, respectively:
+\bi{c}
+E := E_x\d x + E_y \d y +E_z \d z\\
+B := B_x\d y \wedge \d z + B_y \d z \wedge \d x + B_z \d x \wedge \d y.  
+\ei
+The electromagnetic field strength $F$ is then defined as the $2$-form on $\R^4$
+\bse
+F:= B + E \wedge \d t.
+\ese
+In components, we can write
+\bse
+F = F_{\mu\nu} \, \d x^\mu \wedge \d x^\nu,
+\ese
+where $(\d x^0,\d x^1, \d x^2, \d x^3) \equiv (\d t, \d x,\d y,\d z)$ and
+\bse
+F_{\mu\nu} = 
+\left(
+\begin{matrix}
+0 & -E_x & -E_y & -E_z\\
+E_x & 0 & B_z & -B_y\\
+E_y & -B_z & 0 & B_x\\
+E_z & B_y & -B_x & 0
+\end{matrix}
+\right)
+\ese
+
+The field strength satisfies the equation
+\bse
+\d F = 0.
+\ese
+This is called the homogeneous Maxwell's equation and it is, in fact, equivalent to the two homogeneous Maxwell's (vectorial) equations
+\bse
+\nabla \cdot \mathbf{B} = 0
+\ese
+\bse
+\nabla \times \mathbf{E} + \frac{\partial \mathbf{B}}{\partial t} = \mathbf{0}.
+\ese
+In order to cast the remaining Maxwell's equations into the language of differential forms, we need a further operation on forms, called the Hodge star operator.
+
+Recall from the standard theory of electrodynamics that the two equations above imply the existence of the electric and vector potentials $\varphi$ and $\mathbf{A}=(A_x,A_y,A_z)$, satisfying
+\bse
+\mathbf{B} = \nabla \times \mathbf{A} 
+\ese
+\bse
+\mathbf{E} = -\nabla \varphi - \frac{\partial \mathbf{A}}{\partial t}.
+\ese
+Similarly, the equation $\d F =0$ on $\R^4$ implies the existence of an electromagnetic $4$-potential (or gauge potential) form $A\in\Omega^1(\R^4)$ such that
+\bse
+F = \d A.
+\ese
+Indeed, we can take
+\bse
+A := -\varphi \, \d t + A_x \d x + A_y \d y + A_z \d z.
+\ese
+\ee
+
+\bd
+Let $M$ be a smooth manifold. A $2$-form $\omega\in\Omega^2(M)$ is said to be a \emph{symplectic form}\index{symplectic form} on $M$ if $\d \omega = 0$ and if it is non-degenerate, i.e.\
+\bse
+(\forall \, Y\in \Gamma(TM) : \omega(X,Y) = 0) \Rightarrow X = 0.
+\ese
+A manifold equipped with a symplectic form is called a \emph{symplectic manifold}.
+\ed
+
+\be
+In the Hamiltonian formulation of classical mechanics one is especially interested in the cotangent bundle $T^*Q$ of some configuration space $Q$. Similarly to what we did when we introduced the tangent bundle, we can define (at least locally) a system of coordinates on $T^*Q$ by
+\bse
+(q^1,\ldots,q^{\dim Q},p_1,\ldots,p_{\dim Q}),
+\ese
+where the $p_i$'s are the generalised momenta on $Q$ and the $q^i$'s are the generalised coordinates on $Q$ (recall that $\dim T^*Q=2\dim Q$). We can then define a $1$-form $\theta\in\Omega^1(T^*Q)$ by
+\bse
+\theta := p_i \, \d q^i
+\ese
+called the symplectic potential. If we further define
+\bse
+\omega := \d \theta \in \Omega^2(T^*Q),
+\ese
+then we can calculate that
+\bse
+\d \omega = \d (\d \theta) =\cdots = 0.
+\ese
+Moreover, $\omega$ is non-degenerate and hence it is a symplectic form on $T^*Q$.
+\ee
+
+\subsection{de Rham cohomology}
+
+
+The last two examples suggest two possible implications. In the electrodynamics example, we saw that
+\bse
+(\d F = 0 )\Rightarrow (\exists \, A : F =\d A),
+\ese
+while in the Hamiltonian mechanics example we saw that
+\bse
+(\exists\, \theta : \omega =\d \theta )\Rightarrow (\d \omega = 0).
+\ese
+\bd
+Let $M$ be a smooth manifold and let $\omega \in \Omega^n(M)$. We say that $\omega$ is
+\begin{itemize}
+\item \emph{closed}\index{closed form} if $\d \omega = 0$;
+\item \emph{exact}\index{exact form} if $\exists \, \sigma \in \Omega^{n-1}(M): \omega = \d \sigma$.
+\end{itemize}
+\ed
+The question of whether every closed form is exact and vice versa, i.e.\ whether the implications 
+\bse
+(\d \omega =0) \Leftrightarrow (\exists \, \sigma : \omega =\d \sigma)
+\ese
+hold in general, belongs to the branch of mathematics called cohomology theory, to which we will now provide an introduction.
+
+The answer for the $\Leftarrow$ direction is affirmative thanks to the following result.
+
+\begin{theorem}
+Let $M$ be a smooth manifold. The operator
+\bse
+\d^2 \equiv \d \circ \d \cl \Omega^n(M) \to \Omega^{n+2}(M)
+\ese
+is identically zero, i.e.\ $\d^2=0$.
+\end{theorem}
+
+For the proof, we will need the following concepts.
+
+\bd
+Given an object which carries some indices, say $T_{a_1,\ldots,a_n}$, we define the \emph{antisymmetrization} of $T_{a_1,\ldots,a_n}$ as
+\bse
+T_{[a_1\cdots a_n]}:=\frac{1}{n!}\sum_{\pi\in S_n}\sgn(\pi)\, T_{\pi(a_1)\cdots\pi(a_n)}.
+\ese
+Similarly, the \emph{symmetrization} of $T_{a_1,\ldots,a_n}$ is defined as
+\bse
+T_{(a_1\cdots a_n)}:=\frac{1}{n!}\sum_{\pi\in S_n} T_{\pi(a_1)\cdots\pi(a_n)}.
+\ese
+\ed
+Some special cases are
+\bi{C}
+T_{[ab]}=\frac{1}{2}(T_{ab}-T_{ba}), \qquad 
+T_{(ab)}=\frac{1}{2}(T_{ab}+T_{ba}) \\
+T_{[abc]} = \frac{1}{6} (T_{abc}+T_{bca}+T_{cab}-T_{bac}-T_{cba}-T_{acb})\\
+T_{(abc)} = \frac{1}{6} (T_{abc}+T_{bca}+T_{cab}+T_{bac}+T_{cba}+T_{acb})
+\ei
+Of course, we can (anti)symmetrize only some of the indices
+\bse
+T^{ab}_{\phantom{ab}[cd]e} = \frac{1}{2}(T^{ab}_{\phantom{ab}cde}-T^{ab}_{\phantom{ab}dce}).
+\ese
+It is easy to check that in a contraction (i.e.\ a sum), we have
+\bse
+T_{a_1\cdots a_n}S^{a_1\cdots [a_i \cdots a_j] \cdots a_n} = T_{a_1\cdots [a_i \cdots a_j] \cdots a_n}S^{a_1 \cdots a_n} 
+\ese
+and
+\bse
+T_{a_1\cdots (a_i \cdots a_j) \cdots a_n}S^{a_1\cdots [a_i \cdots a_j] \cdots a_n} = 0.
+\ese
+
+\bq
+This can be shown directly using the definition of $\d$. Here, we will instead show it by working in local coordinates.
+
+Recall that, locally on a chart $(U,x)$, we can write any form $\omega\in\Omega^n(M)$ as
+\bse
+\omega = \omega_{a_1\cdots a_n}\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}.
+\ese
+Then, we have
+\bi{rCl}
+\d \omega & = & \d \omega_{a_1\cdots a_n}\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}\\
+ & = & \partial_b \omega_{a_1\cdots a_n}\d x^b\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n},
+\ei
+and hence 
+\bse
+\d^2\omega = \partial_c\partial_b\omega_{a_1\cdots a_n}\d x^c\wedge\d x^b\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}.
+\ese
+Since $\d x^c\wedge\d x^b = - \, \d x^b\wedge\d x^c$, we have
+\bse
+\d x^c\wedge\d x^b = \d x^{[c}\wedge\d x^{b]}.
+\ese
+Moreover, by Schwarz's theorem, we have $\partial_c\partial_b\omega_{a_1\cdots a_n} = \partial_b\partial_c\omega_{a_1\cdots a_n}$ and hence
+\bse
+\partial_c\partial_b\omega_{a_1\cdots a_n} = \partial_{(c}\partial_{b)}\omega_{a_1\cdots a_n}.
+\ese
+Thus
+\bi{rCl}
+\d^2\omega & = & \partial_c\partial_b\omega_{a_1\cdots a_n}\d x^c\wedge\d x^b\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}\\
+& = & \partial_{(c}\partial_{b)}\omega_{a_1\cdots a_n}\d x^{[c}\wedge\d x^{b]}\wedge\d x^{a_1}\wedge \cdots \wedge \d x^{a_n}\\
+& = & 0.
+\ei
+Since this holds for any $\omega$, we have $\d^2=0$. 
+\eq
+
+\bc
+Every exact form is closed.
+\ec
+
+We can extend the action of $\d$ to the zero vector space $0:=\{0\}$ by mapping the zero in $0$ to the zero function in $\Omega^0(M)$. In this way, we obtain the chain of $\R$-linear maps
+% \bse
+% \begin{tikzcd}
+% 0 \ar[r,"\d"]& \Omega^0(M)\ar[r,"\d"]&\cdots\ar[r,"\d"]& \Omega^n(M)\ar[r,"\d"]& \Omega^{n+1}(M)\ar[r,"\d"]& \cdots \ar[r,"\d"]& \Omega^{\dim M}(M)\ar[r,"\d"] & 0
+% \end{tikzcd}
+% \ese
+\bse
+0 \xrightarrow{\ \d\ } \Omega^0(M)\xrightarrow{\ \d\ } \Omega^1(M)\xrightarrow{\ \d\ } \cdots \xrightarrow{\ \d\ } \Omega^{n}(M)\xrightarrow{\ \d\ } \Omega^{n+1}(M)\xrightarrow{\ \d\ } \cdots \xrightarrow{\ \d\ } \Omega^{\dim M}(M)\xrightarrow{\ \d\ } 0,
+\ese
+where we now think of the spaces $\Omega^n(M)$ as $\R$-vector spaces. Recall from linear algebra that, given a linear map $\phi \cl V \to W$, one can define the subspace of $V$
+\bse
+\ker(\phi) := \{v \in V \mid \phi(v)=0\},
+\ese
+called the \emph{kernel} of $\phi$, and the subspace of $W$
+\bse
+\im (\phi) := \{\phi(v)\mid v \in V\},
+\ese
+called the \emph{image} of $\phi$.
+
+Going back to our chain of maps, the equation $\d^2=0$ is equivalent to
+\bse
+\im(\d \cl \Omega^n(M)\to\Omega^{n+1}(M)) \se \ker(\d \cl \Omega^{n+1}(M)\to\Omega^{n+2}(M))
+\ese
+% \bse
+% \im(\Omega^n(M)\xrightarrow{\ \d \ }\Omega^{n+1}(M)) \se \ker(\d \cl \Omega^{n+1}(M)\xrightarrow{\ \d \ }\Omega^{n+2}(M))
+% \ese
+for all $0\leq n \leq \dim M-2$. Moreover, we have
+\bi{rCl}
+\omega \in \Omega^n(M) \text{ is closed } & \Leftrightarrow\ & \omega \in \ker(\d \cl \Omega^n(M)\to\Omega^{n+1}(M))\\
+\omega \in \Omega^n(M) \text{ is exact } & \Leftrightarrow\ & \omega \in \im (\d \cl \Omega^{n-1}(M)\to\Omega^{n}(M)).
+\ei
+The traditional notation for the spaces on the right hand side above is
+\bi{rCl}
+Z^n & := & \ker(\d \cl \Omega^n(M)\to\Omega^{n+1}(M)),\\
+B^n & := & \im (\d \cl \Omega^{n-1}(M)\to\Omega^{n}(M)),
+\ei
+so that $Z^n$ is the space of closed $n$-forms and $B^n$ is the space of exact $n$-forms.
+
+Our original question can be restated as: does $Z^n=B^n$ for all $n$? We have already seen that $\d^2=0$ implies that $B^n\se Z^n$ for all $n$ ($B^n$ is, in fact, a vector subspace of $Z^n$). Unfortunately the equality does not hold in general, but we do have the following result.
+
+\bl[Poincar\'e]
+Let $M\se \R^d$ be a simply connected domain. Then
+\bse
+Z^n = B^n \, , \qquad \forall \, n > 0.
+\ese
+\el
+
+In the cases where $Z^n\neq B^n$, we would like to quantify by how much the closed $n$-forms fail to be exact. The answer is provided by the cohomology group.
+
+\bd
+Let $M$ be a smooth manifold. The $n$-th \emph{de Rham cohomology group}\index{cohomology group} on $M$ is the quotient $\R$-vector space
+\bse
+H^n(M):=Z^n/B^n.
+\ese
+\ed
+You can think of the above quotient as $Z^n/\!\sim$, where $\sim$ is the equivalence relation
+\bse
+\omega \sim \sigma\ :\Leftrightarrow\ \omega-\sigma \in B^n.
+\ese
+The answer to our question as it is addressed in cohomology theory is: every exact $n$-form on $M$ is also closed and vice versa if, only if,
+\bse
+H^n(M) \cong_\mathrm{vec} 0.
+\ese
+Of course, rather than an actual answer, this is yet another restatement of the question. However, if we are able to determine the spaces $H^n(M)$, then we do get an answer.
+
+A crucial theorem by de Rham states (in more technical terms) that $H^n(M)$ only depends on the global topology of $M$. In other words, the cohomology groups are topological invariants.
+This is remarkable because $H^n(M)$ is defined in terms of exterior derivatives, which have everything to do with the local differentiable structure of $M$, and a given topological space can be equipped with several inequivalent differentiable structures. 
+
+\be
+Let $M$ be any smooth manifold. We have
+\bse
+H^0(M) \cong_\mathrm{vec} \R^{\text{(\# of connected components of $M$)}}
+\ese
+since the closed $0$-forms are just the locally constant smooth functions on $M$. As an immediate consequence, we have
+\bse
+H^0(\R) \cong_\mathrm{vec} H^0(S^1) \cong_\mathrm{vec} \R.
+\ese
+\ee
+
+\be
+By Poincar\'e lemma, we have
+\bse
+H^n(M) \cong_\mathrm{vec} 0
+\ese
+for any simply connected $M\se\R^d$.
+\ee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,716 @@
+\subsection{Vector spaces}
+
+We begin with a quick review of vector spaces.
+
+\bd
+An \emph{(algebraic) field}\index{field (algebraic)} is a triple $(K,+,\cdot)$, where $K$ is a set and $+,\cdot$ are maps $K\times K \to K$ satisfying the following axioms:
+\begin{itemize}
+\item $(K,+)$ is an abelian group, i.e.
+\ben
+\item[i)] $\forall \, a,b,c \in K : (a+b)+c=a+(b+c)$;
+\item[ii)] $\exists \, 0 \in K : \forall \, a \in K : a+0=0+a=a$;
+\item[iii)] $\forall \, a \in K : \exists \, {-a} \in K : a+(-a)=(-a)+a=0$;
+\item[iv)] $\forall \, a,b \in K : a+b=b+a$;
+\een
+\item $(K^*,\cdot)$, where $K^*:=K\sm\{0\}$, is an abelian group, i.e.
+\ben
+\item[v)] $\forall \, a,b,c \in K^* : (a\cdot b)\cdot c=a\cdot (b\cdot c)$;
+\item[vi)] $\exists \, 1 \in K^* : \forall \, a \in K^* : a\cdot 1=1\cdot a=a$;
+\item[vii)] $\forall \, a \in K^* : \exists \, a^{-1} \in K^* : a\cdot a^{-1}=a^{-1} \cdot a=1$;
+\item[viii)] $\forall \, a,b \in K^* : a\cdot b=b\cdot a$;
+\een
+\item the maps $+$ and $\cdot$ satisfy the distributive property:
+\ben
+\item[ix)] $\forall \, a,b,c \in K : (a+ b)\cdot c=a\cdot c + b\cdot c$.
+\een
+\end{itemize}
+\ed
+
+\br
+In the above definition, we included axiom iv for the sake of clarity, but in fact it can be proven starting from the other axioms.
+\er
+
+\br
+A weaker notion that we will encounter later is that of a \emph{ring}. This is also defined as a triple $(R,+,\cdot)$, but we do not require axiom vi, vii and viii to hold. If a ring satisfies axiom vi, it is called a \emph{unital ring}, and if it satisfies axiom viii, it is called a \emph{commutative ring}. We will mostly consider unital rings, a call them just rings.
+\er
+
+\be
+The triple $(\Z,+,\cdot)$ is a commutative, unital ring. However, it is not a field since $1$ and $-1$ are the only two elements which admit an inverse under multiplication.
+\ee
+
+\be
+The sets $\Q$, $\R$, $\C$ are all fields under the usual $+$ and $\cdot$ operations.
+\ee
+
+\be
+An example of a non-commutative ring is the set of real $m\times n$ matrices $M_{m\times n}(\R)$ under the usual operations.
+\ee
+
+\bd
+Let $(K,+,\cdot)$ be a field. A $K$\emph{-vector space}\index{vector space}, or \emph{vector space over $K$} is a triple $(V,\oplus,\odot)$, where $V$ is a set and 
+\bi{rl}
+\oplus &\cl V\times V \to V\\
+\odot  &\cl K\times V \to V
+\ei
+are maps satisfying the following axioms:
+\begin{itemize}
+\item $(V,\oplus)$ is an abelian group;
+\item the map $\odot$ is an \emph{action} of $K$ on $(V,\oplus)$:
+\ben[label=\roman*)]
+\item $\forall \, \lambda \in K : \forall \, v,w \in V : \lambda\odot(v\oplus w)=(\lambda\odot v)\oplus (\lambda\odot w)$;
+\item $\forall \, \lambda,\mu \in K : \forall \, v \in V : (\lambda+\mu)\odot v= (\lambda \odot v) \oplus (\mu \odot v)$;
+\item $\forall \, \lambda,\mu \in K : \forall \, v \in V : (\lambda\cdot\mu)\odot v= \lambda \odot (\mu \odot v)$;
+\item $\forall \, v \in V : 1\odot v = v$.
+\een
+\end{itemize}
+\ed
+
+Vector spaces are also called \emph{linear spaces}. Their elements are called \emph{vectors}, while the elements of $K$ are often called \emph{scalars}, and the map $\odot$ is called \emph{scalar multiplication}. You should already be familiar with the various vector space constructions from your linear algebra course. For example, recall:
+
+\bd
+Let $(V,\oplus,\odot)$ be a vector space over $K$ and let $U\se V$ be non-empty. Then we say that $(U,\oplus|_{U\times U},\odot|_{K\times U})$ is a \emph{vector subspace}\index{vector space!subspace} of $(V,\oplus,\odot)$ if:
+\ben
+\item[i)] $\forall \, u_1,u_2\in U : u_1\oplus u_2 \in U$;
+\item[ii)] $\forall \, u\in U : \forall \, \lambda \in K: \lambda\odot u \in U$.
+\een
+More succinctly, if $\forall\,u_1,u_2\in U:\forall \, \lambda \in K: (\lambda\odot u_1)\oplus u_2\in U$. 
+\ed
+
+Also recall that if we have $n$ vector spaces over $K$, we can form the $n$-fold Cartesian product of their underlying sets and make it into a vector space over $K$ by defining the operations $\oplus$ and $\odot$ componentwise.
+
+As usual by now, we will look at the structure preserving maps between vector spaces.
+
+\bd
+Let $(V,\oplus,\odot)$, $(W,\boxplus,\boxdot)$ be vector spaces over the same field $K$ and let $f\cl V\to W$ be a map. We say that $f$ is a \emph{linear map}\index{linear map}\index{map!linear} if for all $v_1,v_2\in V$ and all $\lambda \in K$
+\bse
+f((\lambda\odot v_1)\oplus v_2) = (\lambda\boxdot f( v_1))\boxplus f(v_2).
+\ese
+\ed
+
+From now on, we will drop the special notation for the vector space operations and suppress the dot for scalar multiplication. For instance, we will write the equation above as $f(\lambda v_1+v_2)=\lambda f(v_1)+f(v_2)$, hoping that this will not cause any confusion.
+
+\bd
+A bijective linear map is called a \emph{linear isomorphism}\index{isomorphism!of vector spaces} of vector spaces. Two vector spaces are said to be \emph{isomorphic} is there exists a linear isomorphism between them. We write $V\cong_\mathrm{vec}W$.
+\ed
+
+\br
+Note that, unlike what happens with topological spaces, the inverse of a bijective linear map is automatically linear, hence we do not need to specify this in the definition of linear isomorphism.
+\er
+
+\bd
+Let $V$ and $W$ be vector spaces over the same field $K$. Define the set
+\bse
+\mathrm{Hom}(V,W) := \{f \mid f\cl V\xrightarrow{\sim}W \},
+\ese
+where the notation $ f\cl V\xrightarrow{\sim}W$ stands for ``$f$ is a linear map from $V$ to $W$''.
+\ed
+The hom-set $\mathrm{Hom}(V,W)$ can itself be made into a vector space over $K$ by defining:
+\bi{rrCl}
+\diamondplus \cl &\mathrm{Hom}(V,W) \times \mathrm{Hom}(V,W) &\to &\mathrm{Hom}(V,W)\\
+& (f,g) & \mapsto & f \diamondplus g
+\ei
+where
+\bi{rcCl}
+f \diamondplus g \cl &V  &\xrightarrow{\sim} &W\\
+& v & \mapsto & (f \diamondplus g)(v) := f(v)+g(v),
+\ei 
+and
+\bi{rrCl}
+\diamonddot \cl &K \times \mathrm{Hom}(V,W) &\to &\mathrm{Hom}(V,W)\\
+& (\lambda,f) & \mapsto & \lambda \diamonddot f
+\ei
+where
+\bi{rcCl}
+\lambda \diamonddot f \cl &V  &\xrightarrow{\sim} &W\\
+& v & \mapsto & (\lambda \diamonddot f)(v) := \lambda f(v).
+\ei 
+It is easy to check that both $f \diamondplus g$ and $\lambda \diamonddot f$ are indeed linear maps from $V$ to $W$. For instance, we have:
+\bi{rCl"s}
+(\lambda \diamonddot f)(\mu v_1+v_2) & = &  \lambda f(\mu v_1+v_2) & (by definition)\\
+& = &  \lambda (\mu f( v_1)+f(v_2)) & (since $f$ is linear)\\
+& = &  \lambda \mu f( v_1)+\lambda f(v_2) & (by axioms i and iii)\\
+& = & \mu \lambda f( v_1)+\lambda f(v_2) & (since $K$ is a field)\\
+& = & \mu (\lambda \diamonddot f)( v_1)+(\lambda \diamonddot f)(v_2) & 
+\ei
+so that $\lambda \diamonddot f\in \mathrm{Hom}(V,W)$. One should also check that $\diamondplus$ and $\diamonddot$ satisfy the vector space axioms.
+
+\br
+Notice that in the definition of vector space, none of the axioms require that $K$ necessarily be a field. In fact, just a (unital) ring would suffice. Vector spaces over rings, have a name of their own. They are called \emph{modules} over a ring, and we will meet them later.
+
+For the moment, it is worth pointing out that everything we have done so far applies equally well to modules over a ring, up to and including the definition of $\mathrm{Hom}(V,W)$. However, if we try to make $\mathrm{Hom}(V,W)$ into a module, we run into trouble. Notice that in the derivation above, we used the fact the multiplication in a field is commutative. But this is not the case in general in a ring.
+\er
+
+The following are commonly used terminology.
+
+\bd
+Let $V$ be a vector space. An \emph{endomorphism}\index{endomorphism} of $V$ is a linear map $V\to V$. We write $\mathrm{End}(V):=\mathrm{Hom}(V,V)$.
+\ed
+
+\bd
+Let $V$ be a vector space. An \emph{automorphism}\index{automorphism} of $V$ is a linear isomorphism $V\to V$. We write $\mathrm{Aut}(V):=\{f \in \mathrm{End}(V) \mid f \text{ is an isomorphism}\}$.
+\ed
+
+\br
+Note that, unlike $\mathrm{End}(V)$, $\mathrm{Aut}(V)$ is \emph{not} a vector space as was claimed in lecture. It however a group under the operation of composition of linear maps.
+\er
+
+\bd
+Let $V$ be a vector space over $K$. The \emph{dual}\index{vector space!dual}\index{dual space} vector space to $V$ is
+\bse
+V^*:=\Hom(V,K),
+\ese
+where $K$ is considered as a vector space over itself.
+\ed
+
+The dual vector space to $V$ is the vector space of linear maps from $V$ to the underlying field $K$, which are variously called \emph{linear functionals}, \emph{covectors}\index{covector}, or \emph{one-forms} on $V$. The dual plays a very important role, in that from a vector space and its dual, we will construct the tensor products.
+
+\subsection{Tensors and tensor spaces}
+
+\bd
+Let $V$, $W$, $Z$ be vector spaces over $K$. A map $f\cl V\times W \to Z$ is said to be \emph{bilinear}\index{bilinear map}\index{map!bilinear} if
+\begin{itemize}
+\item $\forall \, w\in W:\forall \, v_1,v_2\in V: \forall \,\lambda \in K : f(\lambda v_1+v_2,w)=\lambda f(v_1,w)+f(v_2,w)$;
+\item $\forall \, v\in V:\forall \, w_1,w_2\in W: \forall \,\lambda \in K : f(v,\lambda w_1+w_2)=\lambda f(v,w_1)+f(v,w_2)$;
+\end{itemize}
+i.e.\ if the maps $v\mapsto f(v,w)$, for any fixed $w$, and $w\mapsto f(v,w)$, for any fixed $v$, are both linear as maps $V\to Z$ and $W\to Z$, respectively.
+\ed
+
+\br
+Compare this with the definition of a linear map $f\cl V\times W \xrightarrow{\sim} Z$:
+\bse
+\forall \, x,y\in V \times W : \forall \, \lambda \in K : f(\lambda x+y)=\lambda f(x)+f(y).
+\ese
+More explicitly, if $x=(v_1,w_1)$ and $y = (v_2,w_2)$, then:
+\bse
+f(\lambda (v_1,w_1)+(v_2,w_2))=\lambda f((v_1,w_1))+f((v_2,w_2)).
+\ese
+A bilinear map out of $V\times W$ is \emph{not} the same as a linear map out of $V\times W$. In fact, bilinearity is just a special kind of non-linearity.
+\er
+
+\be
+The map $f\cl \R^2\to \R$ given by $(x,y)\mapsto x+y$ is linear but not bilinear, while the map $(x,y)\mapsto xy$ is bilinear but not linear.
+\ee
+
+We can immediately generalise the above to define \emph{multilinear} maps out of a Cartesian product of vector spaces.
+
+\bd
+Let $V$ be a vector space over $K$. A \emph{$(p,q)$-tensor}\index{tensor} $T$ on $V$ is a multilinear map
+\bse
+T\cl \underbrace{V^*\times\cdots \times V^*}_{p \text{ copies}} \times \underbrace{V \times \cdots \times V}_{q \text{ copies}} \to K.
+\ese
+We write
+\bse
+T^p_q V\index{$T^p_qV$} := \underbrace{V\otimes\cdots \otimes V}_{p \text{ copies}} \otimes \underbrace{V^* \otimes \cdots \otimes V^*}_{q \text{ copies}} := \{T\mid T \text{ is a $(p,q)$-tensor on }V\}. 
+\ese
+\ed
+
+\bd
+A type $(p,0)$ tensor is called a \emph{covariant $p$-tensor}, while a tensor of type $(0,q)$ is called a \emph{contravariant $q$-tensor}.
+\ed
+
+\br
+By convention, a $(0,0)$ on $V$ is just an element of $K$, and hence $T^0_0V=K$.
+\er
+
+\br
+Note that to define $T^p_q V$ as a set, we should be careful and invoke the principle of restricted comprehension, i.e.\ we should say where the $T$s are coming from. In general, say we want to build a set of maps $f\cl A\to B$ satisfying some property $p$. Recall that the notation $f\cl A \to B$ is hiding the fact that is a relation (indeed, a functional relation), and a relation between $A$ and $B$ is a subset of $A\times B$. Therefore, we ought to write:
+\bse
+\{f\in \cP(A\times B)\mid f\cl A\to B \text{ and } p(f)\}.
+\ese
+In the case of $T^p_q V$ we have:
+\bse
+T^p_q V := \big\{T \in \cP\bigl(\underbrace{V^*\times\cdots \times V^*}_{p \text{ copies}} \times \underbrace{V \times \cdots \times V}_{q \text{ copies}} \times K\bigr) \mid  T \text{ is a $(p,q)$-tensor on }V\big\},
+\ese
+although we will not write this down every time.
+\er
+
+The set $T^p_q V$ can be equipped with a $K$-vector space structure by defining
+
+\bi{rrCl}
+\oplus\cl &T^p_q V \times T^p_q V &\to &T^p_q V\\
+& (T,S) & \mapsto & T \oplus S
+\ei
+and
+\bi{rrCl}
+\odot \cl &K \times T^p_q V &\to &T^p_q V\\
+& (\lambda,T) & \mapsto & \lambda \odot T,
+\ei
+where $T \oplus S$ and $\lambda \odot T$ are defined pointwise, as we did with $\mathrm{Hom}(V,W)$.
+
+We now define an important way of obtaining a new tensor from two given ones.
+
+\bd
+Let $T\in T^p_q V$ and $S\in T^r_s V$. The \emph{tensor product}\index{tensor!product} of $T$ and $S$ is the tensor $T\otimes S\in T^{p+r}_{q+s}V$ defined by:
+\bi{rl}
+(T\otimes S)(\omega_1,\ldots,\omega_p,\omega_{p+1},\ldots,\omega_{p+r},v_1,&\ldots,v_q,v_{q+1},\ldots,v_{q+s})\\
+:=T(\omega_1,\ldots,\omega_p,v_1,&\ldots,v_q)\,S(\omega_{p+1},\ldots,\omega_{p+r},v_{q+1},\ldots,v_{q+s}),
+\ei
+with $\omega_i\in V^*$ and $v_i\in V$.
+\ed
+
+Some examples are in order.
+
+\be
+\ben[label=\alph*)]
+\item $T^0_1 V := \{T\mid T\cl V \xrightarrow{\sim} K\} = \mathrm{Hom}(V,K) =: V^*$. Note that here multilinear is the same as linear since the maps only have one argument.
+\item $T^1_1V\equiv V\otimes V^*:=\{T\mid T\text{ is a bilinear map }V^*\times V \to K\}$. We claim that this is the same as $\mathrm{End}(V^*)$. Indeed, given $T\in  V\otimes V^*$, we can construct $\widehat T \in \mathrm{End}(V^*)$ as follows:
+\bi{rrCl}
+\widehat T \cl &V^* &\xrightarrow{\sim}& V^*\\
+& \omega & \mapsto & T(-,\omega)
+\ei
+where, for any fixed $\omega$, we have
+\bi{rrCl}
+T (-,\omega) \cl &V &\xrightarrow{\sim}& K\\
+& v & \mapsto & T(v,\omega).
+\ei
+The linearity of both $\widehat T$ and $T(-,\omega)$ follows immediately from the bilinearity of $T$. Hence $T(-,\omega)\in V^*$ for all $\omega$, and $\widehat T \in \mathrm{End}(V^*)$. This correspondence is invertible, since can reconstruct $T$ from $\widehat T$ by defining
+\bi{rrCl}
+T  \cl &V \times V^* &\to & K\\
+& (v,\omega) & \mapsto & T(v,\omega):=(\widehat T(\omega))(v).
+\ei
+The correspondence is in fact linear, hence an isomorphism, and thus \bse
+T^1_1V\cong_\mathrm{vec}\mathrm{End}(V^*).
+\ese
+\een
+Other examples we would like to consider are
+\ben[label=\alph*),start=3]
+\item $T^0_1 V \stackrel{?}{\cong}_\mathrm{vec} V$: while you will find this stated as true in some physics textbooks, it is in fact \emph{not true} in general;
+\item $T^1_1 V \stackrel{?}{\cong}_\mathrm{vec} \mathrm{End}(V)$: This is also not true in general;
+\item $(V^*)^* \stackrel{?}{\cong}_\mathrm{vec} V$: This only holds if $V$ is finite-dimensional.
+\een
+\ee
+The definition of dimension hinges on the notion of a basis. Given a vector space Without any additional structure, the only notion of basis that we can define is a so-called Hamel basis.
+
+\bd
+Let $(V,+,\cdot)$ be a vector space over $K$. A subset $\mathcal{B}\se V$ is called a \emph{Hamel basis}\index{Hamel basis}\index{vector space!basis} for $V$ if 
+\begin{itemize}
+\item every finite subset $\{b_1,\ldots,b_N\}$ of $\mathcal{B}$ is linearly independent, i.e.\
+\bse
+\sum_{i=1}^N \lambda^ib_i = 0 \ \imp \ \lambda^1 = \cdots = \lambda^N = 0;
+\ese
+\item $\mathcal{B}$ is a \emph{generating} or \emph{spanning set} of $V$, i.e.\
+\bse
+\forall \, v \in V : \exists \, v^1,\ldots,v^M\in K : \exists \, b_1,\ldots,b_M \in \mathcal{B}:v=\ds \sum_{i=1}^Mv^ib_i.
+\ese
+\end{itemize}
+\ed
+\br
+We can write the second condition more succinctly by defining
+\bse
+\lspan_K(\mathcal{B}) := \bigg\{\sum_{i=1}^n\lambda^ib_i \ \Big| \ \lambda^i\in K \land b_i\in \mathcal{B} \land n\geq 1\bigg\}
+\ese
+and thus writing $V = \lspan_K(\mathcal{B})$.
+\er
+\br
+Note that we have been using superscripts for the elements of $K$, and these should not be confused with exponents.
+\er
+The following characterisation of a Hamel basis is often useful.
+\bp
+Let $V$ be a vector space and $\mathcal{B}$ a Hamel basis of $V$. Then $\mathcal{B}$ is a minimal spanning and maximal independent subset of $V$, i.e., if $S\se V$, then
+\begin{itemize}
+\item $\lspan(S) = V\ \Rightarrow \ |S| \geq |\mathcal{B}|$;
+\item $S$ is linearly independent $\ \Rightarrow\ |S| \leq |\mathcal{B}|$. 
+\end{itemize}
+\ep
+
+\bd
+Let $V$ be a vector space. The \emph{dimension}\index{dimension!vector space}\index{vector space!dimension} of $V$ is $\dim V := |\mathcal{B}|$, where $\mathcal{B}$ is a Hamel basis for $V$.
+\ed
+Even though we will not prove it, it is the case that every Hamel basis for a given vector space has the same cardinality, and hence the notion of dimension is well-defined.
+
+\bp
+If $\dim V < \infty$ and $S\se V$, then we have the following:
+\begin{itemize}
+\item if $\lspan_K(S) = V$ and $|S| = \dim V$, then $S$ is a Hamel basis of $V$;
+\item if $S$ is linearly independent and $|S| = \dim V$, then $S$ is a Hamel basis of $V$. 
+\end{itemize}
+\ep
+
+\begin{theorem}
+If $\dim V < \infty$, then $(V^*)^*\cong_\mathrm{vec}V$.
+\end{theorem}
+
+\bq[Sketch of proof]
+One constructs an explicit isomorphism as follows. Define the \emph{evaluation map} as
+\bi{rrCl}
+\ev \cl & V & \xrightarrow{\sim}& (V^*)^*\\
+& v & \mapsto & \ev_v
+\ei
+where
+\bi{rrCl}
+\ev_v \cl & V^* & \xrightarrow{\sim}& K\\
+& \omega & \mapsto & \ev_v(\omega):=\omega(v)
+\ei
+The linearity of $\ev$ follows immediately from the linearity of the elements of $V^*$, while that of $\ev_v$ from the fact that $V^*$ is a vector space. One then shows that $\ev$ is both injective and surjective, and hence an isomorphism.
+\eq 
+
+\br
+Note that while we need the concept of basis to state this result (since we require $\dim V < \infty$), the isomorphism that we have constructed is independent of any choice of basis.
+\er
+
+\br
+It is not hard to show that $(V^*)^*\cong_\mathrm{vec}V$ implies $T^0_1 V \cong_\mathrm{vec} V$ and $T^1_1 V \cong_\mathrm{vec} \mathrm{End}(V)$. So the last two hold in finite dimensions, but they need not hold in infinite dimensions.
+\er
+
+\br
+While a choice of basis often simplifies things, when defining new objects it is important to do so without making reference to a basis. If we do define something in terms of a basis (e.g.\ the dimension of a vector space), then we have to check that the thing is well-defined, i.e.\ it does not depend on which basis we choose. Some people say: \textit{``A gentleman only chooses a basis if he must.''}
+\er
+
+If $V$ is finite-dimensional, then $V^*$ is also finite-dimensional and $V\cong_\mathrm{vec}V^*$. Moreover, given a basis $\mathcal{B}$ of $V$, there is a spacial basis of $V^*$ associated to $\mathcal{B}$.
+
+\bd
+Let $V$ be a finite-dimensional vector space with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$. The \emph{dual basis} to $\mathcal{B}$ is the unique basis $\mathcal{B'}=\{f^1,\ldots,f^{\dim V}\}$ of $V^*$ such that
+\bse
+\forall \, 1\leq i,j \leq \dim V :\quad  f^i(e_j) = \delta^i_j := \begin{cases}1 \quad \text{if }i=j\\0 \quad \text{if }i\neq j\end{cases}
+\ese
+\ed
+
+\br
+If $V$ is finite-dimensional, then $V$ is isomorphic to both $V^*$ and $(V^*)^*$. In the case of $V^*$, an isomorphism is given by sending each element of a basis $\mathcal{B}$ of $V$ to a different element of the dual basis $\mathcal{B}'$, and then extending linearly to $V$.
+
+You will (and probably already have) read that a vector space is \emph{canonically} isomorphic to its double dual, but \emph{not} canonically isomorphic to its dual, because an arbitrary choice of basis on $V$ is necessary in order to provide an isomorphism. 
+
+The proper treatment of this matter falls within the scope of \emph{category theory}, and the relevant notion is called \emph{natural isomorphism}. See, for instance, the book \emph{Basic Category Theory} by Tom Leinster for an introduction to the subject.
+\er
+
+Once we have a basis $\mathcal{B}$, the expansion of $v\in V$ in terms of elements of $\mathcal{B}$ is, in fact, unique. Hence we can meaningfully speak of the \emph{components}\index{components} of $v$ in the basis $\mathcal{B}$. The notion of coordinates can also be generalised to the case of tensors.
+
+\bd
+Let $V$ be a finite-dimensional vector space over $K$ with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$ and let $T\in T^p_qV$. We define the \emph{components}\index{tensor!components} of $T$ in the basis $\mathcal{B}$ to be the numbers
+\bse
+T^{a_1\ldots a_p}_{\phantom{a_1\ldots a_p}b_1\ldots b_q} := T(f^{a_1},\ldots,f^{a_p},e_{b_1},\ldots,e_{b_q})\in K,
+\ese
+where $1\leq a_i,b_j\leq \dim V$ and $\{f^1,\ldots,f^{\dim V}\}$ is the dual basis to $\mathcal{B}$.
+\ed
+
+Just as with vectors, the components completely determine the tensor. Indeed, we can reconstruct the tensor from its components by using the basis:
+\bse
+T = \underbrace{\sum_{a_1=1}^{\dim V}\!\cdots\!\sum_{b_q=1}^{\dim V}}_{p+q \text{ sums}} T^{a_1\ldots a_p}_{\phantom{a_1\ldots a_p}b_1\ldots b_q} e_{a_1}\otimes\cdots\otimes e_{a_p} \otimes f^{b_1}\otimes \cdots\otimes f^{b_q},
+\ese
+where the $e_{a_i}$s are understood as elements of $T^1_0V\cong_\mathrm{vec}V$ and the $f^{b_i}s$ as elements of $T^0_1V\cong_\mathrm{vec}V^*$. Note that each summand is a $(p,q)$-tensor and the (implicit) multiplication between the components and the tensor product is the scalar multiplication in $T^p_q V$.
+
+\subsubsection*{Change of basis}
+
+Let $V$ be a vector space over $K$ with $d=\dim V < \infty$ and let $\{e_1,\ldots,e_d\}$ be a basis of $V$. Consider a new basis $\{\widetilde e_1,\ldots,\widetilde e_d\}$. Since the elements of the new basis are also elements of $V$, we can expand them in terms of the old basis. We have:
+\bse
+\widetilde e_i = \sum_{j=1}^d A^j_{\phantom{j} i}\, e_j \qquad \text{for }1\leq i \leq d.
+\ese
+for some $A^j_{\phantom{j}i}\in K$. Similarly, we have
+\bse
+e_i = \sum_{j=1}^d B^j_{\phantom{j} i}\, \widetilde e_j \qquad \text{for }1\leq i \leq d.
+\ese
+for some $B^j_{\phantom{j}i}\in K$. It is a standard linear algebra result that the matrices $A$ and $B$, with entries $A^j_{\phantom{j}i}$ and $B^j_{\phantom{j}i}$ respectively, are invertible and, in fact, $A^{-1}=B$.
+
+\subsection{Notational conventions}
+
+\subsubsection*{Einstein's summation convention}
+From now on, we will employ the Einstein's summation convention, which consists in suppressing the summation sign when the indices to be summed over each appear once as a subscript and once as a superscript in the same term. For example, we write
+\bi{rcl}
+v=v^ie_i \qquad &\text{and}& \qquad T=T^{ij}_{\phantom{ij}k}e_i\otimes e_j \otimes f^k \\
+\intertext{instead of}
+v=\sum_{i=1}^dv^ie_i \qquad &\text{and}& \qquad T=\sum_{i=1}^d\sum_{j=1}^d\sum_{k=1}^d
+T^{ij}_{\phantom{ij}k}e_i\otimes e_j \otimes f^k.
+\ei
+Indices that are summed over are called \emph{dummy indices}; they always appear in pairs and clearly it doesn't matter which particular letter we choose to denote them, provided it doesn't already appear in the expression. Indices that are not summed over are called \emph{free indices}; expressions containing free indices represent multiple expressions, one for each value of the free indices; free indices must match on both sides of an equation. For example
+\bi{rClrClrCl}
+v^ie_i&=&v^ke_k, &  T^{ij}_{\phantom{ij}k} &=& T^{imj}_{\phantom{imj}km}, & A_{ij} &=& C_kC^kB_{ij} + C_iC^kB_{kj}\\
+\intertext{are all valid expressions, while}
+c^kv^ie_i&=&c^kv^ke_k, \qquad & T^{ij}_{\phantom{ij}j} &=& T^{imj}_{\phantom{imj}km}, \qquad  & A_{ij} &=& C_kC^k + C_iC^lB_{lj}
+\ei
+are not. The ranges over which the indices run are usually understood and not written out.
+
+The convention on which indices go upstairs and which downstairs (which we have already been using) is that:
+\begin{itemize}
+\item the basis vectors of $V$ carry downstairs indices;
+\item the basis vectors of $V^*$ carry upstairs indices;
+\item all other placements are enforced by the Einstein's summation convention.
+\end{itemize}
+For example, since the components of a vector must multiply the basis vectors and be summed over, the Einstein's summation convention requires that they carry upstair indices.
+
+\be
+Using the summation convention, we have:
+\ben[label=\alph*)]
+\item $f^a(v) = f^a(v^be_b)=v^bf^a(e_b)=v^b\delta^a_b=v^a$;
+\item $\omega(e_b)=(\omega_af^a)(e_b)=\omega_af^a(e_b)=\omega_b$;
+\item $\omega(v)=\omega_af^a(v^be_b)=\omega_av^a$;
+\een
+where $v\in V$, $\omega \in V^*$, $\{e_i\}$ is a basis of $V$ and $\{f^j\}$ is the dual basis to $\{e_i\}$.
+\ee
+
+\br
+The Einstein's summation convention should only be used when dealing with linear spaces and multilinear maps. The reason for this is the following. Consider a map $\phi\cl V\times W \to Z$, and let $v=v^ie_i\in V$ and $w=w^i\widetilde e_i\in W$. Then we have:
+\bse
+\phi(v,w) = \phi\,\bigg({\color{lightgray}\sum_{i=1}^d}v^ie_i,{\color{lightgray}\sum_{j=1}^{\widetilde{d}}} w^j\widetilde e_j\bigg) = {\color{lightgray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}\phi(v^ie_i,w^j\widetilde e_j)= {\color{lightgray}\sum_{i=1}^d \sum_{j=1}^{\widetilde{d}}}v^iw^j\phi(e_i,\widetilde e_j).
+\ese
+Note that by suppressing the greyed out summation signs, the second and third term above are indistinguishable. But this is only true if $\phi$ is bilinear! Hence the summation convention should not be used (at least, not without extra care) in other areas of mathematics.
+\er
+
+\br
+Having chosen a basis for $V$ and the dual basis for $V^*$, it is very tempting to think of $v=v^ie_i\in V$ and $\omega=\omega_if^i\in V^*$ as $d$-tuples of numbers. In order to distinguish them, one may choose to write vectors as \emph{columns} of numbers and covectors as \emph{rows} of numbers:
+\bse
+v =v^ie_i \quad \leftrightsquigarrow\quad v\ \hat{=} \left(
+\ba{c}
+v^1\\
+\vdots\\
+v^d
+\ea
+\right)
+\ese
+and
+\bse
+\omega =\omega_if^i \quad \leftrightsquigarrow\quad \omega \ \hat{=} \ (\omega_1,\ldots,\omega_d).
+\ese
+Given $\phi\in\mathrm{End}(V)\cong_\mathrm{vec}T^1_1V$, recall that we can write $\phi = \phi^i_{\phantom{i}j}\, e_i\otimes f^j$, where $\phi^i_{\phantom{i}j}:=\phi(f^i,e_j)$ are the components of $\phi$ with respect to the chosen basis. It is then also very tempting to think of $\phi$ as a square array of numbers:
+\bse
+\phi = \phi^i_{\phantom{i}j}\, e_i\otimes f^j \quad \leftrightsquigarrow\quad \phi \ \hat{=} \left(
+\ba{cccc}
+\phi^1_{\phantom{1}1} & \phi^1_{\phantom{1}2} & \cdots & \phi^1_{\phantom{1}d}\\
+\phi^2_{\phantom{2}1} & \phi^2_{\phantom{2}2} & \cdots & \phi^2_{\phantom{2}d}\\
+\vdots & \vdots & \ddots & \vdots\\
+\phi^d_{\phantom{d}1} & \phi^d_{\phantom{d}2} & \cdots & \phi^d_{\phantom{d}d} 
+\ea
+\right)
+\ese
+The convention here is to think of the $i$ index on $\phi^i_{\phantom{i}j}$ as a \emph{row index}, and of $j$ as a \emph{column index}.
+\er
+
+We cannot stress enough that this is pure convention. Its usefulness stems from the following example.
+
+\be
+If $\dim V<\infty$, then we have $\mathrm{End}(V)\cong_\mathrm{vec}T^1_1V$. Explicitly, if $\phi \in \mathrm{End}(V)$, we can think of $\phi \in T^1_1V$, using the same symbol, as
+\bse
+\phi(\omega,v):=\omega(\phi(v)).
+\ese
+Hence the components of $\phi\in\mathrm{End}(V)$ are $\phi^a_{\phantom{a}b}:=f^a(\phi(e_b))$. 
+
+Now consider $\phi,\psi\in\mathrm{End}(V)$. Let us determine the components of $\phi\circ \psi$. We have:
+\bi{rCl}
+(\phi\circ \psi)^a_{\phantom{a}b} &:=& (\phi\circ \psi)(f^a,e_b)\\
+&:=&f^a( (\phi\circ \psi)(e_b))\\
+&=& f^a( (\phi(\psi(e_b)))\\
+&=& f^a(\phi(\psi^m_{\phantom{m}b}\,e_m))\\
+&=& \psi^m_{\phantom{m}b} f^a( \phi(e_m))\\
+&:=& \psi^m_{\phantom{m}b}\, \phi^a_{\phantom{a}m} .
+\ei
+The multiplication in the last line is the multiplication in the field $K$, and since that's commutative, we have $\psi^m_{\phantom{m}b}\, \phi^a_{\phantom{a}m}  = \phi^a_{\phantom{a}m} \, \psi^m_{\phantom{m}b}$. However, in light of the convention introduced in the previous remark, the latter is preferable. Indeed, if we think of the superscripts as row indices and of the subscripts as column indices, then $\phi^a_{\phantom{a}m} \, \psi^m_{\phantom{m}b}$ is the entry in row $a$, column $b$, of the matrix product $\phi\psi$.
+
+Similarly, $\omega(v)=\omega_mv^m$ can be thought of as the \emph{dot product} $\omega \cdot v\equiv\omega^Tv$, and
+\bse
+\phi(v,w)=w_a\,\phi^a_{\phantom{a}b}\,v^b \quad   \leftrightsquigarrow\quad \omega^T\phi v.
+\ese
+The last expression is could mislead you into thinking that the transpose is a ``good'' notion, but in fact it is not. It is very bad notation. It almost pretends to be basis independent, but it is not at all.
+
+The moral of the story is that you should try your best \emph{not} to think of vectors, covectors and tensors as arrays of numbers. Instead, always try to understand them from the abstract, intrinsic, component-free point of view.
+\ee
+
+\subsubsection*{Change of components under a change of basis}
+
+Recall that if $\{e_a\}$ and $\{\widetilde e_a\}$ are basis of $V$, we have
+\bse
+\widetilde e_a=A^b_{\phantom{b}a}e_b \qquad \text{and}  \qquad e_a=B^m_{\phantom{m}a}\widetilde e_m,
+\ese
+with $A^{-1}=B$. Note that in index notation, the equation $AB=I$ reads $A^a_{\phantom{a}m}B^m_{\phantom{m}b}=\delta^a_b$.
+
+We now investigate how the components of vectors and covectors change under a change of basis. 
+\ben[label=\alph*)]
+\item Let $v=v^ae_a=\widetilde v^a\widetilde e_a\in V$. Then:
+\bse
+v^a = f^a(v) = f^a(\widetilde v^b\widetilde e_b) = \widetilde v^b
+f^a(\widetilde e_b) = \widetilde v^b f^a(A^m_{\phantom{m}b}e_m) = A^m_{\phantom{m}b} \widetilde v^bf^a(e_m)=A^a_{\phantom{a}b} \widetilde v^b.
+\ese
+\item Let $\omega = \omega_af^a = \widetilde \omega_a\widetilde f^a  \in V^*$. Then:
+\bse
+\omega_a := \omega(e_a) = \omega(B^m_{\phantom{m}a}\widetilde e_m) = B^m_{\phantom{m}a}\omega(\widetilde e_m) = B^m_{\phantom{m}a}\widetilde \omega_m .
+\ese
+\een
+Summarising, for $v\in V$, $\omega \in V^*$ and $\widetilde e_a=A^b_{\phantom{b}a}e_b$, we have:
+\bi{rClcrCl}
+v^a & = & A^a_{\phantom{a}b} \widetilde v^b &\qquad & \omega_a &= & B^b_{\phantom{b}a}\widetilde \omega_b \\
+\widetilde v^a & = & B^a_{\phantom{a}b}  v^b & & \widetilde \omega_a &= & A^b_{\phantom{b}a}\omega_b 
+\ei
+The result for tensors is a combination of the above, depending on the type of tensor.
+\ben
+\item[c)] Let $T\in T^p_qV$. Then:
+\bse
+T^{a_1\ldots a_p}_{\phantom{a_1\ldots a_p}b_1\ldots b_q} = A^{a_1}_{\phantom{a_1}m_1}\cdots A^{a_p}_{\phantom{a_p}m_p} B^{n_1}_{\phantom{n_1}b_1} \cdots B^{n_q}_{\phantom{n_q}b_q} \widetilde T^{m_1\ldots m_p}_{\phantom{m_1\ldots m_p}n_1\ldots n_q},
+\ese
+i.e.\ the upstair indices transform like vector indices, and the downstair indices transform like covector indices. 
+\een
+
+\subsection{Determinants}
+
+In your previous course on linear algebra, you may have met the determinant of a square matrix as a number calculated by applying a mysterious rule. Using the mysterious rule, you may have shown, with a lot of work, that for example, if we exchange two rows or two columns, the determinant changes sign. But, as we have seen, matrices are the result of pure convention. Hence, one more polemic remark is in order.
+
+\br
+Recall that, if $\phi \in T^1_1V$, then we can arrange the components $\phi^a_{\phantom{a}b}$ in matrix form:
+\bse
+\phi = \phi^a_{\phantom{a}b}\, e_a\otimes f^b \quad \leftrightsquigarrow\quad \phi \ \hat{=} \left(
+\ba{cccc}
+\phi^1_{\phantom{1}1} & \phi^1_{\phantom{1}2} & \cdots & \phi^1_{\phantom{1}d}\\
+\phi^2_{\phantom{2}1} & \phi^2_{\phantom{2}2} & \cdots & \phi^2_{\phantom{2}d}\\
+\vdots & \vdots & \ddots & \vdots\\
+\phi^d_{\phantom{d}1} & \phi^d_{\phantom{d}2} & \cdots & \phi^d_{\phantom{d}d} 
+\ea
+\right)
+\ese
+Similarly, if we have $g\in T^0_2V$, its components are $g_{ab}:=g(e_a,e_b)$ and we can write
+\bse
+g = g_{ab}\, f^a\otimes f^b \quad \leftrightsquigarrow\quad g \ \hat{=} \left(
+\ba{cccc}
+g_{11} & g_{12} & \cdots & g_{1d}\\
+g_{21} & g_{22} & \cdots & g_{2d}\\
+\vdots & \vdots & \ddots & \vdots\\
+g_{d1} & g_{d2} & \cdots & g_{dd} 
+\ea
+\right)
+\ese
+Needless to say that these two objects could not be more different if they tried. Indeed
+\begin{itemize}
+\item $\phi$ is an endomorphism of $V$; the first index in $\phi^a_{\phantom{a}b}$ transforms like a vector index, while the second index transforms like a covector index;
+\item $g$ is a \emph{bilinear form} on $V$; both indices in $g_{ab}$ transform like covector indices.
+\end{itemize}
+In linear algebra, you may have seen the two different transformation laws for these objects:
+\bse
+\phi \to A^{-1}\phi A \qquad \text{and} \qquad g \to A^TgA,
+\ese
+where $A$ is the change of basis matrix. However, once we fix a basis, the matrix representations of these two objects are indistinguishable. It is then very tempting to think that what we can do with a matrix, we can just as easily do with another matrix. For instance, if we have a rule to calculate the determinant of a square matrix, we should be able to apply it to both of the above matrices.
+
+However, the notion of determinant is \emph{only} defined for endomorphisms. The only way to see this is to give a basis-independent definition, i.e.\ a definition that does not involve the ``components of a matrix''.  
+\er
+
+We will need some preliminary definitions.
+
+\bd
+Let $M$ be a set. A \emph{permutation} of $M$ is a bijection $M\to M$.
+\ed
+
+\bd
+The \emph{symmetric group} of order $n$, denoted $S_n$, is the set of permutations of $\{1,\ldots,n\}$ under the operation of functional composition.
+\ed
+
+\bd
+A \emph{transposition} is a permutation which exchanges two elements, keeping all other elements fixed.  
+\ed
+
+\bp
+Every permutation $\pi\in S_n$ can be written as a product (composition) of transpositions in $S_n$.
+\ep
+While this decomposition is not unique, for each given $\pi \in S_n$, the number of transpositions in its decomposition is always either even or odd. Hence, we can define the \emph{sign} (or \emph{signature}) of $\pi \in S_n$ as:
+\bse
+\mathrm{sgn}(\pi) := \begin{cases}+1 \qquad &\text{if $\pi$ is the product of an even number of transpositions}\\-1 \qquad &\text{if $\pi$ is the product of an odd number of transpositions.}\end{cases}
+\ese
+
+\bd
+Let $V$ be a $d$-dimensional vector space. An $n$-\emph{form} on $V$ is a $(0,n)$-tensor $\omega$ that is \emph{totally antisymmetric}, i.e.\
+\bse
+\forall \, \pi \in S_n : \ \omega(v_1,v_2,\ldots,v_n) = \mathrm{sgn}(\pi)\, \omega(v_{\pi(1)},v_{\pi(2)},\ldots,v_{\pi(n)}). 
+\ese
+\ed
+Note that a $0$-form is a scalar, and a $1$-form is a covector. A $d$-form is also called a \emph{top form}. There are several equivalent definitions of $n$-form. For instance, we have the following.
+\bp
+A $(0,n)$-tensor $\omega$ is an $n$-form if, and only if, $\omega(v_1,\ldots,v_n)=0$ whenever $\{v_1,\ldots,v_n\}$ is linearly dependent.
+\ep
+While $T^0_nV$ is certainly non-empty when $n>d$, the proposition immediately implies that any $n$-form with $n>d$ must be identically zero. This is because a collection of more than $d$ vectors from a $d$-dimensional vector space is necessarily linearly dependent.
+\bp
+Denote by $\Lambda^nV$ the vector space of $n$-forms on $V$. Then we have
+\bse
+\dim \Lambda^nV = \begin{cases} \binom{d}{n} \quad  &\text{if }\ 1\leq n \leq d\\ 0 &\text{if }\ n > d,\end{cases}
+\ese
+where $\binom{d}{n} = \frac{d!}{n!(d-n)!}$ is the binomial coefficient, read as ``$d$ choose $n$''.
+\ep
+
+In particular, $\dim \Lambda^dV=1$. This means that
+\bse
+\forall \, \omega,\omega' \in \Lambda^dV : \exists \, c \in K : \ \omega = c\, \omega',
+\ese
+i.e.\ there is essentially only one top form on $V$, up to a scalar factor.
+
+\bd
+A choice of top form on $V$ is called a choice of \emph{volume form}\index{volume (form)} on $V$. A vector space with a chosen volume form is then called a \emph{vector space with volume}.
+\ed
+This terminology is due to the next definition.
+\bd
+Let $\dim V = d$ and let $\omega \in \Lambda^dV$ be a volume form on $V$. Given $v_1,\ldots,v_d\in V$, the \emph{volume} spanned by $v_1,\ldots,v_d$ is
+\bse
+\vol(v_1,\ldots,v_d) := \omega(v_1,\ldots,v_d).
+\ese
+\ed
+Intuitively, the antisymmetry condition on $\omega$ makes sure that $\vol(v_1,\ldots,v_d)$ is zero whenever the set $\{v_1,\ldots,v_d\}$ is not linearly independent. Indeed, in that case $v_1,\ldots,v_d$ could only span a $(d-1)$-dimensional hypersurface in $V$ at most, which should have $0$ volume. 
+\br
+You may have rightfully thought that the notion of volume would require some extra structure on $V$, such as a notion of length or angles, and hence an inner product. But instead, we only need a top form.
+\er
+We are finally ready to define the determinant.
+\bd
+Let $V$ be a $d$-dimensional vector space and let $\phi \in \End (V) \cong_\mathrm{vec}T^1_1V$. The \emph{determinant}\index{determinant} of $\phi$ is
+\bse
+\det \phi := \frac{\omega(\phi(e_1),\ldots,\phi(e_d))}{\omega(e_1,\ldots,e_d)}
+\ese
+for some volume form $\omega \in \Lambda^dV$ and some basis $\{e_1,\ldots,e_d\}$ of $V$.
+\ed
+The first thing we need to do is to check that this is well-defined. That $\det \phi$ is independent of the choice of $\omega$ is clear, since if $\omega,\omega' \in \Lambda^dV$, then there is a $c \in K$ such that $\omega = c\, \omega'$, and hence 
+\bse
+ \frac{\omega(\phi(e_1),\ldots,\phi(e_d))}{\omega(e_1,\ldots,e_d)} =  \frac{\Ccancel[gray]{c}\,\omega'(\phi(e_1),\ldots,\phi(e_d))}{\Ccancel[gray]{c}\,\omega'(e_1,\ldots,e_d)}.
+\ese
+The independence from the choice of basis is more cumbersome to show, but it does hold, and thus $\det \phi$ is well-defined.
+
+Note that $\phi$ needs to be an endomorphism because we need to apply $\omega$ to $\phi(e_1),\ldots,\phi(e_d)$, and thus $\phi$ needs to output a vector.
+
+Of course, under the identification of $\phi$ as a matrix, this definition coincides with the usual definition of determinant, and all your favourite results about determinants can be derived from it. 
+
+\br
+In your linear algebra course, you may have shown the the determinant is basis-independent as follows: if $A$ denotes the change of basis matrix, then
+\bse
+\det(A^{-1}\phi A)=\det(A^{-1})\det(\phi)\det(A)=\det(A^{-1}A)\det(\phi) = \det(\phi)
+\ese
+since scalars commute, and $\det(A^{-1}A)=\det(I)=1$.
+
+Recall that the transformation rule for a bilinear form $g$ under a change of basis is $g \to A^TgA$. The determinant of $g$ then transforms as
+\bse
+\det(A^TgA)=\det(A^T)\det(g)\det(A) = (\det A)^2\det(g)
+\ese
+i.e.\ it not invariant under a change of basis. It is not a well-defined object, and thus we should not use it. 
+
+We will later meet quantities $X$ that transform as
+\bse
+X \to \frac{1}{(\det A)^2} \, X
+\ese
+under a change of basis, and hence they are also not well-defined. However, we obviously have
+\bse
+\det(g) X \to \frac{\Ccancel[gray]{(\det A)^2}}{\Ccancel[gray]{(\det A)^2}} \, \det(g)X = \det(g)X
+\ese
+so that the product $\det(g)X$ is a well-defined object. It seems that two wrongs make a right!
+
+In order to make this mathematically precise, we will have to introduce \emph{principal fibre bundles}. Using them, we will be able to give a bundle definition of tensor and of \emph{tensor densities} which are, loosely speaking, quantities that transform with powers of $\det A$ under a change of basis.
+\er
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

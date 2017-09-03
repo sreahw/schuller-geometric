@@ -1,0 +1,464 @@
+\subsection{Tangent spaces to a manifold}
+
+In this section, whenever we say ``manifold'', we mean a (real) $d$-dimensional differentiable manifold, unless we explicitly say otherwise. We will also suppress the differentiable structure in the notation.
+
+\bd
+Let $M$ be a manifold. We define the infinite-dimensional vector space over $\R$ with underlying set
+\bse
+\mathcal{C}^\infty(M)\index{$\mathcal{C}^\infty(M)$} := \{f\cl M \to \R \mid f\text{ is smooth}\}
+\ese
+and operations defined pointwise, i.e.\ for any $p\in M$,
+\bi{rCl}
+(f+g)(p) & := & f(p)+g(p)\\
+(\lambda f)(p) & := & \lambda f(p).
+\ei
+\ed
+A routine check shows that this is indeed a vector space. We can similarly define $\mathcal{C}^\infty(U)$, with $U$ an open subset of $M$.
+
+\bd
+A \emph{smooth curve}\index{smooth curve} on $M$ is a smooth map $\gamma\cl \R \to M$, where $\R$ is understood as a $1$-dimensional manifold.
+\ed
+This definition also applies to smooth maps $I\to M$ for an open interval $I\se \R$.
+
+\bd
+Let $\gamma\cl\R\to M$ be a smooth curve through $p\in M$; w.l.o.g.\ %\footnote{without loss of generality} 
+let $\gamma(0)=p$. The \emph{directional derivative operator}\index{directional derivative operator} at $p$ along $\gamma$ is the linear map
+\bi{rrCl}
+X_{\gamma,p}\cl & \mathcal{C}^\infty(M) & \xrightarrow{\sim} & \R\\
+& f & \mapsto & (f\circ\gamma)'(0),
+\ei
+where $\R$ is understood as a $1$-dimensional vector space over the field $\R$.
+\ed
+Note that $f\circ\gamma$ is a map $\R\to\R$, hence we can calculate the usual derivative and evaluate it at $0$.
+
+\br
+In differential geometry, $X_{\gamma,p}$ is called the \emph{tangent vector}\index{tangent vector} to the curve $\gamma$ at the point $p\in M$. Intuitively, $X_{\gamma,p}$ is the velocity $\gamma$ at $p$. Consider the curve $\delta(t):=\gamma(2t)$, which is the same curve parametrised twice as fast. We have, for any $f\in \mathcal{C}^\infty(M)$:
+\bse
+X_{\delta,p}(f) = (f\circ\delta)'(0)=2(f\circ\gamma)'(0)=2 X_{\gamma,p}(f)
+\ese
+by using the chain rule. Hence $X_{\gamma,p}$ scales like a velocity should.
+\er
+
+\bd
+Let $M$ be a manifold and $p\in M$. The \emph{tangent space}\index{tangent space}\index{$T_pM$} to $M$ at $p$ is the vector space over $\R$ with underlying set
+\bse
+T_pM := \{X_{\gamma,p}\mid \gamma \text{ is a smooth curve through }p\},
+\ese
+addition
+\bi{rrCl}
+\oplus\cl & T_pM\times T_pM & \to & T_pM \\
+& (X_{\gamma,p},X_{\delta,p}) & \mapsto & X_{\gamma,p}\oplus X_{\delta,p},
+\ei
+and scalar multiplication
+\bi{rrCl}
+\odot\cl & \R\times T_pM & \to & T_pM \\
+& (\lambda,X_{\gamma,p}) & \mapsto & \lambda \odot X_{\gamma,p},
+\ei
+both defined pointwise, i.e. for any $f\in \mathcal{C}^\infty(M)$,
+\bi{rCl}
+(X_{\gamma,p}\oplus X_{\delta,p})(f) & := & X_{\gamma,p}(f) + X_{\delta,p}(f)\\
+(\lambda \odot X_{\gamma,p})(f) & := & \lambda X_{\gamma,p}(f).
+\ei
+\ed
+
+Note that the outputs of these operations do not look like elements in $T_pM$, because they are not of the form $X_{\sigma,p}$ for some curve $\sigma$. Hence, we need to show that the above operations are, in fact, well-defined.
+
+\bp
+Let $X_{\gamma,p}, X_{\delta,p}\in T_pM$ and $\lambda \in \R$. Then, we have $X_{\gamma,p}\oplus X_{\delta,p}\in T_pM$ and $\lambda \odot X_{\gamma,p}\in T_pM$.
+\ep
+
+Since the derivative is a local concept, it is only the behaviour of curves near $p$ that matters. In particular, if two curves $\gamma$ and $\delta$ agree on a neighbourhood of $p$, then $X_{\gamma,p}$ and $X_{\delta,p}$ are the same element of $T_pM$. Hence, we can work \emph{locally} by using a chart on $M$.
+
+\bq
+Let $(U,x)$ be a chart on $M$, with $U$ a neighbourhood of $p$. 
+\ben
+\item[i)] Define the curve
+\bse
+\sigma (t):= x^{-1} ( (x\circ \gamma) (t) + (x \circ \delta)(t)-x(p)).
+\ese
+Note that $\sigma$ is smooth since it is constructed via addition and composition of smooth maps and, moreover:
+\bi{rCl}
+\sigma (0)&=& x^{-1} ( x(\gamma (0)) + x (\delta(0))-x(p))\\
+&=& x^{-1} ( x(p)) + x (p)-x(p))\\
+&=& x^{-1} (x(p))\\
+&=& p.
+\ei
+% \bse
+% \begin{tikzcd}
+% \preim_\gamma(U) \se \R \ar[r,"\gamma"]  & U \ar[r, bend left,"x"]  & x(U)\se \R^{\dim M} \ar[l, bend left,"x^{-1}"]
+% \end{tikzcd}
+% \ese
+Thus $\sigma$ is a smooth curve through $p$. Let $f\in \mathcal{C}^\infty(U)$ be arbitrary. Then we have
+\bi{rCl}
+X_{\sigma,p}(f)& := & (f\circ \sigma)'(0)\\
+& = & [f\circ x^{-1} \circ ( (x\circ \gamma) + (x \circ \delta) -x(p))]'(0)\\
+ \intertext{where $(f\circ x^{-1}) \cl \R^d\to \R$ and $((x\circ \gamma) + (x \circ \delta) -x(p))\cl\R\to\R^d$, so by the multivariable chain rule}
+& = & [\partial_a(f\circ x^{-1})(x(p))]\, ( (x^a\circ \gamma) + (x^a \circ \delta) -x^a(p))'(0)\\
+ \intertext{where $x^a$, with $1\leq a \leq d$, are the component functions of $x$, and since the derivative is linear, we get}
+ & = & [\partial_a(f\circ x^{-1})(x(p))]\, ( (x^a\circ \gamma)'(0) + (x^a \circ \delta)'(0))  \\
+& = & (f \circ x^{-1} \circ x \circ \gamma)'(0) + (f \circ x^{-1} \circ x \circ \delta)'(0) \\
+& = & (f \circ \gamma)'(0) + (f \circ \delta)'(0) \\
+& =: & (X_{\gamma,p}\oplus X_{\delta,p})(f).
+\ei
+Therefore $X_{\gamma,p}\oplus X_{\delta,p}= X_{\sigma,p} \in T_pM$.
+\item[ii)] The second part is straightforward. Define $\sigma(t) := \gamma(\lambda t)$. This is again a smooth curve through $p$ and we have:
+\bi{rCl}
+X_{\sigma,p}(f) & := & (f \circ \sigma)'(0)\\ 
+ & = & f'( \sigma(0))\,\sigma'(0)\\ 
+ & = & \lambda f'( \gamma(0))\,\gamma'(0) \\ 
+ & = & \lambda (f\circ \gamma)'(0) \\
+ & := & (\lambda \odot X_{\gamma,p} )(f)  
+\ei
+for any $f\in \mathcal{C}^\infty(U)$. Hence $\lambda \odot X_{\gamma,p}=X_{\sigma,p}\in T_pM$. \qedhere
+\een
+\eq
+
+\br
+We now give a slightly different (but equivalent) definition of $T_pM$. Consider the set of smooth curves
+\bse
+S=\{\gamma\cl I\to M \mid \text{with } I\se \R \text{ open, } 0\in I \text{ and } \gamma(0)=p\}
+\ese
+and define the equivalence relation $\sim$ on $S$
+\bse
+\gamma \sim \delta \ :\eqv \ (x\circ \gamma)'(0) = (x\circ \delta)'(0)  
+\ese
+for some (and hence every) chart $(U,x)$ containing $p$. Then, we can define
+\bse
+T_pM:=S/\!\sim.
+\ese
+\er
+
+\subsection{Algebras and derivations}
+
+Before we continue looking at properties of tangent spaces, we will have a short aside on algebras and derivations.
+
+\bd
+An \emph{algebra}\index{algebra} over a field $K$ is a quadruple $(A,+,\cdot,\bullet)$, where $(A,+,\cdot)$ is a $K$-vector space and $\bullet$ is a \emph{product} on $A$, i.e.\ a ($K$-)bilinear map $\bullet \cl A\times A \to A$.
+\ed
+
+\be
+Define a product on $\mathcal{C}^\infty(M)$ by
+\bi{rrCl}
+\bullet \cl & \mathcal{C}^\infty(M)\times \mathcal{C}^\infty(M) &\to& \mathcal{C}^\infty(M)\\
+& (f,g) & \mapsto & f \bullet g,
+\ei
+where $f \bullet g$ is defined pointwise. Then $(\mathcal{C}^\infty(M),+,\cdot,\bullet)$ is an algebra over $\R$.
+\ee
+The usual qualifiers apply to algebras as well.
+\bd
+An algebra $(A,+,\cdot,\bullet)$ is said to be
+\ben[label=\roman*)]
+\item \emph{associative} if $\ \forall \, v,w,z\in A :  v\bullet (w\bullet z) = (v\bullet w)\bullet z$;
+\item \emph{unital} if $\ \exists \, \mathbf{1} \in A : \forall \, v \in V : \mathbf{1}\bullet v = v \bullet \mathbf{1} = v$;
+\item \emph{commutative} or \emph{abelian} if $\ \forall \, v,w\in A :  v\bullet w = w\bullet v$.
+\een
+\ed
+\be
+Clearly, $(\mathcal{C}^\infty(M),+,\cdot,\bullet)$ is an associative, unital, commutative algebra.
+\ee
+
+An important class of algebras are the so-called Lie algebras, in which the product $v\bullet w$ is usually denoted $[v,w]$.
+
+\bd
+A \emph{Lie algebra}\index{Lie algebra} $A$ is an algebra whose product $[-,-]$, called \emph{Lie bracket}\index{Lie bracket}, satisfies
+\ben[label=\roman*)]
+\item antisymmetry: $\ \forall\, v\in A : [v,v]=0$;
+\item the Jacobi identity\index{Jacobi identity}: $\ \forall\, v,w,z\in A : [v,[w,z]] + [w,[z,v]] + [z,[v,w]] = 0$.
+\een
+Note that the zeros above represent the additive identity element in $A$, not the zero scalar
+\ed
+
+The antisymmetry condition immediately implies $[v,w]=-[w,v]$ for all $v,w\in A$, hence a (non-trivial) Lie algebra cannot be unital.
+
+\be
+Let $V$ be a vector space over $K$. Then $(\End(V),+,\cdot,\circ)$ is an associative, unital, non-commutative algebra over $K$. Define
+\bi{rrCl}
+[-,-] \cl &\End(V)\times \End(V) &\to& \End(V)\\
+&(\phi,\psi) &\mapsto& [\phi,\psi] := \phi\circ\psi-\psi\circ\phi.
+\ei
+It is instructive to check that $(\End(V),+,\cdot,[-,-])$ is a Lie algebra over $K$. In this case, the Lie bracket is typically called the \emph{commutator}\index{commutator}.
+\ee
+
+In general, given an associative algebra $(A,+,\cdot,\bullet)$, if we define 
+\bse
+[v,w]:=v\bullet w-w\bullet v,
+\ese
+then $(A,+,\cdot,[-,-])$ is a Lie algebra.
+
+\bd
+Let $A$ be an algebra. A \emph{derivation}\index{derivation} on $A$ is a linear map $D\cl A \xrightarrow{\sim}A$ satisfying the Leibniz rule
+\bse
+D(v\bullet w ) = D(v) \bullet w + v \bullet D(w)
+\ese
+for all $v,w \in A$.
+\ed
+
+\br
+The definition of derivation can be extended to include maps $A\to B$, with suitable structures. The obvious first attempt would be to consider two algebras $(A,+_A,\cdot_A,\bullet_A)$, $(B,+_B,\cdot_B,\bullet_B)$, and require $D\cl A\xrightarrow{\sim}B$ to satisfy
+\bse
+D(v\bullet_Aw)= D(v)\bullet_Bw +_B v \bullet_B D(w).
+\ese
+However, this is meaningless as it stands since $\bullet_B\cl B\times B \to B$, but on the right hand side $\bullet_B$ acts on elements from $A$ too. In order for this to work, $B$ needs to be a equipped with a product by elements of $A$, both from the left and from the right. The structure we are looking for is called a \emph{bimodule} over $A$, and we will meet this later on. 
+\er
+
+\be
+The usual derivative operator is a derivation on $\mathcal{C}^\infty(\R)$, the algebra of smooth real functions, since it is linear and satisfies the Leibniz rule.
+
+The second derivative operator, however, is not a derivation on $\mathcal{C}^\infty(\R)$, since it does not satisfy the Leibniz rule. This shows that the composition of derivations need not be a derivation.
+\ee
+
+\be
+Consider again the Lie algebra $(\End(V),+,\cdot,[-,-])$ and fix $\xi \in \End(V)$. If we define
+\bi{rrCl}
+D_\xi := [\xi,-] \cl &\End(V) &\xrightarrow{\sim} &\End(V)\\
+& \phi & \mapsto & [\xi,\phi],
+\ei
+then $D_\xi$ is a derivation on $(\End(V),+,\cdot,[-,-])$ since it is linear and
+\bi{rCl"s}
+D_\xi([\phi,\psi]) & := & [\xi,[\phi,\psi]]\\
+& = & -[\psi,[\xi,\phi]] -[\phi,[\psi,\xi]]& (by the Jacobi identity)\\
+& = & [[\xi,\phi],\psi]+[\phi,[\xi,\psi]] & (by antisymmetry)\\
+& =: &  [D_\xi(\phi),\psi]+[\phi,D_\xi(\psi)].
+\ei
+This construction works in general Lie algebras as well.
+\ee
+
+\be
+We denote by $\Der_K(A)$ the set of derivations on a $K$-algebra $(A,+,\cdot,\bullet)$. This set can be endowed with a $K$-vector space structure by defining the operations pointwise but, by a previous example, it cannot be made into an algebra under composition of derivations.
+
+However, derivations are maps, so we can still compose them as maps and define
+\bi{rrCl}
+[-,-] \cl &\Der_K(A)\times \Der_K(A) &\to& \Der_K(A)\\
+&(D_1,D_2) &\mapsto& [D_1,D_2] := D_1\circ D_2-D_2\circ D_1.
+\ei
+The map $[D_1,D_2]$ is (perhaps surprisingly) a derivation, since it is linear and
+\bi{rCl}
+[D_1,D_2](v\bullet w) &:=& (D_1\circ D_2-D_2\circ D_1)(v\bullet w)\\
+&=& D_1( D_2(v\bullet w))-D_2(D_1(v\bullet w))\\
+&=& D_1( D_2(v) \bullet w + v \bullet D_2(w))-D_2(D_1(v) \bullet w + v \bullet D_1(w))\\
+& = &  D_1( D_2(v) \bullet w) + D_1(v \bullet D_2(w))-D_2(D_1(v) \bullet w) - D_2(v \bullet D_1(w))\\
+& = &  D_1( D_2(v)) \bullet w + \Ccancel[gray]{D_2(v) \bullet D_1( w)} + \Ccancel[gray]{D_1(v) \bullet D_2(w)} + v \bullet D_1(D_2(w))\\
+& & \negmedspace {} - D_2(D_1(v)) \bullet w - \Ccancel[gray]{D_1(v)\bullet D_2( w)} - \Ccancel[gray]{D_2(v) \bullet D_1(w)} - v \bullet D_2(D_1(w))\\
+& = &  (D_1( D_2(v))-D_2( D_1(v))) \bullet w + v\bullet (D_1( D_2(w))-D_2( D_1(w))) \\
+& = &  [D_1,D_2](v) \bullet w + v\bullet [D_1,D_2](w)
+\ei
+Then $(\Der_K(A),+,\cdot,[-,-])$ is a Lie algebra over $K$.
+\ee
+
+If we have a manifold, we can define the related notion of derivation on an open subset at a point.
+
+\bd
+Let $M$ be a manifold and let $p\in U \se M$, where $U$ is open. A \emph{derivation on $U$ at $p$} is an $\R$-linear map $D\cl \mathcal{C}^\infty(U)\xrightarrow{\sim}\R$ satisfying the Leibniz rule
+\bse
+D(fg)=D(f)g(p)+f(p)D(g).
+\ese
+We denote by $\Der_p(U)$ the $\R$-vector space of derivations on $U$ at $p$, with operations defined pointwise.
+\ed
+
+\be
+The tangent vector $X_{\gamma,p}$ is a derivation on $U\se M$ at $p$, where $U$ is any neighbourhood of $p$. In fact, our definition of the tangent space is equivalent to
+\bse
+T_pM := \Der_p(U),
+\ese
+for some open $U$ containing $p$. One can show that this does not depend on which neighbourhood $U$ of $p$ we pick.
+\ee
+
+\subsection{A basis for the tangent space}
+
+The following is a crucially important result about tangent spaces.
+
+\begin{theorem}
+Let $M$ be a manifold and let $p\in M$. Then \index{dimension!$\dim T_pM = \dim M$}
+\bse
+\dim T_pM = \dim M.
+\ese
+\end{theorem}
+
+\br
+Note carefully that, despite us using the same symbol, the two ``dimensions'' appearing in the statement of the theorem are, at least on the surface, entirely unrelated. Indeed, recall that $\dim M$ is defined in terms of charts $(U,x)$, with $x\cl U\to x(U)\se \R^{\dim M}$, while $\dim T_pM = |\mathcal{B}|$, where $\mathcal{B}$ is a Hamel basis for the vector space $T_pM$.
+The idea behind the proof is to construct a basis of $T_pM$ from a chart on $M$.
+\er
+
+\bq
+W.l.o.g., let $(U,x)$ be a chart \emph{centred}\index{chart!centred} at $p$, i.e.\ $x(p)=0\in\R^{\dim M}$. Define $(\dim M)$-many curves $\gamma_{(a)}\cl \R \to U$ through $p$ by requiring $(x^b \circ \gamma_{(a)})(t)=\delta^b_a t$, i.e.\
+\bi{rCl}
+\gamma_{(a)}(0) &:=& p\\ 
+\gamma_{(a)}(t) &:=& x^{-1} \circ (0,\ldots,0,t,0,\ldots,0)
+\ei
+where the $t$ is in the $a^\text{th}$ position, with $1\leq a \leq \dim M$. Let us calculate the action of the tangent vector $X_{\gamma_{(a)},p}\in T_pM$ on an arbitrary function $f\in \mathcal{C}^\infty(U)$:
+\bi{rCl}
+X_{\gamma_{(a)},p} (f) & := & (f\circ\gamma_{(a)})'(0)\\
+& = &  (f\circ \id_U \circ \gamma_{(a)})'(0)\\
+& = &  (f\circ x^{-1}\circ x \circ \gamma_{(a)})'(0)\\
+& = &  [\partial_b (f\circ x^{-1})(x(p))] \,  (x^b \circ \gamma_{(a)})'(0)\\
+& = &  [\partial_b (f\circ x^{-1})(x(p))] \,  (\delta^b_at)'(0)\\
+& = &  [\partial_b (f\circ x^{-1})(x(p))] \,  \delta^b_a\\
+& = &  \partial_a (f\circ x^{-1})(x(p))
+\ei
+We introduce a special notation for this tangent vector:
+\bse
+\tvb{x}{a}{p}\index{$\bigl(\frac{\partial}{\partial x^a}\bigr)_p$} := X_{\gamma_{(a)},p},
+\ese
+where the $x$ refers to the chart map. We now claim that
+\bse
+\mathcal{B} = \biggl\{ \tvb{x}{a}{p} \in T_pM \ \Big| \ 1\leq a \leq \dim M\biggr\}
+\ese
+is a basis of $T_pM$. First, we show that $\mathcal{B}$ spans $T_pM$.
+
+Let $X\in T_pM$. Then, by definition, there exists some smooth curve $\sigma$ through $p$ such that $X=X_{\sigma,p}$. For any $f\in \mathcal{C}^\infty(U)$, we have
+\bi{rCl}
+X(f) & = & X_{\sigma,p}(f)\\
+& := & (f\circ\sigma)'(0)\\
+& = &  (f\circ x^{-1}\circ x \circ \sigma)'(0)\\
+& = &  [\partial_b (f\circ x^{-1})(x(p))] \,  (x^b \circ \sigma)'(0)\\
+& = &  (x^b \circ \sigma)'(0) \tvb{x}{b}{p} (f).
+\ei
+Since $(x^b \circ \sigma)'(0)=:X^b\in\R$, we have:
+\bse
+X = X^b \tvb{x}{b}{p} ,
+\ese
+i.e.\ any $X\in T_pM$ is a linear combination of elements from $\mathcal{B}$.
+
+To show linear independence, suppose that 
+\bse
+\lambda^a \tvb{x}{a}{p} = 0,
+\ese
+for some scalars $\lambda^a$. Note that this is an operator equation, and the zero on the right hand side is the zero operator $0\in T_pM$.
+
+Recall that, given the chart $(U,x)$, the coordinate maps $x^b\cl U \to \R$ are smooth, i.e.\ $x^b\in \mathcal{C}^\infty(U)$. Thus, we can feed them into the left hand side to obtain
+\bi{rCl}
+0 & = & \lambda^a \tvb{x}{a}{p} (x^b)\\
+& = & \lambda^a\, \partial_a (x^b\circ x^{-1})(x(p))\\
+& = & \lambda^a\, \partial_a (\proj_b)(x(p))\\
+& = & \lambda^a \delta^b_a\\
+& = & \lambda^b
+\ei
+i.e.\ $\lambda^b=0$ for all $1\leq b \leq \dim M$. So $\mathcal{B}$ is indeed a basis of $T_pM$, and since by construction $|\mathcal{B}|=\dim M$, the proof is complete. 
+\eq
+
+\br
+While it is possible to define infinite-dimensional manifolds, in this course we will only consider finite-dimensional ones. Hence $\dim T_pM=\dim M$ will always be finite in this course.
+\er
+
+\br
+Note that the basis that we have constructed in the proof is \emph{not} chart-independent. Indeed, each different chart will induce a different tangent space basis, and we distinguish between them by keeping the chart map in the notation for the basis elements.
+
+This is not a cause of concern for our proof however, since every basis of a vector space must have the same cardinality, and hence it suffices to find one basis to determine the dimension. 
+\er
+
+\br
+While the symbol $\tvb{x}{a}{p}$ has nothing to do with the idea of partial differentiation with respect to the variable $x^a$, it is notationally consistent with it, in the following sense.
+
+Let $M=\R^d$, $(U,x)=(\R^d,\id_{\R^d})$ and let $\tvb{x}{a}{p}\in T_p\R^d$. If $f\in \mathcal{C}^\infty(\R^d)$, then
+\bse
+\tvb{x}{a}{p} (f) = \partial_a(f\circ x^{-1})(x(p)) = \partial_a f(p),
+\ese
+since $x=x^{-1}=\id_{\R^d}$. Moreover, we have $\proj_a=x^a$. Thus, we can think of $x^1,\ldots,x^d$ as the independent variables of $f$, and we can then write
+\bse
+\tvb{x}{a}{p} (f) = \frac{\partial f}{\partial x^a}(p).
+\ese
+\er
+
+\bd
+Let $X\in T_pM$ be a tangent vector and let $(U,x)$ be a chart containing $p$. If
+\bse
+X = X^a \tvb{x}{a}{p} ,
+\ese
+then the real numbers $X^1,\ldots,X^{\dim M}$ are called the \emph{components}\index{components} of $X$ with respect to the tangent space basis induced by the chart $(U,x)$. The basis $\{\tvb{x}{a}{p}\}$ is also called a \emph{co-ordinate basis}.
+\ed
+
+\bp
+Let $X\in T_pM$ and let $(U,x)$ and $(V,y)$ be two charts containing $p$. Then we have
+\bse
+\tvb{x}{a}{p}= \partial_a(y^b\circ x^{-1})(x(p))\tvb{y}{b}{p}
+\ese
+\ep
+
+\bq
+Assume w.l.o.g.\ that $U=V$. Since $\tvb{x}{a}{p}\in T_pM$ and $\{\tvb{x}{a}{p}\}$ forms a basis, we must have
+\bse
+\tvb{x}{a}{p} = \lambda^b \tvb{y}{b}{p}
+\ese
+for some $\lambda^b$. Let us determine what the $\lambda^b$ are by applying both sides of the equation to the coordinate maps $y^c$:
+\bi{rCl}
+\tvb{x}{a}{p} (y^c) &=& \partial_a(y^c\circ x^{-1})(x(p));\\
+\lambda^b\tvb{y}{b}{p} (y^c) &=& \lambda^b\, \partial_b(y^c\circ y^{-1})(y(p))\\
+&=& \lambda^b\, \partial_b(\proj_c)(y(p))\\
+&=& \lambda^b\, \delta^c_b\\
+&=& \lambda^c.
+\ei
+Hence
+\bse
+\lambda^c = \partial_a(y^c\circ x^{-1})(x(p)).
+\ese
+Substituting this expression for $\lambda^c$ gives the result.
+\eq
+
+\bc
+Let $X\in T_pM$ and let $(U,x)$ and $(V,y)$ be two charts containing $p$. Denote by $X^a$ and $\widetilde X^a$ the coordinates of $X$ with respect to the tangent bases induced by the two charts, respectively. Then we have:
+\bse
+\widetilde X^a = \partial_b(y^a\circ x^{-1})(x(p)) \, X^b.
+\ese
+\ec
+\bq
+Applying the previous result,
+\bse
+X = X^a \tvb{x}{a}{p} = X^a \, \partial_a(y^b\circ x^{-1})(x(p))\tvb{y}{b}{p}.
+\ese
+Hence, we read-off $\widetilde X^b = \partial_a(y^b\circ x^{-1})(x(p)) \, X^a$.
+\eq
+
+\br
+By abusing notation, we can write the previous equations in a more familiar form. Denote by $y^b$ the maps $y^b\circ x^{-1}\cl x(U)\se\R^{\dim M}\to\R$; these are real functions of $\dim M$ independent real variables. Since here we are only interested in what happens at the point $p\in M$, we can think of the maps $x^1,\ldots,x^{\dim M}$ as the independent variables of each of the $y^b$.
+
+This is a general fact: if $\{*\}$ is a singleton (we let $*$ denote its unique element) and $x\cl\{*\}\to A$, $y\cl A \to B$ are maps, then $y\circ x$ is the same as the map $y$ with independent variable $x$. Intuitively, $x$ just ``chooses'' an element of $A$.
+
+Hence, we have $y^b = y^b(x^1,\ldots,x^{\dim M})$ and we can write
+\bse
+\tvb{x}{a}{p}= \frac{\partial y^b}{\partial x^a}(x(p))\tvb{y}{b}{p} \qquad \text{and} \qquad \widetilde X^b = \frac{\partial y^b}{\partial x^a}(x(p)) \, X^a,
+\ese
+which correspond to our earlier $e_a=A^{b}_{\phantom{b}a}\widetilde e_b$ and $\widetilde v^b=A^b_{\phantom{b}a}v^a$. The function $y=y(x)$ expresses the new co-ordinates\index{co-ordinates} in terms of the old ones, and $A^{b}_{\phantom{b}a}$ is the \emph{Jacobian}\index{Jacobian matrix} matrix of this map, evaluated at $x(p)$. The inverse transformation, of course, is given by
+\bse
+B^b_{\phantom{b}a} = (A^{-1})^b_{\phantom{b}a} = \frac{\partial x^b}{\partial y^a}(y(p)).
+\ese
+\er
+
+\br
+The formula for change of components of vectors under a change of chart suggests yet another way to define the tangent space to $M$ at $p$.
+
+Let $\mathscr{A}_p:\{(U,x)\in \mathscr{A}\mid p \in U\}$ be the set of charts on $M$ containing $p$. A \emph{tangent vector} $v$ at $p$ is a map
+\bse
+v\cl \mathscr{A}_p \to \R^{\dim M}
+\ese
+satisfying
+\bse
+v((V,y)) = A\, v((U,x))
+\ese
+where $A$ is the Jacobian matrix of $y\circ x^{-1}\cl\R^{\dim M}\to\R^{\dim M}$ at $x(p)$. In components, we have
+\bse
+[v((V,y))]^b = \frac{\partial y^b}{\partial x^a}(x(p)) \, [v((U,x))]^a.
+\ese
+The tangent space $T_pM$ is then defined to be the set of all tangent vectors at $p$, endowed with the appropriate vector space structure.
+
+What we have given above is the mathematically rigorous version of the definition of vector typically found in physics textbooks, i.e.\ that a vector is a ``set of numbers'' $v^a$ which, under a change of coordinates $y=y(x)$, transform as
+\bse
+\widetilde v^b = \frac{\partial y^b}{\partial x^a} \, v^a.
+\ese
+
+For a comparison of the different definitions of $T_pM$  that we have presented and a proof of their equivalence, refer to Chapter 2 of \emph{Vector Analysis}, by Klaus J\"anich.
+\er
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
