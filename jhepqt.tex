@@ -21,7 +21,7 @@
 
 \usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts,xfrac,pifont} % For including math equations, theorems, symbols, etc
 
-\usepackage{varioref} % More descriptive referencing
+\usepackage{cleveref} % More descriptive referencing
 
 %page margins and paragraph indentation
 %\usepackage{geometry}
@@ -38,9 +38,14 @@
 \usepackage[retainorgcmds]{IEEEtrantools}
 \usepackage{etoolbox}
 %\usepackage{mathtools}
-\usepackage{xcolor,tikz}
+\usepackage{emerald,xcolor,tikz,pgfplots}
+\definecolor{lightergray}{rgb}{0.9,0.9,0.9}
 
-\usetikzlibrary{matrix,calc,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
+
+
+\usepackage{soul}
+
+\usetikzlibrary{matrix,calc,positioning,decorations.markings,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
 \usetikzlibrary{arrows,cd}
 \usepackage{bbding}
 \usetikzlibrary{positioning}
@@ -162,19 +167,12 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 
 
 
-
 \begin{document} 
 
 \rule{0cm}{2cm}\\
 \includegraphics[width=14cm]{faulogo}
 
 \maketitle
-%\flushbottom
-
-%\acknowledgments
-
-%This is the most common positions for acknowledgments. A macro is
-%available to maintain the same layout and spelling of the heading.
 
 
 

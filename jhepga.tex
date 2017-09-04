@@ -38,12 +38,14 @@
 \usepackage[retainorgcmds]{IEEEtrantools}
 \usepackage{etoolbox}
 %\usepackage{mathtools}
-\usepackage{emerald,xcolor,tikz}
+\usepackage{emerald,xcolor,tikz,pgfplots}
+\definecolor{lightergray}{rgb}{0.9,0.9,0.9}
+
 
 
 \usepackage{soul}
 
-\usetikzlibrary{matrix,calc,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
+\usetikzlibrary{matrix,calc,positioning,decorations.markings,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
 \usetikzlibrary{arrows,cd}
 \usepackage{bbding}
 \usetikzlibrary{positioning}
@@ -172,10 +174,8 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 % \includegraphics[width=14cm]{faulogo}
 % \maketitle
 
-
 % \section*{Introduction}
 % \addcontentsline{toc}{section}{Introduction}
-% \markright{Introduction}
 % \input{ga/00intro}
 % \newpage
 
@@ -223,28 +223,27 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 % \input{ga/11tensor_ii}
 % \newpage
 
-
 % \section{Grassmann algebra and de Rham cohomology}
 % \input{ga/12grassmann}
 % \newpage
-
-% \setcounter{section}{12}
 
 % \section{Lie groups and their Lie algebras}
 % \input{ga/13lie_groups}
 % \newpage
 
-\section{Classification of Lie algebras and Dynkin diagrams}
-\input{ga/14classification}
+% \section{Classification of Lie algebras and Dynkin diagrams}
+% \input{ga/14classification}
+% \newpage
+
+% \section{The Lie group \texorpdfstring{$\SL(2,\C)$}{SL(2,C)} and its Lie algebra \texorpdfstring{$\sl(2,\C)$}{sl(2,C)}}
+% \input{ga/15sl2}
+% \newpage
+
+\setcounter{section}{15}
+
+\section{Dynkin diagrams from Lie algebras, and vice versa}
+\input{ga/16dynkin}
 \newpage
-
-% \section{The Lie group $SL(2,\C)$ and its Lie algebra $\mathfrak{sl}(2,\C)$}
-%\input{ga/15sl2}
-%\newpage
-
-% \section{Dynkin diagrams from Lie algebras, and vice versa}
-
-
 
 % \section{Representation theory of Lie groups and Lie algebras}
 
