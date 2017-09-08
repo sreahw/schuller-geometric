@@ -1,0 +1,505 @@
+
+Lie groups and Lie algebras are used in physics mostly in terms of what are called representations. Very often they are even defined in terms of their concrete representations. We took a more abstract approach by defining a Lie group as a smooth manifold with a compatible group structure, and its associated Lie algebra as the space of left-invariant vector fields, which we then showed to be isomorphic to the tangent space at the identity.
+
+\subsection{Representations of Lie algebras}
+
+\bd
+Let $L$ be a Lie algebra. A \emph{representation}\index{representation} of $L$ is a Lie algebra homomorphism
+\bse
+\rho\cl L \xrightarrow{\sim} \End(V),
+\ese
+where $V$ is some finite-dimensional vector space over the same field as $L$.
+\ed
+Recall that a linear map $\rho\cl L \xrightarrow{\sim} \End(V)$ is a Lie algebra homomorphism if
+\bse
+\forall \, x,y\in L : \ \rho([x,y]) = [\rho(x),\rho(y)]:=\rho(x)\circ\rho(y)-\rho(y)\circ\rho(x),
+\ese
+where the right hand side is the natural Lie bracket on $\End(V)$.
+
+\bd
+Let $\rho\cl L \xrightarrow{\sim}\End(V)$ be a representation of $L$.
+\ben[label=\roman*)]
+\item The vector space $V$ is called the \emph{representation space} of $\rho$.
+\item The \emph{dimension}\index{dimension!representation} of the representation $\rho$ is $\dim V$.
+\een
+\ed
+
+\be
+Consider the Lie algebra $\sl(2,\C)$. We constructed a basis $\{X_1,X_2,X_3\}$ satisfying the relations
+\bi{rCl}
+[X_1,X_2] & = & 2X_2,\\
+{[X_1,X_3]} & = & -2X_3,\\
+{[X_2,X_3]} & = & X_1.
+\ei
+Let $\rho\cl\sl(2,\C)\xrightarrow{\sim}\End(\C^2)$ be the linear map defined by
+\bse
+\rho(X_1) := \biggl(\begin{matrix}1& 0\\ 0 & -1\end{matrix}\biggr), \qquad \rho(X_2) := \biggl(\begin{matrix}0& 1\\ 0 & 0\end{matrix}\biggr), \qquad \rho(X_3) := \biggl(\begin{matrix}0& 0\\ 1 & 0\end{matrix}\biggr)
+\ese
+(recall that a linear map is completely determined by its action on a basis, by linear continuation). To check that $\rho$ is a representation of $\sl(2,\C)$, we calculate
+\bi{rCl}
+[\rho(X_1),\rho(X_2)] & = & \biggl(\begin{matrix}1& 0\\ 0 & -1\end{matrix}\biggr)\biggl(\begin{matrix}0& 1\\ 0 & 0\end{matrix}\biggr)-\biggl(\begin{matrix}0& 1\\ 0 & 0\end{matrix}\biggr)\biggl(\begin{matrix}1& 0\\ 0 & -1\end{matrix}\biggr)\\
+%& = & \biggl(\begin{matrix}0& 1\\ 0 & 0\end{matrix}\biggr)-\biggl(\begin{matrix}0& -1\\ 0 & 0\end{matrix}\biggr)\\
+& = & \biggl(\begin{matrix}0& 2\\ 0 & 0\end{matrix}\biggr)\\
+& = &\rho(2X_2)\\
+& = &\rho([X_1,X_2]).
+\ei
+Similarly, we find
+\bi{rCl}
+[\rho(X_1),\rho(X_3)] & = & \rho([X_1,X_3]),\\
+{[\rho(X_2),\rho(X_3)]} & = & \rho([X_2,X_3]).
+\ei
+By linear continuation, $\rho([x,y]) = [\rho(x),\rho(y)]$ for any $x,y\in \sl(2,\C)$ and hence, $\rho$ is a $2$-dimensional representation of $\sl(2,\C)$ with representation space $\C^2$. Note that we have
+\bi{rCl}
+\im_\rho(\sl(2,\C)) & = & \biggl\{ \biggl(\begin{matrix}a& b\\ c & d\end{matrix}\biggr) \in \End(\C^2) \ \Big| \ a+d = 0 \biggr\}\\[3pt]
+& = & \{\phi\in\End(\C^2)\mid \tr \phi = 0\}.
+\ei
+This is how $\sl(2,\C)$ is often defined in physics courses, i.e.\ as the algebra of $2\times 2$ complex traceless matrices.
+\ee
+
+Two representations of a Lie algebra can be related in the following sense.
+
+\bd
+Let $L$ be a Lie algebra and let 
+\bse
+\rho_1\cl L \xrightarrow{\sim} \End(V_1), \qquad 
+\rho_2\cl L \xrightarrow{\sim} \End(V_2)
+\ese
+be representations of $L$. A linear map $f\cl V_1\xrightarrow{\sim}V_2$ is a \emph{homomorphism of representations} if
+\bse
+\forall \, x \in L : \ f\circ \rho_1(x) = \rho_2(x)\circ f.
+\ese
+Equivalently, if the following diagram commutes for all $x\in L$.
+\bse
+\begin{tikzcd}
+V_1 \ar[rr,"f"] \ar[dd,"\rho_1(x)"']&& V_2\ar[dd,"\rho_2(x)"]\\
+&&\\
+V_1\ar[rr,"f"] && V_2
+\end{tikzcd}
+\ese
+\ed
+If in addition $f\cl V_1\xrightarrow{\sim}V_2$ is a linear isomorphism, then $f^{-1}\cl V_2\xrightarrow{\sim}V_1$ is automatically a homomorphism of representations, since
+\bi{rCl}
+f\circ \rho_1(x) = \rho_2(x)\circ f &\ \Leftrightarrow\ & f^{-1}\circ (f\circ \rho_1(x)) \circ f^{-1} = f^{-1}\circ(\rho_2(x)\circ f)\circ f^{-1} \\
+& \Leftrightarrow & \rho_1(x) \circ f^{-1} = f^{-1}\circ\rho_2(x).
+\ei
+\bd
+An \emph{isomorphism of representations}\index{isomorphism!of representations} of Lie algebras is a bijective homomorphism of representations.
+\ed
+Isomorphic representations necessarily have the same dimension.
+\be
+Consider $\so(3,\R)$, the Lie algebra of the rotation group $\SO(3,\R)$. It is a $3$-dimensional Lie algebra over $\R$. It has a basis $\{J_1,J_2,J_3\}$ satisfying
+\bse
+[J_i,J_j] = C^{k}_{\phantom{k}ij} J_k,
+\ese
+where the structure constants $C^{k}_{\phantom{k}ij}$ are defined by first ``pulling the index $k$ down'' using the Killing form $\kappa_{ab}=C^{m}_{\phantom{m}an} C^{n}_{\phantom{n}bm}$ to obtain $C_{kij}:=\kappa_{km} C^{m}_{\phantom{m}ij}$, and then setting
+\bse
+C_{kij}:= \varepsilon_{ijk} := \begin{cases}\ 1 & \text{ if $(i\, j\, k)$ is an even permutation of $(1\, 2\, 3)$} \\
+-1 & \text{ if $(i\, j\, k)$ is an odd permutation of $(1\, 2\, 3)$}\\
+\ 0 & \text{ otherwise}.\end{cases}
+\ese
+By evaluating these, we find
+\bi{rCl}
+[J_1,J_2] & = & J_3,\\
+{[J_2,J_3]} & = & J_1,\\
+{[J_3,J_1]} & = & J_2.
+\ei
+Define a linear map $\rho_{\mathrm{vec}}\cl\so(3,\R)\xrightarrow{\sim}\End(\R^3)$ by
+\bse
+\rho_{\mathrm{vec}}(J_1) := \begin{pmatrix}0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0\end{pmatrix}, \qquad \rho_{\mathrm{vec}}(J_2) := \begin{pmatrix}0 & 0 & 1\\ 0 & 0 & 0\\ -1 & 0 & 0\end{pmatrix}, \qquad \rho_{\mathrm{vec}}(J_3) :=\begin{pmatrix}0 & -1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0\end{pmatrix}.
+\ese
+You can easily check that this is a representation of $\so(3,\R)$. However, as you may be aware from quantum mechanics, there is another representation of $\so(3,\R)$, namely
+\bse
+\rho_{\mathrm{spin}}\cl\so(3,\R)\xrightarrow{\sim}\End(\C^2),
+\ese
+with $\C^2$ understood as a $4$-dimensional $\R$-vector space, defined by
+\bse
+\rho_{\mathrm{spin}}(J_1) := -\frac{\mathrm{i}}{2}\, \sigma_1, \qquad \rho_{\mathrm{spin}}(J_2) := -\frac{\mathrm{i}}{2}\, \sigma_2, \qquad \rho_{\mathrm{spin}}(J_3) := -\frac{\mathrm{i}}{2}\, \sigma_3,
+\ese
+where $\sigma_1,\sigma_2,\sigma_3$ are the Pauli matrices
+\bse
+\sigma_1 = \biggl(\begin{matrix}0& 1\\ 1 & 0\end{matrix}\biggr), \qquad \sigma_2 = \biggl(\begin{matrix}0& -\mathrm{i}\\ \mathrm{i} & 0\end{matrix}\biggr), \qquad
+\sigma_3 = \biggl(\begin{matrix}1& 0\\ 0 & -1\end{matrix}\biggr).
+\ese
+You can again check that this is a representation of $\so(3,\R)$. Since
+\bse
+\dim \R^3 = 3 \neq 4 = \dim \C^2,
+\ese
+the representations $\rho_{\mathrm{vec}}$ and $\rho_{\mathrm{spin}}$ are not isomorphic. 
+\ee
+Any (non-abelian) Lie algebra always has at least two special representations.
+
+\bd
+Let $L$ be a Lie algebra.  A \emph{trivial representation} of $L$ is defined by
+\bi{rrCl}
+\rho_{\mathrm{trv}} \cl & L & \xrightarrow{\sim} & \End(V)\\
+& x & \mapsto & \rho_{\mathrm{trv}}(x) := 0,
+\ei
+where $0$ denotes the trivial endomorphism on $V$.
+\ed
+\bd
+The \emph{adjoint representation}\index{adjoint representation} of $L$ is
+\bi{rrCl}
+\rho_{\mathrm{adj}} \cl & L & \xrightarrow{\sim} & \End(L)\\
+& x & \mapsto & \rho_{\mathrm{adj}}(x) := \ad(x).
+\ei
+\ed
+
+These are indeed representations since we have already shown that $\ad$ is a Lie algebra homomorphism, while for the trivial representations we have
+\bse
+\forall\, x,y \in L : \ \rho_\mathrm{trv}([x,y]) = 0 = [\rho_\mathrm{trv}(x),\rho_\mathrm{trv}(y)].
+\ese
+
+\bd
+A representation $\rho\cl L \xrightarrow{\sim} \End(V)$ is called \emph{faithful} if $\rho$ is injective, i.e.\
+\bse
+\dim(\im_\rho(L)) = \dim L.
+\ese
+\ed
+
+\be
+All representations considered so far are faithful, except for the trivial representations whenever the Lie algebra $L$ is not itself trivial. Consider, for instance, the adjoint representation. We have
+\bi{rCl}
+\ad(x) = \ad(y) & \Leftrightarrow & \forall \, z \in L :  \ad(x)z = \ad(y)z\\
+ & \Leftrightarrow & \forall \, z \in L :  [x,z] = [y,z]\\
+ & \Leftrightarrow & \forall \, z \in L :  [x-y,z] = 0.
+\ei
+If $L$ is trivial, then any representation is faithful. Otherwise, there is some non-zero $z\in L$, hence we must have $x-y=0$, so $x=y$, and thus $\ad$ is injective.
+\ee
+
+\bd
+Given two representations $\rho_1\cl L \xrightarrow{\sim} \End(V_1)$,  $\rho_2\cl L \xrightarrow{\sim} \End(V_2)$, we can construct nue representations called
+\ben[label=\roman*)]
+\item the \emph{direct sum representation}
+\bi{rrCl}
+\rho_1\oplus \rho_2 \cl & L &\xrightarrow{\sim} &\End(V_1\oplus V_2)\\
+& x & \mapsto & (\rho_1\oplus \rho_2) (x)  := \rho_1(x)\oplus \rho_2(x)
+\ei
+\item the \emph{tensor product representation}
+\bi{rrCl}
+\rho_1\otimes \rho_2 \cl & L &\xrightarrow{\sim} &\End(V_1\times V_2)\\
+& x & \mapsto & (\rho_1\otimes \rho_2) (x)  := \rho_1(x)\otimes \id_{V_2}+\id_{V_1}\otimes \rho_2(x).
+\ei
+\een
+\ed
+
+\be
+The direct sum representation $\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}}\cl \so(3,\R)\xrightarrow{\sim}\End(\R^3\oplus\C^2)$ given in block-matrix form by
+\bse
+(\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}})(x) = \left(\begin{array}{c|c} \rho_{\mathrm{vec}}(x) & 0 \\ \hline 0 & \rho_{\mathrm{spin}}(x)\end{array}\right)
+\ese
+is a $7$-dimensional representation of $\so(3,\R)$.
+\ee
+
+\bd
+A representation $\rho\cl L \xrightarrow{\sim} \End(V)$ is called \emph{reducible} if there exists a non-trivial vector subspace $U\se V$ which is invariant under the action of $\rho$, i.e.\
+\bse
+\forall \, x\in L: \forall \, u\in U : \ \rho(x)u\in U.
+\ese
+In other words, $\rho$ restricts to a representation $\rho|_U\cl L \xrightarrow{\sim} \End(U)$. 
+\ed
+\bd
+A representation is \emph{irreducible} if it is not reducible.
+\ed
+\be
+\ben[label=\roman*)]
+\item The representation $\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}}\cl \so(3,\R)\xrightarrow{\sim}\End(\R^3\oplus\C^2)$ is reducible since, for example, we have a subspace $\R^3\oplus 0$ such that
+\bse
+\forall \, x \in \so(3,\R): \forall \, u\in \R^3\oplus 0 : \ (\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}}) (x)u\in\R^3\oplus 0.
+\ese
+\item The representations $\rho_{\mathrm{vec}}$ and $\rho_{\mathrm{spin}}$ are both irreducible.
+\een
+\ee
+
+\br
+Just like the simple Lie algebras are the building blocks of all semi-simple Lie algebras, the irreducible representations of a semi-simple Lie algebra are the building blocks of all finite-dimensional representations of the Lie algebra. Any such representation con be decomposed as the direct sum of irreducible representations, which can then be classified according to their so-called \emph{highest weights}.
+\er
+
+\subsection{The Casimir operator}
+
+To every representation $\rho$ of a compact Lie algebra (i.e.\ the Lie algebra of a compact Lie group) there is associated an operator $\Omega_\rho$, called the Casimir operator. We will need some preparation in order to define it.
+
+\bd
+Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a representation of a complex Lie algebra $L$. We define the \emph{$\rho$-Killing form}\index{Killing form} on $L$ as 
+\bi{rrCl}
+\kappa_\rho \cl & L \times L & \xrightarrow{\sim} & \C\\
+& (x,y) & \mapsto & \kappa_\rho(x,y) := \tr(\rho(x)\circ\rho(y)).
+\ei
+\ed
+Of course, the Killing form we have considered so far is just $\kappa_{\ad}$. Similarly to $\kappa_{\ad}$, every $\kappa_\rho$ is symmetric and associative with respect to the Lie bracket of $L$. 
+\bp
+Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a faithful representation of a complex semi-simple Lie algebra $L$. Then, $\kappa_\rho$ is non-degenerate.
+\ep
+Hence, $\kappa_\rho$ induces an isomorphism $L\xrightarrow{\sim}L^*$ via
+\bse
+L \ni x \mapsto \kappa_\rho(x,-) \in L^*.
+\ese
+Recall that if $\{X_1,\ldots,X_{\dim L}\}$ is a basis of $L$, then the dual basis $\{\widetilde X^1,\ldots,\widetilde X^{\dim L}\}$ of $L^*$ is defined by
+\bse
+\widetilde X^i(X_j) = \delta_j^i.
+\ese
+By using the isomorphism induced by $\kappa_\rho$, we can find some $\xi_1,\ldots,\xi_{\dim L}\in L$ such that we have $\kappa(\xi_i,-)=\widetilde X^i$ or, equivalently,
+\bse
+\forall \, x\in L : \ \kappa_{\rho}(x,\xi_i) = \widetilde X^i(x).
+\ese
+We thus have
+\bse
+\kappa_\rho(X_i,\xi_j) = \delta_{ij} := \begin{cases}1 & \text{if }i\neq j\\ 0 & \text{otherwise.}\end{cases}
+\ese
+
+\bp
+Let $\{X_i\}$ and $\{\xi_j\}$ be defined as above. Then
+\bse
+[X_j,\xi_k] = \sum_{m = 1}^{\dim L} C^{k}_{\phantom{k}mj}\xi_m, 
+\ese
+where $C^{k}_{\phantom{k}mj}$ are the structure constants with respect to $\{X_i\}$.
+\ep
+
+\bq
+By using the associativity of $\kappa_\rho$, we have
+\bse
+\kappa_\rho(X_i,[X_j,\xi_k]) = \kappa_\rho([X_i,X_j],\xi_k) = C^{m}_{\phantom{m}ij} \kappa_\rho(X_m,\xi_k) = C^{m}_{\phantom{m}ij} \delta_{mk} = C^{k}_{\phantom{k}ij}.
+\ese
+But we also have
+\bse
+\kappa_\rho\Bigl(X_i,\sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj} \xi_m \Bigr) = \sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj} \kappa_\rho(X_i,\xi_m)  = \sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj} \delta_{im} = C^{k}_{\phantom{k}ij}.
+\ese
+Therefore
+\bse
+\forall \, 1\leq i \leq \dim L : \ \kappa_\rho\Bigl(X_i,[X_j,\xi_k]-\sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj} \xi_m \Bigr) = 0
+\ese
+and hence, the result follows from the non-degeneracy of $\kappa_{\rho}$.
+\eq
+We are now ready to define the Casimir operator and prove the subsequent theorem.
+\bd
+Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a faithful representation of a complex (compact) Lie algebra $L$  and let $\{X_1,\ldots,X_{\dim L}\}$ be a basis of $L$. The \emph{Casimir operator}\index{Casimir operator} associated to the representation $\rho$ is the endomorphism $\Omega_\rho\cl V \xrightarrow{\sim} V$
+\bse
+\Omega_\rho := \sum_{i=1}^{\dim L} \rho(X_i) \circ \rho(\xi_i).
+\ese
+\ed
+
+\begin{theorem}
+Let $\Omega_\rho$ the Casimir operator of a representation $\rho\cl L \xrightarrow{\sim} \End(V)$. Then
+\bse
+\forall \, x \in L : \ [\Omega_\rho,\rho(x)] = 0,
+\ese
+that is, $\Omega_\rho$ commutes with every endomorphism in $\im_\rho(L)$.
+\end{theorem}
+
+\bq
+Note that the bracket above is that on $\End(V)$. Let $x=x^kX_k\in L$. Then
+\bi{rCl}
+[\Omega_\rho,\rho(x)] & = &  \biggl[\, \sum_{i=1}^{\dim L} \rho(X_i) \circ \rho(\xi_i), \rho(x^kX_k)\biggr]\\
+& = & \sum_{i,k=1}^{\dim L} x^k [\rho(X_i) \circ \rho(\xi_i), \rho(X_k)].
+\ei
+Observe that if the Lie bracket as the commutator with respect to an associative product, as is the case for $\End(V)$, we have
+\bi{rCl}
+[AB,C] & = & ABC - CBA \\
+& = & ABC - CBA -ACB +ACB \\
+& = & A[B,C] + [A,C]B. 
+\ei
+Hence, by applying this, we obtain
+\bi{rCl}
+\sum_{i,k=1}^{\dim L} x^k [\rho(X_i) \circ \rho(\xi_i), \rho(X_k)] & = & \sum_{i,k=1}^{\dim L} x^k \bigl(\rho(X_i) \circ [\rho(\xi_i), \rho(X_k)]+[\rho(X_i) , \rho(X_k)]\circ \rho(\xi_i)\bigr)\\
+ & = & \sum_{i,k=1}^{\dim L} x^k \bigl(\rho(X_i) \circ \rho([\xi_i, X_k])+\rho([X_i,X_k])\circ \rho(\xi_i)\bigr)\\
+ & = & \sum_{i,k,m=1}^{\dim L} x^k \bigl(\rho(X_i) \circ \rho(-C^{i}_{\phantom{i}mk}\xi_m)+\rho(C^{m}_{\phantom{m}ik}X_m)\circ \rho(\xi_i)\bigr)\\
+ & = & \sum_{i,k,m=1}^{\dim L} x^k \bigl(-C^{i}_{\phantom{i}mk}\rho(X_i) \circ \rho(\xi_m)+C^{m}_{\phantom{m}ik}\rho(X_m)\circ \rho(\xi_i)\bigr)\\
+ & = & \sum_{i,k,m=1}^{\dim L} x^k \bigl(-C^{i}_{\phantom{i}mk}\rho(X_i) \circ \rho(\xi_m)+C^{i}_{\phantom{i}mk}\rho(X_i)\circ \rho(\xi_m)\bigr)\\
+& = & 0,
+\ei
+after swapping the dummy summation indices $m$ and $i$ in the second term.
+\eq
+
+\begin{lemma}[Schur]
+If $\rho\cl L \xrightarrow{\sim} \End(V)$ is irreducible, then any operator $S$ which commutes with every endomorphism in $\im_\rho(L)$ has the form
+\bse
+S = c_\rho \id_V
+\ese
+for some constant $c_\rho\in \C$ (or $\R$, if $L$ is a real Lie algebra).
+\end{lemma}
+It follows immediately that $\Omega_\rho = c_\rho \id_V$ for some $c_\rho$ but, in fact, we can say more.
+\bp
+The Casimir operator of $\rho\cl L \xrightarrow{\sim} \End(V)$ is $\Omega_\rho = c_\rho \id_V$, where
+\bse
+c_\rho = \frac{\dim L}{\dim V}.
+\ese
+\ep
+\bq
+We have
+\bse
+\tr(\Omega_\rho) = \tr(c_\rho\id_V) = c_\rho \dim V
+\ese
+and
+\bi{rCl}
+\tr(\Omega_\rho) & = & \tr \biggl(\, \sum_{i=1}^{\dim L} \rho(X_i) \circ \rho(\xi_i) \biggr)\\
+ & = &  \sum_{i=1}^{\dim L} \tr(\rho(X_i) \circ \rho(\xi_i) )\\
+ & = &  \sum_{i=1}^{\dim L} \kappa_\rho(X_i,\xi_i)\\
+ & = &  \sum_{i=1}^{\dim L} \delta_{ii}\\
+ & = &  \dim L ,
+\ei
+which is what we wanted.
+\eq
+
+\be
+Consider the Lie algebra $\so(3,\R)$ with basis $\{J_1,J_2,J_3\}$ satisfying
+\bse
+[J_i,J_j] = \varepsilon_{ijk}J_k,
+\ese
+where we assume the summation convention on the lower index $k$. Recall that the representation $\rho_{\mathrm{vec}}\cl\so(3,\R)\xrightarrow{\sim}\End(\R^3)$ is defined by
+\bse
+\rho_{\mathrm{vec}}(J_1) := \begin{pmatrix}0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0\end{pmatrix}, \qquad \rho_{\mathrm{vec}}(J_2) := \begin{pmatrix}0 & 0 & 1\\ 0 & 0 & 0\\ -1 & 0 & 0\end{pmatrix}, \qquad \rho_{\mathrm{vec}}(J_3) :=\begin{pmatrix}0 & -1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0\end{pmatrix}.
+\ese
+Let us first evaluate the components of $\kappa_{\rho_{\mathrm{vec}}}$. We have
+\bi{rCl}
+(\kappa_{\rho_{\mathrm{vec}}})_{11} := \kappa_{\rho_{\mathrm{vec}}}(J_1,J_1) & = & \tr(\rho_{\mathrm{vec}}(J_1)\circ \rho_{\mathrm{vec}}(J_1)) \\
+& = & \tr((\rho_{\mathrm{vec}}(J_1))^2)\\
+& = & \tr\begin{pmatrix}0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0\end{pmatrix}^{\negmedspace 2}\\
+& = & \tr\begin{pmatrix}0 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & -1\end{pmatrix}\\
+& = & -2.
+\ei
+After calculating the other components similarly, we find
+\bse
+[(\kappa_{\rho_{\mathrm{vec}}})_{ij}] = \begin{pmatrix}-2 & 0 & 0\\ 0 & -2 & 0\\ 0 & 0 & -2\end{pmatrix}.
+\ese
+Thus, $\kappa_{\rho_{\mathrm{vec}}}(J_i,\xi_j)=\delta_{ij}$ requires that we define $\xi_i := -\tfrac{1}{2} J_i$. Then, we have
+\bi{rCl}
+\Omega_{\rho_{\mathrm{vec}}} & := & \sum_{i=1}^{3} \rho_{\mathrm{vec}}(J_i) \circ \rho_{\mathrm{vec}}(\xi_i)\\
+& = & \sum_{i=1}^{3} \rho_{\mathrm{vec}}(J_i) \circ \rho_{\mathrm{vec}}(-\tfrac{1}{2} J_i)\\
+& = & -\frac{1}{2} \sum_{i=1}^{3} (\rho_{\mathrm{vec}}(J_i))^2\\
+& = & -\frac{1}{2} \left( \begin{pmatrix}0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0\end{pmatrix}^{\negmedspace 2}+ \begin{pmatrix}0 & 0 & 1\\ 0 & 0 & 0\\ -1 & 0 & 0\end{pmatrix}^{\negmedspace 2} +\begin{pmatrix}0 & -1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0\end{pmatrix}^{\negmedspace 2}\ \right)\\
+& = & -\frac{1}{2} \left( \begin{pmatrix}0 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & -1\end{pmatrix}+ \begin{pmatrix}-1 & 0 & 0\\ 0 & 0 & 0\\ 0 & 0 & -1\end{pmatrix} +\begin{pmatrix}-1 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & 0\end{pmatrix} \right)\\
+& = & \begin{pmatrix}1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1\end{pmatrix}.
+\ei
+Hence $\Omega_{\rho_{\mathrm{vec}}}=c_{\rho_{\mathrm{vec}}}\id_{\R^3}$ with $c_{\rho_{\mathrm{vec}}} = 1$, which agrees with our previous theorem since
+\bse
+\frac{\dim \so(3,\R)}{\dim \R^3} = \frac{3}{3} = 1.
+\ese
+\ee
+
+\be
+Let us consider the Lie algebra $\so(3,\R)$ again, but this time with representation $\rho_{\mathrm{spin}}$. Recall that this is given by
+\bse
+\rho_{\mathrm{spin}}(J_1) := -\frac{\mathrm{i}}{2}\, \sigma_1, \qquad \rho_{\mathrm{spin}}(J_2) := -\frac{\mathrm{i}}{2}\, \sigma_2, \qquad \rho_{\mathrm{spin}}(J_3) := -\frac{\mathrm{i}}{2}\, \sigma_3,
+\ese
+where $\sigma_1,\sigma_2,\sigma_3$ are the Pauli matrices. Recalling that $\sigma_1^2=\sigma_2^2=\sigma_3^2=\id_{\C^2}$, we calculate
+\bi{rCl}
+(\kappa_{\rho_{\mathrm{spin}}})_{11} := \kappa_{\rho_{\mathrm{spin}}}(J_1,J_1) & = & \tr(\rho_{\mathrm{spin}}(J_1)\circ \rho_{\mathrm{spin}}(J_1)) \\
+& = & \tr((\rho_{\mathrm{spin}}(J_1))^2)\\
+& = &(-\tfrac{\mathrm{i}}{2})^2 \tr(\sigma_1^{2})\\
+& = & -\tfrac{1}{4} \tr(\id_{\C^2})\\
+& = & -1.
+\ei
+Note that $\tr(\id_{\C^2})=4$, since $\tr(\id_V)=\dim V$ and here $\C^2$ is considered as a $4$-dimensional vector space over $\R$. Proceeding similarly, we find that the components of $\kappa_{\rho_{\mathrm{spin}}}$ are
+\bse
+[(\kappa_{\rho_{\mathrm{spin}}})_{ij}] = \begin{pmatrix}-1 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & -1\end{pmatrix}.
+\ese
+Hence, we define $\xi_i := - J_i$. Then, we have
+\bi{rCl}
+\Omega_{\rho_{\mathrm{spin}}} & := & \sum_{i=1}^{3} \rho_{\mathrm{spin}}(J_i) \circ \rho_{\mathrm{spin}}(\xi_i)\\
+& = & \sum_{i=1}^{3} \rho_{\mathrm{spin}}(J_i) \circ \rho_{\mathrm{spin}}(-J_i)\\
+& = & - \sum_{i=1}^{3} (\rho_{\mathrm{spin}}(J_i))^2\\
+& = & - \Bigl(-\frac{\mathrm{i}}{2}\Bigr)^2\, \sum_{i=1}^{3} \sigma_i^2\\
+& = & \frac{1}{4} \sum_{i=1}^{3} \id_{\C^2}\\
+& = & \frac{3}{4}\id_{\C^2},
+\ei
+in accordance with the fact that
+\bse
+\frac{\dim \so(3,\R)}{\dim \C^2} = \frac{3}{4}.
+\ese
+\ee
+
+\subsection{Representations of Lie groups}
+
+We now turn to representations of Lie groups. Given a vector space $V$, we define the following subset of $\End(V)$
+\bse
+\GL(V) := \{\phi\in \End(V)\mid \det \phi \neq 0\},
+\ese
+i.e.\ the invertible endomorphisms of $V$. This is clearly a group under $\circ$.
+
+\bd
+A \emph{representation}\index{representation} of a Lie group $(G,\bullet)$ is a group homomorphism
+\bse
+R\cl G \to \GL(V)
+\ese
+for some finite-dimensional vector space $V$.
+\ed
+Recall that $R\cl G \to \GL(V)$ is a group homomorphism if
+\bse
+\forall \, g_1,g_2\in G : R(g_1\bullet g_2) = R(g_1)\circ R( g_2).
+\ese
+
+\be
+Consider the Lie group $\SO(2,\R)$. As a smooth manifold, $\SO(2,\R)$ is isomorphic to the circle $S^1$. Let $U=S^1\sm\{p_0\}$, where $p$ is any point of $S^1$, so that we can define a chart $\theta\cl U \to [0,2\pi)\se\R$ on $S^1$ by mapping each point in $U$ to an ``angle'' in $[0,2\pi)$.
+\bse
+\begin{tikzpicture}[scale=0.9]
+\draw[thick] (0,0) circle [radius=2];
+\draw (0,0) -- (2,0);
+\draw (0,0) -- (2*cos 60, 2* sin 60) node[above right=-1pt] {$p$};
+\filldraw[fill=lightergray] (0,0) -- (0.6,0) arc (0:60:0.6) -- cycle;
+\draw (1,0.5) node {$\theta(p)$};
+\draw (-1.8,1.8) node {$U$};
+%\draw (0.8,0) arc (0:60:0.7);
+\draw[thick,fill=white] (2,0) circle [radius=0.11] node[right=3pt] {$p_0$};
+\end{tikzpicture}
+\ese
+The operation
+\bse
+p_1\bullet p_2:=(\theta(p_1)+\theta(p_2))\! \mod 2\pi
+\ese
+endows $S^1\cong_{\mathrm{diff}}\SO(2,\R)$ with the structure of a Lie group. Then, a representation of $\SO(2,\R)$ is given by
+\bi{rrCl}
+R\cl & \SO(2,\R) & \to & \GL(\R^2)\\
+&  p & \mapsto & \biggl( \begin{matrix} \cos \theta(p) & \sin \theta(p) \\ -\sin \theta(p) & \cos \theta(p) \end{matrix}\biggr).
+\ei
+Indeed, the addition formul\ae for sine and cosine imply that
+\bse
+R(p_1\bullet p_2) = R(p_1)\circ R(p_2).   
+\ese
+\ee
+
+\be
+Let $G$ be a Lie group (we suppress the $\bullet$ in this example). For each $g\in G$, define the Adjoint map
+\bi{rrCl}
+\Ad_g \cl & G & \to & G\\
+& h & \mapsto & g h g^{-1}.
+\ei
+Note the capital ``A'' to distinguish this from the adjoint map on Lie algebras. Since $\Ad_g$ is a composition of the Lie group multiplication and inverse map, it is a smooth map. Moreover, we have
+\bse
+\Ad_g(e) = geg^{-1} = gg^{-1} = e.
+\ese
+Hence, the push-forward of $\Ad_g$ at the identity is the map
+\bse
+({\Ad_g}_*)_e \cl  T_eG  \xrightarrow{\sim}   T_{\Ad_g(e)}G=T_eG.
+\ese
+Thus, we have $\Ad_g\in\End(T_eG)$. In fact, you can check that
+\bse
+({\Ad_{g^{-1}}}_*)_e\circ ({\Ad_g}_*)_e = ({\Ad_g}_*)_e\circ ({\Ad_{g^{-1}}}_*)_e = \id_{T_eG},
+\ese
+and hence we have, in particular, $\Ad_g\in\GL(T_eG)\cong_{\mathrm{grp}}\GL(\mathcal{L}(G))$. We can therefore construct a map
+\bi{rrCl}
+\Ad \cl & G & \to & \GL(T_eG)\\
+& g & \mapsto & {\Ad_g}_*
+\ei
+\ee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

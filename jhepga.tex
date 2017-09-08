@@ -42,7 +42,7 @@
 \definecolor{lightergray}{rgb}{0.9,0.9,0.9}
 
 
-
+\usepackage{fixltx2e}
 \usepackage{soul}
 
 \usetikzlibrary{matrix,calc,positioning,decorations.markings,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
@@ -93,9 +93,6 @@
 \newtheorem*{notation}{Notation}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem*{solution}{Solution}
-
-
-
 
 
 %----------------------------------------------------------------------------------------
@@ -238,24 +235,22 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 % \input{ga/14classification}
 % \newpage
 
-
 % \section{The Lie group \texorpdfstring{$\SL(2,\C)$}{SL(2,C)} and its Lie algebra \texorpdfstring{$\sl(2,\C)$}{sl(2,C)}}
 % \input{ga/15sl2}
 % \newpage
 
-\setcounter{section}{15}
-
-\section{Dynkin diagrams from Lie algebras, and vice versa}
-\input{ga/16dynkin}
-\newpage
+% \section{Dynkin diagrams from Lie algebras, and vice versa}
+% \input{ga/16dynkin}
+% \newpage
 
 % \section{Representation theory of Lie groups and Lie algebras}
+% \input{ga/17representation}
+% \newpage
 
-
-
-% \section{Reconstruction of a Lie group from its algebra}
-
-
+\setcounter{section}{17}
+\section{Reconstruction of a Lie group from its algebra}
+\input{ga/18reconstruction}
+\newpage
 
 % \section{Principal fibre bundles}
 
