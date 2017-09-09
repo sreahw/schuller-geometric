@@ -1,4 +1,4 @@
-\subsection{Classification of sets}
+\subsection{Maps between sets}
 
 A recurrent theme in mathematics is the classification of \emph{spaces} by means of structure-preserving \emph{maps} between them. 
 
@@ -47,7 +47,8 @@ If there is any bijection $A \to B$ then generally there are many.
 
 Bijections are the ``structure-preserving'' maps for sets. Intuitively, they pair up the elements of $A$ and $B$ and a bijection between $A$ and $B$ exists only if $A$ and $B$ have the same ``size''. This is clear for finite sets, but it can also be extended to infinite sets.\\
 
-\textbf{Classification of sets.} A set $A$ is:
+\bd[Classification of sets]
+A set $A$ is:
 \bit
 \item \emph{infinite}\index{set!infinite} if there exists a proper subset $B\ss A$ such that $B \iset A$. In particular, if $A$ is infinite, we further define $A$ to be:
 \bit
@@ -56,6 +57,7 @@ Bijections are the ``structure-preserving'' maps for sets. Intuitively, they pai
 \eit
 \item \emph{finite} if it is not infinite. In this case, we have $A \iset \{1,2,\ldots,N\}$ for some $N \in \N$ and we say that the \emph{cardinality} of $A$, denoted by $|A|$, is $N$.
 \eit
+\ed
 Given two maps $\phi \cl A \to B$ and $\psi \cl B \to C$, we can construct a third map, called the \emph{composition} of $\phi$ and $\psi$, denoted by $\psi \circ \phi$ (read ``psi after phi''), defined by:
 \bi{rcCl}
 \psi \circ \phi \cl & A & \to & C\\
@@ -167,8 +169,18 @@ Let $M$ be a set and let $\sim$ be a relation such that the following conditions
 Then $\sim$ is called an \emph{equivalence relation}\index{equivalence relation}\index{relation!equivalence} on $M$.
 \ed
 
+\be
+Consider the following wordy examples.
+\ben[label=\alph*)]
+\item $p\sim q :\Leftrightarrow $ $p$ is of the same opinion as $q$. This relation is reflexive, symmetric and transitive. Hence, it is an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is a sibling of $q$. This relation is symmetric and transitive but not reflexive and hence, it is not an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is taller $q$. This relation is transitive, but neither reflexive nor symmetric and hence, it is not an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is in love with $q$. This relation is generally not reflexive. People don't like themselves very much. It is certainly not normally symmetric, which is the basis of much drama in literature. It is also not transitive, except in some French films.
+\een
+\ee
+
 \bd
-Let $\sim$ be an equivalence relation on $M$. Then, for any $m \in M$ we define the set:
+Let $\sim$ be an equivalence relation on the set $M$. Then, for any $m \in M$, we define the set:
 \bse
 [m] := \{n \in M \mid m \sim n\}
 \ese

@@ -1,11 +1,217 @@
 
 
+We have seen in detail how to construct a Lie algebra from a given Lie group. We would now like to consider the inverse question, i.e.\ whether, given a Lie algebra, we can construct a Lie group whose associated Lie algebra is the given one and, if this is the case, whether this correspondence is bijective.
 
-\subsection{reconstr}
+% We will find that the answer to the first question is affirmative. Given a Lie algebra, we will construct a Lie group via something called the exponential map. However, we can already answer in the negative the second question. The Lie groups
+% \bse
+% \Ort(n,\R) := \{\phi\in \GL(n,\R)\}
+% \ese
+% and $\SU(2,\C)$ are an example of Lie groups which are not isomorphic but give rise to the same Lie algebra. Hence, the correspondence between Lie groups and Lie algebras cannot be bijective. 
+
+\subsection{Integral curves}
+
+\bd
+Let $M$ be a smooth manifold and let $Y\in \Gamma(TM)$. An \emph{integral curve}\index{integral curve} of $Y$ is smooth curve $\gamma\cl(-\varepsilon,\varepsilon)\to M$, with $\varepsilon > 0$, such that
+\bse
+\forall \, \lambda \in (-\varepsilon,\varepsilon) : \ X_{\gamma,\gamma(\lambda)} = Y|_{\gamma(\lambda)}.
+\ese
+\ed
+
+It follows from the local existence and uniqueness of solutions to ordinary differential equations that, given any $Y\in \Gamma(TM)$ and any $p\in M$, there exist $\varepsilon >0$ and a smooth curve $\gamma\cl (-\varepsilon,\varepsilon) \to M$ with $\gamma(0)=p$ which is an integral curve of $Y$. 
+
+Moreover, integral curves are locally unique. By this we mean that if $\gamma_1$ and $\gamma_2$ are both integral curves of $Y$ through $p$, i.e.\ $\gamma_1(0)=\gamma_2(0) = p$, then $\gamma_1=\gamma_2$ on the intersection of their domains of definition. We can get genuine uniqueness as follows.
+
+\bd
+The \emph{maximal integral curve} of $Y\in \Gamma(TM)$ through $p\in M$ is the unique integral curve $\gamma\cl I^p_{\mathrm{max}}\to M$ of $Y$ through $p$, where
+\bse
+I_{\mathrm{max}}^{p} := \bigcup\{ I \se \R \mid \text{there exists an integral curve }\gamma\cl I \to M \text{ of $Y$ through $p$}\}.
+\ese
+\ed
+For a given vector field, in general, $I_{\mathrm{max}}^{p}$ will differ from point to point. 
+\bd
+A vector field is \emph{complete} if $I_{\mathrm{max}}^{p}=\R$ for all $p\in M$.
+\ed
+We have the following result.
+\begin{theorem}
+On a compact manifold, every vector field is complete.
+\end{theorem}
+On a Lie group, even if non-compact, there are always complete vector fields.
+\begin{theorem}
+Every left-invariant vector field on a Lie group is complete.
+\end{theorem}
+The maximal integral curves of left-invariant vector fields are crucial in the construction of the map that allows us to go from a Lie algebra to a Lie group.
+
+\subsection{The exponential map}
+
+Let $G$ be a Lie group. Recall that given any $A\in T_eG$, we can define the uniquely determined left-invariant vector field $X^A:=j(A)$ via the isomorphism $j\cl T_eG \xrightarrow{\sim}\mathcal{L}(G)$ as
+\bse
+X^A|_g := (\ell_g)_* (A).
+\ese
+Then let $\gamma^A\cl \R \to G$ be the maximal integral curve of $X^A$ through $e\in G$.
+\bd
+Let $G$ be a Lie group. The \emph{exponential map}\index{exponential map} is defined as
+\bi{rrCl}
+\exp \cl & T_eG & \to & G\\
+& A & \mapsto & \exp(A):=\gamma^A(1)
+\ei
+\ed
+\begin{theorem}
+\ben[label=\roman*)]
+\item The map $\exp$ is smooth and a local diffeomorphism around $0\in T_eG$, i.e.\ there exists an open $V\se T_eG$ containing $0$ such that the restriction
+\bse
+\exp|_V\cl V \to \exp(V) \se G
+\ese
+is bijective and both $\exp|_V$ and $(\exp|_V)^{-1}$ are smooth.
+\item If $G$ is compact, then $\exp$ is surjective.
+\een
+\end{theorem}
+Note that the maximal integral curve of $X^0$ is the constant curve $\gamma^0(\lambda)\equiv e$, and hence we have $\exp(0)=e$. Then first part of the theorem then says that we can recover a neighbourhood of the identity of $G$ from a neighbourhood of the identity of $T_eG$.
+
+Since $T_eG$ is a vector space, it is non-compact (intuitively, it extends infinitely far away in every direction) and hence, if $G$ is compact, $\exp$ cannot be injective. This is because, by the second part of the theorem, it would then be a diffeomorphism $T_eG\to G$. But as $G$ is compact and $T_eG$ is not, they are not diffeomorphic.
+
+\bp
+Let $G$ be a Lie group. The image of $\exp\cl T_eG\to G$ is the connected component of $G$ containing the identity.
+\ep
+Therefore, if $G$ itself is connected, then $\exp$ is again surjective. Note that, in general, there is no relation between connected and compact topological spaces, i.e.\ a topological space can be either, both, or neither.
+
+\be
+Let $B\cl V\times V$ be a pseudo inner product on $V$. Then
+\bse
+\Ort(V) := \{\phi\in \GL(V)\mid \forall \, v,w\in V : B(\phi(v),\phi(w))=B(v,w)\}
+\ese
+is called the \emph{orthogonal group} of $V$ with respect to $B$. Of course, if $B$ or the base field of $V$ need to be emphasised, they can be included in the notation. Every $\phi\in \Ort(V)$ has determinant $1$ or $-1$. Since $\det$ is multiplicative, we have a subgroup
+\bse
+\SO(V) := \{\phi\in \Ort(V)\mid \det\phi = 1\}.
+\ese
+These are, in fact, Lie subgroups of $\GL(V)$. The Lie group $\SO(V)$ is connected while
+\bse
+\Ort(V)=\SO(V)\cup \{\phi\in \Ort(V)\mid \det \phi = -1\}
+\ese
+is disconnected. Since $\SO(V)$ contains $\id_V$, we have
+\bse
+\so(V) := T_{\id_V}\!\SO(V) = T_{\id_V}\!\Ort(V) =: \ort(V)
+\ese
+and
+\bse
+\exp(\so(V))=\exp(\ort(V))=\SO(V).
+\ese
+\ee
+
+\be
+Choosing a basis $A_1,\ldots,A_{\dim G}$ of $T_eG$ often provides a convenient co-ordinatisation of $G$ near $e$. Consider, for example, the Lorentz group
+\bse
+\Ort(3,1) \equiv \Ort(\R^4) = \{\Lambda\in \GL(\R^4)\mid \forall \, x,y\in \R^4 :  B(\Lambda(x),\Lambda(y))=B(x,y) \},
+\ese
+where $B(x,y):=\eta_{\mu\nu}x^\mu y^\nu$, with $0\leq \mu,\nu\leq 3$ and
+\bse
+[\eta^{\mu\nu}] = [\eta_{\mu\nu}] := \left( 
+  \begin{matrix}
+   -1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{matrix}\right).
+\ese
+The Lorentz group $\Ort(3,1)$ is $6$-dimensional, hence so is the Lorentz algebra $\ort(3,1)$. For convenience, instead of denoting a basis of $\ort(3,1)$ as $\{M^i\mid i=1,\ldots,6\}$, we will denote it as $\{M^{\mu\nu}\mid 0\leq \mu,\nu\leq 3\}$ and require that the indices $\mu,\nu$ be anti-symmetric, i.e.\
+\bse
+M^{\mu\nu} = -M^{\nu\mu }.
+\ese
+Then $M^{\mu\nu}=0$ when $\rho=\sigma$, and the set $\{M^{\mu\nu}\mid 0\leq \mu,\nu\leq 3\}$, while technically not linearly independent, contains the 6 independent elements that we want to consider as a basis. These basis elements satisfy the following bracket relation
+\bse
+[M^{\mu\nu},M^{\rho\sigma}] =\eta^{\nu\sigma} M^{\mu\rho} +\eta^{\mu\rho} M^{\nu\sigma} -\eta^{\nu\rho} M^{\mu\sigma} -\eta^{\mu\sigma} M^{\nu\rho} . 
+\ese
+Any element $\lambda\in \ort(3,1)$ can be expressed as linear combination of the $M^{\mu\nu}$,
+\bse
+\lambda = \tfrac{1}{2}\omega_{\mu\nu}M^{\mu\nu}
+\ese
+where the indices on the coefficients $\omega_{\mu\nu}$ are also anti-symmetric, and the factor of $\tfrac{1}{2}$ ensures that the sum over all $\mu,\nu$ counts each anti-symmetric pair only once. Then, we have
+\bse
+\Lambda = \exp(\lambda) = \exp(\tfrac{1}{2}\omega_{\mu\nu}M^{\mu\nu}) \in \Ort(3,1).
+\ese
+The subgroup of $\Ort(3,1)$ consisting of the the space-orientation preserving Lorentz transformations, or \emph{proper} Lorentz transformations, is denoted by $\SO(3,1)$. The subgroup consisting of the time-orientation preserving, or \emph{orthochronous}, Lorentz transformations is denoted by $\Ort^+(3,1)$. The Lie group $\Ort(3,1)$ is disconnected: its four connected components are
+\ben[label=\roman*)]
+\item $\SO^+(3,1):=\SO(3,1)\cap\Ort^+(3,1)$, also called the \emph{restricted Lorentz group}, consisting of the proper orthochronous Lorentz transformations;
+\item $\SO(3,1)\sm \Ort^+(3,1)$, the proper non-orthochronous transformations;
+\item $\Ort^+(3,1)\sm\SO(3,1)$, the improper orthochronous transformations;
+\item $\Ort(3,1)\sm (\SO(3,1)\cup\Ort^+(3,1))$, the improper non-orthochronous transformations.
+\een
+Since $\id_{\R^4}\in \SO^+(3,1)$, we have $\exp(\ort(3,1))=\SO^+(3,1)$. Then $\{M^{\mu\nu}\}$ provides a nice co-ordinatisation of $\SO^+(3,1)$ since, if we choose
+\bse
+[\omega_{\mu\nu}] = \left(
+  \begin{matrix}
+        0   &   \psi_1   &   \psi_2   &   \psi_3   \\
+    -\psi_1 &      0     &  \varphi_3 & -\varphi_2 \\
+    -\psi_2 & -\varphi_3 &      0     &  \varphi_1 \\
+    -\psi_3 &  \varphi_2 & -\varphi_1 &      0
+  \end{matrix}
+\right)
+\ese
+then the Lorentz transformation $\exp(\tfrac{1}{2}\omega_{\mu\nu}M^{\mu\nu})\in \SO^+(3,1)$ corresponds to a boost in the $(\psi_1,\psi_2,\psi_3)$ direction and a space rotation by $(\varphi_1,\varphi_2,\varphi_3)$. Indeed, in physics one often thinks of the Lie group $\SO^+(3,1)$ as being generated by $\{M^{\mu\nu}\}$.
+
+A representation $\rho\cl T_{\id_{\R^4}}\!\SO^+(3,1)\xrightarrow{\sim} \End(\R^4)$ is given by
+\bse
+\rho(M^{\mu\nu})^a_{\phantom{a}b} := \eta^{\nu a}\delta^{\mu}_b - \eta^{\mu a}\delta^{\nu}_b 
+\ese
+which is probably how you have seen the $M^{\mu\nu}$ themselves defined in some previous course on relativity theory. Using this representation, we get a corresponding representation
+\bi{rrCl}
+R\cl & \SO^+(3,1) \to \GL(\R^4)
+\ei
+via the exponential map by defining
+\bse
+R(\Lambda) = \exp(\tfrac{1}{2}\omega_{\mu\nu}\rho(M^{\mu\nu})).
+\ese
+Then, the map $\exp$ becomes the usual exponential (series) of matrices.
+\ee
 
 
 
-a
+
+\bd
+A \emph{one-parameter subgroup}\index{one-parameter subgroup} of a Lie group $G$ is a Lie group homomorphism
+\bse
+\xi \cl \R \to G,
+\ese
+with $\R$ understood as a Lie group under ordinary addition.
+\ed
+
+\begin{theorem}
+Let $G$ be a Lie group.
+\ben[label=\roman*)]
+\item Let $A\in T_eG$. The map
+\bi{rrCl}
+\xi^A\cl & \R & \to & G\\
+& \lambda & \mapsto & \xi^A(\lambda):=\exp(\lambda A)
+\ei
+is a one-parameter subgroup.
+\item Every one-parameter subgroup of $G$ has the form $\xi^A$ for some $A\in T_eG$.
+\een
+\end{theorem}
+
+Therefore, the Lie algebra allows us to study all the one-parameter subgroups of the Lie group. 
+
+\begin{theorem}
+Let $G$ and $H$ be Lie groups and let $\phi\cl G \to H$ be a Lie group homomorphism. Then, for all $A\in T_{e_G}G$, we have
+\bse
+\phi (\exp (A))= \exp ((\phi_*)_{{\scriptstyle e}_G}A).
+\ese
+Equivalently, the following diagram commutes.
+\bse
+\begin{tikzcd}
+T_{e_G}G \ar[dd,"\exp"'] \ar[rr,"(\phi_*)_{{\scriptstyle e}_G}"]&& T_{e_H}H\ar[dd,"\exp"]\\
+&&\\
+G\ar[rr,"\phi"] && H
+\end{tikzcd}
+\ese
+\end{theorem}
+
+
+
+
+
+
+
+
+
 
 
 

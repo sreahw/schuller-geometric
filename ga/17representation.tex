@@ -409,24 +409,30 @@ in accordance with the fact that
 
 \subsection{Representations of Lie groups}
 
-We now turn to representations of Lie groups. Given a vector space $V$, we define the following subset of $\End(V)$
+We now turn to representations of Lie groups. Given a vector space $V$, recall that the subset of $\End(V)$ consisting of the invertible endomorphisms and denoted
 \bse
-\GL(V) := \{\phi\in \End(V)\mid \det \phi \neq 0\},
+\GL(V) \equiv \Aut(V):= \{\phi\in \End(V)\mid \det \phi \neq 0\},
 \ese
-i.e.\ the invertible endomorphisms of $V$. This is clearly a group under $\circ$.
-
+forms a group under composition, called the automorphism group (or general linear group) of $V$. Moreover, if $V$ is a finite-dimensional $K$-vector space, then $V\cong_{\mathrm{vec}}K^{\dim V}$ and hence the group $\GL(V)$ can be given the structure of a Lie group via
+\bse
+\GL(V)\cong_{\mathrm{Lie \, grp}}\GL(K^{\dim V}):=\GL(\dim V,K).
+\ese
+This is, of course, if we have established a topology and a differentiable structure on $K^d$, as is the case for $\R^d$ and $\C^d$.
 \bd
-A \emph{representation}\index{representation} of a Lie group $(G,\bullet)$ is a group homomorphism
+A \emph{representation}\index{representation} of a Lie group $(G,\bullet)$ is a Lie group homomorphism
 \bse
 R\cl G \to \GL(V)
 \ese
 for some finite-dimensional vector space $V$.
 \ed
-Recall that $R\cl G \to \GL(V)$ is a group homomorphism if
+Recall that $R\cl G \to \GL(V)$ is a Lie group homomorphism if it is smooth and
 \bse
 \forall \, g_1,g_2\in G : R(g_1\bullet g_2) = R(g_1)\circ R( g_2).
 \ese
-
+Note that, as is the case with any group homomorphism, we have
+\bse
+R(e) = \id_V \qquad \text{and}\qquad R(g^{-1}) = R(g)^{-1}.
+\ese
 \be
 Consider the Lie group $\SO(2,\R)$. As a smooth manifold, $\SO(2,\R)$ is isomorphic to the circle $S^1$. Let $U=S^1\sm\{p_0\}$, where $p$ is any point of $S^1$, so that we can define a chart $\theta\cl U \to [0,2\pi)\se\R$ on $S^1$ by mapping each point in $U$ to an ``angle'' in $[0,2\pi)$.
 \bse
@@ -437,7 +443,6 @@ Consider the Lie group $\SO(2,\R)$. As a smooth manifold, $\SO(2,\R)$ is isomorp
 \filldraw[fill=lightergray] (0,0) -- (0.6,0) arc (0:60:0.6) -- cycle;
 \draw (1,0.5) node {$\theta(p)$};
 \draw (-1.8,1.8) node {$U$};
-%\draw (0.8,0) arc (0:60:0.7);
 \draw[thick,fill=white] (2,0) circle [radius=0.11] node[right=3pt] {$p_0$};
 \end{tikzpicture}
 \ese
@@ -474,14 +479,31 @@ Thus, we have $\Ad_g\in\End(T_eG)$. In fact, you can check that
 \bse
 ({\Ad_{g^{-1}}}_*)_e\circ ({\Ad_g}_*)_e = ({\Ad_g}_*)_e\circ ({\Ad_{g^{-1}}}_*)_e = \id_{T_eG},
 \ese
-and hence we have, in particular, $\Ad_g\in\GL(T_eG)\cong_{\mathrm{grp}}\GL(\mathcal{L}(G))$. We can therefore construct a map
+and hence we have, in particular, $\Ad_g\in\GL(T_eG)\cong_{\mathrm{Lie\,grp}}\GL(\mathcal{L}(G))$.
+
+\noindent We can therefore construct a map
 \bi{rrCl}
 \Ad \cl & G & \to & \GL(T_eG)\\
 & g & \mapsto & {\Ad_g}_*
 \ei
+which, as you can check, is a representation of $G$ on its Lie algebra.
 \ee
 
-
+\br
+Since a representation $R$ of a Lie group $G$ is required to be smooth, we can always consider its differential or push-forward at the identity
+\bse
+(R_*)_e \cl T_eG \xrightarrow{\sim} T_{\id_V}\!\GL(V).
+\ese
+Since for any $A,B\in T_eG$ we have
+\bse
+(R_*)_e[A,B] =[(R_*)_eA,(R_*)_eB],
+\ese
+the map $(R_*)_e$ is a representation of the Lie algebra of $G$ on the vector space $\GL(V)$. In fact, in the previous example we have 
+\bse
+(\Ad_*)_e = \ad,
+\ese
+where $\ad$ is the adjoint representation of $T_eG$.
+\er
 
 
 
