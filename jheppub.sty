@@ -26,16 +26,16 @@
 \newif\ifnotoc\notocfalse
 \newif\ifemailadd\emailaddfalse
 \newif\iftoccontinuous\toccontinuousfalse
-\newif\ifnatbibsort\natbibsorttrue
+%\newif\ifnatbibsort\natbibsorttrue
 
-\DeclareOption{no-natbib-sort}{\natbibsortfalse}
+%\DeclareOption{no-natbib-sort}{\natbibsortfalse}
 \ProcessOptions\relax
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{epsfig}
 \RequirePackage{graphicx}
-\ifnatbibsort\RequirePackage[numbers,sort&compress]{natbib}\else\RequirePackage[numbers,compress]{natbib}\fi
+%\ifnatbibsort\RequirePackage[numbers,sort&compress]{natbib}\else\RequirePackage[numbers,compress]{natbib}\fi
 \RequirePackage{color}
 \RequirePackage[colorlinks=true
 ,urlcolor=blue
@@ -302,7 +302,10 @@ These lecture notes are not endorsed by Dr. Schuller or the University.
 
 While I have tried to correct typos and errors made during the lectures (some helpfully pointed out by YouTube commenters), I have also taken the liberty to add and/or modify some of the material at various points in the notes. Any errors that may result from this are, of course, mine.
 
-If you have any comments regarding these notes, feel free to get in touch.\\
+If you have any comments regarding these notes, feel free to get in touch. Visit my blog for the most up to date version of these notes
+\begin{center}
+\url{http://mathswithphysics.blogspot.com}
+\end{center}
 
 My gratitude goes to Dr. Schuller for lecturing this course and for making it available on YouTube.\\
 

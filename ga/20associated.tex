@@ -1,0 +1,221 @@
+
+An associated fibre bundle is a fibre bundle which is associated (in a precise sense) to a principal $G$-bundle. Associated bundles are related to their underlying principal bundles in a way that models the transformation law for components under a change of basis.
+
+
+\subsection{Associated fibre bundles}
+
+
+
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle and let $F$ be a smooth manifold equipped with a left $G$-action $\lacts$. We define
+\ben[label=\roman*)]
+\item $P_F:=(P\times F)/{\sim_G}$, where $\sim_G$ is the equivalence relation
+\bse
+(p,f) \sim_G (p',f') \quad :\Leftrightarrow \quad \exists \, g\in G : \biggl\{ \ba{rcl} p' & = & p\racts g \\ f' & = & g^{-1} \lacts f \ea 
+\ese
+We denote the points of $P_F$ as $[p,f]$.
+\item The map 
+\bi{rrCl}
+\pi_F\cl & P_F & \to & M\\
+& [p,f] & \mapsto & \pi(p),
+\ei
+which is well-defined since, if $[p',f']=[p,f]$, then for some $g\in G$
+\bse
+\pi_F([p',f']) = \pi_F([p\racts g,g^{-1} \lacts f]):=\pi(p\racts g)=\pi(p)=:\pi_F([p,f]) .
+\ese
+\een
+The \emph{associated bundle}\index{associated bundle} (to $(P,\pi,M)$, $F$ and $\lacts$) is the bundle $(P_F,\pi_F,M)$.
+\ed
+
+\be
+Recall that the frame bundle $(LM,\pi,M)$ is a principal $\GL(d,\R)$-bundle, where $d=\dim M$, with right $G$-action $\racts\cl LM \times G \to LM$ given by
+\bse
+(e_1,\ldots,e_{d}) \racts g := (g^a_{\phantom{a}1}e_a,\ldots,g^a_{\phantom{a}d}e_a).
+\ese
+Let $F:= \R^{d}$ (as a smooth manifold) and define a left action
+\bi{rrCl}
+\lacts \cl & \GL(d,\R) \times \R^{d} & \to & \R^{D}\\
+& (g,x) & \mapsto & g\lacts x,
+\ei
+where 
+\bse
+(g\lacts x)^a := g^a_{\phantom{a}b} x^b.
+\ese
+Then $(LM_{\R^d},\pi_{\R^d},\R^d)$ is the associated bundle. In fact, we have a bundle isomorphism
+
+\bse
+\begin{tikzcd}
+LM_{\R^d} \ar[dd,"\pi_{\R^d}"'] \ar[rr,"u"] && TM\ar[dd,"\pi"] \\
+&& \\
+M \ar[rr,"\id_M"] && M
+\end{tikzcd}
+\ese
+where $(TM,\pi,M)$ is the tangent bundle of $M$, and $u$ is defined as
+\bi{rcCl}
+u \cl & LM_{\R^d} & \to & TM\\
+& [(e_1,\ldots,e_d),x] & \mapsto & x^ae_a.
+\ei
+The inverse map $u^{-1}\cl TM \to LM_{\R^d}$ works as follows. Given any $X\in TM$, pick any basis $(e_1,\ldots,e_d)$ of the tangent space at the point $\pi(X)\in M$, i.e.\ any element of $L_{\pi(X)}M$. Decompose $X$ as $x^ae_a$, with each $x^a\in \R$, and define
+\bse
+u^{-1}(X) := [(e_1,\ldots,e_d),x].
+\ese
+The map $u^{-1}$ is well-defined since, while the pair $((e_1,\ldots,e_d),x)\in LM\times \R^d$ clearly depends on the choice of basis, the equivalence class 
+\bse
+[(e_1,\ldots,e_d),x]\in LM_{\R^d}:=(LM\times \R^d)/{\sim_G}
+\ese
+does not. It includes all pairs $((e_1,\ldots,e_d)\racts g,g^{-1}\lacts x)$ for every $g\in \GL(d,\R)$, i.e.\ every choice of basis together with the ``right'' components $x\in \R^d$.
+\ee
+
+\br
+Even though the associated bundle $(LM_{\R^d},\pi_{\R^d},\R^d)$ is isomorphic to the tangent bundle $(TM,\pi,M)$, note a subtle difference between the two. On the tangent bundle, the transformation law for a change of basis and the related transformation law for components are \emph{deduced} from the definitions by undergraduate linear algebra.
+
+On the other hand, the transformation laws on $LM_{\R^d}$ were \emph{chosen} by us in its definition. We chose the Lie group $\GL(d,\R)$, the specific right action $\racts$ on $LM$, the space $\R^d$, and the specific left action on $\R^d$. It just happens that, with these choices, the resulting associated bundle is isomorphic to the tangent bundle. Of course, we have the freedom to make different choices and construct bundles which behave very differently from $TM$. 
+\er
+
+\be
+Consider the principal $\GL(d,\R)$-bundle $(LM,\pi,M)$ again, with the same right action as before. This time we define
+\bse
+F:= (\R^d)^{\times p}\times({\R^d}^*)^{\times q} := \underbrace{\R^d\times\cdots\times\R^d}_{p \text{ times}}\times \underbrace{{\R^d}^*\times\cdots\times{\R^d}^*}_{q \text{ times}} 
+\ese
+with left $\GL(d,\R)$-action $\lacts\cl\GL(d,\R)\times F \to F$ given by
+\bse
+(g\lacts f)^{a_1\cdots a_p}_{\phantom{a_1\cdots a_p}b_1\cdots b_q} := g^{a_1}_{\phantom{a_1}\widetilde a_1} \cdots g^{a_p}_{\phantom{a_p}\widetilde a_p} (g^{-1})^{\widetilde b_1}_{\phantom{b_1}b_1}\cdots  (g^{-1})^{\widetilde b_q}_{\phantom{b_q}b_q} \, f^{\widetilde a_1\cdots \widetilde a_p}_{\phantom{a_1\cdots a_p}\widetilde b_1\cdots \widetilde b_q}.
+%
+% (g\lacts f)^{a_1\cdots a_p}_{\phantom{a_1\cdots a_p}b_1\cdots b_q} := g^{a_1}_{\phantom{a_1}r_1} \cdots g^{a_p}_{\phantom{a_p}r_p} (g^{-1})^{s_1}_{\phantom{s_1}b_1}\cdots  (g^{-1})^{s_q}_{\phantom{s_q}b_q} \, f^{r_1\cdots r_p}_{\phantom{r_1\cdots r_p}s_1\cdots s_q}.
+%
+% (g\lacts f)^{i_1\cdots i_p}_{\phantom{i_1\cdots i_p}j_1\cdots j_q} := g^{i_1}_{\phantom{i_1}\widetilde i_1} \cdots g^{i_p}_{\phantom{i_p}\widetilde i_p} g^{\widetilde j_1}_{\phantom{j_1}j_1}\cdots  g^{\widetilde j_q}_{\phantom{ j_q}j_q} \, f^{\widetilde i_1\cdots\widetilde  i_p}_{\phantom{i_1\cdots i_p}\widetilde j_1\cdots\widetilde  j_q}
+\ese
+Then, the associated bundle $(LM_F,\pi_F,M)$ thus constructed is isomorphic to $(T^p_qM,\pi,M)$, the $(p,q)$-tensor bundle on $M$.
+\ee
+
+Now for something new, consider the following.
+
+\bd
+Let $M$ be a smooth manifold and let $(LM,\pi,M)$ be its frame bundle, with right $\GL(d,\R)$-action as above. Let $F:= (\R^d)^{\times p}\times({\R^d}^*)^{\times q}$ and define a left $\GL(d,\R)$-action on $F$ by
+\bse
+(g\lacts f)^{a_1\cdots a_p}_{\phantom{a_1\cdots a_p}b_1\cdots b_q} := (\det g^{-1})^\omega\,g^{a_1}_{\phantom{a_1}\widetilde a_1} \cdots g^{a_p}_{\phantom{a_p}\widetilde a_p} (g^{-1})^{\widetilde b_1}_{\phantom{b_1}b_1}\cdots  (g^{-1})^{\widetilde b_q}_{\phantom{b_q}b_q} \, f^{\widetilde a_1\cdots \widetilde a_p}_{\phantom{a_1\cdots a_p}\widetilde b_1\cdots \widetilde b_q},
+\ese
+where $\omega\in \Z$. Then the associated bundle $(LM_F,\pi_F,M)$ is called the \emph{$(p,q)$-tensor $\omega$-density bundle} on $M$, and its sections are called \emph{$(p,q)$-tensor densities of weight}\index{tensor density} $\omega$.
+\ed
+
+\br
+Some special cases include the following.
+\ben[label=\roman*)]
+\item If $\omega = 0$, we recover the $(p,q)$-tensor bundle on $M$.
+\item If $F=\R$ (i.e.\ $p=q=0$), the left action reduces to
+\bse
+(g\lacts f) = (\det g^{-1})^\omega\, f,
+\ese
+which is the transformation law for a \emph{scalar density of weight $\omega$}.
+\item If $\GL(d,\R)$ is restricted in such a way that we always have $(\det g^{-1})=1$, then tensor densities are indistinguishable from ordinary tensor fields. This is why you probably haven't met tensor densities in your special relativity course.
+\een
+\er
+
+\be
+Recall that if $B$ is a bilinear form on a $K$-vector space $V$, the determinant of $B$ is not independent from the choice of basis. Indeed, if $\{e_a\}$ and $\{e'_b:=g^a_{\phantom{a}b}e_a\}$ are both basis of $V$, where $g\in \GL(\dim V,K)$, then
+\bse
+(\det B)' = (\det g^{-1})^2\det B.
+\ese
+Once recast in the principal and associated bundle formalism, we find that the determinant of a bilinear form is a scalar density of weight $2$.
+\ee
+
+\subsection{Associated bundle morphisms}
+
+\bd
+Let $(P_F,\pi_F,M)$ to $(Q_F,\pi'_F,N)$ be the associated bundles (with the same fibre $F$) of two principal $G$-bundles $(P,\pi,M)$ and $(Q,\pi',N)$. An \emph{associated bundle map} between the associated bundles is a bundle map $(\widetilde u,v)$ between them such that for some $u$, the pair $(u,v)$ is a principal bundle map between the underlying principal $G$-bundles and  
+\bse
+\widetilde u([p,f]) := [u(p),f].
+\ese
+Equivalently, the following diagrams both commute.
+\bse
+\begin{tikzcd}
+P_F \ar[dd,"\pi_F"'] \ar[rr,"\widetilde u"] && Q_F\ar[dd,"\pi_F'"]\\
+&&\\
+M \ar[rr,"v"] && N 
+\end{tikzcd}
+\qquad \quad
+\begin{tikzcd}
+P \ar[rr,"u"]&& Q \\
+&&\\
+P \ar[uu,"\racts G"] \ar[dd,"\pi"'] \ar[rr,"u"] && Q\ar[uu,"\blacktriangleleft G"'] \ar[dd,"\pi'"]\\
+&&\\
+M \ar[rr,"v"]&& N
+\end{tikzcd}
+\ese
+\ed
+
+\bd
+An associated bundle map $(\widetilde u,v)$ is an \emph{associated bundle isomorphism}\index{isomorphism!of associated bundles} if $\widetilde u$ and $v$ are invertible and $(\widetilde u^{-1},v^{-1})$ is also an associated bundle map.
+\ed
+
+\br
+Note that two associated $F$-fibre bundles may be isomorphic as bundles but not as associated bundles. In other words, there may exist a bundle isomorphism between them, but there may not exist any bundle isomorphism between them which can be written as in the definition for some principal bundle isomorphism between the underlying principal bundles. 
+\er
+
+\noindent Recall that an $F$-fibre bundle $(E,\pi,M)$ is called trivial if there exists a bundle isomorphism
+\bse
+\begin{tikzcd}
+F \ar[rr] && E\ar[ddr,"\pi"]\ar[rr,"u"] && M\times F \ar[ddl,"\pi_1"]\\
+&&&&\\
+&&& M &
+\end{tikzcd}
+\ese
+while a principal $G$-bundle is called trivial if there exists a principal bundle isomorphism
+\bse
+\begin{tikzcd}
+P \ar[rr,"u"]&& M\times G \\
+&&\\
+P \ar[uu,"\racts G"] \ar[ddr,"\pi"'] \ar[rr,"u"] && M\times G\ar[uu,"\blacktriangleleft G"'] \ar[ddl,"\pi_1"]\\
+&&\\
+& M & 
+\end{tikzcd}
+\ese
+
+\bd
+An associated bundle $(P_F,\pi_F,M)$ is called \emph{trivial} if the underlying principal $G$-bundle $(P,\pi,M)$ is trivial.
+\ed
+
+\bp
+A trivial associated bundle is a trivial fibre bundle.
+\ep
+Note that the converse does not hold. An associated bundle can be trivial as a fibre bundle but not as an associated bundle, i.e.\ the underlying principal fibre bundle need not be trivial simply because the associated bundle is trivial as a fibre bundle.
+
+\bt
+Let $(P_F,\pi_F,M)$ be an associated bundle. There exists a bijection between sections $\sigma\cl M \to P_F$ and functions $\phi\cl P\to F$. 
+\et
+
+\bd
+Let $H$ be a closed Lie subgroup of $G$. Let $(P,\pi,M)$ be a principal $H$-bundle and $(Q,\pi',M)$ a principal $G$-bundle. If there exists a principal bundle map from $(P,\pi,M)$ to $(Q,\pi',M)$, i.e.\ a smooth bundle map which is equivariant with respect to the inclusion of $H$ into $G$, then $(P,\pi,M)$ is called an \emph{$H$-restriction} of $(Q,\pi',M)$, while $(Q,\pi',M)$ is called a \emph{$G$-extension} of $(P,\pi,M)$.  
+\ed
+
+\bt
+Let $H$ be a closed Lie subgroup of $G$.
+\ben[label=\roman*)]
+\item Any principal $H$-bundle can be extended to a principal $G$-bundle.
+\item A principal $G$-bundle $(P,\pi,M)$ can be restricted to a principal $H$-bundle if, and only if, the bundle $(P/H,\pi',M)$ has a section.
+\een
+\et
+
+\be
+\ben[label=\roman*)]
+\item The bundle $(LM/\SO(d),\pi,M)$ always has a section, and since $\SO(d)$ is a closed Lie subgroup of $\GL(d,\R)$, the frame bundle can be restricted to a principal $\SO(d)$-bundle. This is related to the fact that any manifold can be equipped with a Riemannian metric.   
+\item The bundle $(LM/\SO(1,d-1),\pi,M)$ may or may not have a section.  For example, the bundle $(LS^2/\SO(1,1),\pi,S^2)$ does not admit any section, and hence we cannot restrict $(LS^2/\SO(1,1),\pi,S^2)$ to a principal $\SO(1,1)$-bundle, even though $\SO(1,1)$ is a closed Lie subgroup of $\GL(2,\R)$. This is related to the fact that the $2$-sphere cannot be equipped with a Lorentzian metric.
+\een
+\ee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

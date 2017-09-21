@@ -68,7 +68,7 @@ Products are very useful. Very often in physics one intuitively thinks of the pr
 
 \addplot3 [
     samples=50,
-    domain=-145:180, % The domain needs to be adjusted manually, depending on the camera angle, unfortunately
+    domain=-142:184.5, % The domain needs to be adjusted manually, depending on the camera angle, unfortunately
     samples y=0,
     semithick
 ] (
@@ -201,7 +201,7 @@ Let $(E,\pi,M)$ be a bundle and let $N\se M$ be a submanifold. The \emph{restric
 \ed
 
 \bd
-Let $E\xrightarrow{\,\pi\,}M$ and $E'\xrightarrow{\,\pi'\,}M'$ be bundles and let $u\cl E\to E'$ and $v\cl M\to M'$ be maps. Then $(u,v)$ is called a \emph{bundle morphism}\index{morphism} if the following diagram commutes:
+Let $E\xrightarrow{\,\pi\,}M$ and $E'\xrightarrow{\,\pi'\,}M'$ be bundles and let $u\cl E\to E'$ and $v\cl M\to M'$ be maps. Then $(u,v)$ is called a \emph{bundle morphism}\index{bundle morphism} if the following diagram commutes:
 \bse
 \begin{tikzcd}
 E \ar[r,"u"] \ar[d,"\pi"]& E' \ar[d,"\pi'"]\\
@@ -222,7 +222,7 @@ E \ar[rr,shift left,"u"] \ar[dd,"\pi"']&& E' \ar[ll,shift left,"u^{-1}"]\ar[dd,"
 M \ar[rr,shift left,"v"]&& M' \ar[ll,shift left,"v^{-1}"]
 \end{tikzcd}
 \ese
-Such a $(u,v)$ is called a \emph{bundle isomorphism}\index{isomorphism!of bundles}.
+Such a $(u,v)$ is called a \emph{bundle isomorphism}\index{isomorphism!of bundles} and we write $E\xrightarrow{\,\pi\,}M  \cong_{\mathrm{bdl}} E'\xrightarrow{\,\pi'\,}M'$.
 \ed
 
 Bundle isomorphisms are the structure-preserving maps for bundles.

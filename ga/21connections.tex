@@ -1,0 +1,204 @@
+
+In elementary courses on differential geometry or general relativity, the notions of connection, parallel transport and covariant derivative are often confused with one another. Sometimes, the terms are even used as synonyms. If you have seen any of that before, it is probably best to forget about it for the time being.
+
+What a connection really is, is just additional structure on a principal bundle consisting is a ``smooth'' assignment of a particular vector space at each point of the base manifold compatible with the right action of the Lie group on the principal bundle. Such an assignment is, in fact, equivalent to a certain Lie-algebra-valued one-form on the principal bundle, as we will discuss below. Later, we will see that a connection on a principal bundle induces a parallel transport map on the principal bundle, which in turn induces a parallel transport map on any of its associated bundles. If the fibres of the associated bundle carry a vector space structure, then the parallel transport can be used to define a covariant derivative on the associated bundle. 
+
+Hence the conceptual sequence ``connection, parallel transport covariant derivative'' is in decreasing order of generality, and it should be clear that treating these terms as synonyms will inevitably lead to confusion. We will now discuss the first of these in some detail.
+
+
+
+\subsection{Connections on a principal bundle}
+
+Let $(P,\pi,M)$ be a principal $G$-bundle. Recall that every element of $A\in T_eG$ gives rise to a left invariant vector field on $G$ which we denoted by $X^A$. However, we will now reserve this notation for a vector field on $P$ instead. Given $A\in T_eG$, we define $X^A\in\Gamma(TP)$ by
+\bi{rrCl}
+X^A_p\cl & \mathcal{C}^\infty(P) &\xrightarrow{\sim} & \R \\
+& f & \mapsto & [f(p\racts \exp(tA))]'(0),
+\ei
+where the derivative is to be taken with respect to $t$. We also define the maps
+\bi{rrCl}
+i_p\cl & T_eG & \to & T_pP\\
+& A & \mapsto & X^A_p,
+\ei
+which can be shown to be a Lie algebra homomorphism.
+
+\bd
+Let $(P,\pi,M)$ be a principal bundle and let $p\in P$. The \emph{vertical subspace}\index{vertical subspace} at $p$ is the vector subspace of $T_pP$ given by
+\bi{rCl}
+V_pP  & := & \ker((\pi_*)_p)\\
+& = & \{X_p\in T_pP \mid (\pi_*)_p(X_p)=0\}.
+\ei
+\ed
+
+\bl
+For all $A\in T_eG$ and $p\in P$, we have $X^A_p\in V_pP$.
+\el
+
+\bq
+Since the action of $G$ simply permutes the elements within each fibre, we have
+\bse
+\pi(p) = \pi(p\racts \exp(tA)),
+\ese
+for any $t$. Let $f\in \mathcal{C}^\infty(M)$ be arbitrary. Then
+\bi{rCl}
+(\pi_*)_pX_p^A(f) & = & X_p^A(f\circ \pi)\\
+& = & [(f\circ \pi)(p\racts \exp(tA))]'(0)\\
+& = & [f(\pi(p))]'(0)\\
+& = & 0,
+\ei
+since $f(\pi(p))$ is constant. Hence $X_p^A\in V_pP$. Alternatively, one can also argue that $(\pi_*)_pX^A_p$ is the tangent vector to a constant curve on $M$.
+\eq
+
+In particular, the map $i_p\cl T_eG\xrightarrow{\sim} V_pP$ is now a bijection.
+The idea of a connection is to make a choice of how to ``connect'' the individual points in ``neighbouring'' fibres in a principal fibre bundle.
+
+\bd
+Let $(P,\pi,M)$ be a principal bundle and let $p\in P$. A \emph{horizontal subspace}\index{horizontal subspace} at $p$ a vector subspace $H_pP$ of $T_pP$ which is complementary to $V_pP$, i.e.\
+\bi{rCl}
+ T_pP = H_pP \oplus V_pP .
+\ei
+\ed
+
+The choice of horizontal space at $p\in P$ is not unique. However, once a choice is made, there is a unique decomposition of each $X_p\in T_pP$ as
+\bse
+X_p=\hor(X_p)+\ver(X_p),
+\ese
+with $\hor(X_p)\in H_pP$ and $\ver(X_p)\in V_pP$.
+
+\bd
+A \emph{connection}\index{connection} on a principal $G$-bundle $(P,\pi,M)$ is a choice of horizontal space at each $p\in P$ such that
+\ben[label=\roman*)]
+\item For all $g\in G$, $p\in P$ and $X_p\in H_pP$, we have
+\bse
+(\racts g)_* X_p  \in H_{p\racts g}P,
+\ese
+where $(\racts g)_*$ is the push-forward of the map $(-\racts g)\cl P \to P$ and it is a bijection. We can also write this condition more concisely as
+\bse
+(\racts g)_* (H_pP) = H_{p\racts g}P.
+\ese
+\item For every smooth $X\in \Gamma(TP)$, the two summands in the unique decomposition
+\bse
+X|_p = \hor(X|_p)+\ver(X|_p)
+\ese
+at each $p\in P$, extend to smooth $\hor(X),\ver(X)\in\Gamma(TM)$.
+\een
+\ed
+The definition formalises the idea that the assignment of an $H_pP$ to each $p\in P$ should be ``smooth'' within each fibre (i) as well as between different fibres (ii).  
+
+\br
+For each $X_p\in T_pP$, both $\hor(X_p)$ and $\ver(X_p)$ depend on the choice of $H_pP$. 
+\er
+
+\subsection{Connection one-forms}
+
+Technically, the choice of a horizontal subspace $H_pP$ at each $p\in P$ providing a connection is conveniently encoded in the thus induced Lie-algebra-valued one-form
+\bi{rrCl}
+\omega_p \cl & T_pP & \xrightarrow{\sim} & T_eG\\
+& X_p & \mapsto & \omega_p(X_p):=  i_p^{-1}(\ver(X_p))
+\ei
+
+\bd
+The map $\omega\cl p\to \omega_p$ sending each $p\in P$ to the $T_eG$-valued one-form $\omega_p$ is called the \emph{connection one-form} with respect to the connection.
+\ed
+
+\br
+We have seen how to produce a one-form from a choice of horizontal spaces (i.e.\ a connection). The choice of horizontal spaces can be recovered from $\omega$ by
+\bse
+H_pP = \ker (\omega_p).
+\ese
+\er
+
+Of course, not every (Lie-algebra-valued) one-form on $P$ is such that $\ker(\omega_p)$ gives a connection on the principal bundle. What we would now like to do is to study some crucial properties of $\omega$. We will then elevate these properties to a definition of connection one-form absent a connection, so that we may re-define the notion of connection in terms of a connection one-form.
+
+\bl
+For all $p\in P$, $g\in G$ and $A\in T_eG$, we have
+\bse
+(\racts g)_*X^A_p = X^{(\Ad_{g^{-1}})_*A}_{p\racts g}.
+\ese
+\el
+
+\bq
+Let $f\in \mathcal{C}^\infty(P)$ be arbitrary. We have
+\bi{rCl}
+(\racts g)_*X^A_p (f) & = & X^A_p (f\circ (-\racts g))\\
+& = & [f(p \racts \exp(tA)\racts g)]'(0)\\
+& = & [f(p \racts g \racts g^{-1}\racts \exp(tA)\racts g)]'(0)\\
+& = & [f(p \racts g \racts (g^{-1}\bullet \exp(tA)\bullet g)]'(0)\\
+& = & [f(p \racts g \racts \Ad_{g^{-1}}(\exp(tA))]'(0)\\
+& = & [f(p \racts g \racts \exp(t(\Ad_{g^{-1}})_*A)]'(0)\\
+& = & X^{(\Ad_{g^{-1}})_*A}_{p\racts g} (f),
+\ei
+which is what we wanted.
+\eq
+
+\bt
+A connection one-form $\omega$ with respect to a connection satisfies
+\ben[label=\alph*)]
+\item For all $p\in P$, we have $\omega_p(X^A_p)=A$, that is  $\omega_p\circ i_p = \id_{T_eG}$.
+\bse
+\begin{tikzcd}
+T_eG \ar[rr,"i_p"] \ar[ddrr,"\id_{T_eG}"']&& V_pP \ar[dd,"\omega_p|_{V_pP}\phantom{nn}"]\\
+&&\\
+&& T_eG
+\end{tikzcd}
+\ese
+\item $((\racts g)^*\omega)|_p (X_p)= (\Ad_{g^{-1}})_*(\omega_p(X_p))$
+\bse
+\begin{tikzcd}
+T_pP \ar[rr,"\omega_p"] \ar[ddrr,"((\racts g)^*\omega)|_p "']&& T_eG \ar[dd,"(\Ad_{g^{-1}})_*"]\\
+&&\\
+&& T_eG
+\end{tikzcd}
+\ese
+\item $\omega$ is a smooth one-form.
+\een
+\et
+
+\bq
+\ben[label=\alph*)]
+\item Since $X^A_p\in V_pP$, by definition of $\omega$ we have
+\bse
+\omega_p(X^A_p):=i_p^{-1}(\ver(X^A_p))=i_p^{-1}(X^A_p)=A.
+\ese
+\item First observe that the left hand side is linear in $X_p$. Consider the two cases
+\ben[label=b.\arabic*)]
+\item Suppose that $X_p\in V_pP$. Then $X_p=X_p^A$ for some $A\in T_eG$. Hence
+\bi{rCl}
+((\racts g)^*\omega)|_p (X^A_p) & = & \omega_{p\racts g}((\racts g)_*X^A_p)\\
+& = & \omega_{p\racts g}\Bigl(X^{(\Ad_{g^{-1}})_*A}_{p\racts g}\Bigr)\\
+& = & (\Ad_{g^{-1}})_*A\\
+& = & (\Ad_{g^{-1}})_*(\omega_p(X^A_p))
+\ei
+\item Suppose now that $X_p\in H_pP=\ker(\omega_p)$. Then
+\begin{equation*}
+((\racts g)^*\omega)|_p (X_p) =  \omega_{p\racts g}((\racts g)_*X_p) = 0
+\end{equation*}
+since $(\racts g)_*X_p\in H_{p\racts g}P=\ker(\omega_{p\racts g})$. 
+\een
+Let $X_p\in T_pP$. We have
+\bi{rCl}
+((\racts g)^*\omega)|_p (X_p) & = & ((\racts g)^*\omega)|_p (\ver(X_p)+\hor(X_p)) \\
+& = & ((\racts g)^*\omega)|_p (\ver(X_p)) +((\racts g)^*\omega)|_p (\hor(X_p)) \\
+& = & (\Ad_{g^{-1}})_*(\omega_p(\ver(X_p))) + 0 \\
+& = & (\Ad_{g^{-1}})_*(\omega_p(\ver(X_p))) +(\Ad_{g^{-1}})_*(\omega_p(\hor(X_p)))\\
+& = & (\Ad_{g^{-1}})_*(\omega_p(\ver(X_p)+\hor(X_p)))\\
+& = & (\Ad_{g^{-1}})_*(\omega_p(X_p))
+\ei
+\item We have $\omega=i^{-1}\circ\ver$ and both $i^{-1}$ and $\ver$ are smooth.\qedhere
+\een
+\eq
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

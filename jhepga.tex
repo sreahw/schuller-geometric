@@ -15,6 +15,8 @@
 \usepackage{graphicx} % Required for including images
 \graphicspath{{Figures/}} % Set the default folder for images
 
+\usepackage{relsize} % for resizing maths relations
+
 \usepackage{enumitem} % Required for manipulating the whitespace between and within lists
 
 \usepackage{subfig} % Required for creating figures with multiple parts (subfigures)
@@ -42,7 +44,11 @@
 \definecolor{lightergray}{rgb}{0.9,0.9,0.9}
 
 
-\usepackage{fixltx2e}
+
+
+
+
+%\usepackage{fixltx2e}
 \usepackage{soul}
 
 \usetikzlibrary{matrix,calc,positioning,decorations.markings,decorations.pathmorphing,decorations.pathreplacing}%tikzmark,
@@ -59,6 +65,8 @@
 \patchcmd{\@IEEEeqnarray}{\relax}{\relax\intertext@}{}{}
 \makeatother
 
+
+\usepackage{bm}
 
 
 %\usepackage[upright]{fourier}
@@ -222,7 +230,6 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 % \input{ga/11tensor_ii}
 % \newpage
 
-
 % \section{Grassmann algebra and de Rham cohomology}
 % \input{ga/12grassmann}
 % \newpage
@@ -251,25 +258,26 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 % \input{ga/18reconstruction}
 % \newpage
 
-\setcounter{section}{18}
-\section{Principal fibre bundles}
-
-
+% \section{Principal fibre bundles}
+% \input{ga/19principal}
+% \newpage
 
 % \section{Associated fibre bundles}
-
-
+% \input{ga/20associated}
+% \newpage
 
 % \section{Connections and connection 1-forms}
-
-
+% \input{ga/21connections}
+% \newpage
 
 % \section{Local representations of a connection on the base manifold: Yang-Mills fields}
+% \input{ga/22yang-mills}
+%\newpage
 
-
-
-% \section{Parallel transport}
-
+\setcounter{section}{22}
+\section{Parallel transport}
+\input{ga/23parallel}
+\newpage
 
 
 % \section{Curvature and torsion on principal bundles}
@@ -290,7 +298,12 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 
 % \section{Application: Kinematical and dynamical symmetries}
 
+% \newpage
 
-%\printindex
+% \section*{Further readings}
+% \addcontentsline{toc}{section}{Further readings}
+% \input{biblio}
+
+% \printindex
 
 \end{document}

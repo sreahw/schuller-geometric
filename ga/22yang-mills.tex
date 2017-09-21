@@ -1,0 +1,288 @@
+We have seen how to associate a connection one-form to a connection, i.e.\ a certain Lie-algebra-valued one-form to a smooth choice of horizontal spaces on the principal bundle. We will now study how we can express this connection one-form locally on the base manifold of the principal bundle. 
+
+\subsection{Yang-Mills fields and local representations}
+
+Recall that a connection one-form on a principal bundle $(P,\pi,M)$ is a smooth Lie-algebra-valued one-form, i.e.\ a smooth map
+\bse
+\omega\cl \Gamma(TP) \xrightarrow{\sim} T_eG
+\ese
+which ``behaves like a one-form'', in the sense that it is $\R$-linear and satisfies the Leibniz rule, and such that, in addition, for all $A\in T_eG$, $g\in G$ and $X\in \Gamma(TP)$, we have
+\ben[label=\roman*)]
+\item $\omega(X^A)=A$;
+\item $((\racts g)^*\omega)(X)=(\Ad_{g^{-1}})_*(\omega(X))$.
+\een
+If the pair $(u,f)$ is a principal bundle automorphism of $(P,\pi,M)$, i.e.\ if the diagram
+\bse
+\begin{tikzcd}
+P \ar[rr,"u"]&& P \\
+&&\\
+P\ar[rr,"u"] \ar[dd,"\pi"'] \ar[uu,"\racts G"] && P\ar[dd,"\pi"] \ar[uu,"\racts G"'] \\
+&& \\
+M \ar[rr,"f"]&& M
+\end{tikzcd}
+\ese
+commutes, we should be able to pull a connection one-form $\omega$ on $P$ back to another connection one-form $u^*\omega$ on $P$.
+\bse
+\begin{tikzcd}
+\Gamma(TP)\ar[rr,"\omega"]   && T_eG \\
+&& \\
+\Gamma(TP) \ar[uu,"u"] \ar[rruu,"u^*\omega"']&&
+\end{tikzcd}
+\ese
+Recall that for a one-form $\omega\cl \Gamma(TN)\xrightarrow{\sim}\mathcal{C}^\infty(N)$, we defined
+\bi{rrCl}
+\Phi^*(\omega)\cl & \Gamma(TM) & \xrightarrow{\sim} & \mathcal{C}^\infty(M)\\
+& X & \mapsto & \omega(\Phi_*(X))\circ \phi
+\ei
+for any diffeomorphism $\phi\cl M \to N$. One might be worried about whether this and similar definitions apply to Lie-algebra-valued one-forms but, in fact, they do. In our case, even though $\omega$ lands in $T_eG$, its domain is still $\Gamma(TP)$ and if $u\cl P\to P$ is a diffeomorphism of $P$, then $u_*X\in \Gamma(TP)$ and so
+\bse
+u^*\omega\cl X \mapsto (u^*\omega)(X):=\omega(u_*(X))\circ u
+\ese
+is again a Lie-algebra-valued one-form. Note that we will no longer distinguish notationally between the push-forward of tangent vectors and of vector fields.
+
+In practice, e.g. for calculational purposes, one may wish to restrict attention to some open subset $U\se M$. Let $\sigma\cl U\to P$ be a local section of $P$, i.e.\ $\pi\circ \sigma = \id_U$.
+\bse
+\begin{tikzcd}
+P\\
+\\
+P\ar[dd,"\pi"']\ar[uu,"\racts G"]\\
+\\
+U\ar[uu,bend right=60,"\sigma"']
+\end{tikzcd}
+\ese
+\bd
+Given a connection one-form $\omega$ on $P$, such a local section $\sigma$ induces
+\ben[label=\roman*)]
+\item a \emph{Yang-Mills field} $\omega^U\cl \Gamma(TU) \xrightarrow{\sim} T_eG$ given by
+\bse
+\omega^U:= \sigma^* \omega;
+\ese
+\item a \emph{local trivialisation} of the principal bundle $P$, i.e.\ a map
+\bi{rrCl}
+h\cl & U\times G & \to & P\\
+& (m,g)& \mapsto & \sigma(m)\racts g;
+\ei
+\item a \emph{local representation}\index{connection!local representation} of $\omega$ on $U$ by
+\bse
+h^* \omega \cl \Gamma(T(U\times G))  \xrightarrow{\sim} T_eG.
+\ese
+\een
+\ed
+Note that, at each point $(m,g)\in U\times G$, we have
+\bse
+T_{(m,g)}(U\times G) \cong_{\mathrm{Lie \, alg}} T_mU\oplus T_gG.
+\ese
+\br
+Both the Yang-Mills field $\omega^U$ and the local representation $h^*\omega$ encode the information carried by $\omega$ locally on $U$. Since $h^*\omega$ involves $U\times G$ while $\omega^U$ doesn't, one might guess that $h^*\omega$ gives a more ``accurate'' picture of $\omega$ on $U$ than the Yang-Mills field. But in fact, this is not the case. They both contain the same amount of local information about the connection one-form $\omega$.
+\er
+
+\subsection{The Maurer-Cartan form}
+
+Th relation between the Yang-Mills field and the local representation is provided by the following result.
+
+\begin{theorem}\label{thm:maurer-cartan}
+For all $v\in T_mU$ and $\gamma \in T_gG$, we have
+\bse
+(h^*\omega)_{(m,g)}(v,\gamma) = (\Ad_{g^{-1}})_*(\omega^U(v))+\Xi_g(\gamma),
+\ese
+where $\Xi_g$ is the Maurer-Cartan form\index{Maurer-Cartan form}
+\bi{rrCl}
+\Xi_g \cl & T_gG & \xrightarrow{\sim} & T_eG\\
+& L^A_g &\mapsto & A.
+\ei
+\end{theorem}
+
+\br
+Note that we have represented a generic element of $T_gG$ as $L^A_g$. This is due to the following. Recall that the left translation map $\ell_g\cl G \to G$ is a diffeomorphism of $G$. As such, its push-forward at any point is a linear isomorphism. In particular, we have
+\bse
+((\ell_g)_*)_e \cl T_eG \xrightarrow{\sim} T_gG,
+\ese
+that is, the tangent space at any point $g\in G$ can be canonically identified with the tangent space at the identity. Hence, we can write any element of $T_gG$ as
+\bse
+L^A_g := ((\ell_g)_*)_e (A)
+\ese
+for some $A\in T_eG$.
+\er
+
+Let us consider some specific examples.
+
+\be
+Any chart $(U,x)$ of a smooth manifold $M$ induces a local section $\sigma\cl U\to LM$ of the frame bundle of $M$ by
+\bse
+\sigma(m):=\biggl(\tvb{x}{1}{m},\ldots,\tvb{x}{\dim M}{m\,} \biggr)\in L_mM.
+\ese
+Since $\GL(\dim M,\R)$ can be identified with an open subset of $\R^{(\dim M)^2}$, we have
+\bse
+T_e\GL(\dim M,\R)\cong_{\mathrm{Lie\, alg}} \R^{(\dim M)^2},
+\ese
+where $\R^{(\dim M)^2}$ is understood as the algebra of $\dim M \times \dim M$ square matrices, with bracket induced by matrix multiplication. 
+In fact, this holds for any open subset of a vector space, when considered as a smooth manifold. A connection one-form 
+\bse
+\omega\cl \Gamma(LM)\xrightarrow{\sim}T_e\GL(\dim M,\R)
+\ese
+can thus be given in terms of $(\dim M)^2$ functions 
+\bse
+\omega^i_{\phantom{i}j}\cl \Gamma(LM)\xrightarrow{\sim}\R, \qquad 1\leq i,j\leq \dim M.
+\ese
+The associated Yang-Mills field $\omega^U:=\sigma^*\omega$ is, at each point $m\in U$, a Lie-algebra-valued one-form on the vector space $T_mU$. By using the co-ordinate induced basis and its dual basis, we can express $(\omega^U)_m$ in terms of components as
+\bse
+(\omega^U)_m=\omega^U_\mu(m)\,(\d x^\mu)_m,
+\ese
+where $1\leq \mu \leq \dim M$ and
+\bse
+\omega^U_\mu(m):=(\omega^U)_m\biggl(\tvb{x}{\mu}{m}\biggr).
+\ese
+Since $(\omega^U)_m\cl T_mU\xrightarrow{\sim}T_eG$, we have $\omega^U_\mu\cl U \to T_eG$. Hence, by employing he same isomorphism as above, we can identify each $\omega^U_\mu(m)$ with a square $\dim M \times \dim M$ matrix and define the symbol
+\bse
+\Gamma^i_{\phantom{i}j\mu} (m):= (\omega^U(m))^i_{\phantom{i}j\mu}:= (\omega^U_\mu(m))^i_{\phantom{i}j},
+\ese
+usually referred to as the \emph{Christoffel symbol}\index{Christoffel symbol}. The middle term is just an alternative notation for the right-most side. Note that, even though all three indices $i$, $j$, $\mu$ run from $1$ to $\dim M$, the numbers $\Gamma^i_{\phantom{i}j\mu} (m)$ do not constitute the components of a $(1,2)$-tensor on $U$. Only the $\mu$ index transforms as a one-form component index, i.e.\
+\bse
+((g\lacts \omega^U(m))^i_{\phantom{i}j})_\mu = (g^{-1})^{\nu}_{\phantom{\mu}}(\omega^U(m))^i_{\phantom{i}j_\nu}
+\ese
+for $g\in \GL(\dim M,\R)$, while the $i$, $j$ indices simply label different one-forms, $(\dim M)^2$ in total. 
+\ee
+
+Note that the Maurer-Cartan form appearing in \Cref{thm:maurer-cartan} only depends on the Lie group (and its Lie algebra), not on the principal bundle $P$ or the restriction $U\se M$. In the following example, we will go through the explicit calculation of the Maurer-Cartan form of the Lie group $\GL(d,\R)$.
+
+\be
+Let $(\GL^+(d,\R),x)$ be a chart on $\GL(d,\R)$, where $\GL^+(d,\R)$ denotes an open subset of $\GL(d,\R)$ containing the identity $\id_{\R^d}$, and let $x^i_{\phantom{i}j}\cl \GL^+(d,\R)\to \R$ denote the corresponding co-ordinate functions
+\bse
+\begin{tikzcd}
+\GL^+(d,\R) \ar[ddrr,"x^i_{\phantom{i}j}"']\ar[rr,"x"]&& x(\GL^+(d,\R))\se \R^{d^2} \ar[dd,"\proj^i_{\phantom{i}j}"]\\
+&&\\
+&& \R
+\end{tikzcd}
+\ese
+so that $x^i_{\phantom{i}j}(g):=g^i_{\phantom{i}j}$. Recall that the co-ordinate functions are smooth maps on the chart domain, i.e.\ we have $x^i_{\phantom{i}j}\in \mathcal{C}^\infty(\GL^+(d,\R))$. Also recall that to each $A\in T_{\id_{\R^d}}\GL(d,\R)$ there is associated a left-invariant vector field
+\bse
+L^A\cl \mathcal{C}^\infty(\GL^+(d,\R))\xrightarrow{\sim} \mathcal{C}^\infty(\GL^+(d,\R))
+\ese
+which, at each point $g\in \GL(d,\R)$, is the tangent vector to the curve
+\bse
+\gamma^A(t) := g\bullet \exp(tA).
+\ese
+Consider the action of $L^A$ on the co-ordinate functions:
+\bi{rCl}
+(L^Ax^i_{\phantom{i}j})(g) & = & [x^i_{\phantom{i}j}(g\bullet \exp(tA))]'(0)\\
+& = & [x^i_{\phantom{i}j}(g\bullet\e^{tA})]'(0)\\
+& = & (g^i_{\phantom{i}k}(\e^{tA})^k_{\phantom{k}j})'(0)\\
+& = & g^i_{\phantom{i}k}A^k_{\phantom{k}j},
+\ei
+where we have used the fact that for a matrix Lie group, the exponential map is just the ordinary exponential 
+\bse
+\exp(A) = \e^A := \sum_{n=0}^\infty \frac{1}{n!}A^n.
+\ese
+Hence, we can write
+\bse
+L^A|_g = g^i_{\phantom{i}k}A^k_{\phantom{k}j} \tvb{x^i_{\phantom{i}j}}{}{g}
+\ese
+from which we can read-off the Maurer-Cartan form of $\GL(d,\R)$
+\bse
+(\Xi_g)^i_{\phantom{i}j}:= (g^{-1})^i_{\phantom{i}k} (\d x^k_{\phantom{k}j})_g.
+\ese
+Indeed, we can quickly check that
+\bi{rCl}
+(\Xi_g)^i_{\phantom{i}j}(L^A) & = & (g^{-1})^i_{\phantom{i}k} (\d x^k_{\phantom{k}j})_g\biggl(  g^p_{\phantom{p}r}A^r_{\phantom{r}q} \tvb{x^p_{\phantom{p}q}}{}{g\,}\biggr) \\
+& = & (g^{-1})^i_{\phantom{i}k}g^p_{\phantom{p}r}A^r_{\phantom{r}q}\delta^k_p\delta^q_j\\
+& = & (g^{-1})^i_{\phantom{i}p}g^p_{\phantom{p}r}A^r_{\phantom{r}j}\\
+& = & \delta^i_r A^r_{\phantom{r}j}\\
+& = &  A^i_{\phantom{i}j}.
+\ei
+\ee
+
+\subsection{The gauge map}
+
+In physics, we are often prompted to write down a Yang-Mills field because we have local information about a connection. We can then try to reconstruct the global connection by glueing the Yang-Mills fields on several open subsets of our manifold. 
+\bse
+\begin{tikzcd}
+&P \ar[ddl,"\pi"'] \ar[ddr,"\pi"] &\\
+&&\\
+U_1 \ar[uur,bend left=80,"\sigma_1"]&& U_2 \ar[uul,bend right=80,"\sigma_2"']
+\end{tikzcd}
+\ese
+Suppose, for instance, that we have two open subsets $U_1,U_2\se M$ and consider the Yang-Mills fields associated to two local connections $\sigma_1,\sigma_2$. If $\omega^{U_1}$ and $\omega^{U_2}$ are both local versions of a unique connection one-form, then is $U_1\cap U_2\neq \varnothing$, the Yang-Mills fields $\omega^{U_1}$ and $\omega^{U_2}$ should satisfy some compatibility condition on $U_1\cap U_2$.
+
+\bd
+Within the above set-up, the \emph{gauge map}\index{gauge map} is the map
+\bse
+\Omega \cl U_1\cap U_2 \to G
+\ese
+where, for each $m\in U_1\cap U_2$, the Lie group element $\Omega(m)\in G$ satisfies
+\bse
+\sigma_2(m) = \sigma_1(m)\racts \Omega(m).
+\ese
+\ed
+Note that since the $G$-action $\racts$ on $P$ is free, for each $m$ there exists a unique $\Omega(m)$ satisfying the above condition, and hence the gauge map $\Omega$ is well-defined.
+
+\begin{theorem}
+Under the above assumptions, we have
+\bse
+(\omega^{U_2})_m = (\Ad_{\Omega^{-1}(m)})_*( \omega^{U_1})+(\Omega^*\Xi_g)_m.
+\ese
+\end{theorem}
+
+\be
+Consider again the frame bundle $LM$ of some manifold $M$. Let us evaluate explicitly the pull-back along $\Omega$ of the Maurer-Cartan form. Since $\Xi_g\cl T_gG \to T_eG$ and $\Omega\cl U_1\cap U_2\to T_eG$, we have $\Omega^*\Xi_g\cl T(U_1\cap U_2)\to T_eG$. Let $x$ be a chart map near the point $m\in U_1\cap U_2$. We have
+\bi{rCl}
+((\Omega^*\Xi_g)_m)^i_{\phantom{i}j} \biggl(\tvb{x}{\mu}{m\,}\biggr) & = & (\Xi_{\Omega(m)})^i_{\phantom{i}j} \biggl(\Omega_*\tvb{x}{\mu}{m\,}\biggr) \\
+ & = & (\Omega(m)^{-1})^i_{\phantom{i}k} (\d \widetilde x^k_{\phantom{k}j})_{\Omega(m)}\biggl(\Omega_*\tvb{x}{\mu}{m\,}\biggr) \\
+ & = & (\Omega(m)^{-1})^i_{\phantom{i}k} \biggl(\Omega_*\tvb{x}{\mu}{m\,}\biggr) (\widetilde x^k_{\phantom{k}j})  \\
+ & = & (\Omega(m)^{-1})^i_{\phantom{i}k} \tvb{x}{\mu}{m} (\widetilde x^k_{\phantom{k}j}\circ \Omega)  \\
+ & = & (\Omega(m)^{-1})^i_{\phantom{i}k} \tvb{x}{\mu}{m} (\Omega(m))^k_{\phantom{k}j} .
+\ei
+hence, we can write
+\bi{rCl}
+((\Omega^*\Xi_g)_m)^i_{\phantom{i}j} & = & (\Omega(m)^{-1})^i_{\phantom{i}k} \tvb{x}{\mu}{m} (\Omega(m))^k_{\phantom{k}j} \d x^\mu \\
+&=:& (\bm{\Omega}^{-1}\d \bm{\Omega})^i_{\phantom{i}j}.
+\ei
+Let us now compute the other summand. Recall that $\Ad_g$ is the map
+\bi{rrCl}
+\Ad_g \cl & G & \to & G \\
+& h & \mapsto & g\bullet h \bullet g^{-1}
+\ei
+and since $\Ad_g(e)=e$, the push-forward $((\Ad_g)_*)_e\cl T_eG \xrightarrow{\sim} T_eG$ is a linear endomorphism of $T_eG$. Moreover, since here $G=\GL(d,\R)$ is a matrix Lie group, we have
+\bse
+((\Ad_g)_*A)^i_{\phantom{i}j} = g^i_{\phantom{i}k}A^k_{\phantom{k}l}(g^{-1})^l_{\phantom{l}j} =: (\bm{gAg}^{-1})^i_{\phantom{i}j}.
+\ese
+Hence, we have
+\bi{rCl}
+(\Ad_{\Omega^{-1}(m)})_*( \omega^{U_1}) & = & (\Omega(m)^{-1})^i_{\phantom{i}k}(\omega^{U_1})_m)^k_{\phantom{k}l}(\Omega(m))^l_{\phantom{l}j}
+\ei
+Altogether, we find that the transition rule for the Yang-Mills fields on the intersection of $U_1$ and $U_2$ is given by
+\bse
+(\omega^{U_2})^i_{\phantom{i}j\mu} = (\Omega^{-1})^i_{\phantom{i}k}(\omega^{U_1})^k_{\phantom{k}l\mu}\Omega^l_{\phantom{l}j}+  (\Omega^{-1})^i_{\phantom{i}k}\partial_\mu  (\Omega^{-1})^k_{\phantom{k}j}.
+\ese
+As an application, consider the spacial case in which the sections $\sigma_1,\sigma_2$ are induced by co-ordinate charts $(U_1,x)$ and $(U_2,y)$. Then we have
+\bi{rCl}
+\Omega^i_{\phantom{i}j} & = & \frac{\partial y^i}{\partial x^j} := \partial_j(y^i\circ x^{-1})\circ x\\
+(\Omega^{-1})^i_{\phantom{i}j} & = & \frac{\partial x^i}{\partial y^j} := \partial_j(x^i\circ y^{-1})\circ y
+\ei
+and hence
+\bse
+(\omega^{U_2})^i_{\phantom{i}j\nu} = \frac{\partial y^\mu}{\partial x^\nu} \biggl( \frac{\partial x^i}{\partial y^k} (\omega^{U_1})^k_{\phantom{k}l\mu}  \frac{\partial y^l}{\partial x^j} + \frac{\partial x^i}{\partial y^k}  \frac{\partial^2 y^k}{\partial x^\mu\partial x^j} \biggr).
+\ese
+You may recognise this as the transformation law for the Christoffel symbols from general relativity.
+\ee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,229 @@
+We now come to the second term in the sequence ``connection, parallel transport, covariant derivative''. The idea of parallel transport on a principal bundle hinges on that of horizontal lift of a curve on the base manifold, which is a lifting to a curve on the principal bundle in the sense that the projection to the base manifold of this curve gives the curve we started with. In particular, if the principal bundle is equipped with a connection, we would like to impose some extra conditions on this lifting, so that it ``connects'' nearby fibres in a nice way. We will then consider the same idea on an associated bundle and see how we can induce a derivative operator if the associated bundle is a vector bundle. 
+
+
+\subsection{Horizontal lifts to the principal bundle}
+
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle equipped with a connection and let $\gamma\cl[0,1]\to M$ be a curve on $M$. The \emph{horizontal lift of $\gamma$ through $p_0\in P$}\index{horizontal lift} is the unique curve
+\bse
+\gamma^{\uparrow}\cl [0,1] \to P
+\ese
+with $\gamma^\uparrow(0)=p_0\in \preim_\pi(\{\gamma(0)\})$ satisfying
+\ben[label=\roman*)]
+\item $\pi \circ \gamma^{\uparrow} = \gamma$;
+\item $\forall \, \lambda\in [0,1] : \ \ver(X_{\gamma^{\uparrow},\gamma^{\uparrow}(\lambda)})=0$;
+\item $\forall \, \lambda\in [0,1] : \ \pi_*(X_{\gamma^{\uparrow},\gamma^{\uparrow}(\lambda)})=X_{\gamma,\gamma(\lambda)}$.
+\een
+\ed
+Intuitively, a horizontal lift of a curve $\gamma$ on $M$ is a curve $\gamma^\uparrow$ on $P$ such that each point $\gamma^\uparrow(\lambda)\in P$ belongs to the fibre of $\gamma(\lambda)$ (condition i), the tangent vectors to the curve $\gamma^\uparrow$ have no vertical component (condition ii), i.e.\ they lie entirely in the horizontal spaces at each point, and finally the projection of the tangent vector to $\gamma^\uparrow$ at $\gamma^\uparrow(\lambda)$ coincides with the tangent vector to the curve $\gamma$ at $\pi(\gamma^\uparrow(\lambda))=\gamma(\lambda)$.
+
+\br
+Note that the uniqueness in the above definition only stems from the choice of $p_0\in\preim_\pi(\{\gamma(0)\})$. A curve on $M$ has several horizontal lifts to a curve on $P$, but there is only one such curve going through each point $p_0\in\preim_\pi(\{\gamma(0)\})$. Clearly, different horizontal lifts cannot intersect each other.
+\er
+
+Our strategy to write down an explicit expression for the horizontal lift through $p_0\in P$ of a curve $\gamma\cl [0,1]\to M$ is to proceed in two steps:
+\ben[label=\roman*)]
+\item ``Generate'' the horizontal lift by starting from some arbitrary curve $\delta\cl [0,1]\to P$ such that $\pi\circ \delta = \gamma$ by action of a suitable curve $g\cl (0,1)\to G$ so that
+\bse
+\gamma^\uparrow(\lambda) = \delta(\lambda)\racts g(\lambda).
+\ese
+The suitable curve $g$ will be the solution to an ordinary differential equation with initial condition $g(0)=g_0$, where $g_0$ is the unique element in $G$ such that
+\bse
+\delta(0)\racts g_0 = p_0\in P.
+\ese
+\item We will explicitly solve (locally) this differential equation for $g\cl [0,1]\to P$ by a path-ordered integral over the local Yang-Mills field.
+\een
+
+We have the following result characterising the curve $g$ appearing above.
+
+\bt
+The (first order) ODE satisfied by the curve $g\cl[0,1]\to G$ is
+\bse
+(\Ad_{g(\lambda)^{-1}})_*(\omega_{\delta(\lambda)}(X_{\delta,\delta(\lambda)}))+\Xi_{g(\lambda)}(X_{g,g(\lambda)}) = 0
+\ese
+with the initial condition $g(0)=g_0$.
+\et
+
+\bc
+If $G$ is a matrix group, then the above ODE takes the form
+\bse
+g(\lambda)^{-1}(\omega_{\delta(\lambda)}(X_{\delta,\delta(\lambda)}))g(\lambda)+g(\lambda)^{-1}\dot{g}(\lambda)=0
+\ese
+where we denoted matrix multiplication by juxtaposition and $\dot g(\lambda)$ denotes the derivative with respect to $\lambda$ of the matrix entries of $g$. Equivalently, by multiplying both sides on the left by $g(\lambda)$,
+\bse
+\dot{g}(\lambda) = -(\omega_{\delta(\lambda)}(X_{\delta,\delta(\lambda)}))g(\lambda).
+\ese
+\ec
+In order to further massage this ODE, let us consider a chart $(U,x)$ on the base manifold $M$, such that the image of $\gamma$ is entirely contained in $U$. A local section $\sigma\cl U \to P$ induces 
+\ben[label=\roman*)]
+\item a Yang-Mills field $\omega^U$;
+\item a curve on $P$ by $\delta:=\sigma \circ \gamma$.
+\een
+In fact, since the only condition imposed on $\delta$ is that $\pi\circ \delta = \gamma$, choosing a such a curve $\delta$ is equivalent to choosing a local section $\sigma$. Note that we have
+\bse
+\sigma_*(X_{\gamma,\gamma(\lambda)}) = X_{\delta,\delta(\lambda)},
+\ese
+and hence
+\bi{rCl}
+\omega_{\delta(\lambda)}(X_{\delta,\delta(\lambda)}) & = & \omega_{\delta(\lambda)}(\sigma_*(X_{\gamma,\gamma(\lambda)}))\\
+& = &  (\sigma^*\omega)_{\gamma(\lambda)}(X_{\gamma,\gamma(\lambda)})\\
+& = & (\omega^U)_{\gamma(\lambda)}(X_{\gamma,\gamma(\lambda)})\\
+& = & \omega^U_\mu(\gamma(\lambda))(\d x^\mu)_{\gamma(\lambda)} \biggl(X_{\gamma}^\nu(\gamma(\lambda))\tvb{x}{\nu}{\gamma(\lambda)\,}\biggr)\\
+& = & \omega^U_\mu(\gamma(\lambda))X_{\gamma}^\nu(\gamma(\lambda))(\d x^\mu)_{\gamma(\lambda)} \biggl(\tvb{x}{\nu}{\gamma(\lambda)\,}\biggr)\\
+& = & \omega^U_\mu(\gamma(\lambda))X_{\gamma}^\nu(\gamma(\lambda))\,\delta^\mu_\nu\\
+& = & \omega^U_\mu(\gamma(\lambda))X_{\gamma}^\mu(\gamma(\lambda)).
+\ei
+Thus, in the special case of a matrix Lie group, the ODE reads
+\bse
+\dot{g}(\lambda) = -\Gamma_\mu(\gamma(\lambda))\, \dot{\gamma}^\mu(\lambda),
+\ese
+where $\Gamma_\mu:=\omega^U_\mu$ and $\dot{\gamma}^\mu(\lambda):=X^\mu_{\gamma}(\gamma(\lambda))$, together with the initial condition $g(0)=g_0$.
+
+\subsection{Solution of the horizontal lift ODE by a path-ordered exponential}
+As a first step towards the solution of our ODE, consider
+\bse
+g(t) := g_0 -\int_0^t \d \lambda \, \Gamma_\mu(\gamma(\lambda))\, \dot{\gamma}^\mu(\lambda)g(\lambda).
+\ese
+This doesn't seem to have brought us far since the function $g$ that we would like to determine appears again on the right hand side. However, we can now iterate this definition to obtain
+\bi{rCl}
+g(t) & = & g_0 -\int_0^t \d \lambda_1 \, \Gamma_\mu(\gamma(\lambda_1)) \dot{\gamma}^\mu(\lambda_1) \biggl(g_0 -\int_0^{\lambda_1} \d \lambda_2 \, \Gamma_\nu(\gamma(\lambda_2)) \dot{\gamma}^\nu(\lambda_2) \biggr)\\
+& = & g_0 -\int_0^t \d \lambda_1 \, \Gamma_\mu(\gamma(\lambda_1)) \dot{\gamma}^\mu(\lambda_1)g_0+\int_0^t \d \lambda_1\int_0^{\lambda_1} \d \lambda_2 \, \Gamma_\mu(\gamma(\lambda_1)) \dot{\gamma}^\mu(\lambda_1)\Gamma_\nu(\gamma(\lambda_2)) \dot{\gamma}^\nu(\lambda_2)g(\lambda_2).
+\ei
+Matters seem to only get worse, until one realises that the first integral no longer contains the unknown function $g$. Hence, the above expression provides a ``first-order'' approximation to $g$. It is clear that we can get higher-order approximations by iterating this process
+\bi{rCl}
+g(t) & = & g_0-\int_0^t \d \lambda_1 \, \Gamma_\mu(\gamma(\lambda_1)) \dot{\gamma}^\mu(\lambda_1)g_0\\
+& & \phantom{g_0}+ \int_0^t \d \lambda_1\int_0^{\lambda_1} \d \lambda_2\, \Gamma_\mu(\gamma(\lambda_1)) \dot{\gamma}^\mu(\lambda_1)\Gamma_\nu(\gamma(\lambda_2)) \dot{\gamma}^\nu(\lambda_2) g_0\\
+& & \phantom{g_0\,}\ \vdots\\
+& & \phantom{g_0}+ (-1)^{n} \int_0^t \d \lambda_1\int_0^{\lambda_1} \d \lambda_2\, \cdots \int_0^{\lambda_{n-1}}\d\lambda_n\,   \Gamma_\mu(\gamma(\lambda_1)) \dot{\gamma}^\mu(\lambda_1)\cdots  \Gamma_\nu(\gamma(\lambda_n)) \dot{\gamma}^\nu(\lambda_n) \, g(\lambda_n).
+\ei
+Note how the range of each integral depends on the integration variable of the previous integral. It would much nicer if we could have the same range in each integral. In fact, there is a standard trick to achieve this. The region of integration in the double integral is
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) node[below left] {$0$};
+\fill[lightergray] (0,0)--(3,0)--(3,3);
+\draw[dashed] (3,3)--(3,0) node[below] {$t$};
+\draw[dashed] (3,3)--(0,3) node[left] {$t$};
+\foreach \i in {1,...,19} {
+\draw[lightgray] (0.15*\i,0)--(0.15*\i,0.15*\i);
+};
+\draw[lightgray] (0,0)--(3,3);
+\draw[->] (-0.5,0)--(4,0) node[below] {$\lambda_1$};
+\draw[->] (0,-0.5)--(0,4) node[left] {$\lambda_2$};
+%\foreach \i in {1,...,19} {\draw[lightgray] (0.5*\i,0)--(10,0.5*\i)--(20-0.5*\i,0)--(10,-0.5*\i)--cycle;};
+\end{tikzpicture}
+\end{center}
+and if the integrand $f(\lambda_1,\lambda_2)$ is invariant under the exchange $\lambda_1\leftrightarrow \lambda_2$, we have 
+\bse
+\int_0^t \d \lambda_1\int_0^{\lambda_1} \d \lambda_2\, f(\lambda_1,\lambda_2) = \frac{1}{2}\int_0^t \d \lambda_1\int_0^t \d \lambda_2\, f(\lambda_1,\lambda_2).
+\ese
+Generalising to $n$ dimensions, we have
+\bse
+\int_0^t \d \lambda_1\,\cdots\int_0^{\lambda_{n-1}} \d \lambda_n\, f(\lambda_1,\ldots,\lambda_n) = \frac{1}{n!}\int_0^t \d \lambda_1\,\cdots\int_0^t \d \lambda_n\, f(\lambda_1,\ldots,\lambda_n)
+\ese
+if $f$ is invariant under any permutation of its arguments. Moreover, since each term in our integrands only depends on one integration variable at a time, we can use
+\bse
+\int_0^t \d \lambda_1\,\cdots\int_0^{t} \d \lambda_n\, f_1(\lambda_1)\cdots f_n(\lambda_n) = \biggl(\int_0^t \d \lambda_1\,f(\lambda_1)\biggr)\cdots\biggl(\int_0^t \d \lambda_n\, f(\lambda_n)\biggr)
+\ese
+so that, in our case, we would have
+\bi{rCl}
+g(t) & = & \biggl(\,\sum_{n=0}^\infty \frac{(-1)^n}{n!}\biggl(\int_0^t \d \lambda  \, \Gamma_\mu(\gamma(\lambda))\dot{\gamma}^\mu(\lambda)\biggr)^{\negmedspace n\,} \biggr)g_0\\
+& = & \exp\biggl(-\int_0^t \d \lambda  \, \Gamma_\mu(\gamma(\lambda))\dot{\gamma}^\mu(\lambda)\biggr) g_0.
+\ei
+However, our integrands are Lie-algebra-valued (that is, matrix valued), and since the factors therein need not commute, they are not invariant under permutations of the independent variables. Hence, the above formula doesn't work. Instead, we write
+\bse
+g(t)= \mathrm{P}\exp\biggl(-\int_0^t \d \lambda  \, \Gamma_\mu(\gamma(\lambda))\dot{\gamma}^\mu(\lambda)\biggr) g_0,
+\ese
+where the \emph{path-ordered exponential}\index{path-ordered exponential} $\mathrm{P}\exp$ is defined to yield the correct expression for $g(t)$.
+
+Summarising, we have the following.
+\bp
+For a principal $G$-bundle $(P,\pi,M)$, where $G$ is a matrix Lie group, the horizontal lift of a curve $\gamma\cl [0,1]\to U$ through $p_p\in \preim_\pi(\{U\})$, where $(U,x)$ is a chart on $M$, is given in terms of a local section $\sigma\cl U \to P$ by the explicit expression
+\bse
+\gamma^\uparrow(\lambda) = (\sigma\circ\gamma)(\lambda)\racts\biggl(\mathrm{P}\exp\biggl(-\int_0^\lambda \d \widetilde\lambda  \, \Gamma_\mu(\gamma(\widetilde\lambda))\dot{\gamma}^\mu(\widetilde\lambda)\biggr) g_0\biggr).
+\ese
+\ep
+
+\bd
+Let $\gamma^\uparrow_p\cl[0,1]\to P$ be the horizontal lift through $p\in\preim_\pi(\{\gamma(0)\})$ of the curve $\gamma\cl[0,1]\to M$ . The \emph{parallel transport map along $\gamma$}\index{parallel transport map} is the map
+\bi{rrCl}
+T_\gamma \cl & \preim_\pi(\{\gamma(0)\}) & \to & \preim_\pi(\{\gamma(1)\}) \\
+& p & \mapsto & \gamma^\uparrow_p(1).
+\ei
+\ed
+\br
+The parallel transport is, in fact, a bijection between the fibres $\preim_\pi(\{\gamma(0)\})$  and $\preim_\pi(\{\gamma(1)\})$. It is injective since there is a unique horizontal lift of $\gamma$ through each point $p\in\preim_\pi(\{\gamma(0)\})$, and horizontal lifts through different points do not intersect.  It is surjective since for each $q\in \preim_\pi(\{\gamma(1)\})$ we can find a $p$ such that $q=\gamma^\uparrow_p(1)$ as follows. Let $\widetilde p\in\preim_\pi(\{\gamma(0)\})$. Then $\gamma^\uparrow_{\widetilde p}(1)$ belongs to the same fibre as $q$ and hence there exists a unique $g\in G$ such that $q = \gamma^\uparrow_{\widetilde p}(1) \racts g$. Recall that 
+\bse
+\gamma^\uparrow_{\widetilde p}(\lambda) = (\sigma\circ\gamma)(\lambda)\racts (\mathrm{P}\exp (\cdots ) g_0)
+\ese
+where $g_0$ is the unique $g_0\in G$ such that $\widetilde p = (\sigma\circ\gamma)(0)\racts g_0$. Define $p\in\preim_\pi(\{\gamma(0)\})$ by
+\bse
+p:=\widetilde p \racts g = (\sigma\circ\gamma)(0)\racts (g_0\bullet g).
+\ese
+Then we have
+\bi{rCl}
+\gamma^\uparrow_{p}(1) & = & (\sigma\circ\gamma)(1)\racts (\mathrm{P}\exp (\cdots ) g_0\bullet g)\\
+& = & (\sigma\circ\gamma)(1)\racts (\mathrm{P}\exp (\cdots ) g_0)\racts g\\
+& = & \gamma^\uparrow_{\widetilde p}(1) \racts g\\
+& = & q.
+\ei
+\er
+
+\subsubsection*{Loops and holonomy groups}
+Consider the case of loops, i.e.\ curves $\gamma\cl[0,1]\to M$ for which $\gamma(0)=\gamma(1)$. Fix some $p\in \preim_\pi(\{\gamma(0)\})$. The condition that $\pi\circ\gamma_p^\uparrow=\gamma$ then implies that $\gamma_p^\uparrow(0)$ and $\gamma_p^\uparrow(1)$ belong to the same fibre. Hence, there exists a unique $g_\gamma\in G$ such that
+\bse
+\gamma_p^\uparrow(1) = \gamma_p^\uparrow(0) \racts g_\gamma=p\racts g_\gamma.
+\ese
+\bd
+Let $\omega$ be a connection one-form on the principal $G$-bundle $(P,\pi,M)$. Let $\gamma\cl[0,1]\to M$ be a loop with base-point $a\in M$, i.e.\ $\gamma(0)=\gamma(1)=a$. The subgroup of $G$
+\bse
+\Hol_a(\omega) := \{g_\gamma \mid \gamma_p^\uparrow(1) =p\racts g_\gamma \text{ for some loop $\gamma$}\}
+\ese
+is called the \emph{holonomy group}\index{holonomy group} of $\omega$ on $P$ at the base-point $a$.
+\ed
+
+\subsection{Horizontal lifts to the associated bundle}
+
+Almost everything that we have done so far transfers with ease to an associated bundle via the following definition.
+
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle and $\omega$ a connection one-form on $P$. Let $(P_F,\pi_F,M)$ be an associated fibre bundle of $P$ on whose typical fibre $F$ the Lie group $G$ acts on the left by $\lacts$. Let $\gamma\cl [0,1]\to M$ be a curve on $M$ and let $\gamma^\uparrow_p$ be its horizontal lift to $P$ through $p\in \preim_\pi(\{\gamma(0)\})$. Then the \emph{horizontal lift} of $\gamma$ to the associated bundle $P_F$ through the point $[p,f]\in P_F$ is the curve
+\bi{rrCl}
+\gamma^{\negmedspace \stackrel{P_F}{\uparrow}}_{[p,f]} \cl & [0,1] & \to & P_F\\
+& \lambda & \mapsto & [\gamma^\uparrow_p(\lambda),f]
+\ei
+\ed
+For instance, we have the obvious parallel transport map.
+\bd
+The \emph{parallel transport map} on the associated bundle is given by
+\bi{rrCl}
+T^{P_F}_\gamma \cl & \preim_{\pi_F}(\{\gamma(0)\}) & \to & \preim_{\pi_F}(\{\gamma(1)\}) \\
+& [p,f] & \mapsto & \gamma^{\negmedspace\stackrel{P_F}{\uparrow}}_{[p,f]}(1).
+\ei
+\ed
+
+\br
+If $F$ is a vector space and $\lacts \cl G\times F \to F$ is fibre-wise linear, i.e.\ for each fixed $g\in G$, the map $(g\lacts -)\cl F \to F$ is linear, then $(P_F,\pi_F,M)$ is called a \emph{vector bundle}. The basic idea of a covariant derivative is as follows. Let $\sigma\cl U \to P_F$ be a local section of the associated bundle. We would like to define the derivative of $\sigma$ at the point $m\in U\se M$ in the direction $X\in T_mM$. By definition, there exists a curve $\gamma\cl(-\varepsilon,\varepsilon)\to M$ with $\gamma(0)=m$ such that $X=X_{\gamma,m}$. Then for any $0\leq t <\varepsilon$, the points $\gamma^{\negmedspace\stackrel{P_F}{\uparrow}}_{[\sigma(m),f]}(t)$ and $\sigma(\gamma(t))$ lie in the same fibre of $P_F$. But since the fibres are vector spaces, we can write the differential quotient
+\bse
+\frac{\sigma(\gamma(t))-\gamma^{\negmedspace\stackrel{P_F}{\uparrow}}_{[\sigma(m),f]}(t)}{t},
+\ese
+where the minus sign denotes the additive inverse in the vector space $\preim_{\pi_F}(\{\gamma(t)\})$ and hence define the derivative of $\sigma$ at the point $m$ in the direction $X$, or the derivative of $\sigma$ along $\gamma$ at $\gamma(0)=m$, by 
+\bse
+\lim_{t\to 0} \frac{\sigma(\gamma(t))-\gamma^{\negmedspace\stackrel{P_F}{\uparrow}}_{[\sigma(m),f]}(t)}{t}.
+\ese
+\er
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

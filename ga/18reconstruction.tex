@@ -174,6 +174,24 @@ A \emph{one-parameter subgroup}\index{one-parameter subgroup} of a Lie group $G$
 with $\R$ understood as a Lie group under ordinary addition.
 \ed
 
+\be
+Let $M$ be a smooth manifold and let $Y\in\Gamma(TM)$ be a complete vector field. The \emph{flow} of $Y$ is the smooth map
+\bi{rrCl}
+\Theta \cl & \R\times M & \to & M\\
+& (\lambda,p) & \mapsto & \Theta_\lambda(p):= \gamma_p(\lambda),
+\ei
+where $\lambda_p$ is the maximal integral curve of $Y$ through $p$. For a fixed $p$, we have
+\bse
+\Theta_{0} = \id_M, \qquad \Theta_{\lambda_1}\circ \Theta_{\lambda_2} = \Theta_{\lambda_1+\lambda_2}, \qquad \Theta_{-\lambda} = \Theta_{\lambda}^{-1}.
+\ese
+For each $\lambda\in \R$, the map $\Theta_\lambda$ is a diffeomorphism $M\to M$. Denoting by $\mathrm{Diff}(M)$ the group (under composition) of the diffeomorphisms $M\to M$, we have that the map 
+\bi{rrCl}
+\xi \cl & \R & \to & \mathrm{Diff}(M)\\
+& \lambda & \mapsto & \Theta_\lambda
+\ei
+is a one-parameter subgroup of $\mathrm{Diff}(M)$.
+\ee
+
 \begin{theorem}
 Let $G$ be a Lie group.
 \ben[label=\roman*)]
@@ -203,8 +221,10 @@ G\ar[rr,"\phi"] && H
 \end{tikzcd}
 \ese
 \end{theorem}
-
-
+In particular, for $\phi\equiv \Ad_g\cl G\to G$, we have
+\bse
+\Ad_g (\exp(A)) = \exp(({\Ad_g}_*)_eA).
+\ese
 
 
 
