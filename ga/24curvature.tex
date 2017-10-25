@@ -1,27 +1,210 @@
 
+Usually, in more elementary treatments of differential geometry or general relativity, curvature and torsion are mentioned together as properties of a covariant derivative over the tangent or the frame bundle. Since we will soon define the notion of curvature on a general principal bundle equipped with a connection, one might expect that there be a general definition of torsion on a principal bundle with a connection. However, this is not the case. Torsion requires additional structure beyond that induced by a connection. The reason why curvature and torsion are sometimes presented together is that frame bundles are already equipped, in a canonical way, with the extra structure required to define torsion.
 
+\subsection{Covariant exterior derivative and curvature}
 
-curv
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle with connection one-form $\omega$. Let $\phi$ be a $k$-form (i.e. an anti-symmetric, $\mathcal{C}^\infty(P)$-multilinear map) with values in some module $V$. Then then \emph{exterior covariant derivative}\index{exterior covariant derivative} of $\phi$ is
+\bi{rrCl}
+\D\phi\cl & \Gamma(TP)^{\times (k+1)} & \to & V\\
+& (X_1,\ldots,X_{k+1}) & \mapsto & \d \phi (\hor(X_1),\ldots,\hor(X_{k+1})).
+\ei
+\ed
 
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle with connection one-form $\omega$. The \emph{curvature}\index{curvature} of the connection one-form $\omega$ is the Lie-algebra-valued $2$-form on $P$
+\bse
+\Omega\cl \Gamma(TP)\times \Gamma(TP) \to T_eG
+\ese
+defined by 
+\bse
+\Omega:=\D \omega.
+\ese
+\ed
 
+For calculational purposes, we would like to make this definition a bit more explicit.
 
+\bp
+Let $\omega$ be a connection one-form and $\Omega$ its curvature. Then
+\bse
+\tag{$\star$}
+\Omega = \d \omega + \omega \Wedge \omega
+\ese
+with the second term on the right hand side defined as
+\bse
+(\omega\Wedge\omega )(X,Y) := \llbracket\omega(X),\omega(Y) \rrbracket
+\ese
+where $X,Y\in \Gamma(TP)$ and the double bracket denotes the Lie bracket on $T_eG$.
+\ep
 
+\br
+If $G$ is a matrix Lie group, and hence $T_eG$ is an algebra of matrices of the same size as those of $G$, then we can write
+\bse
+\Omega^i_{\phantom{i}j} = \d \omega^i_{\phantom{i}j} + \omega^i_{\phantom{i}k}\wedge \omega^k_{\phantom{k}j}.
+\ese
+\er
 
+\bq
+Since $\Omega$ is $\mathcal{C}^\infty$-bilinear, it suffices to consider the following three cases.
+\ben[label=\alph*)]
+\item Suppose that $X,Y\in \Gamma(TP)$ are both vertical, that is, there exist $A,B\in T_eG$ such that $X=X^A$ and $Y=X^B$. Then the left hand side of our equation reads
+\bi{rCl}
+\Omega(X^A,X^B) & := & \D\omega(X^A,X^B) \\
+& = & \d \omega(\hor(X^A),\hor(X^B))\\
+& = & \d \omega(0,0)\\
+& = & 0
+\ei
+while the right hand side is
+\bi{rCl}
+\d \omega(X^A,X^B) + (\omega\Wedge\omega )(X^A,X^B) & = & X^A(\omega(X^B))-X^B(\omega(X^A))\\
+&& {}-\omega([X^A,X^B])+ \left\llbracket \omega(X^A),\omega(X^B)\right\rrbracket\\
+& = & X^A(B)-X^B(A)\\
+&& {}-\omega(X^{\llbracket A,B\rrbracket} )+ \left\llbracket A,B\right\rrbracket\\
+& = & -\left\llbracket A,B\right\rrbracket +\left\llbracket A,B\right\rrbracket\\
+& = & 0.
+\ei
+Note that we have used the fact that the map
+\bi{rrCl}
+i\cl & T_eG & \to & \Gamma(TP)\\
+& A \mapsto & X^A
+\ei
+is a Lie algebra homomorphism, and hence 
+\bse
+X^{\llbracket A,B\rrbracket}= i(\llbracket A,B\rrbracket) = [i(A),i(B)]=[X^A,X^B],
+\ese
+where the single square brackets denote the Lie bracket on $\Gamma(TP)$. 
+\item Suppose that $X,Y\in \Gamma(TP)$ are both horizontal. Then we have
+\bse
+\Omega(X,Y) := \D\omega(X,Y) = \d\omega(\hor(X),\hor(Y))=\d\omega(X,Y)
+\ese
+and 
+\bse
+(\omega\Wedge\omega )(X,Y)  =  \left\llbracket \omega(X),\omega(Y)\right\rrbracket = \left\llbracket 0,0\right\rrbracket = 0.
+\ese
+Hence the equation holds in this case.
+\item W.l.o.g suppose that $X\in \Gamma(TP)$ is horizontal while $Y=X^A\in\Gamma(TP)$ is vertical. Then the left hand side is
+\bse
+\Omega(X,X^A) := \D \omega (X,X^A) = \d \omega(\hor(X),\hor(X^A)) = \d \omega(\hor(X),0) = 0.
+\ese
+while the right hand side gives
+\bi{rCl}
+\d \omega(X,X^A) + (\omega\Wedge\omega )(X,X^A) & = & X(\omega(X^A))-X^A(\omega(X))\\
+&& {}-\omega([X,X^A])+ \left\llbracket \omega(X),\omega(X^A)\right\rrbracket\\
+& = & X(A)-X^A(0)\\
+&& {}-\omega(X^{\llbracket A,B\rrbracket} )+ \left\llbracket 0,A\right\rrbracket\\
+& = & -\omega([X,X^A])\\
+& = & 0,
+\ei
+where the only non-trivial step, which is left as an exercise, is to show that if $X$ is horizontal and $Y$ is vertical, then $[X,Y]$ is again horizontal.\qedhere
+\een
+\eq
 
+We would now like to relate the curvature on a principal bundle to (local) objects on the base manifold, just like we have done for the connection one-form. Recall that a connection one-form on a principal $G$-bundle $(P,\pi,M)$ is a $T_eG$-valued one-form $\omega$ on $P$. By using the notation $\Omega^1(P)\otimes T_eG$ for the collection (in fact, bundle) of all $T_eG$-valued one-forms, we have $\omega\in\Omega^1(P)\otimes T_eG$. If $\sigma\in\Gamma(TU)$ is a local section on $M$, we defined the Yang-Mills field $\omega^U\in\Omega^1(U)\otimes T_eG$ by pulling $\omega$ back along $\sigma$. 
 
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle and let $\Omega$ be the curvature associated to a connection one-form on $P$. Let $\sigma\in\Gamma(TU)$ be a local section on $M$. Then, the two-form
+\bse
+\Riem\equiv F:= \sigma^*\Omega \in \Omega^2(U)\otimes T_eG
+\ese
+is called the \emph{Yang-Mills field strength}\index{Yang-Mills field strength}.
+\ed
 
+\br
+Observe that the equation $\Omega = \d \omega + \omega \Wedge \omega$ on $P$ immediately gives
+\bi{rCl}
+\sigma^*\Omega & = & \sigma^*(\d \omega + \omega \Wedge \omega)\\
+& = & \sigma^*(\d \omega) + \sigma^*(\omega \Wedge \omega)\\
+& = & \d(\sigma^* \omega) + \sigma^*\omega \Wedge \sigma^*\omega.
+\ei
+Since $\Riem$ is a two-form, we can write 
+\bse
+\Riem_{\mu\nu} = (\d \omega^U)_{\mu\nu} + \omega^U_{\mu} \Wedge \omega^U_{\nu}.
+\ese
+In the case of a matrix Lie group, by writing $\Gamma^i_{\phantom{i}j\mu}:=(\omega^U)^i_{\phantom{i}j\mu}$, we can further express this in components as
+\bse
+\Riem^i_{\phantom{i}j\mu\nu} = \partial_\nu\Gamma^i_{\phantom{i}j\mu}-\partial_\mu\Gamma^i_{\phantom{i}j\nu} + \Gamma^i_{\phantom{i}k\mu}\Gamma^k_{\phantom{k}j\nu}-\Gamma^i_{\phantom{i}k\nu}\Gamma^k_{\phantom{k}j\mu}
+\ese
+from which we immediately observe that $\Riem$ is symmetric in the last two indices, i.e.\
+\bse
+\Riem^i_{\phantom{i}j[\mu\nu]}=0.
+\ese
+\er
 
+\bt[First Bianchi identity]
+Let $\Omega$ be the curvature two-form associated to a connection one-form $\omega$ on a principal bundle. Then
+\bse
+\D \Omega = 0.
+\ese
+\et
 
+\br
+Note that since $\Omega = \D\omega$, Bianchi's identity can be rewritten as $\D^2\Omega =0$. However, unlike the exterior derivative $d$, the covariant exterior derivative does \emph{not} satisfy $\D^2 =0$ in general.
+\er
 
+\subsection{Torsion}
 
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle and let $V$ be the representation space of a linear $(\dim M)$-dimensional representation of the Lie group $G$. A \emph{solder(ing) form} on $P$ is a one-form $\theta\in\Omega^1(P)\otimes V$ such that
+\ben[label=(\roman*)]
+\item $\forall \, X\in \Gamma(TP):\ \theta(\ver(X))=0$;
+%\hfill ($\theta$ is a \emph{vertical form})
+\item $\forall \,g\in G:\ g\lacts ((\racts g)^*\theta) = \theta$;
+%\hfill ($\theta$ is $G$-equivariant)
+\item $TM$ and $P_V$ are isomorphic as associated bundles. 
+\een
+\ed
 
+A solder form provides an identification of $V$ with each tangent space of $M$.
 
+\be
+Consider the frame bundle $(LM,\pi,M)$ and define
+\bi{rrCl}
+\theta \cl & \Gamma(T(LM)) & \to & \R^{\dim M}\\
+& X & \mapsto & (u^{-1}_{\pi(X)}\circ \pi_*)(X)
+\ei
+where for each $e:=(e_1,\ldots,e_{\dim M}) \in LM$, $u_e$ is defined as
+\bi{rrCl}
+u_e\cl & \R^{\dim M} & \xrightarrow{\sim} & T_{\pi(e)}M\\
+& (x^1,\ldots,x^{\dim M}) & \mapsto & x^ie_i.
+\ei
+To describe the inverse map $u_e^{-1}$ explicitly, note that to every frame $(e_1,\ldots,e_{\dim M}) \in LM$, there exists a co-frame $(f^1,\ldots,f^{\dim M}) \in L^*M$ such that
+\bi{rrCl}
+u_e^{-1}\cl &   T_{\pi(e)}M & \xrightarrow{\sim} & \R^{\dim M}\\
+& Z& \mapsto & (f^1(Z),\ldots,f^{\dim M}(Z)) .
+\ei
+\ee
 
+\bd
+Let $(P,\pi,M)$ be a principal $G$-bundle with connection one-form $\omega$ and let $\theta\in\Omega^1(P)\otimes V$ be a solder form on $P$. Then
+\bse
+\Theta := \D \theta \in\Omega^2(P)\otimes V
+\ese
+is the \emph{torsion}\index{torsion} of $\omega$ with respect to $\theta$.
+\ed
 
+\br
+You can now see that the ``extra structure'' required to define the torsion is a choice of solder form. The previous example shows that there a canonical choice of such a form on any frame bundle bundle. 
+\er
 
+We would like to have a similar formula for $\Theta$ as we had for $\Omega$. However, since $\Theta$ and $\theta$ are both $V$-valued but $\omega$ is $T_eG$-valued, the term $\omega\Wedge\theta$ would be meaningless. What we have, instead, is the following
+\bse
+\Theta = \d \theta + \omega \halfWedge \theta,
+\ese
+where the half-double wedge symbol intuitively indicates that we let $\omega$ act on $\theta$. More precisely, in the case of a matrix Lie group, recalling that $\dim G = \dim T_eG = \dim V$, we have
+\bse
+\Theta^i = \d \theta^i + \omega^i_{\phantom{i}k} \halfWedge \theta^k.
+\ese
 
+\bt[Second Bianchi identity]
+Let $\Theta$ be the torsion of a connection one-form $\omega$ with respect to a solder form $\theta$ on a principal bundle. Then
+\bse
+\D \Theta = \Omega \halfWedge \theta.
+\ese
+\et
 
-
+\br
+Like connection one-forms and curvatures two-forms, a torsion two-form $\Theta$ can also be pulled back to the base manifold along a local section $\sigma$ as $T:=\sigma^*\Theta$. In fact, \emph{this} is the torsion that one typically meets in general relativity.
+\er
 
 
 

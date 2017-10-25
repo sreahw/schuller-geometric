@@ -21,6 +21,9 @@
 
 \usepackage{subfig} % Required for creating figures with multiple parts (subfigures)
 
+\usepackage{stmaryrd}
+
+
 \usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts,xfrac,pifont} % For including math equations, theorems, symbols, etc
 
 \usepackage{cleveref} % More descriptive referencing
@@ -57,6 +60,7 @@
 \usetikzlibrary{positioning}
 %\tikzset{every picture/.style={remember picture}}
 \tikzset{>=stealth}
+
 
 \usepackage{cancel}
 \newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
@@ -170,7 +174,7 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 %\emailAdd{s.rea.hw@gmail.com}
 
 
-
+\pgfplotsset{compat=1.14}
 
 
 \begin{document} 
@@ -274,31 +278,30 @@ pdfcreator={pdfLaTeX}, % PDF Creator
 % \input{ga/22yang-mills}
 %\newpage
 
-\setcounter{section}{22}
-\section{Parallel transport}
-\input{ga/23parallel}
-\newpage
-
+% \section{Parallel transport}
+% \input{ga/23parallel}
+% \newpage
 
 % \section{Curvature and torsion on principal bundles}
+% \input{ga/24curvature}
+% \newpage
 
-
-
-% \section{Covariant derivatives}
-
-
+\setcounter{section}{24}
+\section{Covariant derivatives}
+\input{ga/25covariant}
+\newpage
 
 % \section{Application: Quantum mechanics on curved spaces}
-
-
+%\input{ga/26quantum}
+%\newpage
 
 % \section{Application: Spin structures}
-
-
+%\input{ga/27spin}
+%\newpage
 
 % \section{Application: Kinematical and dynamical symmetries}
-
-% \newpage
+%\input{ga/28kinematical}
+%\newpage
 
 % \section*{Further readings}
 % \addcontentsline{toc}{section}{Further readings}

@@ -1,0 +1,193 @@
+
+Recall that if $F$ is a vector space and $(P,\pi,M)$ a principal $G$-bundle equipped with a connection, we can use the parallel transport on the associated bundle $(P_F,\pi_F,M)$ and the vector space structure of $F$ to define the differential quotient of a local section $\sigma \cl U\to P_F$ along an integral curve of some tangent vector $X\in TU$. This then allowed us to define the covariant derivative of $\sigma$ at the point $\pi(X)\in U$ in the direction of $X\in TU$.
+
+This approach to the concept of covariant derivative is very intuitive and geometric, but it is a disaster from a technical point of view as it is quite difficult to implement. There is, in fact, a neater approach to covariant differentiation, which will now discuss.
+
+\subsection{Equivalence of local sections and equivariant functions}
+\bt
+Let $(P,\pi,M)$ be a principal $G$-bundle and $(P_F,\pi_F,M)$ be an associated bundle. Let $(U,x)$ be a chart on $M$. The local sections $\sigma\cl U \to P_F$ are in bijective correspondence with $G$-equivariant functions $\phi\cl\preim_{\pi}(U)\subseteq P \to F$, where the $G$-equivariance condition is
+\bse
+\forall \, g \in G : \forall \, p\in \preim_{\pi}(U) : \  \phi(g\racts p) = g^{-1}\lacts \phi(p).
+\ese
+\et
+
+\bq
+\ben[label=(\alph*)]
+\item Let $\phi\preim_{\pi}(U) \to F$ be $G$-equivariant. Define
+\bi{rrCl}
+\sigma_{\phi}\cl & U & \to & P_F\\
+& m & \mapsto & [p,\phi(p)]
+\ei
+where $p$ is any point in $\preim_{\pi}(\{m\})$. First, we should check that $\sigma_{\phi}$ is well-defined. Let $p,\widetilde p\in \preim_{\pi}(\{m\})$. Then, there exists a unique $g\in G$ such that $\widetilde p = p\racts g$. Then, by the $G$-equivariance of $\phi$, we have
+\bse
+[\widetilde p,\phi(\widetilde p)] = [p\racts g,\phi(p\racts g)] = [p\racts g,g^{-1}\lacts \phi(p)] = [p,\phi(p)]
+\ese
+and hence, $\sigma_{\phi}$ is well-defined. Moreover, since for all $g\in G$
+\bse
+\pi_F([p,\phi(p)]) = \pi(p) =\pi(p\racts g)= \pi_F([p\racts g,g^{-1}\lacts \phi(p)]),
+\ese
+we have $\pi_F\circ\sigma_{\phi}=\id_U$ and thus, $\sigma_{\phi}$ is a local section.
+
+\item Let $\sigma\cl U\to P_F$ be a local section. Define 
+\bi{rrCl}
+\phi_{\sigma}\cl & \preim_{\pi}(U) & \to & F\\
+& p & \mapsto & i^{-1}_p(\sigma(\pi(p)))
+\ei
+where $i^{-1}_p$ is the inverse of the map
+\bi{rrCl}
+i_p\cl & F & \to & \preim_{\pi_F}(\{\pi(p)\})\subseteq P_F\\
+& f & \mapsto & [p,f].
+\ei
+Observe that, for all $g\in G$, we have
+\bse
+i_p(f):=[p,f]=[p\racts g,g^{-1}\lacts f] =: i_{p\racts g}(g^{-1}\lacts f). 
+\ese
+Let us now show that $\phi_{\sigma}$ is $G$-equivariant. We have
+\bi{rCl}
+\phi_{\sigma}(p\racts g) & = & i^{-1}_{p\racts g}(\sigma(\pi(p\racts g)))\\
+& = & i^{-1}_{p\racts g}(\sigma(\pi(p)))\\
+& = & i^{-1}_{p\racts g}(i_p(\phi_{\sigma}(p)))\\
+& = & i^{-1}_{p\racts g}(i_{p\racts g}(g^{-1}\lacts\phi_{\sigma}(p)))\\
+& = & g^{-1}\lacts\phi_{\sigma}(p),
+\ei
+which is what we wanted.
+\item We now show that these constructions are the inverses of each other, i.e.\
+\bse
+\sigma_{\phi_{\sigma}} = \sigma, \qquad \quad \phi_{\sigma_{\phi}} = \phi.
+\ese
+Let $m\in U$. Then, we have
+\bi{rCl}
+\sigma_{\phi_{\sigma}}(m) & = & [p,\phi_{\sigma}(p)]\\
+& = &  [p,i^{-1}_p(\sigma(\pi(p)))]\\
+& = &  i_p(i^{-1}_p(\sigma(\pi(p))))\\
+& = &  \sigma(\pi(p))\\
+& = &  \sigma(m)
+\ei
+and hence $\sigma_{\phi_{\sigma}} = \sigma$. Now let $p\in \preim_{\pi}(U)$. Then, we have
+\bi{rCl}
+\phi_{\sigma_{\phi}}(p) & = & i^{-1}_p(\sigma_{\phi}(\pi(p)))\\
+& = & i^{-1}_p([p,\phi(p)])\\
+& = & i^{-1}_p(i_p(\phi(p)))\\
+& = & \phi(p)
+\ei
+and hence, $\phi_{\sigma_{\phi}} = \phi$. \qedhere
+\een
+\eq
+
+\subsection{Linear actions on associated vector fire bundles}
+
+We now specialise to the case where $F$ is a vector space, and hence we can require the left action $G\!\lacts \cl F\xrightarrow{\sim} F$ to be linear. 
+
+\bp
+Let $(P,\pi,M)$ be a principal $G$-bundle, and let $(P_F,\pi_F,M)$ be an associated bundle, where $G$ is a matrix Lie group, $F$ is a vector space, and the left $G$-action on $F$ is linear. Let $\phi\cl P\to F$ be $G$-equivariant. Then
+\bse
+\phi(p\racts \exp(At)) = \exp(-At)\lacts \phi(p),
+\ese
+where $p\in P$ and $A\in T_eG$.
+\ep
+
+\bc
+With the same assumptions as above, let $A\in T_eG$ and let $\omega$ be a connection one-form on $(P,\pi,M)$. Then
+\bse
+\d \phi(X^A) + \omega(X^A)\lacts \phi = 0.
+\ese
+\ec
+
+\bq
+Since $\phi$ is $G$-equivariant, by applying the previous proposition, we have
+\bse
+\phi(p\racts \exp(At)) = \exp(-At)\lacts \phi(p)
+\ese
+for any $p\in P$. Hence, differentiating with respect to $t$ yields
+\bi{rCl}
+(\phi(p\racts \exp(At)))'(0) & = & (\exp(-At)\lacts \phi(p))'(0)\\
+\d_p\phi(X^A) & = & -A \lacts \phi(p)\\
+\d_p\phi(X^A) & = & -\omega(X^A) \lacts \phi(p)
+\ei
+for all $p\in P$ and hence, the claim holds.
+\eq
+
+\subsection{Construction of the covariant derivative}
+
+We now wish to construct a covariant derivative, i.e.\ an ``operator'' $\nabla$ such that for any local section $\sigma \cl U \subseteq M \to P_F$ and any $X\in T_mU$ with $m\in U$, we have that $\nabla_X \sigma$ is again a local section $U\to P_F$ and
+\ben[label=\roman*)]
+\item $\nabla_{fX+Y}\sigma = f\nabla_{X}\sigma+\nabla_{Y}\sigma$
+\item $\nabla_X(\sigma+\tau) = \nabla_X\sigma+\nabla_X\tau$
+\item $\nabla_Xf\sigma = X(f)\sigma+f\nabla_X\sigma$
+\een
+for any sections $\sigma,\tau\cl U\to P_F$, any $f\in \mathcal{C}^{\infty}(U)$, and any $X,Y\in T_mU$.
+
+These (together with $\nabla_Xf:=X(f)$) are usually presented as the defining properties of the covariant derivative in more elementary treatments.
+
+Recall that functions are a special case of forms, namely the $0$-forms, and hence the exterior covariant derivative a function $\phi\cl P\to F$ is
+\bse
+\D\phi := \d \phi \circ \hor.
+\ese
+We now have the following result.
+\bp
+Let $\phi\cl P\to F$ be $G$-equivariant and let $X\in T_pP$. Then
+\bse
+\D\phi(X) = \d\phi(X)+\omega(X)\lacts \phi
+\ese
+\ep
+
+\bq
+\ben[label=(\alph*)]
+\item Suppose that $X$ is vertical, that is, $X=X^A$ for some $A\in T_eG$. Then,
+\bse
+\D\phi(X) = \d\phi(\hor(X))=0
+\ese
+and 
+\bse
+\d\phi(X^A)+\omega(X^A)\lacts \phi = 0
+\ese
+by the previous corollary.
+\item Suppose that $X$ is horizontal. Then,
+\bse
+\D\phi(X)=\d\phi(X)
+\ese
+and $\omega(X)=0$, so that we have 
+\bse
+\D\phi(X) = \d\phi(X)+\omega(X)\lacts \phi.\qedhere
+\ese
+\een
+\eq
+
+Hence, it is clear from this proposition that $\D\phi(X)$, which we can also write as $\D_X\phi$, is $\mathcal{C}^{\infty}(P)$-linear in the $X$-slot, additive in the $\phi$-slot and satisfies property iii) above. However, it also clearly \emph{not} a covariant derivative since $X\in TP$ rather than $X\in TM$ and $\phi$ is a $G$-equivariant function $P\to F$ rather than a local section o $(P_F,\pi_F,M)$.
+
+We can obtain a covariant derivative from $\D$ by introducing a local trivialisation on the bundle $(P,\pi,M)$. Indeed, let $s\cl U\subseteq M \to P$ be a local section. Then, we can pull back the following objects
+\bi{CCC}
+\phi\cl P\to F &\qquad \leadsto \qquad  & s^*\phi := \phi\circ s \cl U \to P_F\\
+\omega\in\Omega^1(M)\otimes T_eG & \leadsto & \omega^U:=s^*\omega\in\Omega^1(U) \otimes T_eG\\
+\D \phi\in\Omega^1(M)\otimes F &\leadsto & s^*(\D\phi)\in\Omega^1(U)\otimes F .
+\ei
+
+It is, in fact, for this last object that we will be able to define the covariant derivative. Let $X\in TU$. Then
+\bi{rCl}
+(s^*\D\phi)(X) & = & s^*(\d\phi+\omega\lacts\phi)(X)\\
+& = & s^*(\d\phi)(X) + s^*(\omega\lacts\phi)(X)\\
+& = & \d(s^*\phi)(X)+s^*(\omega)(X)\lacts s^*\phi\\
+& = & \d \sigma (X)+\omega^U(X)\lacts \sigma
+\ei
+where we renamed $s^*\phi=:\sigma$. In summary, we can write.
+\bse
+\nabla_X\sigma = \d \sigma (X)+\omega^U(X)\lacts \sigma
+\ese
+One can check that this satisfies all the properties that we wanted a covariant derivative to satisfy. Of course, we should note that this is a local definition.
+
+\br
+Observe that the definition of covariant derivative depends on two choices which can be made quite independently of each other, namely, the choice of connection one-form $\omega$ (which determines $\omega^U$) and the choice of linear left action $\lacts$ on $F$.   
+\er
+
+
+
+
+
+
+
+
+
+
+
+
+
