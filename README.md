@@ -1,4 +1,4 @@
-# schuller-geometric
+# Fredric Schuller's Geometric anatomy of theoretical physics
 
 This is the LaTeX source code for my lecture notes to accompany Frederic Schuller's course on the ``Geometric anatomy of theoretical physics'', taught in the summer of 2013/14 at the Friedrich-Alexander-Universität Erlangen-Nürnberg as part of the Elite Graduate Programme.
 
