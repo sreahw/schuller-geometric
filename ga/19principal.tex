@@ -49,7 +49,7 @@ Similarly, a \emph{right $G$-action} on $M$ is a smooth map
 \ei
 satisfying
 \ben[label=\roman*)]
-\item $\forall \, p \in M :\ p\racts g = p$;
+\item $\forall \, p \in M :\ p\racts e = p$;
 \item $\forall \, g_1,g_2\in G : \forall \, p\in M : \ p \racts (g_1\bullet g_2) = (p \racts g_1) \racts g_2$.
 \een
 \ed
@@ -197,7 +197,7 @@ In our $\SO(2,\R)$ example, we have $S_p=\{\id_{\R^2}\}$ for $p\neq 0$ and $S_0=
 A left $G$-action $\lacts\cl G\times M\to M$ is said to be
 \ben[label=\roman*)]
 \item \emph{free} if for all $p\in M$, we have $S_p=\{e\}$;
-\item \emph{transitive} if for all $p,q\in M$, there exists $g\in G$ such that $p=g\lacts p$.
+\item \emph{transitive} if for all $p,q\in M$, there exists $g\in G$ such that $q=g\lacts p$.
 \een
 \ed
 
@@ -229,7 +229,7 @@ Hence $g_2^{-1}\bullet g_1\in S_p$, but since $\lacts$ is free we have $S_p=\{e\
 \bp
 If $\lacts\cl G \times M \to M$ is a free action, then
 \bse
-\forall \, p \in G :\ G_p \cong_{\mathrm{diff}} G.
+\forall \, p \in M :\ G_p \cong_{\mathrm{diff}} G.
 \ese
 \ep
 
@@ -281,11 +281,11 @@ A slight generalisation would be to consider smooth bundles $E\xrightarrow{\,\pi
 \ben[label=\alph*)]
 \item Let $M$ be a smooth manifold. Consider the space
 \bse
-L_pM := \{(e_1,\ldots,e_{\dim M})\mid e_1,\ldots,e_{\dim M} \text{ is a basis of }T_pM\} \cong_{\mathrm{vec}} \GL(\dim M,\R).
+L_pM := \{(e_1,\ldots,e_{\dim M})\mid e_1,\ldots,e_{\dim M} \text{ is a basis of }T_pM\} \cong_{\mathrm{LG}} \GL(\dim M,\R).
 \ese
 We know from linear algebra that the bases of a vector space are related to each other by invertible linear transformations. Hence, we have 
 \bse
-L_pM \cong_{\mathrm{vec}} \GL(\dim M,\R).
+L_pM \cong_{\mathrm{LG}} \GL(\dim M,\R).
 \ese
 We define the frame bundle of $M$ as
 \bse
@@ -294,7 +294,7 @@ LM := \coprod_{p\in M} L_pM
 with the obvious projection map $\pi\cl LM \to M$ sending each basis $(e_1,\ldots,e_{\dim M})$ to the unique point $p\in M$ such that $(e_1,\ldots,e_{\dim M})$ is a basis of $T_pM$.
 By proceeding similarly to the case of the tangent bundle, we can equip $LM$ with a smooth structure inherited from that of $M$. We then find
 \bse
-\dim LM = \dim M + \dim T_pM = \dim M + (\dim M)^2.
+\dim LM = \dim M + \dim L_pM = \dim M + (\dim M)^2.
 \ese
 \item We would now like to make $LM \xrightarrow{\,\pi\,}M$ into a principal $\GL(\dim M,\R)$-bundle. We define a right $\GL(\dim M,\R)$-action on $LM$ by
 \bse
